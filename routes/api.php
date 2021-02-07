@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,4 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return json_encode('Hello World');
+});
+
+Route::get('/user', function () {
+    return \App\Models\Billing\User::all();
 });
