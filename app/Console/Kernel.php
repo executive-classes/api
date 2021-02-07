@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('db:dump')
-            ->cron("00 11 * * 7");
+            ->cron("00 01 * * 1");
     }
 
     /**
