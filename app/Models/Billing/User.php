@@ -2,14 +2,15 @@
 
 namespace App\Models\Billing;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Traits\Authenticatable as CanAuthenticate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use CanAuthenticate, HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The table associated with the model.
@@ -69,13 +70,40 @@ class User extends Authenticatable
         'active' => 'boolean'
     ];
 
+    /**
+     * User roles relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function roles()
     {
         return $this->belongsToMany(UserRole::class, 'user_x_role', 'user_id', 'user_role_id');
     }
 
+    /**
+     * User tax type relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function taxType()
     {
         return $this->belongsTo(TaxType::class, 'tax_type_id', 'id');
+    }
+
+    /**
+     * Get the user's privileges using their roles.
+     * 
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function privileges()
+    {
+        $roles = $this->roles;
+        $privileges = new \Illuminate\Database\Eloquent\Collection();
+
+        foreach ($roles as $role) {
+            $privileges = $privileges->merge($role->privileges->keyBy('id'));
+        }
+
+        return $privileges->values();
     }
 }

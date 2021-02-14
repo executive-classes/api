@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return json_encode('Hello World');
-});
+Route::get('/', function () { return __('messages.welcome'); });
 
-Route::get('/user', function () {
-    return \App\Models\Billing\User::all();
+Route::post('/login', [AuthenticateController::class, 'login']);
+
+Route::middleware(['auth:sanctum', 'lang'])->group(function () {
+    Route::post('/login/cross', [AuthenticateController::class, 'crossLogin']);
+    Route::get('/logout', [AuthenticateController::class, 'logout']);
 });

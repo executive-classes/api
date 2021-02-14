@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'unauthenticated' => 'Not authenticated. Please login again.',
-    'unauthorized' => 'No permission to access this content.'
+    'failed' => 'Essas credenciais não correspondem aos nossos registros.',
+    'password' => 'A senha fornecida não está correta.',
+    'throttle' => 'Muitas tentativas de login. Tente novamente em :seconds segundos.',
+    'unauthenticated' => 'Não autenticado. Por favor faça login novamente.',
+    'unauthorized' => 'Sem permissão para acessar este conteúdo.'
 
 ];

@@ -14,9 +14,20 @@ class UserRoleSeeder extends Seeder
      */
     public function run()
     {
-        $this->create('adm', 'Administrador');
-        $this->create('fin', 'Financeiro');
-        $this->create('tec', 'Técnico');
+        $this->create('adm', 'Administrador', [
+            'cross_auth',
+            'internal'
+        ]);
+
+        $this->create('fin', 'Financeiro', [
+            'internal'
+        ]);
+
+        $this->create('tec', 'Técnico', [
+            'cross_auth',
+            'internal',
+        ]);
+
     }
 
     /**
@@ -26,9 +37,10 @@ class UserRoleSeeder extends Seeder
      * @param string $name
      * @return void
      */
-    protected function create(string $id, string $name): void
+    protected function create(string $id, string $name, array $privileges = []): void
     {
         $userRole = new UserRole(compact('id', 'name'));
         $userRole->save();
+        $userRole->privileges()->toggle($privileges);
     }
 }

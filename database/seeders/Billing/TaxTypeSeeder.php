@@ -19,6 +19,14 @@ class TaxTypeSeeder extends Seeder
         $this->create('rg', 'RG', '##.###.###-#');
     }
 
+    /**
+     * Create the Tax Type entry.
+     *
+     * @param string $id
+     * @param string $name
+     * @param string $pattern
+     * @return void
+     */
     protected function create(string $id, string $name, string $pattern)
     {
         $taxType = new TaxType(compact('id', 'name', 'pattern'));

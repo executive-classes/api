@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             \Database\Seeders\Billing\TaxTypeSeeder::class,
+            \Database\Seeders\Billing\UserPrivilegeSeeder::class,
             \Database\Seeders\Billing\UserRoleSeeder::class,
             \Database\Seeders\Billing\UserSeeder::class
         ]);

@@ -70,11 +70,6 @@ return [
             'driver' => 'eloquent',
             'model' => \App\Models\Billing\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*

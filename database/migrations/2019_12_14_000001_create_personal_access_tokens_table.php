@@ -14,13 +14,14 @@ class CreatePersonalAccessTokensTable extends Migration
     public function up()
     {
         Schema::create('personal_access_tokens', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->comment('Token id.');
             $table->morphs('tokenable');
-            $table->string('name');
-            $table->string('token', 64)->unique();
-            $table->text('abilities')->nullable();
-            $table->timestamp('last_used_at')->nullable();
+            $table->string('name')->comment('Token name.');
+            $table->string('token', 64)->unique()->comment('Token hash.');
+            $table->text('abilities')->nullable()->comment('Token privileges.');
+            $table->timestamp('last_used_at')->nullable()->comment('Last token use.');
             $table->timestamps();
+            $table->text('language')->default('en')->comment('Token language.');
         });
     }
 

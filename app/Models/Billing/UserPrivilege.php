@@ -4,14 +4,14 @@ namespace App\Models\Billing;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserRole extends Model
+class UserPrivilege extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'user_role';
+    protected $table = 'user_privilege';
 
     /**
      * The primary key associated with the table.
@@ -49,13 +49,13 @@ class UserRole extends Model
     protected $fillable = [];
 
     /**
-     * Role privileges.
+     * Privilege roles.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function privileges()
+    public function roles()
     {
-        return $this->belongsToMany(UserPrivilege::class, 'role_x_privilege', 'user_role_id', 'user_privilege_id');
+        return $this->belongsToMany(UserRole::class, 'role_x_privilege', 'user_privilege_id', 'user_role_id');
     }
 }
 
