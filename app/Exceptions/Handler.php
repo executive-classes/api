@@ -2,7 +2,7 @@
 
 namespace App\Exceptions;
 
-use App\Traits\Response\ApiResponse;
+use App\Traits\ApiResponse;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

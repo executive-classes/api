@@ -15,17 +15,30 @@ class UserRoleSeeder extends Seeder
     public function run()
     {
         $this->create('adm', 'Administrador', [
-            'cross_auth',
-            'internal'
+            'auth:cross',
+            'message:get',
+            'message:create',
+            'message:cancel',
+            'message_template:get',
+            'message_template:create',
+            'message_template:update',
+            'message_template:delete',
         ]);
 
         $this->create('fin', 'Financeiro', [
-            'internal'
+            'message:get',
+            'message:create',
+            'message_template:get',
         ]);
 
         $this->create('tec', 'Técnico', [
-            'cross_auth',
-            'internal',
+            'auth:cross',
+            'message:get',
+            'message:create',
+            'message_template:get',
+            'message_template:create',
+            'message_template:update',
+            'message_template:delete',
         ]);
 
     }

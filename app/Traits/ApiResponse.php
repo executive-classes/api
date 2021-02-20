@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits\Response;
+namespace App\Traits;
 
 /**
  * Used to format the HTTP API Responses.
@@ -27,7 +27,7 @@ trait ApiResponse
      * @param array $headers
      * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
-    private function successResponse($data, int $code = 200, array $headers = [])
+    public function successResponse($data, int $code = 200, array $headers = [])
     {
         return response()->json(['status' => true, 'data' => $data], $code, $headers);
     }
@@ -40,7 +40,7 @@ trait ApiResponse
      * @param array $headers
      * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
-    private function errorResponse(string $error, int $code = 500, array $headers = [])
+    public function errorResponse(string $error, int $code = 500, array $headers = [])
     {
         return response()->json(['status' => false, 'error' => $error], $code, $headers);
     }

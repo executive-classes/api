@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class AuthenticateController extends Controller
 {
     /**
-     * The User Respository
+     * The User Respository.
      */
     protected UserRepository $userRepository;
 
@@ -21,7 +21,8 @@ class AuthenticateController extends Controller
      *
      * @param UserRepository $userRepository
      */
-    public function __construct(UserRepository $userRepository) {
+    public function __construct(UserRepository $userRepository) 
+    {
         $this->userRepository = $userRepository;
     }
 

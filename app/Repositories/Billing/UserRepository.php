@@ -3,34 +3,18 @@
 namespace App\Repositories\Billing;
 
 use App\Models\Billing\User;
+use App\Repositories\Repository;
 
-class UserRepository
+class UserRepository extends Repository
 {
-    /**
-     * The User Model.
-     */
-    protected User $model;
-
     /**
      * Create the User Repository.
      *
      * @param User $user
      */
-    public function __construct(User $user) {
-        $this->model = $user;
-    }
-
-    /**
-     * Find a user by a given id.
-     *
-     * @param string $id
-     * @return void
-     */
-    public function find(string $id)
+    public function __construct(User $user) 
     {
-        return $this->model
-            ->where('id', $id)
-            ->first();
+        $this->model = $user;
     }
 
     /**

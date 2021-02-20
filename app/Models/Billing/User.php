@@ -42,12 +42,12 @@ class User extends Authenticatable
      */
     protected $guarded = [
         'id',
-        'creation_date',
-        'updated_date',
-        'inactive_date',
-        'reactive_date',
-        'salt',
-        'user_role_id'
+        'created_at',
+        'updated_at',
+        'inactve_at',
+        'reactive_at',
+        'email_verified_at',
+        'salt'
     ];
 
     /**

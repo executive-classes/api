@@ -14,10 +14,15 @@ class UserPrivilegeSeeder extends Seeder
      */
     public function run()
     {
-        $this->create('internal', 'Can access the internal services.');
-        $this->create('portal', 'Can access the portal services.');
-        $this->create('cross_auth', 'Can cross-auth in others users.');
-        $this->create('telescope', 'Can use admin tools in the system.');
+        $this->create('auth:cross', 'Can cross-auth in others users.');
+        $this->create('message:get', 'Can get or list messages.');
+        $this->create('message:create', 'Can create new messages.');
+        $this->create('message:cancel', 'Can cancel scheduled messages.');
+        $this->create('message:delete', 'Can delete messages.');
+        $this->create('message_template:get', 'Can get or list messages templates.');
+        $this->create('message_template:create', 'Can create messages templates.');
+        $this->create('message_template:update', 'Can update messages templates.');
+        $this->create('message_template:delete', 'Can delete messages templates.');
     }
 
     /**

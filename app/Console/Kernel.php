@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         \App\Console\Commands\Database\DbDump::class,
-        \App\Console\Commands\Database\DbRestoreDev::class
+        \App\Console\Commands\Database\DbRestoreDev::class,
+        \App\Console\Commands\Mailing\SendMessage::class
     ];
 
     /**
@@ -27,6 +28,9 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('db:dump')
             ->cron("00 01 * * 1");
+
+        $schedule->command('mailing:sendMessage')
+            ->cron("* * * * *");
     }
 
     /**
