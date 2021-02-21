@@ -42,7 +42,7 @@ trait ApiResponse
      */
     public function errorResponse(string $error, int $code = 500, array $headers = [])
     {
-        return response()->json(['status' => false, 'error' => $error], $code, $headers);
+        return response()->json(['status' => false, 'message' => $error], $code, $headers);
     }
 
     /**
@@ -157,62 +157,62 @@ trait ApiResponse
      * 499        Client Closed Request
      */
 
-    public function badRequestResponse($error, array $headers = [])
+    public function badRequestResponse(string $error, array $headers = [])
     {
         return $this->errorResponse($error, 400, $headers);
     }
 
-    public function unauthorizedResponse($error, array $headers = [])
+    public function unauthorizedResponse(string $error, array $headers = [])
     {
         return $this->errorResponse($error, 401, $headers);
     }
 
-    public function forbiddenResponse($error, array $headers = [])
+    public function forbiddenResponse(string $error, array $headers = [])
     {
         return $this->errorResponse($error, 403, $headers);
     }
 
-    public function notAcceptableResponse($error, array $headers = [])
+    public function notAcceptableResponse(string $error, array $headers = [])
     {
         return $this->errorResponse($error, 403, $headers);
     }
 
-    public function conflictResponse($error, array $headers = [])
+    public function conflictResponse(string $error, array $headers = [])
     {
         return $this->errorResponse($error, 409, $headers);
     }
 
-    public function preconditionFailedResponse($error, array $headers = [])
+    public function preconditionFailedResponse(string $error, array $headers = [])
     {
         return $this->errorResponse($error, 412, $headers);
     }
 
-    public function iAmATeapotResponse($error, array $headers = [])
+    public function iAmATeapotResponse(string $error, array $headers = [])
     {
         return $this->errorResponse($error, 418, $headers);
     }
 
-    public function unprocessableEntityResponse($error, array $headers = [])
+    public function unprocessableEntityResponse(string $error, array $headers = [])
     {
         return $this->errorResponse($error, 422, $headers);
     }
 
-    public function failedDependencyResponse($error, array $headers = [])
+    public function failedDependencyResponse(string $error, array $headers = [])
     {
         return $this->errorResponse($error, 424, $headers);
     }
 
-    public function upgradeRequiredResponse($error, array $headers = [])
+    public function upgradeRequiredResponse(string $error, array $headers = [])
     {
         return $this->errorResponse($error, 426, $headers);
     }
 
-    public function connectionClosedWithoutResponse($error, array $headers = [])
+    public function connectionClosedWithoutResponse(string $error, array $headers = [])
     {
         return $this->errorResponse($error, 444, $headers);
     }
 
-    public function unavaiableForLegalReasonsResponse($error, array $headers = [])
+    public function unavaiableForLegalReasonsResponse(string $error, array $headers = [])
     {
         return $this->errorResponse($error, 451, $headers);
     }
@@ -238,27 +238,27 @@ trait ApiResponse
      * 599        Network Connect Timeout Error
      */
 
-    public function internalErrorResponse($error, array $headers = [])
+    public function internalErrorResponse(string $error, array $headers = [])
     {
         return $this->errorResponse($error, 500, $headers);
     }
 
-    public function notImplementedResponse($error, array $headers = [])
+    public function notImplementedResponse(string $error, array $headers = [])
     {
         return $this->errorResponse($error, 501, $headers);
     }
 
-    public function badGatewayResponse($error, array $headers = [])
+    public function badGatewayResponse(string $error, array $headers = [])
     {
         return $this->errorResponse($error, 502, $headers);
     }
 
-    public function serviceUnavaiableResponse($error, array $headers = [])
+    public function serviceUnavaiableResponse(string $error, array $headers = [])
     {
         return $this->errorResponse($error, 503, $headers);
     }
 
-    public function gatewayTimeoutResponse($error, array $headers = [])
+    public function gatewayTimeoutResponse(string $error, array $headers = [])
     {
         return $this->errorResponse($error, 504, $headers);
     }

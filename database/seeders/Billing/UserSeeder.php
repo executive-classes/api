@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(3)
+        User::factory(2)
             ->for(TaxType::find('cpf'), 'taxType')
             ->hasAttached(UserRole::all(), [], 'roles')
             ->create();

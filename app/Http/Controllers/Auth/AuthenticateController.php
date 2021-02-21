@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\CrossLoginRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Repositories\Billing\UserRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 class AuthenticateController extends Controller
@@ -35,6 +36,7 @@ class AuthenticateController extends Controller
     public function login(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
+        App::setLocale($request->language ?? 'en');
 
         // Validate the credentials
         if (!Auth::attempt($credentials)) {
@@ -57,7 +59,7 @@ class AuthenticateController extends Controller
             $user->save();
         }
 
-        return $this->createdResponse($token);
+        return $this->okResponse($token);
     }
 
     /**
@@ -78,7 +80,7 @@ class AuthenticateController extends Controller
             $token->accessToken->save();
         }
 
-        return $this->createdResponse($token);
+        return $this->okResponse($token);
     }
 
     /**
@@ -89,7 +91,10 @@ class AuthenticateController extends Controller
      */
     public function logout(Request $request)
     {
-        $request->user()->logout();
+        if (Auth::check()) {
+            $request->user()->logout();
+        }
+        
         return $this->noContentResponse();
     }
 }

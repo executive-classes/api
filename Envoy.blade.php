@@ -29,3 +29,9 @@
     sshpass -p '{{ env('HOSTING_PASSWORD', '') }}' scp -o "StrictHostKeyChecking no" -P 65002 u737844224@151.106.98.0:database/dump/dump.sql .
     mysql -u {{ $data['username'] }} -p'{{ $data['password'] }}' {{ $data['database'] }} < dump.sql
 @endtask
+
+@task('create-test-db', ['on' => 'ec_db_dev'])
+    mysql -u root -p'{{env('DB_ROOT_PASSWORD')}}'
+    CREATE DATABASE IF NOT EXISTS {{env('DB_TESTS_DATABASE')}};
+    GRANT ALL PRIVILEGES ON {{env('DB_TESTS_DATABASE')}}.* TO '{{env('DB_USERNAME')}}'@'%';
+@endtask

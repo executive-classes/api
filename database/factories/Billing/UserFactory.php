@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 
 class UserFactory extends Factory
 {
+    public const PASSWORD = 'Teste123@';
+
     /**
      * The name of the factory's corresponding model.
      *
@@ -27,7 +29,7 @@ class UserFactory extends Factory
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
-            'password' => Hash::make('Teste123@'),
+            'password' => Hash::make(self::PASSWORD),
             'salt' => Str::random(10),
             'remember_token' => Str::random(10),
             'tax_code' => $this->faker->cpf

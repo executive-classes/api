@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use Laravel\Sanctum\Sanctum;
+
 trait Authenticatable
 {
     /**
@@ -31,11 +33,11 @@ trait Authenticatable
             return $privilege->id;
         })->toArray();
 
-        // Create the token and return it.
-        return $this->createToken(
-            $token_name, 
-            $privileges
-        );
+        // Create the token
+        $token = $this->createToken($token_name, $privileges);
+        Sanctum::actingAs($this, $token->accessToken->abilities);
+
+        return $token;
     }
 
     /**

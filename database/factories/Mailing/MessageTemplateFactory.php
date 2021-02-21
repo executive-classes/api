@@ -22,7 +22,7 @@ class MessageTemplateFactory extends Factory
     public function definition()
     {
         return [
-            'id' => $this->faker->word(),
+            'id' => $this->faker->unique()->word(),
             'description' => $this->faker->text(),
             'subject' => $this->faker->word(),
             'content' => $this->faker->realText(500)
