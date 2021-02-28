@@ -26,11 +26,11 @@ class MessageCreateRequest extends ApiRequest
     {
         $rules = [
             'should_proccess_at'  => 'sometimes|date',
-            'from'                => 'required|string|email',
+            'reply_to'            => 'required|string|email',
             'to'                  => 'required|string',
             'cc'                  => 'sometimes|string',
             'bcc'                 => 'sometimes|string',
-            'subject'             => 'required|string',
+            'subject'             => 'required_if:message_template_id,null',
             'content'             => 'required_if:message_template_id,null',
             'message_template_id' => 'required_if:content,null|string|exists:message_template,id',
             'params'              => 'required_if:content,null',

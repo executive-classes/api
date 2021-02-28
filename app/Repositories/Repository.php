@@ -25,7 +25,7 @@ abstract class Repository
     }
 
     /**
-     * Find a entry.
+     * Find a entry by id.
      *
      * @param string|integer $id
      * @return Model
@@ -53,13 +53,16 @@ abstract class Repository
     /**
      * Update a entry.
      *
-     * @param string/integer $id
+     * @param Model|string|integer $id
      * @param array $data
      * @return Model
      */
-    public function update($id, array $data): Model
+    public function update($model, array $data): Model
     {
-        $model = $this->find($id);
+        if (!$model instanceof Model) {
+            $model = $this->find($model);
+        }
+
         $model->update($data);
         return $model;
     }
@@ -67,13 +70,15 @@ abstract class Repository
     /**
      * Delete a entry.
      *
-     * @param string/integer $id
+     * @param Model|string|integer $id
      * @return integer
      */
-    public function delete($id): int
+    public function delete($model): int
     {
-        return $this->model
-            ->where($this->model->getKeyName(), $id)
-            ->delete();
+        if (!$model instanceof Model) {
+            $model = $this->find($model);
+        }
+
+        return $model->delete();
     }
 }

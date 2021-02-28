@@ -68,9 +68,14 @@ class SendMessage extends Command
         // Send the message
         $this->output->progressStart($messages->count());
         foreach ($messages as $message) {
-            $this->sendMessageService->sendMessage($message);
-
             $this->output->progressAdvance();
+
+            try {
+                $this->sendMessageService->sendMessage($message);
+            } catch (\Exception $e) {
+                $this->messageRepository->addError($message, $e);
+                continue;
+            }
         }
         $this->output->progressFinish();
 

@@ -77,4 +77,13 @@ class MessageTemplate extends Model
         return $this->belongsTo(MessageFooter::class, 'message_footer_id');
     }
 
+    /**
+     * Message relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'message_template_id');
+    }
 }

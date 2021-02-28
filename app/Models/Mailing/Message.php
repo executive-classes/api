@@ -2,25 +2,13 @@
 
 namespace App\Models\Mailing;
 
-use Carbon\Carbon;
+use App\Traits\Models\Mailing\MessageVerifications;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    /**
-     * The Scheduled type
-     */
-    const SENT = 'sent';
-
-    /**
-     * The Scheduled type
-     */
-    const SCHEDULED = 'scheduled';
-
-    /**
-     * The Scheduled type
-     */
-    const CANCELED = 'canceled';
+    use MessageVerifications, HasFactory;
 
     /**
      * The table associated with the model.
@@ -82,15 +70,5 @@ class Message extends Model
     public function template()
     {
         return $this->belongsTo(MessageTemplate::class, 'message_template_id', 'id');
-    }
-
-    /**
-     * Verify if this message has a template.
-     *
-     * @return boolean
-     */
-    public function hasTemplate(): bool
-    {
-        return $this->template !== null;
     }
 }

@@ -24,9 +24,7 @@ class MessageTemplateDeleteRequest extends ApiRequest
      */
     public function rules()
     {
-        $rules = [
-            
-        ];
+        $rules = [];
 
         return array_merge(parent::rules(), $rules);
     }

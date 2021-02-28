@@ -14,11 +14,12 @@ class CreateRoleXPrivilegeTable extends Migration
     public function up()
     {
         Schema::create('role_x_privilege', function (Blueprint $table) {
+            // PK
             $table->string('user_role_id')->comment('Role ID.');
             $table->string('user_privilege_id')->comment('Privilege ID.');
-
             $table->primary(['user_role_id', 'user_privilege_id']);
-
+            
+            // Foreign key
             $table->foreign('user_role_id')->references('id')->on('user_role');
             $table->foreign('user_privilege_id')->references('id')->on('user_privilege');
         });

@@ -14,7 +14,13 @@ class UserPrivilegeSeeder extends Seeder
      */
     public function run()
     {
+        // Admin
+        $this->create('*', 'Can do all things.');
+
+        // Auth
         $this->create('auth:cross', 'Can cross-auth in others users.');
+
+        // Mailing
         $this->create('message:get', 'Can get or list messages.');
         $this->create('message:create', 'Can create new messages.');
         $this->create('message:cancel', 'Can cancel scheduled messages.');

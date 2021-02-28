@@ -72,7 +72,7 @@ class MessageTemplateController extends Controller
      */
     public function update(MessageTemplateUpdateRequest $request, MessageTemplate $messageTemplate)
     {
-        $messageTemplate = $this->messageTemplateRepository->update($messageTemplate->id, $request->all());
+        $messageTemplate = $this->messageTemplateRepository->update($messageTemplate, $request->all());
         return $this->okResponse($messageTemplate);
     }
 
@@ -85,7 +85,7 @@ class MessageTemplateController extends Controller
      */
     public function delete(MessageTemplateDeleteRequest $request, MessageTemplate $messageTemplate)
     {
-        $this->messageTemplateRepository->delete($messageTemplate->id);
+        $this->messageTemplateRepository->delete($messageTemplate);
         return $this->noContentResponse();
     }
 }

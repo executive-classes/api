@@ -14,10 +14,12 @@ class CreateMessageStatusTable extends Migration
     public function up()
     {
         Schema::create('message_status', function (Blueprint $table) {
+            // PK
             $table->string('id')->comment('Message status id.');
-            $table->string('description')->comment('Message status description.');
-
             $table->primary('id');
+
+            // Message status data
+            $table->string('description')->comment('Message status description.');
         });
     }
 

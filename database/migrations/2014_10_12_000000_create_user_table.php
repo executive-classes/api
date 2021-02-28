@@ -14,32 +14,32 @@ class CreateUserTable extends Migration
     public function up()
     {
         Schema::create('user', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             // PK
-            $table->id()->comment('ID do usuário.');
+            $table->id()->comment('User ID.');
 
             // Timestamps
-            $table->timestamp('created_at')->nullable()->comment('Data da criação do usuário.');
-            $table->timestamp('updated_at')->nullable()->comment('Data da última atualização do usuário.');
-            $table->timestamp('inactve_at')->nullable()->comment('Data da inativação do usuário.');
-            $table->timestamp('reactive_at')->nullable()->comment('Data da reativação do usuário.');
-
+            $table->timestamp('created_at')->nullable()->comment('User creation date.');
+            $table->timestamp('updated_at')->nullable()->comment('User last update date.');
+            $table->timestamp('inactive_at')->nullable()->comment('User inactivate date.');
+            $table->timestamp('reactive_at')->nullable()->comment('User reactivate date.');
+            
             // User Data
-            $table->string('name')->comment('Nome do usuário.');
-            $table->string('email')->unique()->comment('E-mail do usuário.');
-            $table->timestamp('email_verified_at')->nullable()->comment('Data da verificação do e-mail.');
-            $table->string('password')->comment('Senha do usuário.');
-            $table->string('password_reminder')->nullable()->comment('Lembrete de senha do usuário.');
-            $table->string('salt')->unique()->comment('Salt do usuário.');
-            $table->rememberToken()->comment('Token usado para a função Lembre de Mim.');
-            $table->boolean('active')->default(true)->comment('Indica se o usuário está ativo.');
+            $table->string('name')->comment('User name.');
+            $table->string('email')->unique()->comment('User e-mail.');
+            $table->timestamp('email_verified_at')->nullable()->comment('E-mail verification date.');
+            $table->string('password')->comment('User password.');
+            $table->string('password_reminder')->nullable()->comment('User password reminder.');
+            $table->rememberToken()->comment('Token user in the remember me function.');
+            $table->boolean('active')->default(true)->comment('Determine if the user is active');
 
             // User Info
-            $table->string('tax_type_id')->comment('Indica o tipo de documento do usuário.');
-            $table->string('tax_code')->unique()->comment('Código do documento do usuário.');
-            $table->string('phone')->nullable()->comment('Telefone do usuário.');
-            $table->string('phone_alt')->nullable()->comment('Telefone alternativo do usuário');
+            $table->string('tax_type_id')->comment('Tax type of the user.');
+            $table->string('tax_code')->unique()->comment('Tax code of the user.');
+            $table->string('phone')->nullable()->comment('User phone.');
+            $table->string('phone_alt')->nullable()->comment('User alternate phone');
+
+            // User settings
+            $table->string('system_language_id')->default('en')->comment('User preffer language.');
         });
     }
 

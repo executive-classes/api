@@ -131,4 +131,20 @@ return [
 
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Doctrine change columns
+    |--------------------------------------------------------------------------
+    |
+    | Registration of the type timestamp to change columns of that type in the
+    | migraitons.
+    |
+    */
+
+    'dbal' => [
+        'types' => [
+            'timestamp' => \Illuminate\Database\DBAL\TimestampType::class,
+        ],
+    ],
+
 ];

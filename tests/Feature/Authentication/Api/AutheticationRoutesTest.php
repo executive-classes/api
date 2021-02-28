@@ -1,20 +1,31 @@
 <?php
 
-namespace Tests\Feature\Authentication;
+namespace Tests\Feature\Authentication\Api;
 
 use App\Models\Billing\TaxType;
 use App\Models\Billing\User;
 use App\Models\Billing\UserRole;
+use App\Traits\Tests\Authentication\AuthenticationMaker;
 use Database\Factories\Billing\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class AutheticationRoutesTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, AuthenticationMaker;
 
+    /**
+     * The User.
+     *
+     * @var User
+     */
     protected $user;
 
+    /**
+     * Test Set Up.
+     *
+     * @return void
+     */
     public function setUp(): void
     {
         parent::setUp();
@@ -23,9 +34,14 @@ class AutheticationRoutesTest extends TestCase
         $this->user = User::first();
     }
 
+    /**
+     * Test the return of the login route.
+     *
+     * @return void
+     */
     public function test_login_route_returns_token()
     {
-        $response = $this->login($this->user);
+        $response = $this->loginByRoute($this->user);
 
         $response->assertOk();
         $response->assertJsonStructure([
@@ -38,10 +54,14 @@ class AutheticationRoutesTest extends TestCase
         $response->assertJsonPath('data.accessToken.tokenable_id', $this->user->id);
     }
 
+    /**
+     * Test the return of the login with error route.
+     *
+     * @return void
+     */
     public function test_login_route_credentials_error()
     {
-        $response = $this->login($this->user, 'WrongPassword');
-
+        $response = $this->loginByRoute($this->user, 'WrongPassword');
 
         $response->assertStatus(400);
         $response->assertJsonStructure([
@@ -51,9 +71,14 @@ class AutheticationRoutesTest extends TestCase
         $response->assertJsonPath('message', __('auth.password'));
     }
 
+    /**
+     * Test the return of the cross auth login.
+     *
+     * @return void
+     */
     public function test_cross_auth_route_returns_token()
     {
-        $this->login($this->user);
+        $this->loginByRoute($this->user);
 
         $user = User::where('id', '<>', $this->user->id)->first();
 
@@ -72,6 +97,11 @@ class AutheticationRoutesTest extends TestCase
         $response->assertJsonPath('data.accessToken.tokenable_id', $user->id);
     }
 
+    /**
+     * Test the return of a unauthorized call to cross auth login route.
+     *
+     * @return void
+     */
     public function test_error_for_unauthorized_cross_auth_attempt()
     {
         $user = User::factory()
@@ -79,7 +109,7 @@ class AutheticationRoutesTest extends TestCase
             ->hasAttached(UserRole::find('fin'), [], 'roles')
             ->create();
         
-        $this->login($user);
+        $this->loginByRoute($user);
 
         $cross_user = User::where('id', '<>', $this->user->id)->first();
 
@@ -90,28 +120,16 @@ class AutheticationRoutesTest extends TestCase
         $response->assertStatus(403);
     }
 
+    /**
+     * Test the return of the logout route. 
+     *
+     * @return void
+     */
     public function test_logout_route_return()
     {
-        $this->login($this->user);
+        $this->loginByRoute($this->user);
         
         $response = $this->getJson('/api/logout');
         $response->assertNoContent();
     }
-
-    public function test_user_can_change_language()
-    {
-        $this->login($this->user, UserFactory::PASSWORD, 'pt_BR');
-
-        $this->assertEquals('pt_BR', app()->getLocale());
-    }
-
-    protected function login(User $user, string $password = UserFactory::PASSWORD, string $language = 'en')
-    {
-        return $this->postJson('/api/login', [
-            'email' => $user->email,
-            'password' => $password,
-            'language' => $language
-        ]);
-    }
-
 }

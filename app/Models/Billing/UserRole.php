@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class UserRole extends Model
 {
     /**
+     * Roles
+     */
+    
+    public const ADMIN = 'admin';
+
+    /**
      * The table associated with the model.
      *
      * @var string

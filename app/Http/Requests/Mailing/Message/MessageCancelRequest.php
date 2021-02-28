@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests\Mailing\Message;
 
+use App\Http\Requests\ApiRequest;
 use App\Models\Billing\UserPrivilege;
-use Illuminate\Foundation\Http\FormRequest;
 
-class MessageCancelRequest extends FormRequest
+class MessageCancelRequest extends ApiRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class MessageCancelRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = [
-            
-        ];
+        $rules = [];
 
         return array_merge(parent::rules(), $rules);
     }

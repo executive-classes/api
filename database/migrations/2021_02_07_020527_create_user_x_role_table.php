@@ -14,11 +14,12 @@ class CreateUserXRoleTable extends Migration
     public function up()
     {
         Schema::create('user_x_role', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->comment('ID do usuário.');
-            $table->string('user_role_id')->comment('ID da função.');
-
+            // PK
+            $table->unsignedBigInteger('user_id')->comment('User ID.');
+            $table->string('user_role_id')->comment('Role ID.');
             $table->primary(['user_id', 'user_role_id']);
 
+            // Foreign key
             $table->foreign('user_id')->references('id')->on('user');
             $table->foreign('user_role_id')->references('id')->on('user_role');
         });

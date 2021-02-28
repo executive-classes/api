@@ -2,12 +2,11 @@
 
 namespace App\Mail;
 
+use App\Exceptions\Mailing\MessageException;
 use App\Models\Mailing\Message;
 use App\Models\Mailing\MessageFooter;
 use App\Models\Mailing\MessageHeader;
-use App\Models\Mailing\MessageTemplate;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -17,31 +16,48 @@ class Messenger extends Mailable
 
     /**
      * The instance of the Message.
+     * 
+     * @var Message
      */
-    protected Message $message;
+    protected $message;
 
     /**
      * The content that will be sent.
+     * 
+     * @var string|null
      */
-    public string $content;
+    public $content;
 
     /**
      * The header of the message.
+     * 
+     * @var MessageHeader|null
      */
-    public MessageHeader $header;
+    public $header;
 
     /**
      * The footer of the message.
+     * 
+     * @var MessageFooter|null
      */
-    public MessageFooter $footer;
+    public $footer;
 
     /**
-     * Create a new message instance.
+     * Get the sent data from a Message.
      *
+     * @param Message $message
      * @return void
      */
-    public function __construct(Message $message)
+    public function setMessage(Message $message)
     {
+        if (empty($message->subject)) {
+            throw new MessageException(__('mailing.message.fail.missing_subject', ['id' => $message->id]), 400);
+        }
+
+        if (empty($message->content)) {
+            throw new MessageException(__('mailing.message.fail.missing_content', ['id' => $message->id]), 400);
+        }
+
         $this->message = $message;
         $this->content = $message->content;
         $this->header = $message->template->header ?? null;
@@ -55,11 +71,20 @@ class Messenger extends Mailable
      */
     public function build()
     {
-        return $this->replyTo($this->message->reply_to)
-            ->to($this->message->to)
-            ->cc($this->message->cc)
-            ->bcc($this->message->bcc)
-            ->subject($this->message->subject)
-            ->view('mailing.message');
+        $message = $this->from(env('MAIL_USERNAME'))
+            ->replyTo($this->message->reply_to)
+            ->to($this->message->to);
+
+        if (isset($this->message->cc)) {
+            $message->cc($this->message->cc);
+        }
+
+        if (isset($this->message->bcc)) {
+            $message->bcc($this->message->bcc);
+        }
+            
+        $message->subject($this->message->subject)->view('mailing.message');
+
+        return $message;
     }
 }

@@ -14,10 +14,12 @@ class CreateUserPrivilegeTable extends Migration
     public function up()
     {
         Schema::create('user_privilege', function (Blueprint $table) {
+            // PK
             $table->string('id')->comment('Privilege id.');
-            $table->string('description')->comment('Privilage description.');
-
             $table->primary('id');
+            
+            // Privilege Data
+            $table->string('description')->comment('Privilage description.');
         });
     }
 

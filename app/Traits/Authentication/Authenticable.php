@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Traits;
+namespace App\Traits\Authentication;
 
 use Laravel\Sanctum\Sanctum;
 
-trait Authenticatable
+trait Authenticable
 {
     /**
      * Log in the user.
@@ -36,6 +36,8 @@ trait Authenticatable
         // Create the token
         $token = $this->createToken($token_name, $privileges);
         Sanctum::actingAs($this, $token->accessToken->abilities);
+
+        $this->changeLanguage();
 
         return $token;
     }

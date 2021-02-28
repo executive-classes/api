@@ -7,7 +7,6 @@ use App\Http\Requests\Auth\CrossLoginRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Repositories\Billing\UserRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 class AuthenticateController extends Controller
@@ -36,7 +35,6 @@ class AuthenticateController extends Controller
     public function login(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
-        App::setLocale($request->language ?? 'en');
 
         // Validate the credentials
         if (!Auth::attempt($credentials)) {
@@ -46,12 +44,6 @@ class AuthenticateController extends Controller
         // Log in the user and gets the created token
         $user = $this->userRepository->findByEmail($request->email);
         $token = $user->login($request->email, $request->userAgent());
-
-        // Define the selected language for the token
-        if (isset($request->language)) {
-            $token->accessToken->language = $request->language;
-            $token->accessToken->save();
-        }
 
         // Set the token in the remember_token user's column
         if ($request->get('remember_me', false)) {
@@ -73,12 +65,6 @@ class AuthenticateController extends Controller
         // Log in the logged user in the given user
         $cross_user = $this->userRepository->find($request->user_id);
         $token = $cross_user->login($request->user()->email, $request->userAgent());
-
-        // Define the selected language for the token
-        if (isset($request->language)) {
-            $token->accessToken->language = $request->language;
-            $token->accessToken->save();
-        }
 
         return $this->okResponse($token);
     }

@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class MessageStatus extends Model
 {
     /**
+     * Message Status
+     */
+    public const SENT = 'sent';
+    public const SCHEDULED = 'scheduled';
+    public const CANCELED = 'canceled';
+    public const ERROR = 'error';
+    
+    /**
      * The table associated with the model.
      *
      * @var string

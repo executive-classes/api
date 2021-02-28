@@ -2,15 +2,17 @@
 
 namespace App\Models\Billing;
 
-use App\Traits\Authenticatable as CanAuthenticate;
+use App\Traits\Authentication\Authenticable as CanAuthenticate;
+use App\Traits\Authentication\CanChangeLanguage;
+use App\Traits\Models\Billing\UserScopes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticable
 {
-    use CanAuthenticate, HasApiTokens, HasFactory, Notifiable;
+    use UserScopes, CanAuthenticate, CanChangeLanguage, HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The table associated with the model.
@@ -88,6 +90,16 @@ class User extends Authenticatable
     public function taxType()
     {
         return $this->belongsTo(TaxType::class, 'tax_type_id', 'id');
+    }
+
+    /**
+     * User preffered language.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function language()
+    {
+        return $this->belongsTo(SystemLanguage::class, 'system_language_id', 'id');
     }
 
     /**

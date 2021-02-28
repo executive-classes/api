@@ -16,7 +16,8 @@ class MessageStatusSeeder extends Seeder
     {
         $this->create('sent', 'Enviada');
         $this->create('canceled', 'Cancelada');
-        $this->create('scheduled', 'Cancelada');
+        $this->create('scheduled', 'Agendada');
+        $this->create('error', 'Erro');
     }
 
     /**

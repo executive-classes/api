@@ -13,15 +13,31 @@ class CreatePersonalAccessTokensTable extends Migration
      */
     public function up()
     {
+        // Creating table
         Schema::create('personal_access_tokens', function (Blueprint $table) {
-            $table->bigIncrements('id')->comment('Token id.');
+            // PK
+            $table->bigIncrements('id')->comment('Token ID.');
+
+            // Timestamps
+            $table->timestamps();
+            $table->timestamp('last_used_at')->nullable()->comment('Last token use.');
+
+            // Token data
             $table->morphs('tokenable');
             $table->string('name')->comment('Token name.');
             $table->string('token', 64)->unique()->comment('Token hash.');
             $table->text('abilities')->nullable()->comment('Token privileges.');
-            $table->timestamp('last_used_at')->nullable()->comment('Last token use.');
-            $table->timestamps();
-            $table->text('language')->default('en')->comment('Token language.');
+        });
+
+        // Adding columns comments
+        Schema::table('personal_access_tokens', function (Blueprint $table) {
+            // Timestamps comments
+            $table->timestamp('created_at')->comment('Message template creation date.')->change();
+            $table->timestamp('updated_at')->comment('Message template update date')->change();
+            
+            // Token data comments
+            $table->string('tokenable_type')->comment('Model of the user that generate the token.')->change();
+            $table->bigInteger('tokenable_id')->comment('ID of the user that generate the token.')->change();
         });
     }
 

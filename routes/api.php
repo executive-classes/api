@@ -18,7 +18,7 @@ Route::get('/', function () { return __('messages.welcome'); });
 
 Route::post('/login', [AuthenticateController::class, 'login']);
 
-Route::middleware(['auth:sanctum', 'lang'])->group(function () {
+Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/login/cross', [AuthenticateController::class, 'crossLogin']);
     Route::get('/logout', [AuthenticateController::class, 'logout']);
 

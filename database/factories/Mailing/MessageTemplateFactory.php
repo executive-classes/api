@@ -22,10 +22,10 @@ class MessageTemplateFactory extends Factory
     public function definition()
     {
         return [
-            'id' => $this->faker->unique()->word(),
+            'id' => 'test',
             'description' => $this->faker->text(),
             'subject' => $this->faker->word(),
-            'content' => $this->faker->realText(500)
+            'content' => '<h3>{{$testMessage}} from a Template</h3>'
         ];
     }
 }

@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             /**
              * Billing Models Seeders
              */
+            \Database\Seeders\Billing\SystemLanguageSeeder::class,
             \Database\Seeders\Billing\TaxTypeSeeder::class,
             \Database\Seeders\Billing\UserPrivilegeSeeder::class,
             \Database\Seeders\Billing\UserRoleSeeder::class,
@@ -31,6 +32,7 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Mailing\MessageStatusSeeder::class,
             \Database\Seeders\Mailing\MessageTypeSeeder::class,
             \Database\Seeders\Mailing\MessageTemplateSeeder::class,
+            \Database\Seeders\Mailing\MessageSeeder::class,
 
         ]);
     }

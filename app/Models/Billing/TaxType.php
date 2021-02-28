@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 class TaxType extends Model
 {
     /**
+     * Taxt Types
+     */
+
+    public const CNPJ = 'cnpj';
+    public const CPF = 'cpf';
+    public const RG = 'rg';
+
+    /**
      * The table associated with the model.
      *
      * @var string

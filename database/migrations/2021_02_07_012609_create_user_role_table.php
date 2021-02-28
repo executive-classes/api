@@ -14,10 +14,12 @@ class CreateUserRoleTable extends Migration
     public function up()
     {
         Schema::create('user_role', function (Blueprint $table) {
-            $table->string('id')->comment('ID da função.');
-            $table->string('name')->comment('Nome da função.');
-
+            // PK
+            $table->string('id')->comment('Role ID.');
             $table->primary('id');
+
+            // Role data
+            $table->string('name')->comment('Role name.');
         });
     }
 

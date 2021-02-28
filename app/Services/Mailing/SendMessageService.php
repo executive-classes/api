@@ -2,6 +2,7 @@
 
 namespace App\Services\Mailing;
 
+use App\Exceptions\Mailing\MessageException;
 use App\Mail\Messenger;
 use App\Models\Mailing\Message;
 use App\Repositories\Mailing\MessageRepository;
@@ -16,12 +17,18 @@ class SendMessageService
     protected MessageRepository $messageRepository;
 
     /**
+     * The Messenger
+     */
+    protected Messenger $messenger;
+
+    /**
      * Creates a Send Message Service
      *
      * @param MessageRepository $messageRepository
      */
-    public function __construct(MessageRepository $messageRepository) {
+    public function __construct(MessageRepository $messageRepository, Messenger $messenger) {
         $this->messageRepository = $messageRepository;
+        $this->messenger = $messenger;
     }
 
     /**
@@ -32,9 +39,21 @@ class SendMessageService
      */
     public function sendMessage(Message $message)
     {
-        $this->renderTemplate($message);
-        Mail::send(new Messenger($message));
-        // $this->messageRepository->sendMessage($message);
+        if (!$message->isReadyForSent()) {
+            throw new MessageException(__('mailing.message.fail.send', ['id' => $message->id]), 400);
+        }
+
+        if ($message->hasTemplate()) {
+            $this->applyTemplate($message);
+        }
+
+        $messenger = new $this->messenger;
+
+        $messenger->setMessage($message);
+
+        Mail::send($messenger);
+        
+        $this->messageRepository->sendMessage($message);
     }
 
     /**
@@ -43,14 +62,20 @@ class SendMessageService
      * @param Message $message
      * @return void
      */    
-    protected function renderTemplate(Message $message)
+    public function applyTemplate(Message $message)
     {
-        if ($message->hasTemplate()) {
+        if (empty($message->subject)) {
+            $message->subject = $message->template->subject;
+        }
+
+        if (empty($message->content)) {
             $message->content = render(
                 Blade::compileString($message->template->content), 
                 json_decode($message->params, true)
             );
+        }
 
+        if ($message->isDirty()) {
             $message->save();
         }
     }

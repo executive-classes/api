@@ -17,7 +17,7 @@ class MessageTemplateSeeder extends Seeder
      */
     public function run()
     {
-        MessageTemplate::factory(2)
+        MessageTemplate::factory()
             ->for(MessageType::find('billing'), 'type')
             ->for(MessageHeader::find('test'), 'header')
             ->for(MessageFooter::find('test'), 'footer')

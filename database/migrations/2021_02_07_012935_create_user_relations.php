@@ -14,7 +14,9 @@ class CreateUserRelations extends Migration
     public function up()
     {
         Schema::table('user', function (Blueprint $table) {
+            // Foreign key
             $table->foreign('tax_type_id')->references('id')->on('tax_type');
+            $table->foreign('system_language_id')->references('id')->on('system_language');
         });
     }
 

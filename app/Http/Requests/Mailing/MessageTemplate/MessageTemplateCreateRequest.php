@@ -25,13 +25,13 @@ class MessageTemplateCreateRequest extends ApiRequest
     public function rules()
     {
         $rules = [
-            'id' => 'required|string',
-            'description' => 'required',
-            'subject' => 'required',
-            'content' => 'required',
-            'message_type_id' => 'required',
-            'message_header_id' => 'required',
-            'message_footer_id' => 'required'
+            'id'                => 'required|alpha_dash',
+            'description'       => 'required|string',
+            'subject'           => 'required|string',
+            'content'           => 'required|string',
+            'message_type_id'   => 'required|alpha_dash',
+            'message_header_id' => 'required|alpha_dash',
+            'message_footer_id' => 'required|alpha_dash'
         ];
 
         return array_merge(parent::rules(), $rules);
