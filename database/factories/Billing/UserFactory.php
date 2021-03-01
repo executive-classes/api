@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Billing;
 
+use App\Models\Billing\TaxType;
 use App\Models\Billing\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
@@ -30,6 +31,7 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
             'password' => Hash::make(self::PASSWORD),
+            'tax_type_id' => TaxType::CPF,
             'tax_code' => $this->faker->cpf
         ];
     }

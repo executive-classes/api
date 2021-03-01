@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRoleXPrivilegeTable extends Migration
+class CreatePrivilegeXUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateRoleXPrivilegeTable extends Migration
      */
     public function up()
     {
-        Schema::create('role_x_privilege', function (Blueprint $table) {
+        Schema::create('privilege_x_user', function (Blueprint $table) {
             // PK
-            $table->string('user_role_id')->comment('Role ID.');
+            $table->unsignedBigInteger('user_id')->comment('User ID.');
             $table->string('user_privilege_id')->comment('Privilege ID.');
-            $table->primary(['user_role_id', 'user_privilege_id']);
-            
+            $table->primary(['user_id', 'user_privilege_id']);
+
             // Foreign key
-            $table->foreign('user_role_id')->references('id')->on('user_role');
+            $table->foreign('user_id')->references('id')->on('user');
             $table->foreign('user_privilege_id')->references('id')->on('user_privilege');
         });
     }
@@ -32,6 +32,6 @@ class CreateRoleXPrivilegeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('role_x_privilege');
+        Schema::dropIfExists('privilege_x_user');
     }
 }

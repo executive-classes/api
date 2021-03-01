@@ -14,8 +14,8 @@ class MessageTypeSeeder extends Seeder
      */
     public function run()
     {
-        $this->create('billing', 'Cobrança');
-        $this->create('warning', 'Aviso');
+        $this->create(MessageType::BILLING, 'Cobrança');
+        $this->create(MessageType::WARNING, 'Aviso');
     }
 
     /**

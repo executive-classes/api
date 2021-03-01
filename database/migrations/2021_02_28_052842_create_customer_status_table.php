@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserRoleTable extends Migration
+class CreateCustomerStatusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateUserRoleTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_role', function (Blueprint $table) {
+        Schema::create('customer_status', function (Blueprint $table) {
             // PK
-            $table->string('id')->comment('Role ID.');
+            $table->string('id')->comment('Customer status id.');
             $table->primary('id');
 
-            // Role data
-            $table->string('name')->comment('Role name.');
+            // Message status data
+            $table->string('name')->comment('Customer status name.');
+            $table->string('description')->comment('Customer status description.');
         });
     }
 
@@ -30,6 +31,6 @@ class CreateUserRoleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_role');
+        Schema::dropIfExists('customer_status');
     }
 }

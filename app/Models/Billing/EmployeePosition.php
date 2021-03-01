@@ -4,20 +4,22 @@ namespace App\Models\Billing;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserRole extends Model
+class EmployeePosition extends Model
 {
     /**
-     * Roles
+     * Positions
      */
-    
-    public const ADMIN = 'admin';
+
+    public const ADMINISTRATOR = 'administrator';
+    public const FINANCIAL = 'financial';
+    public const DEVELOPER = 'developer';
 
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'user_role';
+    protected $table = 'employee_position';
 
     /**
      * The primary key associated with the table.
@@ -39,7 +41,7 @@ class UserRole extends Model
      * @var string
      */
     protected $keyType = 'string';
-
+    
     /**
      * Indicates if the model should be timestamped.
      *
@@ -48,20 +50,29 @@ class UserRole extends Model
     public $timestamps = false;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that aren't mass assignable.
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $guarded = [];
 
     /**
-     * Role privileges.
+     * Privileges relation.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
      */
     public function privileges()
     {
-        return $this->belongsToMany(UserPrivilege::class, 'role_x_privilege', 'user_role_id', 'user_privilege_id');
+        return $this->belongsToMany(UserPrivilege::class, 'privilege_x_position', 'position_id', 'privilege_id');
+    }
+
+    /**
+     * Employees relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
+    public function employees()
+    {
+        return $this->hasMany(Employee::class, 'employee_position_id');
     }
 }
-

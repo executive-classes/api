@@ -15,20 +15,20 @@ class UserPrivilegeSeeder extends Seeder
     public function run()
     {
         // Admin
-        $this->create('*', 'Can do all things.');
+        $this->create(UserPrivilege::ALL, 'Can do all things.');
 
         // Auth
-        $this->create('auth:cross', 'Can cross-auth in others users.');
+        $this->create(UserPrivilege::CROSS_AUTH, 'Can cross-auth in others users.');
 
         // Mailing
-        $this->create('message:get', 'Can get or list messages.');
-        $this->create('message:create', 'Can create new messages.');
-        $this->create('message:cancel', 'Can cancel scheduled messages.');
-        $this->create('message:delete', 'Can delete messages.');
-        $this->create('message_template:get', 'Can get or list messages templates.');
-        $this->create('message_template:create', 'Can create messages templates.');
-        $this->create('message_template:update', 'Can update messages templates.');
-        $this->create('message_template:delete', 'Can delete messages templates.');
+        $this->create(UserPrivilege::MESSAGE_GET, 'Can get or list messages.');
+        $this->create(UserPrivilege::MESSAGE_CREATE, 'Can create new messages.');
+        $this->create(UserPrivilege::MESSAGE_CANCEL, 'Can cancel scheduled messages.');
+        $this->create(UserPrivilege::MESSAGE_DELETE, 'Can delete messages.');
+        $this->create(UserPrivilege::MESSAGE_TEMPLATE_GET, 'Can get or list messages templates.');
+        $this->create(UserPrivilege::MESSAGE_TEMPLATE_CREATE, 'Can create messages templates.');
+        $this->create(UserPrivilege::MESSAGE_TEMPLATE_UPDATE, 'Can update messages templates.');
+        $this->create(UserPrivilege::MESSAGE_TEMPLATE_DELETE, 'Can delete messages templates.');
     }
 
     /**
@@ -38,9 +38,9 @@ class UserPrivilegeSeeder extends Seeder
      * @param string $name
      * @return void
      */
-    protected function create(string $id, string $description): void
+    protected function create(string $id, string $description, bool $teacher_can = false, bool $student_can = false): void
     {
-        $userRole = new UserPrivilege(compact('id', 'description'));
-        $userRole->save();
+        $userPrivilege = new UserPrivilege(compact('id', 'description', 'teacher_can', 'student_can'));
+        $userPrivilege->save();
     }
 }

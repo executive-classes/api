@@ -40,6 +40,10 @@ class CreateUserTable extends Migration
 
             // User settings
             $table->string('system_language_id')->default('en')->comment('User preffer language.');
+            
+            // Foreign key
+            $table->foreign('tax_type_id')->references('id')->on('tax_type');
+            $table->foreign('system_language_id')->references('id')->on('system_language');
         });
     }
 

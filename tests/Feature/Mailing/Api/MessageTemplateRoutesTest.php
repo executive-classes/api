@@ -25,7 +25,7 @@ class MessageTemplateRoutesTest extends TestCase
         parent::setUp();
         $this->seed();
         
-        User::admin()->first()->login();
+        User::dev()->first()->login();
     }
 
     /**

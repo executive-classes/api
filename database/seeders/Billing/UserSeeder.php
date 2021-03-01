@@ -2,16 +2,19 @@
 
 namespace Database\Seeders\Billing;
 
+use App\Models\Billing\Employee;
+use App\Models\Billing\EmployeePosition;
 use App\Models\Billing\SystemLanguage;
 use App\Models\Billing\User;
-use App\Models\Billing\TaxType;
+use App\Models\Billing\UserPrivilege;
 use Illuminate\Database\Seeder;
-use App\Models\Billing\UserRole;
 use App\Traits\UsesFaker;
 
 class UserSeeder extends Seeder
 {
     use UsesFaker;
+
+    public const TEST_EMAIL = 'ronaldo.stiene@executiveclasses.com.br';
 
     /**
      * Run the database seeds.
@@ -22,20 +25,21 @@ class UserSeeder extends Seeder
     {
         // Create a admin
         User::factory()
-            ->for(TaxType::find('cpf'), 'taxType')
             ->for($this->faker()->randomElement(SystemLanguage::all()), 'language')
-            ->hasAttached(UserRole::find(UserRole::ADMIN), [], 'roles')
-            ->afterCreating(function ($message) {
-                $message->email = 'ronaldo.stiene@executiveclasses.com.br';
-                $message->save();
+            ->afterCreating(function ($user) {
+                $user->email = self::TEST_EMAIL;
+                $user->save();
+                $employee = new Employee([
+                    'user_id' => $user->id,
+                    'employee_position_id' => EmployeePosition::DEVELOPER
+                ]);
+                $employee->save();
             })
             ->create();
 
-        // Create three random users
-        User::factory(3)
-            ->for(TaxType::find('cpf'), 'taxType')
+        // Create random users
+        User::factory(19)
             ->for($this->faker()->randomElement(SystemLanguage::all()), 'language')
-            ->hasAttached($this->faker()->randomElement(UserRole::all()), [], 'roles')
             ->create();
     }
 }

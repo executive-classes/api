@@ -29,7 +29,7 @@ trait Authenticable
         $this->tokens()->where('name', $token_name)->delete();
 
         // Get a array of the user's privileges
-        $privileges = $this->privileges()->map(function ($privilege) {
+        $privileges = $this->getAllPrivileges()->map(function ($privilege) {
             return $privilege->id;
         })->toArray();
 

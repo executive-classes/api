@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserPrivilegeTable extends Migration
+class CreateTeacherStatusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateUserPrivilegeTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_privilege', function (Blueprint $table) {
+        Schema::create('teacher_status', function (Blueprint $table) {
             // PK
-            $table->string('id')->comment('Privilege id.');
+            $table->string('id')->comment('Teacher status id.');
             $table->primary('id');
-            
-            // Privilege Data
-            $table->string('description')->comment('Privilage description.');
+
+            // Message status data
+            $table->string('name')->comment('Teacher status name.');
+            $table->string('description')->comment('Teacher status description.');
         });
     }
 
@@ -30,6 +31,6 @@ class CreateUserPrivilegeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_privileges');
+        Schema::dropIfExists('teacher_status');
     }
 }

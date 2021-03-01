@@ -4,9 +4,7 @@ namespace Tests\Feature\Authentication\Api;
 
 use App\Models\Billing\TaxType;
 use App\Models\Billing\User;
-use App\Models\Billing\UserRole;
 use App\Traits\Tests\Authentication\AuthenticationMaker;
-use Database\Factories\Billing\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -31,7 +29,7 @@ class AutheticationRoutesTest extends TestCase
         parent::setUp();
         $this->seed();
         
-        $this->user = User::first();
+        $this->user = User::dev()->first();
     }
 
     /**
@@ -106,7 +104,6 @@ class AutheticationRoutesTest extends TestCase
     {
         $user = User::factory()
             ->for(TaxType::find('cpf'), 'taxType')
-            ->hasAttached(UserRole::find('fin'), [], 'roles')
             ->create();
         
         $this->loginByRoute($user);

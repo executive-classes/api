@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class MessageType extends Model
 {
     /**
+     * Message Types
+     */
+
+    public const BILLING = 'billing';
+    public const WARNING = 'warning';
+
+    /**
      * The table associated with the model.
      *
      * @var string

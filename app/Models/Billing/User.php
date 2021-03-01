@@ -4,6 +4,7 @@ namespace App\Models\Billing;
 
 use App\Traits\Authentication\Authenticable as CanAuthenticate;
 use App\Traits\Authentication\CanChangeLanguage;
+use App\Traits\Models\Billing\UserFunctions;
 use App\Traits\Models\Billing\UserScopes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticable;
@@ -12,7 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticable
 {
-    use UserScopes, CanAuthenticate, CanChangeLanguage, HasApiTokens, HasFactory, Notifiable;
+    use UserScopes, UserFunctions, CanAuthenticate, CanChangeLanguage, HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The table associated with the model.
@@ -27,15 +28,6 @@ class User extends Authenticable
      * @var string
      */
     protected $primaryKey = 'id';
-
-    /**
-     * The model's default values for attributes.
-     *
-     * @var array
-     */
-    protected $attributes = [
-        'active' => true
-    ];
 
     /**
      * The attributes that aren't mass assignable.
@@ -59,8 +51,16 @@ class User extends Authenticable
      */
     protected $hidden = [
         'password',
-        'password_reminder',
-        'salt'
+        'password_reminder'
+    ];
+
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'active' => true
     ];
 
     /**
@@ -71,16 +71,6 @@ class User extends Authenticable
     protected $casts = [
         'active' => 'boolean'
     ];
-
-    /**
-     * User roles relation.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function roles()
-    {
-        return $this->belongsToMany(UserRole::class, 'user_x_role', 'user_id', 'user_role_id');
-    }
 
     /**
      * User tax type relation.
@@ -103,19 +93,52 @@ class User extends Authenticable
     }
 
     /**
-     * Get the user's privileges using their roles.
-     * 
-     * @return \Illuminate\Database\Eloquent\Collection
+     * User privileges relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function privileges()
     {
-        $roles = $this->roles;
-        $privileges = new \Illuminate\Database\Eloquent\Collection();
+        return $this->belongsToMany(UserPrivilege::class, 'privilege_x_user', 'user_id', 'user_privilege_id');
+    }
+    
+    /**
+     * Customer relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
+     */
+    public function customers()
+    {
+        return $this->belongsToMany(Customer::class, 'customer_x_user', 'user_id', 'customer_id');
+    }
 
-        foreach ($roles as $role) {
-            $privileges = $privileges->merge($role->privileges->keyBy('id'));
-        }
+    /**
+     * Employee relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasOne
+     */
+    public function employee()
+    {
+        return $this->hasOne(Employee::class, 'user_id', 'id');
+    }
 
-        return $privileges->values();
+    /**
+     * Teacher relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasOne
+     */
+    public function teacher()
+    {
+        return $this->hasOne(Teacher::class, 'id', 'user_id');
+    }
+
+    /**
+     * Student relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasOne
+     */
+    public function student()
+    {
+        return $this->hasOne(Student::class, 'id', 'user_id');
     }
 }

@@ -14,9 +14,9 @@ class TaxTypeSeeder extends Seeder
      */
     public function run()
     {
-        $this->create('cnpj', 'CNPJ', '##.###.###/####-##');
-        $this->create('cpf', 'CPF', '###.###.###-##');
-        $this->create('rg', 'RG', '##.###.###-#');
+        $this->create(TaxType::CNPJ, 'CNPJ', '##.###.###/####-##');
+        $this->create(TaxType::CPF, 'CPF', '###.###.###-##');
+        $this->create(TaxType::RG, 'RG', '##.###.###-#');
     }
 
     /**

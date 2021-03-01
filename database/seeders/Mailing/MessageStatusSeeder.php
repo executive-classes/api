@@ -14,10 +14,10 @@ class MessageStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create('sent', 'Enviada');
-        $this->create('canceled', 'Cancelada');
-        $this->create('scheduled', 'Agendada');
-        $this->create('error', 'Erro');
+        $this->create(MessageStatus::SENT, 'Enviada');
+        $this->create(MessageStatus::CANCELED, 'Cancelada');
+        $this->create(MessageStatus::SCHEDULED, 'Agendada');
+        $this->create(MessageStatus::ERROR, 'Erro');
     }
 
     /**

@@ -41,7 +41,6 @@ class CreateMessageTemplateTable extends Migration
             $table->timestamp('created_at')->comment('Message template creation date.')->change();
             $table->timestamp('updated_at')->comment('Message template update date')->change();
         });
-
     }
 
     /**

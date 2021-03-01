@@ -14,8 +14,8 @@ class SystemLanguageSeeder extends Seeder
      */
     public function run()
     {
-        $this->create('en', 'Inglês');
-        $this->create('pt_BR', 'Português (Brasil)');
+        $this->create(SystemLanguage::EN, 'Inglês');
+        $this->create(SystemLanguage::PT_BR, 'Português (Brasil)');
     }
 
     /**

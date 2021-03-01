@@ -14,20 +14,6 @@ class MessageFooterSeeder extends Seeder
      */
     public function run()
     {
-        $this->create('test', 'Test Footer', '<h1>Titulo</h1>');
-    }
-
-    /**
-     * Create the Message Footer entry;
-     *
-     * @param string $id
-     * @param string $description
-     * @param string $content
-     * @return void
-     */
-    protected function create(string $id, string $description, string $content): void
-    {
-        $messageFooter = new MessageFooter(compact('id', 'description', 'content'));
-        $messageFooter->save();
+        MessageFooter::factory()->create();
     }
 }

@@ -76,13 +76,13 @@ class UserPrivilege extends Model
     protected $fillable = [];
 
     /**
-     * Privilege roles.
+     * The attributes that should be cast to native types.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @var array
      */
-    public function roles()
-    {
-        return $this->belongsToMany(UserRole::class, 'role_x_privilege', 'user_privilege_id', 'user_role_id');
-    }
+    protected $casts = [
+        'teacher_can' => 'boolean',
+        'student_can' => 'boolean'
+    ];
 }
 
