@@ -11,6 +11,7 @@ class TaxType extends Model
 
     public const CNPJ = 'cnpj';
     public const CPF = 'cpf';
+    public const IE = 'ie';
     public const RG = 'rg';
 
     /**

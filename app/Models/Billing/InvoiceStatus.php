@@ -10,8 +10,11 @@ class InvoiceStatus extends Model
      * Status
      */
 
+    public const CREATED = 'created';
     public const GENERATED = 'generated';
-    public const PENDING = 'pending';
+    public const SENT = 'sent';
+    public const PROCESSING = 'processing';
+    public const OK = 'ok';
     public const ERROR = 'error';
     
     /**

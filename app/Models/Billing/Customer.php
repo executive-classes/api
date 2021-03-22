@@ -2,12 +2,13 @@
 
 namespace App\Models\Billing;
 
+use App\Traits\Models\Billing\HasTax;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTax;
     
     /**
      * The table associated with the model.
@@ -44,6 +45,16 @@ class Customer extends Model
     public function taxType()
     {
         return $this->belongsTo(TaxType::class, 'tax_type_id');
+    }
+
+    /**
+     * Tax type relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function taxTypeAlt()
+    {
+        return $this->belongsTo(TaxType::class, 'tax_type_alt_id');
     }
 
     /**

@@ -81,4 +81,20 @@ abstract class Repository
 
         return $model->delete();
     }
+
+    /**
+     * Validate if the model is a string with the ID or the 
+     * instance of the model.
+     *
+     * @param Model|string $model
+     * @return Model
+     */
+    protected function getModel($model): Model
+    {
+        if (!$model instanceof $this->model) {
+            return $this->find($model);
+        }
+
+        return $model;
+    }
 }

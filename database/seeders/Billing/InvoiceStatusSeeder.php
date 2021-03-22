@@ -14,9 +14,12 @@ class InvoiceStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(InvoiceStatus::GENERATED, 'Gerado', 'Indicates that a invoice was generated.');
-        $this->create(InvoiceStatus::PENDING, 'Pendente', 'Indicates that a invoice is pending for generation.');
-        $this->create(InvoiceStatus::ERROR, 'Erro', 'Indicates that a invoice has a error in its processing.');
+        $this->create(InvoiceStatus::CREATED, 'Criada', 'Indicates that a invoice was created.');
+        $this->create(InvoiceStatus::GENERATED, 'Gerada', 'Indicates that a invoice and its XML was created.');
+        $this->create(InvoiceStatus::SENT, 'Enviada', 'Indicates that a invoice was sent to processing.');
+        $this->create(InvoiceStatus::PROCESSING, 'Em processamento', 'Indicates that a invoice its during processing.');
+        $this->create(InvoiceStatus::OK, 'Emitida', 'Indicates that a invoice was sent and it is ok.');
+        $this->create(InvoiceStatus::ERROR, 'Erro', 'Indicates that a invoice was sent but ocorred a error.');
     }
 
     /**

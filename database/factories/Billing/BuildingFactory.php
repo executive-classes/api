@@ -23,11 +23,14 @@ class BuildingFactory extends Factory
     {
         return [
             'zip_code' => $this->faker->postcode,
-            'address' => $this->faker->streetName,
+            'street' => $this->faker->streetName,
             'number' => $this->faker->buildingNumber,
             'city' => $this->faker->city,
+            'city_code' => $this->faker->numberBetween(0,9999999),
             'state' => $this->faker->stateAbbr,
+            'state_code' => $this->faker->numberBetween(0,99),
             'country' => $this->faker->country,
+            'country_code' => $this->faker->numberBetween(0,9999),
         ];
     }
 }

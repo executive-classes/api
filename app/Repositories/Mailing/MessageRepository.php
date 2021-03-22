@@ -7,6 +7,7 @@ use App\Repositories\Repository;
 use App\Exceptions\Mailing\MessageException;
 use App\Models\Mailing\MessageStatus;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 
 class MessageRepository extends Repository
 {
@@ -23,9 +24,9 @@ class MessageRepository extends Repository
     /**
      * Find the messages that are ready for send.
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return Collection
      */
-    public function findReadyForSend()
+    public function findReadyForSend(): Collection
     {
         return $this->model
             ->with('template')
@@ -38,14 +39,11 @@ class MessageRepository extends Repository
      * Mark a message as send.
      *
      * @param Message|string $message
-     * @return void
+     * @return bool
      */
-    public function sendMessage($message)
+    public function sendMessage($message): bool
     {
-        // Checks if the message is a instance or a id.
-        if (!$message instanceof Message) {
-            $message = $this->find($message);
-        }
+        $message = $this->getModel($message);
 
         $message->message_status_id = MessageStatus::SENT;
         $message->sent_at = Carbon::now()->toDateTimeString();
@@ -62,10 +60,7 @@ class MessageRepository extends Repository
      */
     public function cancelScheduledMessage($message): bool
     {
-        // Checks if the message is a instance or a id.
-        if (!$message instanceof Message) {
-            $message = $this->find($message);
-        }
+        $message = $this->getModel($message);
 
         if ($message->wasCanceled()) {
             return true;
@@ -89,12 +84,9 @@ class MessageRepository extends Repository
      * @param Exception|null $exception
      * @return bool
      */
-    public function addError($message, $exception = null)
+    public function addError($message, $exception = null): bool
     {
-        // Checks if the message is a instance or a id.
-        if (!$message instanceof Message) {
-            $message = $this->find($message);
-        }
+        $message = $this->getModel($message);
 
         if (!$message->isScheduled()) {
             throw new MessageException(__('mailing.message.fail.add_error', ['id' => $message->id]), 400);
@@ -112,7 +104,6 @@ class MessageRepository extends Repository
             $message->message_status_id = MessageStatus::ERROR;
         }
 
-        $message->save();
-        return true;
+        return (bool) $message->save();
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models\Billing;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection as LaravelCollection;
 
 class Invoice extends Model
 {
@@ -63,5 +64,17 @@ class Invoice extends Model
     public function itens()
     {
         return $this->hasMany(InvoiceItem::class, 'invoice_id');
+    }
+
+    /**
+     * Return the users authorized to access the invoice.
+     *
+     * @return LaravelCollection
+     */
+    public function getAuthorizedUsers(): LaravelCollection
+    {
+        // @todo Pegar usuários do customer
+        // @todo Pegar funcionario administrador
+        // @todo Pegar funcionario financeiro
     }
 }

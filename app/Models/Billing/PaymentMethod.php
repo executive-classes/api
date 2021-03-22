@@ -14,6 +14,7 @@ class PaymentMethod extends Model
     public const BOLETO = 'boleto';
     public const PIX = 'pix';
     public const DEPOSIT = 'deposit';
+    public const TRANSFER = 'transfer';
 
     /**
      * The table associated with the model.

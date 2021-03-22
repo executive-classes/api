@@ -23,7 +23,7 @@ class UserRepository extends Repository
      * @param string $email
      * @return User
      */
-    public function findByEmail(string $email)
+    public function findByEmail(string $email): User
     {
         return $this->model
             ->where('email', $email)

@@ -23,6 +23,9 @@ class CreateInvoiceTable extends Migration
 
             // Collection Data
             $table->unsignedBigInteger('collection_id')->comment('Collection of this invoice.');
+            $table->longText('xml')->nullable()->comment('The invoice XML.');
+            $table->longText('receipt')->nullable()->comment('The sent invoice receipt.');
+            $table->longText('error_message')->nullable()->comment('The error in the processing of the invoice.');
 
             // Foreign Key
             $table->foreign('collection_id')->references('id')->on('collection');

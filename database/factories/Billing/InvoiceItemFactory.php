@@ -22,7 +22,10 @@ class InvoiceItemFactory extends Factory
     public function definition()
     {
         return [
-            
+            'description' => $this->faker->text,
+            'qty' => $this->faker->numberBetween(0, 99),
+            'unity_price' => $this->faker->randomFloat(2, 0, 999),
+            'price' => $this->faker->randomFloat(2, 0, 99999),
         ];
     }
 }

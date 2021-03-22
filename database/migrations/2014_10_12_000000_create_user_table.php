@@ -35,6 +35,8 @@ class CreateUserTable extends Migration
             // User Info
             $table->string('tax_type_id')->comment('Tax type of the user.');
             $table->string('tax_code')->unique()->comment('Tax code of the user.');
+            $table->string('tax_type_alt_id')->nullable()->comment('User alternative tax type.');
+            $table->string('tax_code_alt')->nullable()->unique()->comment('User alternative tax code.');
             $table->string('phone')->nullable()->comment('User phone.');
             $table->string('phone_alt')->nullable()->comment('User alternate phone');
 

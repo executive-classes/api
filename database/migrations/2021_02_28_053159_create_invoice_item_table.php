@@ -24,6 +24,10 @@ class CreateInvoiceItemTable extends Migration
             // Item data
             $table->unsignedBigInteger('invoice_id')->comment('Invoice of this item.');
             $table->unsignedBigInteger('student_id')->comment('Student of this item.');
+            $table->string('description')->comment('Item description.');
+            $table->integer('qty')->comment('Item quantity.');
+            $table->double('unity_price')->comment('Item unit price.');
+            $table->double('price')->comment('Item total price.');
 
             // Foreign Key
             $table->foreign('invoice_id')->references('id')->on('invoice');

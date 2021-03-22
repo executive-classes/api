@@ -22,12 +22,15 @@ class CreateBuildingTable extends Migration
 
             // Building Data
             $table->string('zip_code')->comment('Zip Code.');
-            $table->string('address')->comment('Address.');
+            $table->string('street')->comment('Address.');
             $table->string('number')->nullable()->comment('Address Number.');
             $table->string('complement')->nullable()->comment('Address complement.');
             $table->string('city')->comment('City.');
+            $table->integer('city_code')->comment('City code used in Invoice.');
             $table->string('state', 2)->comment('State.');
+            $table->integer('state_code')->comment('State code used in Invoice.');
             $table->string('country')->comment('Country.');
+            $table->integer('country_code')->comment('Country code used in Invoice.');
         });
 
         // Adding columns comments.

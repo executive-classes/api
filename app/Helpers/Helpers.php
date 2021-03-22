@@ -3,6 +3,7 @@
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
+use Monolog\Handler\GelfHandler;
 
 /**
  * HTTP contants
@@ -19,7 +20,7 @@ const HTTP_SERVER_ERROR = 500;
 
 if (!function_exists('isProduction')) {
     function isProduction(): bool {
-        return App::environment('production');
+        return env('APP_ENV') === 'production';
     }
 }
 
@@ -112,5 +113,65 @@ if (!function_exists('render')) {
             throw $e;
         }
         return ob_get_clean();
+    }
+}
+
+/**
+ * Formatting helpers
+ */
+
+if (!function_exists('format_mask')) {
+    function format_mask(string $mask, $string): string {
+        $string = str_replace(" ", "", $string);
+
+        foreach ($string as $key => $value) {
+            $mask[strpos($mask,"#")] = $string[$key];
+        }
+
+        return $mask;
+    }
+}
+
+if (!function_exists('format_zip')) {
+    function format_zip($zip): string {
+        return format_mask('#####-###', $zip);
+    }
+}
+
+if (!function_exists('format_cnpj')) {
+    function format_cnpj($cnpj): string {
+        return format_mask('##.###.###/####-#', $cnpj);
+    }
+}
+
+if (!function_exists('format_ie')) {
+    function format_ie($ie): string {
+        return format_mask('#.###.###-#', $ie);
+    }
+}
+
+if (!function_exists('format_date')) {
+    function format_date(string $dateTime = null, string $format = 'Y-m-d H:i:s'): string {
+        if ($dateTime) {
+            return Carbon::parse($dateTime)->format($format);
+        }
+
+        return Carbon::now()->format($format);
+    }
+}
+
+/**
+ * Date and time helpers
+ */
+
+if (!function_exists('getYear')) {
+    function getYear(string $dateTime = null, string $format = 'Y'): string {
+        return format_date($dateTime, $format);
+    }
+}
+
+if (!function_exists('getMonth')) {
+    function getMonth(string $dateTime = null, string $format = 'm'): string {
+        return format_date($dateTime, $format);
     }
 }

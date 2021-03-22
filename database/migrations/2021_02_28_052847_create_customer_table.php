@@ -29,6 +29,8 @@ class CreateCustomerTable extends Migration
             $table->string('name')->comment('Customer name.');
             $table->string('tax_type_id')->comment('Customer tax type.');
             $table->string('tax_code')->unique()->comment('Customer tax code.');
+            $table->string('tax_type_alt_id')->nullable()->comment('Customer alternative tax type.');
+            $table->string('tax_code_alt')->nullable()->unique()->comment('Customer alternative tax code.');
 
             // Customer contact data
             $table->unsignedBigInteger('building_id')->comment('Determine the building of the customer.');
@@ -38,6 +40,7 @@ class CreateCustomerTable extends Migration
 
             // Foreign Key
             $table->foreign('tax_type_id')->references('id')->on('tax_type');
+            $table->foreign('tax_type_alt_id')->references('id')->on('tax_type');
             $table->foreign('customer_status_id')->references('id')->on('customer_status');
             $table->foreign('building_id')->references('id')->on('building');
         });
