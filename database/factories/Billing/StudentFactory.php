@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Billing;
 
+use App\Enums\Billing\StudentStatusEnum;
 use App\Models\Billing\Biller;
 use App\Models\Billing\Student;
 use App\Models\Billing\User;
@@ -23,11 +24,68 @@ class StudentFactory extends Factory
      */
     public function definition()
     {
-        $biller = $this->faker->randomElement(Biller::all());
         return [
-            'customer_id' => $biller->customer_id,
-            'biller_id' => $biller->id,
-            'user_id' => $this->faker->unique()->randomElement(User::all())
+            'biller_id' => Biller::factory(),
+            'customer_id' => function (array $attributes) {
+                return Biller::find($attributes['biller_id'])->customer_id;
+            },
+            'user_id' => User::factory()
         ];
+    }
+
+    /**
+     * Indicate that the student is active.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function active()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'student_status_id' => StudentStatusEnum::ACTIVE,
+            ];
+        });
+    }
+
+    /**
+     * Indicate that the student is suspended.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function suspended()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'student_status_id' => StudentStatusEnum::SUSPENDED,
+            ];
+        });
+    }
+
+    /**
+     * Indicate that the student is canceled.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function canceled()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'student_status_id' => StudentStatusEnum::CANCELED,
+            ];
+        });
+    }
+
+    /**
+     * Indicate that the student is inactive.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function inactive()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'student_status_id' => StudentStatusEnum::INACTIVE,
+            ];
+        });
     }
 }

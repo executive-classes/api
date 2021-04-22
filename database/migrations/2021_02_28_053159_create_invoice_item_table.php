@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Billing\Invoice;
+use App\Models\Billing\Student;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,23 +17,46 @@ class CreateInvoiceItemTable extends Migration
     {
         Schema::create('invoice_item', function (Blueprint $table) {
             // PK
-            $table->id()->comment('Invoice Item ID.');
+            $table->id()
+                ->comment('Invoice Item ID.');
 
             // Timestamps
-            $table->timestamp('created_at')->nullable()->comment('Invoice item creation date.');
-            $table->timestamp('updated_at')->nullable()->comment('Invoice item last update date.');
+            $table->timestamps();
 
             // Item data
-            $table->unsignedBigInteger('invoice_id')->comment('Invoice of this item.');
-            $table->unsignedBigInteger('student_id')->comment('Student of this item.');
-            $table->string('description')->comment('Item description.');
-            $table->integer('qty')->comment('Item quantity.');
-            $table->double('unity_price')->comment('Item unit price.');
-            $table->double('price')->comment('Item total price.');
+            $table->foreignIdFor(Invoice::class, 'invoice_id')
+                ->references('id')
+                ->on('invoice')
+                ->comment('Invoice of this item.');
 
-            // Foreign Key
-            $table->foreign('invoice_id')->references('id')->on('invoice');
-            $table->foreign('student_id')->references('id')->on('student');
+            $table->foreignIdFor(Student::class, 'student_id')
+                ->references('id')
+                ->on('student')
+                ->comment('Student of this item.');
+
+            $table->string('description')
+                ->comment('Item description.');
+
+            $table->integer('qty')
+                ->comment('Item quantity.');
+
+            $table->double('unity_price')
+                ->comment('Item unit price.');
+
+            $table->double('price')
+                ->comment('Item total price.');
+        });
+
+        // Adding columns comments.
+        Schema::table('invoice_item', function (Blueprint $table) {
+            // Timestamps comments
+            $table->timestamp('created_at')
+                ->comment('Invoice item creation date.')
+                ->change();
+
+            $table->timestamp('updated_at')
+                ->comment('Invoice item last update date.')
+                ->change();
         });
     }
 

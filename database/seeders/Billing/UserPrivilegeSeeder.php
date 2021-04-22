@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\Billing;
 
+use App\Enums\Billing\UserPrivilegeEnum;
 use App\Models\Billing\UserPrivilege;
 use Illuminate\Database\Seeder;
 
@@ -15,20 +16,20 @@ class UserPrivilegeSeeder extends Seeder
     public function run()
     {
         // Admin
-        $this->create(UserPrivilege::ALL, 'Can do all things.');
+        $this->create(UserPrivilegeEnum::ALL, 'Can do all things.');
 
         // Auth
-        $this->create(UserPrivilege::CROSS_AUTH, 'Can cross-auth in others users.');
+        $this->create(UserPrivilegeEnum::CROSS_AUTH, 'Can cross-auth in others users.');
 
         // Mailing
-        $this->create(UserPrivilege::MESSAGE_GET, 'Can get or list messages.');
-        $this->create(UserPrivilege::MESSAGE_CREATE, 'Can create new messages.');
-        $this->create(UserPrivilege::MESSAGE_CANCEL, 'Can cancel scheduled messages.');
-        $this->create(UserPrivilege::MESSAGE_DELETE, 'Can delete messages.');
-        $this->create(UserPrivilege::MESSAGE_TEMPLATE_GET, 'Can get or list messages templates.');
-        $this->create(UserPrivilege::MESSAGE_TEMPLATE_CREATE, 'Can create messages templates.');
-        $this->create(UserPrivilege::MESSAGE_TEMPLATE_UPDATE, 'Can update messages templates.');
-        $this->create(UserPrivilege::MESSAGE_TEMPLATE_DELETE, 'Can delete messages templates.');
+        $this->create(UserPrivilegeEnum::MESSAGE_GET, 'Can get or list messages.');
+        $this->create(UserPrivilegeEnum::MESSAGE_CREATE, 'Can create new messages.');
+        $this->create(UserPrivilegeEnum::MESSAGE_CANCEL, 'Can cancel scheduled messages.');
+        $this->create(UserPrivilegeEnum::MESSAGE_DELETE, 'Can delete messages.');
+        $this->create(UserPrivilegeEnum::MESSAGE_TEMPLATE_GET, 'Can get or list messages templates.');
+        $this->create(UserPrivilegeEnum::MESSAGE_TEMPLATE_CREATE, 'Can create messages templates.');
+        $this->create(UserPrivilegeEnum::MESSAGE_TEMPLATE_UPDATE, 'Can update messages templates.');
+        $this->create(UserPrivilegeEnum::MESSAGE_TEMPLATE_DELETE, 'Can delete messages templates.');
     }
 
     /**

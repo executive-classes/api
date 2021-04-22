@@ -3,6 +3,7 @@
 namespace Database\Seeders\Mailing;
 
 use App\Models\Mailing\MessageStatus;
+use App\Enums\Mailing\MessageStatusEnum;
 use Illuminate\Database\Seeder;
 
 class MessageStatusSeeder extends Seeder
@@ -14,10 +15,10 @@ class MessageStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(MessageStatus::SENT, 'Enviada');
-        $this->create(MessageStatus::CANCELED, 'Cancelada');
-        $this->create(MessageStatus::SCHEDULED, 'Agendada');
-        $this->create(MessageStatus::ERROR, 'Erro');
+        $this->create(MessageStatusEnum::SENT, 'Enviada');
+        $this->create(MessageStatusEnum::CANCELED, 'Cancelada');
+        $this->create(MessageStatusEnum::SCHEDULED, 'Agendada');
+        $this->create(MessageStatusEnum::ERROR, 'Erro');
     }
 
     /**

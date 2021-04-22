@@ -1,5 +1,9 @@
 <?php
 
+use App\Enums\Billing\EmployeeStatusEnum;
+use App\Models\Billing\EmployeePosition;
+use App\Models\Billing\EmployeeStatus;
+use App\Models\Billing\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,19 +19,41 @@ class CreateEmployeeTable extends Migration
     {
         Schema::create('employee', function (Blueprint $table) {
             // PK
-            $table->id()->comment('Employee ID.');
+            $table->id()
+                ->comment('Employee ID.');
 
             // Timestamps
-            $table->timestamp('created_at')->nullable()->comment('Employee creation date.');
-            $table->timestamp('updated_at')->nullable()->comment('Employee last update date.');
+            $table->timestamps();
 
             // Collection Data
-            $table->string('employee_position_id')->comment('The position of this employee.');
-            $table->unsignedBigInteger('user_id')->unique()->comment('User of this employee.');
+            $table->foreignIdFor(User::class, 'user_id')
+                ->unique()
+                ->references('id')
+                ->on('user')
+                ->comment('User of this employee.');
 
-            // Foreign Key
-            $table->foreign('employee_position_id')->references('id')->on('employee_position');
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->foreignIdFor(EmployeePosition::class, 'employee_position_id')
+                ->references('id')
+                ->on('employee_position')
+                ->comment('The position of this employee.');
+
+            $table->foreignIdFor(EmployeeStatus::class, 'employee_status_id')
+                ->default(EmployeeStatusEnum::ACTIVE)
+                ->references('id')
+                ->on('employee_status')
+                ->comment('Status of the employee.');
+        });
+
+        // Adding columns comments.
+        Schema::table('employee', function (Blueprint $table) {
+            // Timestamps comments
+            $table->timestamp('created_at')
+                ->comment('Employee creation date.')
+                ->change();
+
+            $table->timestamp('updated_at')
+                ->comment('Employee last update date.')
+                ->change();
         });
     }
 

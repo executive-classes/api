@@ -15,12 +15,17 @@ class CreateEmployeeStatusTable extends Migration
     {
         Schema::create('employee_status', function (Blueprint $table) {
             // PK
-            $table->string('id')->comment('employee status id.');
+            $table->string('id')
+                ->comment('employee status id.');
+
             $table->primary('id');
 
             // Message status data
-            $table->string('name')->comment('employee status name.');
-            $table->string('description')->comment('employee status description.');
+            $table->string('name')
+                ->comment('employee status name.');
+
+            $table->string('description')
+                ->comment('employee status description.');
         });
     }
 

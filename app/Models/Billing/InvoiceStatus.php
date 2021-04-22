@@ -7,17 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class InvoiceStatus extends Model
 {
     /**
-     * Status
-     */
-
-    public const CREATED = 'created';
-    public const GENERATED = 'generated';
-    public const SENT = 'sent';
-    public const PROCESSING = 'processing';
-    public const OK = 'ok';
-    public const ERROR = 'error';
-    
-    /**
      * The table associated with the model.
      *
      * @var string

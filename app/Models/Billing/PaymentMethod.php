@@ -7,16 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class PaymentMethod extends Model
 {
     /**
-     * Payment Methods
-     */
-
-    public const CREDIT_CARD = 'credit_card';
-    public const BOLETO = 'boleto';
-    public const PIX = 'pix';
-    public const DEPOSIT = 'deposit';
-    public const TRANSFER = 'transfer';
-
-    /**
      * The table associated with the model.
      *
      * @var string

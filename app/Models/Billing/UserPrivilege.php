@@ -7,33 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class UserPrivilege extends Model
 {
     /**
-     * General privileges.
-     */
-    public const ALL = '*';
-
-    /**
-     * Auth privileges.
-     */
-    public const CROSS_AUTH = 'auth:cross';
-
-    /**
-     * Message privileges.
-     */
-    public const MESSAGE_GET    = 'message:get';
-    public const MESSAGE_CREATE = 'message:create';
-    public const MESSAGE_CANCEL = 'message:cancel';
-    public const MESSAGE_DELETE = 'message:delete';
-
-    /**
-     * Message template privileges
-     */
-
-    public const MESSAGE_TEMPLATE_GET    = 'message_template:get';
-    public const MESSAGE_TEMPLATE_CREATE = 'message_template:create';
-    public const MESSAGE_TEMPLATE_UPDATE = 'message_template:update';
-    public const MESSAGE_TEMPLATE_DELETE = 'message_template:delete';
-
-    /**
      * The table associated with the model.
      *
      * @var string

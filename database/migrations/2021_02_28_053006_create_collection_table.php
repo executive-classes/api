@@ -1,11 +1,14 @@
 <?php
 
+use App\Enums\Billing\CollectionStatusEnum;
+use App\Models\Billing\Biller;
 use App\Models\Billing\CollectionStatus;
-use Database\Seeders\Billing\CollectionStatusSeeder;
+use App\Models\Billing\PaymentInterval;
+use App\Models\Billing\PaymentMethod;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use Ramsey\Collection\CollectionInterface;
 
 class CreateCollectionTable extends Migration
 {
@@ -18,30 +21,64 @@ class CreateCollectionTable extends Migration
     {
         Schema::create('collection', function (Blueprint $table) {
             // PK
-            $table->id()->comment('Collection ID.');
+            $table->id()
+                ->comment('Collection ID.');
+
 
             // Timestamps
-            $table->timestamp('created_at')->nullable()->comment('Collection creation date.');
-            $table->timestamp('updated_at')->nullable()->comment('Collection last update date.');
+            $table->timestamps();
+
+            $table->timestamp('expire_at')
+                ->default(DB::raw("DATE_ADD(CURDATE(), INTERVAL 1 MONTH)"))
+                ->comment('Collection expiration date.');
 
             // Collection Data
-            $table->unsignedBigInteger('biller_id')->comment('Biller of this collection.');
-            $table->string('collection_status_id')->default(CollectionStatus::SCHEDULED)->comment('Determine the status of the collection.');
-            $table->double('value')->comment('Collection value.');
+            $table->foreignIdFor(Biller::class, 'biller_id')
+                ->references('id')
+                ->on('biller')
+                ->comment('Biller of this collection.');
+
+            $table->foreignIdFor(CollectionStatus::class, 'collection_status_id')
+                ->default(CollectionStatusEnum::SCHEDULED)
+                ->references('id')
+                ->on('collection_status')
+                ->comment('Determine the status of the collection.');
+
+            $table->double('amount')
+                ->comment('Collection amount.');
+
+            $table->string('description')
+                ->comment('Collection description.');
+
+            $table->string('truncatedDescription', 22)
+                ->comment('Collection truncated description.');
 
             // Collection payment data
-            $table->unsignedTinyInteger('payment_interval_id')->comment('Payment interval of this collection.');
-            $table->string('payment_method_id')->comment('Payment method of this collection.');
-            $table->unsignedBigInteger('credit_card_id')->nullable()->comment('Credit card that pays this collection.');
-            $table->unsignedBigInteger('bank_id')->nullable()->comment('Bank that receives the payment for this collection.');
+            $table->foreignIdFor(PaymentInterval::class, 'payment_interval_id')
+                ->references('id')
+                ->on('payment_interval')
+                ->comment('Payment interval of this collection.');
 
-            // Foreign Key
-            $table->foreign('biller_id')->references('id')->on('biller');
-            $table->foreign('collection_status_id')->references('id')->on('collection_status');
-            $table->foreign('payment_interval_id')->references('id')->on('payment_interval');
-            $table->foreign('payment_method_id')->references('id')->on('payment_method');
-            $table->foreign('credit_card_id')->references('id')->on('credit_card');
-            $table->foreign('bank_id')->references('id')->on('bank');
+            $table->foreignIdFor(PaymentMethod::class, 'payment_method_id')
+                ->references('id')
+                ->on('payment_method')
+                ->comment('Payment method of this collection.');
+
+            $table->string('token_id')
+                ->nullable()
+                ->comment('Credit card token id.');
+        });
+
+        // Adding columns comments.
+        Schema::table('collection', function (Blueprint $table) {
+            // Timestamps comments
+            $table->timestamp('created_at')
+                ->comment('Collection creation date.')
+                ->change();
+
+            $table->timestamp('updated_at')
+                ->comment('Collection last update date.')
+                ->change();
         });
     }
 

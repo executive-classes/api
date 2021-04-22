@@ -2,8 +2,8 @@
 
 namespace App\Repositories\Billing;
 
+use App\Enums\Billing\InvoiceStatusEnum;
 use App\Models\Billing\Invoice;
-use App\Models\Billing\InvoiceStatus;
 use App\Repositories\Repository;
 
 class InvoiceRepository extends Repository
@@ -29,7 +29,7 @@ class InvoiceRepository extends Repository
     {
         $invoice = $this->getModel($invoice);
 
-        $invoice->invoice_status_id = InvoiceStatus::GENERATED;
+        $invoice->invoice_status_id = InvoiceStatusEnum::GENERATED;
         $invoice->xml = $xml;
         $invoice->save();
 
@@ -47,7 +47,7 @@ class InvoiceRepository extends Repository
     {
         $invoice = $this->getModel($invoice);
 
-        $invoice->invoice_status_id = InvoiceStatus::SENT;
+        $invoice->invoice_status_id = InvoiceStatusEnum::SENT;
         $invoice->receipt = $receipt;
         $invoice->save();
 
@@ -65,7 +65,7 @@ class InvoiceRepository extends Repository
     {
         $invoice = $this->getModel($invoice);
 
-        $invoice->invoice_status_id = InvoiceStatus::OK;
+        $invoice->invoice_status_id = InvoiceStatusEnum::OK;
         $invoice->xml = $xml;
         $invoice->save();
 
@@ -83,7 +83,7 @@ class InvoiceRepository extends Repository
     {
         $invoice = $this->getModel($invoice);
 
-        $invoice->invoice_status_id = InvoiceStatus::ERROR;
+        $invoice->invoice_status_id = InvoiceStatusEnum::ERROR;
         $invoice->error_message = $message;
         $invoice->save();
 

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\Billing;
 
+use App\Enums\Billing\StudentStatusEnum;
 use App\Models\Billing\StudentStatus;
 use Illuminate\Database\Seeder;
 
@@ -14,10 +15,10 @@ class StudentStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(StudentStatus::ACTIVE, 'Ativo', 'Indicates that a student is active and can attend classes.');
-        $this->create(StudentStatus::SUSPENDED, 'Suspenso', 'Indicates that a student is suspended and can not attend classes.');
-        $this->create(StudentStatus::CANCELED, 'Cancelado', 'Indicates that a student is canceled and will no more attend classes.');
-        $this->create(StudentStatus::INACTIVE, 'Inativo', 'Indicates that a student is inactive.');
+        $this->create(StudentStatusEnum::ACTIVE, 'Ativo', 'Indicates that a student is active and can attend classes.');
+        $this->create(StudentStatusEnum::SUSPENDED, 'Suspenso', 'Indicates that a student is suspended and can not attend classes.');
+        $this->create(StudentStatusEnum::CANCELED, 'Cancelado', 'Indicates that a student is canceled and will no more attend classes.');
+        $this->create(StudentStatusEnum::INACTIVE, 'Inativo', 'Indicates that a student is inactive.');
     }
 
     /**

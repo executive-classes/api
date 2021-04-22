@@ -4,17 +4,25 @@ namespace Tests\Feature\Mailing;
 
 use App\Exceptions\Mailing\MessageException;
 use App\Models\Mailing\Message;
-use App\Models\Mailing\MessageStatus;
+use App\Enums\Mailing\MessageStatusEnum;
 use App\Repositories\Mailing\MessageRepository;
-use App\Traits\Tests\Mailing\MessageMaker;
+use App\Traits\Providers\Mailing\MessageProvider;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class MessageTest extends TestCase
 {
-    use RefreshDatabase, MessageMaker;
+    use RefreshDatabase, WithFaker, MessageProvider;
+
+    /**
+     * Indicates that the database should seed.
+     *
+     * @var bool
+     */
+    protected $seed = true;
 
     /**
      * The Message Repository.
@@ -31,7 +39,6 @@ class MessageTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->seed();
         
         $this->messageRepository = new MessageRepository(new Message());
     }
@@ -66,8 +73,10 @@ class MessageTest extends TestCase
      * @return void
      * @throws MessageException
      */
-    public function test_scheduled_message_can_be_canceled(Message $message)
+    public function test_scheduled_message_can_be_canceled(callable $provider)
     {
+        [$message] = $provider();
+
         if ($message->wasSent()) {
             $this->expectException(MessageException::class);
             $this->expectExceptionMessage(__('mailing.message.fail.cancel', ['id' => $message->id]));
@@ -88,10 +97,9 @@ class MessageTest extends TestCase
      * 
      * @return void
      */
-    public function test_message_can_be_deleted(Message $message)
+    public function test_message_can_be_deleted(callable $provider)
     {
-        $message->save();
-        $message->refresh();
+        [$message] = $provider();
 
         $result = $this->messageRepository->delete($message->id);
 
@@ -109,16 +117,16 @@ class MessageTest extends TestCase
      */
     public function test_get_only_messages_ready_for_sent()
     {
-        $this->createMessages();
+        $this->createReadyForSentMessages();
 
         $result = $this->messageRepository->findReadyForSend();
 
         $this->assertInstanceOf(Collection::class, $result);
-        $this->assertCount(4, $result);
+        $this->assertCount(1, $result);
 
         foreach ($result as $message) {
             $this->assertInstanceOf(Message::class, $message);
-            $this->assertEquals(MessageStatus::SCHEDULED, $message->message_status_id);
+            $this->assertEquals(MessageStatusEnum::SCHEDULED, $message->message_status_id);
             $this->assertLessThanOrEqual(Carbon::now()->toDateTimeString(), $message->should_proccess_at);
         }
     }
@@ -131,8 +139,10 @@ class MessageTest extends TestCase
      * 
      * @return void
      */
-    public function test_can_add_error_to_invalid_messages(Message $message)
+    public function test_can_add_error_to_invalid_messages(callable $provider)
     {
+        [$message] = $provider();
+
         if (!$message->isScheduled()) {
             $this->expectException(MessageException::class);
             $this->expectExceptionMessage(__('mailing.message.fail.add_error', ['id' => $message->id]));
@@ -146,14 +156,14 @@ class MessageTest extends TestCase
         $message->refresh();
 
         $this->assertEquals(1, $message->retries);
-        $this->assertNotEquals(MessageStatus::ERROR, $message->message_status_id);
+        $this->assertNotEquals(MessageStatusEnum::ERROR, $message->message_status_id);
         $this->assertTrue($result);
 
         $result = $this->messageRepository->addError($message);
         $message->refresh();
 
         $this->assertTrue($result);
-        $this->assertEquals(MessageStatus::ERROR, $message->message_status_id);
+        $this->assertEquals(MessageStatusEnum::ERROR, $message->message_status_id);
         $this->assertEquals(0, $message->retries);
     }
 

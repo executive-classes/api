@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\Billing;
 
+use App\Enums\Billing\InvoiceStatusEnum;
 use App\Models\Billing\InvoiceStatus;
 use Illuminate\Database\Seeder;
 
@@ -14,12 +15,12 @@ class InvoiceStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(InvoiceStatus::CREATED, 'Criada', 'Indicates that a invoice was created.');
-        $this->create(InvoiceStatus::GENERATED, 'Gerada', 'Indicates that a invoice and its XML was created.');
-        $this->create(InvoiceStatus::SENT, 'Enviada', 'Indicates that a invoice was sent to processing.');
-        $this->create(InvoiceStatus::PROCESSING, 'Em processamento', 'Indicates that a invoice its during processing.');
-        $this->create(InvoiceStatus::OK, 'Emitida', 'Indicates that a invoice was sent and it is ok.');
-        $this->create(InvoiceStatus::ERROR, 'Erro', 'Indicates that a invoice was sent but ocorred a error.');
+        $this->create(InvoiceStatusEnum::CREATED, 'Criada', 'Indicates that a invoice was created.');
+        $this->create(InvoiceStatusEnum::GENERATED, 'Gerada', 'Indicates that a invoice and its XML was created.');
+        $this->create(InvoiceStatusEnum::SENT, 'Enviada', 'Indicates that a invoice was sent to processing.');
+        $this->create(InvoiceStatusEnum::PROCESSING, 'Em processamento', 'Indicates that a invoice its during processing.');
+        $this->create(InvoiceStatusEnum::OK, 'Emitida', 'Indicates that a invoice was sent and it is ok.');
+        $this->create(InvoiceStatusEnum::ERROR, 'Erro', 'Indicates that a invoice was sent but ocorred a error.');
     }
 
     /**

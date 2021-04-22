@@ -15,12 +15,17 @@ class CreateBillerStatusTable extends Migration
     {
         Schema::create('biller_status', function (Blueprint $table) {
             // PK
-            $table->string('id')->comment('Biller status id.');
+            $table->string('id')
+                ->comment('Biller status id.');
+
             $table->primary('id');
 
             // Message status data
-            $table->string('name')->comment('Biller status name.');
-            $table->string('description')->comment('Biller status description.');
+            $table->string('name')
+                ->comment('Biller status name.');
+                
+            $table->string('description')
+                ->comment('Biller status description.');
         });
     }
 

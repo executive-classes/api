@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\Billing;
 
+use App\Enums\Billing\EmployeeStatusEnum;
 use App\Models\Billing\EmployeeStatus;
 use Illuminate\Database\Seeder;
 
@@ -14,10 +15,10 @@ class EmployeeStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(EmployeeStatus::ACTIVE, 'Ativo', 'Indicates that a employee is active and can use the system.');
-        $this->create(EmployeeStatus::SUSPENDED, 'Suspenso', 'Indicates that a employee is suspended and can not use the system.');
-        $this->create(EmployeeStatus::CANCELED, 'Cancelado', 'Indicates that a employee is canceled and will no more use the system.');
-        $this->create(EmployeeStatus::INACTIVE, 'Inativo', 'Indicates that a employee is inactive.');
+        $this->create(EmployeeStatusEnum::ACTIVE, 'Ativo', 'Indicates that a employee is active and can use the system.');
+        $this->create(EmployeeStatusEnum::SUSPENDED, 'Suspenso', 'Indicates that a employee is suspended and can not use the system.');
+        $this->create(EmployeeStatusEnum::CANCELED, 'Cancelado', 'Indicates that a employee is canceled and will no more use the system.');
+        $this->create(EmployeeStatusEnum::INACTIVE, 'Inativo', 'Indicates that a employee is inactive.');
     }
 
     /**

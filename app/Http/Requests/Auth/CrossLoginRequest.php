@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Enums\Billing\UserPrivilegeEnum;
 use App\Http\Requests\ApiRequest;
-use App\Models\Billing\UserPrivilege;
 
 class CrossLoginRequest extends ApiRequest
 {
@@ -14,7 +14,7 @@ class CrossLoginRequest extends ApiRequest
      */
     public function authorize()
     {
-        return request()->user()->tokenCan(UserPrivilege::CROSS_AUTH) && parent::authorize();
+        return request()->user()->tokenCan(UserPrivilegeEnum::CROSS_AUTH) && parent::authorize();
     }
 
     /**

@@ -5,7 +5,7 @@ namespace App\Traits\Models\Billing;
 use App\Models\Billing\Student;
 use App\Models\Billing\Teacher;
 
-trait UserFunctions
+trait HasPrivileges
 {
     /**
      * Get the user's privileges by its type and unique privileges.

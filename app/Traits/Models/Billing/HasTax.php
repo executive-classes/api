@@ -2,8 +2,8 @@
 
 namespace App\Traits\Models\Billing;
 
+use App\Enums\Billing\TaxTypeEnum;
 use App\Exceptions\Billing\TaxTypeException;
-use App\Models\Billing\TaxType;
 
 trait HasTax
 {
@@ -31,41 +31,41 @@ trait HasTax
 
     public function hasCnpj(): bool
     {
-        return $this->hasTax(TaxType::CNPJ);
+        return $this->hasTax(TaxTypeEnum::CNPJ);
     }
 
     public function hasCpf(): bool
     {
-        return $this->hasTax(TaxType::CPF);
+        return $this->hasTax(TaxTypeEnum::CPF);
     }
 
     public function hasRg(): bool
     {
-        return $this->hasTax(TaxType::RG);
+        return $this->hasTax(TaxTypeEnum::RG);
     }
 
     public function hasIe(): bool
     {
-        return $this->hasTax(TaxType::IE);
+        return $this->hasTax(TaxTypeEnum::IE);
     }
 
     public function getCnpj(bool $findOrFail = false)
     {
-        return $this->getTaxCode(TaxType::CNPJ, $findOrFail);
+        return $this->getTaxCode(TaxTypeEnum::CNPJ, $findOrFail);
     }
 
     public function getCpf(bool $findOrFail = false)
     {
-        return $this->getTaxCode(TaxType::CPF, $findOrFail);
+        return $this->getTaxCode(TaxTypeEnum::CPF, $findOrFail);
     }
 
     public function getRg(bool $findOrFail = false)
     {
-        return $this->getTaxCode(TaxType::RG, $findOrFail);
+        return $this->getTaxCode(TaxTypeEnum::RG, $findOrFail);
     }
 
     public function getIe(bool $findOrFail = false)
     {
-        return $this->getTaxCode(TaxType::IE, $findOrFail);
+        return $this->getTaxCode(TaxTypeEnum::IE, $findOrFail);
     }
 }

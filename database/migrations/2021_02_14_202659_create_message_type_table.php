@@ -15,11 +15,14 @@ class CreateMessageTypeTable extends Migration
     {
         Schema::create('message_type', function (Blueprint $table) {
             // PK
-            $table->string('id')->comment('Message type id.');
+            $table->string('id')
+                ->comment('Message type id.');
+
             $table->primary('id');
 
             // Message type data
-            $table->string('description')->comment('Message type description.');
+            $table->string('description')
+                ->comment('Message type description.');
         });
     }
 

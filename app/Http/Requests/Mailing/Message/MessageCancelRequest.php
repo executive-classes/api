@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Mailing\Message;
 
+use App\Enums\Billing\UserPrivilegeEnum;
 use App\Http\Requests\ApiRequest;
-use App\Models\Billing\UserPrivilege;
 
 class MessageCancelRequest extends ApiRequest
 {
@@ -14,7 +14,7 @@ class MessageCancelRequest extends ApiRequest
      */
     public function authorize()
     {
-        return request()->user()->tokenCan(UserPrivilege::MESSAGE_CANCEL) && parent::authorize();
+        return request()->user()->tokenCan(UserPrivilegeEnum::MESSAGE_CANCEL) && parent::authorize();
     }
 
     /**

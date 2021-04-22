@@ -15,12 +15,15 @@ class CreatePaymentIntervalTable extends Migration
     {
         Schema::create('payment_interval', function (Blueprint $table) {
             // PK
-            $table->unsignedTinyInteger('id')->comment('Payment Interval id.');
-            $table->primary('id');
+            $table->id()
+                ->comment('Payment Interval id.');
 
             // Message status data
-            $table->string('name')->comment('Payment Interval name.');
-            $table->string('description')->comment('Payment Interval description.');
+            $table->string('name')
+                ->comment('Payment Interval name.');
+
+            $table->string('description')
+                ->comment('Payment Interval description.');
         });
     }
 

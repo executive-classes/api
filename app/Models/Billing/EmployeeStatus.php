@@ -7,15 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class EmployeeStatus extends Model
 {
     /**
-     * Status
-     */
-
-    public const ACTIVE = 'active';
-    public const SUSPENDED = 'suspended';
-    public const CANCELED = 'canceled';
-    public const INACTIVE = 'inactive';
-    
-    /**
      * The table associated with the model.
      *
      * @var string

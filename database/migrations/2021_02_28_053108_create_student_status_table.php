@@ -15,12 +15,17 @@ class CreateStudentStatusTable extends Migration
     {
         Schema::create('student_status', function (Blueprint $table) {
             // PK
-            $table->string('id')->comment('Student status id.');
+            $table->string('id')
+                ->comment('Student status id.');
+
             $table->primary('id');
 
             // Message status data
-            $table->string('name')->comment('Student status name.');
-            $table->string('description')->comment('Student status description.');
+            $table->string('name')
+                ->comment('Student status name.');
+
+            $table->string('description')
+                ->comment('Student status description.');
         });
     }
 

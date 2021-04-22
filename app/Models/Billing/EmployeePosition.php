@@ -7,14 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class EmployeePosition extends Model
 {
     /**
-     * Positions
-     */
-
-    public const ADMINISTRATOR = 'administrator';
-    public const FINANCIAL = 'financial';
-    public const DEVELOPER = 'developer';
-
-    /**
      * The table associated with the model.
      *
      * @var string

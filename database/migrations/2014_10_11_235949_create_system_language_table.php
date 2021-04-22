@@ -15,11 +15,14 @@ class CreateSystemLanguageTable extends Migration
     {
         Schema::create('system_language', function (Blueprint $table) {
             // PK
-            $table->string('id')->comment('System Language Id.');
+            $table->string('id')
+                ->comment('System Language Id.');
+
             $table->primary('id');
 
             // Language data
-            $table->string('name')->comment('System Language Name.');
+            $table->string('name')
+                ->comment('System Language Name.');
 
         });
     }

@@ -2,12 +2,13 @@
 
 namespace App\Models\Billing;
 
+use App\Traits\Models\Billing\HasPayGo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Collection extends Model
 {
-    use HasFactory;
+    use HasFactory, HasPayGo;
 
     /**
      * The table associated with the model.
@@ -82,26 +83,6 @@ class Collection extends Model
     public function paymentMethod()
     {
         return $this->belongsTo(PaymentMethod::class, 'payment_method_id');
-    }
-
-    /**
-     * Credit Card relation.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function creditCard()
-    {
-        return $this->belongsTo(CreditCard::class, 'credit_card_id');
-    }
-
-    /**
-     * Bank relation.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function bank()
-    {
-        return $this->belongsTo(Bank::class, 'bank_id');
     }
 
     /**

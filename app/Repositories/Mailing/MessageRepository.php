@@ -5,7 +5,7 @@ namespace App\Repositories\Mailing;
 use App\Models\Mailing\Message;
 use App\Repositories\Repository;
 use App\Exceptions\Mailing\MessageException;
-use App\Models\Mailing\MessageStatus;
+use App\Enums\Mailing\MessageStatusEnum;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -30,7 +30,7 @@ class MessageRepository extends Repository
     {
         return $this->model
             ->with('template')
-            ->where('message_status_id', MessageStatus::SCHEDULED)
+            ->where('message_status_id', MessageStatusEnum::SCHEDULED)
             ->where('should_proccess_at', '<', Carbon::now()->toDateTimeString())
             ->get();
     }
@@ -45,11 +45,11 @@ class MessageRepository extends Repository
     {
         $message = $this->getModel($message);
 
-        $message->message_status_id = MessageStatus::SENT;
+        $message->message_status_id = MessageStatusEnum::SENT;
         $message->sent_at = Carbon::now()->toDateTimeString();
         $message->save();
         
-        return $message->message_status_id == MessageStatus::SENT;
+        return $message->message_status_id == MessageStatusEnum::SENT;
     }
 
     /**
@@ -70,11 +70,11 @@ class MessageRepository extends Repository
             throw new MessageException(__('mailing.message.fail.cancel', ['id' => $message->id]), 400);
         }
 
-        $message->message_status_id = MessageStatus::CANCELED;
+        $message->message_status_id = MessageStatusEnum::CANCELED;
         $message->should_proccess_at = null;
         $message->save();
 
-        return $message->message_status_id == MessageStatus::CANCELED;
+        return $message->message_status_id == MessageStatusEnum::CANCELED;
     }
 
     /**
@@ -101,7 +101,7 @@ class MessageRepository extends Repository
         }
 
         if ($message->retries == 0 && $message->isScheduled()) {
-            $message->message_status_id = MessageStatus::ERROR;
+            $message->message_status_id = MessageStatusEnum::ERROR;
         }
 
         return (bool) $message->save();

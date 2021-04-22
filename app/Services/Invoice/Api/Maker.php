@@ -2,11 +2,11 @@
 
 namespace App\Services\Invoice\Api;
 
+use App\Enums\Billing\PaymentMethodEnum;
 use App\Models\Billing\Building;
 use App\Models\Billing\Collection;
 use App\Models\Billing\Customer;
 use App\Models\Billing\Invoice;
-use App\Models\Billing\PaymentMethod;
 use App\Services\Invoice\Api;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection as Entries;
@@ -448,15 +448,15 @@ class Maker extends Api
         $std->indPag = '';  // @todo A vista ou a prazo
         
         // Payment Amount
-        $std->vPag = $collection->value;
+        $std->vPag = $collection->amount;
 
         // Payment Method
         $std->tPag = $collection->paymentMethod->invoice_code;
 
-        if ($collection->payment_method_id == PaymentMethod::CREDIT_CARD) {
-            $std->CNPJ = ''; // @todo CNPJ do emitente
-            $std->tBand = ''; // @todo Bandeira do cartão
-            $std->cAut = ''; // @todo Código de autorização
+        if ($collection->payment_method_id == PaymentMethodEnum::CREDIT_CARD) {
+            $std->CNPJ = ''; /** @todo CNPJ do emitente */
+            $std->tBand = ''; /** @todo Bandeira do cartão */
+            $std->cAut = ''; /** @todo Código de autorização */
         }
 
         $this->nfe->tagdetPag($std);

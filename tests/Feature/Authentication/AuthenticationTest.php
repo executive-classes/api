@@ -2,19 +2,23 @@
 
 namespace Tests\Feature\Authentication;
 
-use App\Models\Billing\SystemLanguage;
 use App\Models\Billing\User;
-use Database\Factories\Billing\UserFactory;
-use Database\Seeders\Billing\SystemLanguageSeeder;
+use App\Traits\Providers\Billing\UserProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\NewAccessToken;
 use Laravel\Sanctum\PersonalAccessToken;
-use Mockery\MockInterface;
 use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, UserProvider;
+
+    /**
+     * Indicates that the database should seed.
+     *
+     * @var bool
+     */
+    protected $seed = true;
 
     /**
      * The User.
@@ -31,9 +35,8 @@ class AuthenticationTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->seed();
         
-        $this->user = User::first();
+        $this->user = User::factory()->create();
     }
 
     /**
@@ -70,13 +73,16 @@ class AuthenticationTest extends TestCase
     /**
      * Test the application language change after login.
      *
+     * @dataProvider getUserWithMultipleLanguages
+     * 
      * @return void
      */
-    public function test_user_can_change_language()
+    public function test_user_can_change_language(callable $provider)
     {
-        $this->user->setLanguage(SystemLanguage::PT_BR);
-        $this->user->login();
+        [$user] = $provider();
 
-        $this->assertEquals(SystemLanguage::PT_BR, app()->getLocale());
+        $user->login();
+
+        $this->assertEquals($user->language->id, app()->getLocale());
     }
 }

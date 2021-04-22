@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Mailing\MessageTemplate;
 
+use App\Enums\Billing\UserPrivilegeEnum;
 use App\Http\Requests\ApiRequest;
-use App\Models\Billing\UserPrivilege;
 
 class MessageTemplateCreateRequest extends ApiRequest
 {
@@ -14,7 +14,7 @@ class MessageTemplateCreateRequest extends ApiRequest
      */
     public function authorize()
     {
-        return request()->user()->tokenCan(UserPrivilege::MESSAGE_TEMPLATE_CREATE) && parent::authorize();
+        return request()->user()->tokenCan(UserPrivilegeEnum::MESSAGE_TEMPLATE_CREATE) && parent::authorize();
     }
 
     /**

@@ -2,8 +2,9 @@
 
 namespace Database\Seeders\Billing;
 
+use App\Enums\Billing\EmployeePositionEnum;
+use App\Enums\Billing\UserPrivilegeEnum;
 use App\Models\Billing\EmployeePosition;
-use App\Models\Billing\UserPrivilege;
 use Illuminate\Database\Seeder;
 
 class EmployeePositionSeeder extends Seeder
@@ -16,24 +17,24 @@ class EmployeePositionSeeder extends Seeder
     public function run()
     {
         // Admin
-        $this->create(EmployeePosition::ADMINISTRATOR, 'Administrador.', null, [
-            UserPrivilege::CROSS_AUTH,
-            UserPrivilege::MESSAGE_GET,
-            UserPrivilege::MESSAGE_CREATE,
-            UserPrivilege::MESSAGE_CANCEL,
-            UserPrivilege::MESSAGE_TEMPLATE_GET,
-            UserPrivilege::MESSAGE_TEMPLATE_CREATE,
-            UserPrivilege::MESSAGE_TEMPLATE_UPDATE
+        $this->create(EmployeePositionEnum::ADMINISTRATOR, 'Administrador.', null, [
+            UserPrivilegeEnum::CROSS_AUTH,
+            UserPrivilegeEnum::MESSAGE_GET,
+            UserPrivilegeEnum::MESSAGE_CREATE,
+            UserPrivilegeEnum::MESSAGE_CANCEL,
+            UserPrivilegeEnum::MESSAGE_TEMPLATE_GET,
+            UserPrivilegeEnum::MESSAGE_TEMPLATE_CREATE,
+            UserPrivilegeEnum::MESSAGE_TEMPLATE_UPDATE
         ]);
         
-        $this->create(EmployeePosition::FINANCIAL, 'Financeiro.', EmployeePosition::FINANCIAL, [
-            UserPrivilege::MESSAGE_GET,
-            UserPrivilege::MESSAGE_CREATE,
-            UserPrivilege::MESSAGE_TEMPLATE_GET
+        $this->create(EmployeePositionEnum::FINANCIAL, 'Financeiro.', EmployeePositionEnum::FINANCIAL, [
+            UserPrivilegeEnum::MESSAGE_GET,
+            UserPrivilegeEnum::MESSAGE_CREATE,
+            UserPrivilegeEnum::MESSAGE_TEMPLATE_GET
         ]);
 
-        $this->create(EmployeePosition::DEVELOPER, 'Desenvolvedor.', EmployeePosition::ADMINISTRATOR, [
-            UserPrivilege::ALL
+        $this->create(EmployeePositionEnum::DEVELOPER, 'Desenvolvedor.', EmployeePositionEnum::ADMINISTRATOR, [
+            UserPrivilegeEnum::ALL
         ]);
     }
 

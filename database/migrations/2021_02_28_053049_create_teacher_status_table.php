@@ -15,12 +15,17 @@ class CreateTeacherStatusTable extends Migration
     {
         Schema::create('teacher_status', function (Blueprint $table) {
             // PK
-            $table->string('id')->comment('Teacher status id.');
+            $table->string('id')
+                ->comment('Teacher status id.');
+
             $table->primary('id');
 
             // Message status data
-            $table->string('name')->comment('Teacher status name.');
-            $table->string('description')->comment('Teacher status description.');
+            $table->string('name')
+                ->comment('Teacher status name.');
+
+            $table->string('description')
+                ->comment('Teacher status description.');
         });
     }
 

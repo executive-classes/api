@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Billing\EmployeePosition;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,15 +16,20 @@ class CreateEmployeePositionTable extends Migration
     {
         Schema::create('employee_position', function (Blueprint $table) {
             // PK
-            $table->string('id')->comment('Employee position ID.');
+            $table->string('id')
+                ->comment('Employee position ID.');
+
             $table->primary('id');
 
             // Message status data
-            $table->string('name')->comment('Position name.');
-            $table->string('parent_id')->nullable()->comment('Position parent.');
+            $table->string('name')
+                ->comment('Position name.');
 
-            // Foreign Key
-            $table->foreign('parent_id')->references('id')->on('employee_position');
+            $table->foreignIdFor(EmployeePosition::class, 'parent_id')
+                ->nullable()
+                ->references('id')
+                ->on('employee_position')
+                ->comment('Position parent.');
         });
     }
 

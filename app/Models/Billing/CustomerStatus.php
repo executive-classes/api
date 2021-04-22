@@ -7,12 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class CustomerStatus extends Model
 {
     /**
-     * Status
-     */
-
-    public const ACTIVE = 'active';
-
-    /**
      * The table associated with the model.
      *
      * @var string

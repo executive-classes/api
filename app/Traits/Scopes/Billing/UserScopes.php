@@ -1,23 +1,22 @@
 <?php
 
-namespace App\Traits\Models\Billing;
+namespace App\Traits\Scopes\Billing;
 
-use App\Models\Billing\EmployeePosition;
-use App\Models\Billing\UserPrivilege;
+use App\Enums\Billing\EmployeePositionEnum;
 
 trait UserScopes
 {
     public function scopeAdmin($query)
     {
         return $query->whereHas('employee', function ($q) {
-            $q->where('employee_position_id', EmployeePosition::ADMINISTRATOR);
+            $q->where('employee_position_id', EmployeePositionEnum::ADMINISTRATOR);
         });
     }
 
     public function scopeDev($query)
     {
         return $query->whereHas('employee', function ($q) {
-            $q->where('employee_position_id', EmployeePosition::DEVELOPER);
+            $q->where('employee_position_id', EmployeePositionEnum::DEVELOPER);
         });
     }
 }

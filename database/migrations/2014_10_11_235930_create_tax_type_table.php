@@ -15,12 +15,18 @@ class CreateTaxTypeTable extends Migration
     {
         Schema::create('tax_type', function (Blueprint $table) {
             // PK
-            $table->string('id')->comment('Tax type ID.');
+            $table->string('id')
+                ->comment('Tax type ID.');
+
             $table->primary('id');
 
             // Tax type data
-            $table->string('name')->comment('Tax type name.');
-            $table->string('pattern')->comment('Tax tpye pattern.');
+            $table->string('name')
+                ->comment('Tax type name.');
+                
+            $table->string('pattern')
+                ->nullable()
+                    ->comment('Tax type pattern.');
 
         });
     }

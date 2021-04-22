@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\Billing;
 
+use App\Enums\Billing\PaymentMethodEnum;
 use App\Models\Billing\PaymentMethod;
 use Illuminate\Database\Seeder;
 
@@ -14,11 +15,11 @@ class PaymentMethodSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(PaymentMethod::CREDIT_CARD, 'Cartão de Crédito', 'Payments made with Credit Card', '03');
-        $this->create(PaymentMethod::BOLETO, 'Boleto Bancário', 'Payments made with Boleto', '15');
-        $this->create(PaymentMethod::DEPOSIT, 'Depósito Bancário', 'Payments made with a bank deposit', '16');
-        $this->create(PaymentMethod::PIX, 'PIX', 'Payments made with brazillian pix', '17');
-        $this->create(PaymentMethod::TRANSFER, 'Transferência Bancária', 'Payments made with bank transfer', '18');
+        $this->create(PaymentMethodEnum::CREDIT_CARD, 'Cartão de Crédito', 'Payments made with Credit Card', '03');
+        $this->create(PaymentMethodEnum::BANK_SLIP, 'Boleto Bancário', 'Payments made with bank split', '15');
+        $this->create(PaymentMethodEnum::DEPOSIT, 'Depósito Bancário', 'Payments made with a bank deposit', '16');
+        $this->create(PaymentMethodEnum::PIX, 'PIX', 'Payments made with brazillian pix', '17');
+        $this->create(PaymentMethodEnum::TRANSFER, 'Transferência Bancária', 'Payments made with bank transfer', '18');
     }
 
     /**

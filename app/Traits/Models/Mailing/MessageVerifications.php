@@ -2,7 +2,7 @@
 
 namespace App\Traits\Models\Mailing;
 
-use App\Models\Mailing\MessageStatus;
+use App\Enums\Mailing\MessageStatusEnum;
 use Carbon\Carbon;
 
 trait MessageVerifications
@@ -24,7 +24,7 @@ trait MessageVerifications
      */
     public function wasSent()
     {
-        return $this->message_status_id === MessageStatus::SENT;
+        return $this->message_status_id === MessageStatusEnum::SENT;
     }
 
     /**
@@ -34,7 +34,7 @@ trait MessageVerifications
      */
     public function isScheduled()
     {
-        return $this->message_status_id === MessageStatus::SCHEDULED;
+        return $this->message_status_id === MessageStatusEnum::SCHEDULED;
     }
 
     /**
@@ -44,7 +44,7 @@ trait MessageVerifications
      */
     public function wasCanceled()
     {
-        return $this->message_status_id === MessageStatus::CANCELED;
+        return $this->message_status_id === MessageStatusEnum::CANCELED;
     }
 
     /**
@@ -54,7 +54,7 @@ trait MessageVerifications
      */
     public function isReadyForSent()
     {
-        return $this->message_status_id === MessageStatus::SCHEDULED
+        return $this->message_status_id === MessageStatusEnum::SCHEDULED
             && $this->should_proccess_at <= Carbon::now()->toDateTimeString();
     }
 }

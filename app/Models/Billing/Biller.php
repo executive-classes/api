@@ -33,9 +33,7 @@ class Biller extends Model
         'created_at',
         'updated_at',
         'inactive_at',
-        'reactive_at',
-        'credit_card_id',
-        'bank_id'
+        'reactive_at'
     ];
 
     /**
@@ -96,26 +94,6 @@ class Biller extends Model
     public function interval()
     {
         return $this->belongsTo(PaymentInterval::class, 'payment_interval_id');
-    }
-
-    /**
-     * Credit Card relation.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function creditCard()
-    {
-        return $this->belongsTo(CreditCard::class, 'credit_card_id');
-    }
-
-    /**
-     * Bank relation.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function bank()
-    {
-        return $this->belongsTo(Bank::class, 'bank_id');
     }
 
     /**

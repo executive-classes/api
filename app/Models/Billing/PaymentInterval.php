@@ -7,17 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class PaymentInterval extends Model
 {
     /**
-     * Intervals
-     */
-
-    public const MENSAL = 1;
-    public const BIMESTRAL = 2;
-    public const TRIMESTRAL = 3;
-    public const SEMESTRAL = 6;
-    public const ANUAL = 12;
-    public const BIANUAL = 24;
-
-    /**
      * The table associated with the model.
      *
      * @var string
@@ -31,20 +20,6 @@ class PaymentInterval extends Model
      */
     protected $primaryKey = 'id';
 
-    /**
-     * Indicates if the model's ID is auto-incrementing.
-     *
-     * @var bool
-     */
-    public $incrementing = false;
-
-    /**
-     * The data type of the auto-incrementing ID.
-     *
-     * @var string
-     */
-    protected $keyType = 'int';
-    
     /**
      * Indicates if the model should be timestamped.
      *

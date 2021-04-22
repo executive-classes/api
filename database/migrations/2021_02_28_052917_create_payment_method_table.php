@@ -15,13 +15,20 @@ class CreatePaymentMethodTable extends Migration
     {
         Schema::create('payment_method', function (Blueprint $table) {
             // PK
-            $table->string('id')->comment('Payment Method id.');
+            $table->string('id')
+                ->comment('Payment Method id.');
+
             $table->primary('id');
 
             // Message status data
-            $table->string('name')->comment('Payment Method name.');
-            $table->string('description')->comment('Payment Method description.');
-            $table->string('invoice_code')->comment('Code of the payment method in the brazillian invoice.');
+            $table->string('name')
+                ->comment('Payment Method name.');
+
+            $table->string('description')
+                ->comment('Payment Method description.');
+
+            $table->string('invoice_code')
+                ->comment('Code of the payment method in the brazillian invoice.');
         });
     }
 

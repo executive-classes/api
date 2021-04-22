@@ -2,7 +2,9 @@
 
 namespace Database\Factories\Billing;
 
+use App\Models\Billing\Collection;
 use App\Models\Billing\CollectionItem;
+use App\Models\Billing\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CollectionItemFactory extends Factory
@@ -22,7 +24,9 @@ class CollectionItemFactory extends Factory
     public function definition()
     {
         return [
-            'value' => $this->faker->randomFloat(2, 0, 10000)
+            'collection_id' => Collection::factory(),
+            'student_id' => Student::factory(),
+            'amount' => $this->faker->randomFloat(2, 0, 10000)
         ];
     }
 }

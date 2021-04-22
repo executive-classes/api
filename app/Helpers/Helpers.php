@@ -30,6 +30,12 @@ if (!function_exists('isLocal')) {
     }
 }
 
+if (!function_exists('timezone')) {
+    function timezone(): string {
+        return config('app.timezone');
+    }
+}
+
 /**
  * Database dump helpers
  */
@@ -173,5 +179,15 @@ if (!function_exists('getYear')) {
 if (!function_exists('getMonth')) {
     function getMonth(string $dateTime = null, string $format = 'm'): string {
         return format_date($dateTime, $format);
+    }
+}
+
+/**
+ * String Helpers
+ */
+
+if (!function_exists('underlineToCamelCase')) {
+    function underlineToCamelCase(string $string): string {
+        /** @todo Underline to Camel Case function */
     }
 }

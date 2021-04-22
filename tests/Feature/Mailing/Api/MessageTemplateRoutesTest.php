@@ -5,15 +5,21 @@ namespace Tests\Feature\Mailing\Api;
 use App\Models\Billing\User;
 use App\Models\Mailing\MessageFooter;
 use App\Models\Mailing\MessageHeader;
-use App\Models\Mailing\MessageTemplate;
 use App\Models\Mailing\MessageType;
-use App\Traits\Tests\Mailing\MessageTemplateMaker;
+use App\Traits\Providers\Mailing\MessageTemplateProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class MessageTemplateRoutesTest extends TestCase
 {
-    use RefreshDatabase, MessageTemplateMaker;
+    use RefreshDatabase, MessageTemplateProvider;
+
+    /**
+     * Indicates that the database should seed.
+     *
+     * @var bool
+     */
+    protected $seed = true;
 
     /**
      * Test Set Up.
@@ -23,9 +29,8 @@ class MessageTemplateRoutesTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->seed();
         
-        User::dev()->first()->login();
+        User::where('email', config('test.user.email'))->first()->login();
     }
 
     /**
@@ -35,6 +40,8 @@ class MessageTemplateRoutesTest extends TestCase
      */
     public function test_message_template_list_route_returns_a_list()
     {
+        $this->makeMultipleMessageTemplates(5);
+
         $response = $this->getJson('/api/messages_templates');
 
         $response->assertOk();
@@ -43,17 +50,21 @@ class MessageTemplateRoutesTest extends TestCase
             'data'
         ]);
         $response->assertJsonPath('status', true);
-        $response->assertJsonCount(1, 'data');
+        $response->assertJsonCount(5, 'data');
     }
 
     /**
      * Test the return of the template show route.
      *
+     * @dataProvider getMessageTemplate
+     * 
      * @return void
      */
-    public function test_message_template_show_route_returns_a_template()
+    public function test_message_template_show_route_returns_a_template(callable $provider)
     {
-        $response = $this->getJson('/api/messages_templates/test');
+        [$template] = $provider();
+
+        $response = $this->getJson("/api/messages_templates/{$template->id}");
 
         $response->assertOk();
         $response->assertJsonStructure([
@@ -61,7 +72,7 @@ class MessageTemplateRoutesTest extends TestCase
             'data'
         ]);
         $response->assertJsonPath('status', true);
-        $response->assertJsonPath('data.id', 'test');
+        $response->assertJsonPath('data.id', $template->id);
     }
 
     /**
@@ -76,9 +87,9 @@ class MessageTemplateRoutesTest extends TestCase
             'description' => 'test',
             'subject' => 'test',
             'content' => 'test',
-            'message_type_id' => MessageType::first()->id,
-            'message_header_id' => MessageHeader::first()->id,
-            'message_footer_id' => MessageFooter::first()->id,
+            'message_type_id' => MessageType::inRandomOrder()->first()->id,
+            'message_header_id' => MessageHeader::factory()->create()->id,
+            'message_footer_id' => MessageFooter::factory()->create()->id,
         ];
         
         $response = $this->postJson('/api/messages_templates', $data);
@@ -95,15 +106,19 @@ class MessageTemplateRoutesTest extends TestCase
     /**
      * Test the return of the template update route.
      *
+     * @dataProvider getMessageTemplate
+     *
      * @return void
      */
-    public function test_message_template_update_route_returns_the_updated_template()
+    public function test_message_template_update_route_returns_the_updated_template(callable $provider)
     {
+        [$template] = $provider();
+
         $data = [
             'description' => 'newTest',
         ];
         
-        $response = $this->putJson('/api/messages_templates/test', $data);
+        $response = $this->putJson("/api/messages_templates/{$template->id}", $data);
 
         $response->assertOk();
         $response->assertJsonStructure([
@@ -117,11 +132,14 @@ class MessageTemplateRoutesTest extends TestCase
     /**
      * Test the return of the template delete route.
      *
+     * @dataProvider getMessageTemplate
+     *
      * @return void
      */
-    public function test_message_template_delete_route_returns_a_confirmation()
+    public function test_message_template_delete_route_returns_a_confirmation(callable $provider)
     {
-        $template = $this->createTemplate();
+        [$template] = $provider();
+
         $response = $this->deleteJson('/api/messages_templates/' . $template->id);
 
         $response->assertNoContent();

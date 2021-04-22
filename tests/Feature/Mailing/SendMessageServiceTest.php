@@ -5,16 +5,24 @@ namespace Tests\Feature\Mailing;
 use App\Exceptions\Mailing\MessageException;
 use App\Mail\Messenger;
 use App\Models\Mailing\Message;
-use App\Models\Mailing\MessageStatus;
+use App\Enums\Mailing\MessageStatusEnum;
 use App\Repositories\Mailing\MessageRepository;
 use App\Services\Mailing\SendMessageService;
-use App\Traits\Tests\Mailing\MessageMaker;
+use App\Traits\Providers\Mailing\MessageProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class SendMessageServiceTest extends TestCase
 {
-    use RefreshDatabase, MessageMaker;
+    use RefreshDatabase, WithFaker, MessageProvider;
+
+    /**
+     * Indicates that the database should seed.
+     *
+     * @var bool
+     */
+    protected $seed = true;
 
     /**
      * The Message Repository.
@@ -45,7 +53,6 @@ class SendMessageServiceTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->seed();
         
         $this->messageRepository = new MessageRepository(new Message());
         $this->messenger = new Messenger();
@@ -61,8 +68,10 @@ class SendMessageServiceTest extends TestCase
      * @return void
      * @throws MessageException
      */
-    public function test_can_only_sent_valid_messages(Message $message)
+    public function test_can_only_sent_valid_messages(callable $provider)
     {
+        [$message] = $provider();
+
         if (!$message->isReadyForSent()) {
             $this->expectException(MessageException::class);
             $this->expectExceptionMessage(__('mailing.message.fail.send', ['id' => $message->id]));
@@ -77,7 +86,7 @@ class SendMessageServiceTest extends TestCase
         $this->sendMessageService->sendMessage($message);
 
         $message->refresh();
-        $this->assertEquals(MessageStatus::SENT, $message->message_status_id);
+        $this->assertEquals(MessageStatusEnum::SENT, $message->message_status_id);
         $this->assertNotNull($message->sent_at);
     }
 
@@ -88,7 +97,7 @@ class SendMessageServiceTest extends TestCase
      */
     public function test_message_template_can_be_render()
     {
-        $message = $this->makeScheduledMessageWithTemplate();
+        $message = $this->makeCustomMessage(MessageStatusEnum::SCHEDULED(), $this->makeContentData(false, true));
 
         $this->sendMessageService->applyTemplate($message);
         $message->refresh();
@@ -107,7 +116,7 @@ class SendMessageServiceTest extends TestCase
      */
     public function test_template_rendering_do_not_override_default_content()
     {
-        $message = $this->makeScheduledMessageWithTemplateAndContent();
+        $message = $this->makeCustomMessage(MessageStatusEnum::SCHEDULED(), $this->makeContentData(true, true));
         $old_message = $message;
 
         $this->sendMessageService->applyTemplate($message);

@@ -4,13 +4,24 @@ namespace Tests\Feature\Mailing\Api;
 
 use App\Models\Billing\User;
 use App\Models\Mailing\Message;
+use App\Models\Mailing\MessageTemplate;
+use App\Traits\Providers\Mailing\MessageProvider;
+use App\Traits\Providers\Mailing\MessageTemplateProvider;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class MessageRoutesTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, WithFaker, MessageProvider, MessageTemplateProvider;
+
+    /**
+     * Indicates that the database should seed.
+     *
+     * @var bool
+     */
+    protected $seed = true;
 
     /**
      * Test Set Up.
@@ -20,9 +31,8 @@ class MessageRoutesTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->seed();
         
-        User::dev()->first()->login();
+        User::where('email', config('test.user.email'))->first()->login();
     }
     
     /**
@@ -32,6 +42,8 @@ class MessageRoutesTest extends TestCase
      */
     public function test_message_list_route_returns_message_list()
     {
+        $this->makeMultipleMessages(5);
+
         $response = $this->getJson('/api/messages');
 
         $response->assertOk();
@@ -40,17 +52,20 @@ class MessageRoutesTest extends TestCase
             'data'
         ]);
         $response->assertJsonPath('status', true);
-        $response->assertJsonCount(1, 'data');
+        $response->assertJsonCount(5, 'data');
     }
 
     /**
      * Test the return of the message show route.
      *
+     * @dataProvider getMessage
+     * 
      * @return void
      */
-    public function test_message_show_route_returns_a_message()
+    public function test_message_show_route_returns_a_message(callable $provider)
     {
-        $message = Message::first();
+        [$message] = $provider();
+
         $response = $this->getJson('/api/messages/' . $message->id);
 
         $response->assertOk();
@@ -75,7 +90,7 @@ class MessageRoutesTest extends TestCase
             'to' => 'example@test.com',
             'subject' => null,
             'content' => null,
-            'message_template_id' => 'test',
+            'message_template_id' => MessageTemplate::factory()->create()->id,
             'params' => json_encode(['testMessage' => 'Hello World'])
         ];
         
@@ -93,12 +108,14 @@ class MessageRoutesTest extends TestCase
     /**
      * Test the return of the message cancel route.
      *
+     * @dataProvider getMessage
+     * 
      * @return void
      */
-    public function test_message_cancel_route_returns_a_confirmation()
+    public function test_message_cancel_route_returns_a_confirmation(callable $provider)
     {
-        $message = Message::first();
-        $message->save();
+        [$message] = $provider();
+
         $response = $this->patchJson('/api/messages/' . $message->id . '/cancel');
 
         $response->assertNoContent();
@@ -107,12 +124,14 @@ class MessageRoutesTest extends TestCase
     /**
      * Test the return of the message delete route.
      *
+     * @dataProvider getMessage
+     * 
      * @return void
      */
-    public function test_message_delete_route_returns_a_confirmation()
+    public function test_message_delete_route_returns_a_confirmation(callable $provider)
     {
-        $message = Message::first();
-        $message->save();
+        [$message] = $provider();
+
         $response = $this->deleteJson('/api/messages/' . $message->id);
 
         $response->assertNoContent();

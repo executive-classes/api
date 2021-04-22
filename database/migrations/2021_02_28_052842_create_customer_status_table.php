@@ -15,12 +15,17 @@ class CreateCustomerStatusTable extends Migration
     {
         Schema::create('customer_status', function (Blueprint $table) {
             // PK
-            $table->string('id')->comment('Customer status id.');
+            $table->string('id')
+                ->comment('Customer status id.');
+                
             $table->primary('id');
 
             // Message status data
-            $table->string('name')->comment('Customer status name.');
-            $table->string('description')->comment('Customer status description.');
+            $table->string('name')
+                ->comment('Customer status name.');
+
+            $table->string('description')
+                ->comment('Customer status description.');
         });
     }
 

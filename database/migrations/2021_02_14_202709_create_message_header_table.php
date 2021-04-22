@@ -16,21 +16,31 @@ class CreateMessageHeaderTable extends Migration
         // Creating table.
         Schema::create('message_header', function (Blueprint $table) {
             // PK
-            $table->string('id')->comment('Header ID.');
+            $table->string('id')
+                ->comment('Header ID.');
             $table->primary('id');
 
             // Timestamp
             $table->timestamps();
             
             // Message header data
-            $table->string('description')->comment('Header description');
-            $table->longText('content')->comment('Message header content, in HTML.');
+            $table->string('description')
+                ->comment('Header description');
+
+            $table->longText('content')
+                ->comment('Message header content, in HTML.');
         });
 
         // Adding columns comments.
         Schema::table('message_header', function (Blueprint $table) {
-            $table->timestamp('created_at')->comment('Message template creation date.')->change();
-            $table->timestamp('updated_at')->comment('Message template update date')->change();
+            // Timestamps comments
+            $table->timestamp('created_at')
+                ->comment('Message template creation date.')
+                ->change();
+
+            $table->timestamp('updated_at')
+                ->comment('Message template update date.')
+                ->change();
         });
     }
 

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\Billing;
 
+use App\Enums\Billing\BillerStatusEnum;
 use App\Models\Billing\BillerStatus;
 use Illuminate\Database\Seeder;
 
@@ -14,7 +15,7 @@ class BillerStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(BillerStatus::ACTIVE, 'Ativo', 'Indicates that a biller is active and realize its payments.');
+        $this->create(BillerStatusEnum::ACTIVE, 'Ativo', 'Indicates that a biller is active and realize its payments.');
     }
 
     /**

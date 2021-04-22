@@ -2,15 +2,23 @@
 
 namespace Tests\Feature\Authentication\Api;
 
-use App\Models\Billing\TaxType;
 use App\Models\Billing\User;
-use App\Traits\Tests\Authentication\AuthenticationMaker;
+use App\Traits\Providers\Authentication\AuthenticationProvider;
+use App\Traits\Providers\Billing\UserProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class AutheticationRoutesTest extends TestCase
 {
-    use RefreshDatabase, AuthenticationMaker;
+    use RefreshDatabase, WithFaker, AuthenticationProvider, UserProvider;
+
+    /**
+     * Indicates that the database should seed.
+     *
+     * @var bool
+     */
+    protected $seed = true;
 
     /**
      * The User.
@@ -27,9 +35,8 @@ class AutheticationRoutesTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->seed();
-        
-        $this->user = User::dev()->first();
+
+        $this->user = User::where('email', config('test.user.email'))->first();
     }
 
     /**
@@ -71,14 +78,16 @@ class AutheticationRoutesTest extends TestCase
 
     /**
      * Test the return of the cross auth login.
+     * 
+     * @dataProvider getUser
      *
      * @return void
      */
-    public function test_cross_auth_route_returns_token()
+    public function test_cross_auth_route_returns_token(callable $provider)
     {
-        $this->loginByRoute($this->user);
+        [$user] = $provider();
 
-        $user = User::where('id', '<>', $this->user->id)->first();
+        $this->loginByRoute($this->user);
 
         $response = $this->postJson('/api/login/cross', [
             'user_id' => $user->id,
@@ -97,18 +106,16 @@ class AutheticationRoutesTest extends TestCase
 
     /**
      * Test the return of a unauthorized call to cross auth login route.
-     *
+     * 
+     * @dataProvider getInvalidCrossAuthUsers
+     * 
      * @return void
      */
-    public function test_error_for_unauthorized_cross_auth_attempt()
+    public function test_error_for_unauthorized_cross_auth_attempt(callable $provider)
     {
-        $user = User::factory()
-            ->for(TaxType::find('cpf'), 'taxType')
-            ->create();
+        [$user, $cross_user] = $provider();
         
         $this->loginByRoute($user);
-
-        $cross_user = User::where('id', '<>', $this->user->id)->first();
 
         $response = $this->postJson('/api/login/cross', [
             'user_id' => $cross_user->id,

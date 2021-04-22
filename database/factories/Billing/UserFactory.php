@@ -2,16 +2,15 @@
 
 namespace Database\Factories\Billing;
 
-use App\Models\Billing\TaxType;
+use App\Enums\Billing\TaxTypeEnum;
+use App\Enums\System\SystemLanguageEnum;
 use App\Models\Billing\User;
+use App\Models\System\SystemLanguage;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class UserFactory extends Factory
 {
-    public const PASSWORD = 'Teste123@';
-
     /**
      * The name of the factory's corresponding model.
      *
@@ -30,9 +29,68 @@ class UserFactory extends Factory
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
-            'password' => Hash::make(self::PASSWORD),
-            'tax_type_id' => TaxType::CPF,
-            'tax_code' => $this->faker->cpf
+            'password' => Hash::make(config('test.user.password')),
+            'tax_type_id' => TaxTypeEnum::CPF,
+            'tax_code' => $this->faker->cpf,
+            'system_language_id' => SystemLanguage::inRandomOrder()->first()
         ];
+    }
+
+    /**
+     * Indicate that the user has a cpf.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function cpf()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'tax_type_id' => TaxTypeEnum::CPF,
+                'tax_code' => $this->faker->cpf
+            ];
+        });
+    }
+
+    /**
+     * Indicate that the user has a rg.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function rg()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'tax_type_id' => TaxTypeEnum::RG,
+                'tax_code' => $this->faker->randomNumber(10)
+            ];
+        });
+    }
+
+    /**
+     * Indicate that the user use the system in english.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function en()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'system_language_id' => SystemLanguageEnum::EN
+            ];
+        });
+    }
+
+    /**
+     * Indicate that the user use the system in portuguese (brazillian).
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function pt_BR()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'system_language_id' => SystemLanguageEnum::PT_BR
+            ];
+        });
     }
 }

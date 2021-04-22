@@ -1,8 +1,9 @@
 <?php
 
-namespace Database\Seeders\Billing;
+namespace Database\Seeders\System;
 
-use App\Models\Billing\SystemLanguage;
+use App\Enums\System\SystemLanguageEnum;
+use App\Models\System\SystemLanguage;
 use Illuminate\Database\Seeder;
 
 class SystemLanguageSeeder extends Seeder
@@ -14,8 +15,8 @@ class SystemLanguageSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(SystemLanguage::EN, 'Inglês');
-        $this->create(SystemLanguage::PT_BR, 'Português (Brasil)');
+        $this->create(SystemLanguageEnum::EN, 'Inglês');
+        $this->create(SystemLanguageEnum::PT_BR, 'Português (Brasil)');
     }
 
     /**

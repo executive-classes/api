@@ -1,17 +1,11 @@
 <?php
-namespace App\Models\Billing;
+namespace App\Models\System;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
 
 class SystemLanguage extends Model
 {
-    /**
-     * Languages
-     */
-    public const EN = 'en';
-    public const PT_BR = 'pt_BR';
-
     /**
      * The table associated with the model.
      *

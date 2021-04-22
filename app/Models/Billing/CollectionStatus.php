@@ -7,16 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class CollectionStatus extends Model
 {
     /**
-     * Status
-     */
-
-    public const PAYED = 'payed';
-    public const SCHEDULED = 'scheduled';
-    public const POSTPONED = 'postponed';
-    public const CANCELED = 'canceled';
-    public const ERROR = 'error';
-    
-    /**
      * The table associated with the model.
      *
      * @var string

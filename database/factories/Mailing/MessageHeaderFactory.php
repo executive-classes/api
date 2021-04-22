@@ -22,7 +22,7 @@ class MessageHeaderFactory extends Factory
     public function definition()
     {
         return [
-            'id' => 'test',
+            'id' => $this->faker->unique()->word(),
             'description' => 'Test Header',
             'content' => '<h1>Titulo</h1>'
         ];

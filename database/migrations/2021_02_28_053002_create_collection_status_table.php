@@ -15,12 +15,17 @@ class CreateCollectionStatusTable extends Migration
     {
         Schema::create('collection_status', function (Blueprint $table) {
             // PK
-            $table->string('id')->comment('Collection status id.');
+            $table->string('id')
+                ->comment('Collection status id.');
+
             $table->primary('id');
 
             // Message status data
-            $table->string('name')->comment('Collection status name.');
-            $table->string('description')->comment('Collection status description.');
+            $table->string('name')
+                ->comment('Collection status name.');
+
+            $table->string('description')
+                ->comment('Collection status description.');
         });
     }
 

@@ -7,13 +7,20 @@ use App\Models\Mailing\MessageHeader;
 use App\Models\Mailing\MessageTemplate;
 use App\Models\Mailing\MessageType;
 use App\Repositories\Mailing\MessageTemplateRepository;
-use App\Traits\Tests\Mailing\MessageTemplateMaker;
+use App\Traits\Providers\Mailing\MessageTemplateProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class MessageTemplateTest extends TestCase
 {
-    use RefreshDatabase, MessageTemplateMaker;
+    use RefreshDatabase, MessageTemplateProvider;
+
+    /**
+     * Indicates that the database should seed.
+     *
+     * @var bool
+     */
+    protected $seed = true;
 
     /**
      * Test Set Up.
@@ -23,7 +30,6 @@ class MessageTemplateTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->seed();
 
         $this->messageTemplateRepository = new MessageTemplateRepository(new MessageTemplate());
     }
@@ -40,9 +46,9 @@ class MessageTemplateTest extends TestCase
             'description' => 'test',
             'subject' => 'test',
             'content' => 'test',
-            'message_type_id' => MessageType::first()->id,
-            'message_header_id' => MessageHeader::first()->id,
-            'message_footer_id' => MessageFooter::first()->id,
+            'message_type_id' => MessageType::inRandomOrder()->first()->id,
+            'message_header_id' => MessageHeader::factory()->create()->id,
+            'message_footer_id' => MessageFooter::factory()->create()->id,
         ];
 
         $result = $this->messageTemplateRepository->create($data);
@@ -57,21 +63,24 @@ class MessageTemplateTest extends TestCase
     /**
      * Test if a template can be updated in the database.
      *
+     * @dataProvider getMessageTemplate
+     * 
      * @return void
      */
-    public function test_template_can_be_updated()
+    public function test_template_can_be_updated(callable $provider)
     {
-        $this->createTemplate();
+        [$template] = $provider();
+
         $this->assertDatabaseHas('message_template', [
-            'id' => 'newTest'
+            'id' => $template->id
         ]);
 
         $data = [
             'description' => 'updatedtest'
         ];
 
-        $result = $this->messageTemplateRepository->update('newTest', $data);
-        $template = MessageTemplate::find('newTest');
+        $result = $this->messageTemplateRepository->update($template->id, $data);
+        $template->refresh();
 
         $this->assertInstanceOf(MessageTemplate::class, $result);
         $this->assertEquals('updatedtest', $template->description);
@@ -80,19 +89,22 @@ class MessageTemplateTest extends TestCase
     /**
      * Test if a template can be deleted in the database.
      *
+     * @dataProvider getMessageTemplate
+     *
      * @return void
      */
-    public function test_template_can_be_deleted()
+    public function test_template_can_be_deleted(callable $provider)
     {
-        $this->createTemplate();
+        [$template] = $provider();
+
         $this->assertDatabaseHas('message_template', [
-            'id' => 'newTest'
+            'id' => $template->id
         ]);
 
-        $result = $this->messageTemplateRepository->delete('newTest');
+        $result = $this->messageTemplateRepository->delete($template->id);
 
         $this->assertDatabaseMissing('message_template', [
-            'id' => 'newTest'
+            'id' => $template->id
         ]);
         $this->assertIsInt($result);
         $this->assertEquals(1, $result);

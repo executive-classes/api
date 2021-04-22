@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\Mailing;
 
+use App\Enums\Mailing\MessageTypeEnum;
 use App\Models\Mailing\MessageType;
 use Illuminate\Database\Seeder;
 
@@ -14,8 +15,8 @@ class MessageTypeSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(MessageType::BILLING, 'Cobrança');
-        $this->create(MessageType::WARNING, 'Aviso');
+        $this->create(MessageTypeEnum::BILLING, 'Cobrança');
+        $this->create(MessageTypeEnum::WARNING, 'Aviso');
     }
 
     /**

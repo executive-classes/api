@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Billing\Collection;
+use App\Models\Billing\Student;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,20 +17,37 @@ class CreateCollectionItemTable extends Migration
     {
         Schema::create('collection_item', function (Blueprint $table) {
             // PK
-            $table->id()->comment('Collection Item ID.');
+            $table->id()
+                ->comment('Collection Item ID.');
 
             // Timestamps
-            $table->timestamp('created_at')->nullable()->comment('Collection item creation date.');
-            $table->timestamp('updated_at')->nullable()->comment('Collection item last update date.');
+            $table->timestamps();
 
             // Item data
-            $table->unsignedBigInteger('collection_id')->comment('Collection of this item.');
-            $table->unsignedBigInteger('student_id')->comment('Student of this item.');
-            $table->double('value')->comment('Value of this item.');
+            $table->foreignIdFor(Collection::class, 'collection_id')
+                ->references('id')
+                ->on('collection')
+                ->comment('Collection of this item.');
 
-            // Foreign Key
-            $table->foreign('collection_id')->references('id')->on('collection');
-            $table->foreign('student_id')->references('id')->on('student');
+            $table->foreignIdFor(Student::class, 'student_id')
+                ->references('id')
+                ->on('student')
+                ->comment('Student of this item.');
+
+            $table->double('amount')
+                ->comment('Price of this item.');
+        });
+
+        // Adding columns comments.
+        Schema::table('collection_item', function (Blueprint $table) {
+            // Timestamps comments
+            $table->timestamp('created_at')
+                ->comment('Collection item creation date.')
+                ->change();
+
+            $table->timestamp('updated_at')
+                ->comment('Collection item last update date.')
+                ->change();
         });
     }
 

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Billing\Customer;
+use App\Models\Billing\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,13 +17,13 @@ class CreateCustomerXUserTable extends Migration
     {
         Schema::create('customer_x_user', function (Blueprint $table) {
             // PK
-            $table->unsignedBigInteger('customer_id')->comment('Customer ID.');
-            $table->unsignedBigInteger('user_id')->comment('User ID.');
+            $table->foreignIdFor(Customer::class, 'customer_id')
+                ->comment('Customer ID.');
+                
+            $table->foreignIdFor(User::class, 'user_id')
+                ->comment('User ID.');
+                
             $table->primary(['customer_id', 'user_id']);
-
-            // Foreign key
-            $table->foreign('customer_id')->references('id')->on('customer');
-            $table->foreign('user_id')->references('id')->on('user');
         });
     }
 

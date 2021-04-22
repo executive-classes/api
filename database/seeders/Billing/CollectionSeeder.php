@@ -14,6 +14,6 @@ class CollectionSeeder extends Seeder
      */
     public function run()
     {
-        Collection::factory(20)->create();
+        Collection::factory()->create();
     }
 }
