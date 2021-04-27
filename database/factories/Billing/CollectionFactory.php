@@ -3,8 +3,10 @@
 namespace Database\Factories\Billing;
 
 use App\Enums\Billing\CollectionStatusEnum;
+use App\Enums\Billing\PaymentMethodEnum;
 use App\Models\Billing\Biller;
 use App\Models\Billing\Collection;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CollectionFactory extends Factory
@@ -25,6 +27,7 @@ class CollectionFactory extends Factory
     {
         $biller = $this->faker->randomElement(Biller::all());
         return [
+            'expire_at' => Carbon::now()->addWeek(1)->toDateTimeString(),
             'biller_id' => Biller::factory(),
             'amount' => $this->faker->randomFloat(2, 0, 10000),
             'description' => $this->faker->text(255),
@@ -48,6 +51,20 @@ class CollectionFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'collection_status_id' => CollectionStatusEnum::PAYED,
+            ];
+        });
+    }
+
+    /**
+     * Indicate that the collection was charged.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function charged()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'collection_status_id' => CollectionStatusEnum::CHARGED,
             ];
         });
     }
@@ -104,6 +121,77 @@ class CollectionFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'collection_status_id' => CollectionStatusEnum::ERROR,
+            ];
+        });
+    }
+
+    /**
+     * Indicate that the collection is payed with credit card.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function credit_card(string $token_id = null)
+    {
+        return $this->state(function (array $attributes) use ($token_id) {
+            return [
+                'payment_method_id' => PaymentMethodEnum::CREDIT_CARD,
+                'token_id' => $token_id ?? config('test.paygo.token')
+            ];
+        });
+    }
+
+    /**
+     * Indicate that the collection is payed with bank slip.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function bank_slip()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'payment_method_id' => PaymentMethodEnum::BANK_SLIP,
+            ];
+        });
+    }
+
+    /**
+     * Indicate that the collection is payed with brazillian pix.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function pix()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'payment_method_id' => PaymentMethodEnum::PIX,
+            ];
+        });
+    }
+
+    /**
+     * Indicate that the collection is payed with bank deposit.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function deposit()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'payment_method_id' => PaymentMethodEnum::DEPOSIT,
+            ];
+        });
+    }
+
+    /**
+     * Indicate that the collection is payed with eletronic transfer.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function transfer()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'payment_method_id' => PaymentMethodEnum::TRANSFER,
             ];
         });
     }

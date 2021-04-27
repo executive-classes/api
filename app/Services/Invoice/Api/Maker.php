@@ -445,7 +445,7 @@ class Maker extends Api
         $std = new stdClass();
 
         // Payment Method Indicator
-        $std->indPag = '';  // @todo A vista ou a prazo
+        $std->indPag = '';  /** @todo A vista ou a prazo */
         
         // Payment Amount
         $std->vPag = $collection->amount;

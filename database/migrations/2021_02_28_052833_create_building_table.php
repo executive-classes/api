@@ -37,7 +37,6 @@ class CreateBuildingTable extends Migration
                 ->comment('Address complement.');
 
             $table->string('district')
-                ->nullable()
                 ->comment('Address district.');
 
             $table->string('city')

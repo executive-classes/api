@@ -18,6 +18,9 @@
         <testsuite name="Mailing">
             <directory suffix="Test.php">./tests/Feature/Mailing</directory>
         </testsuite>
+        <testsuite name="PayGo">
+            <directory suffix="Test.php">./tests/Feature/PayGo</directory>
+        </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
         <include>

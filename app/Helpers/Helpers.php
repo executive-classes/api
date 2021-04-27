@@ -187,7 +187,25 @@ if (!function_exists('getMonth')) {
  */
 
 if (!function_exists('underlineToCamelCase')) {
-    function underlineToCamelCase(string $string): string {
-        /** @todo Underline to Camel Case function */
+    function underlineToCamelCase(string $string, bool $capitalizeFirstCharacter = true): string {
+        $result = str_replace(' ', '', ucwords(str_replace('_', ' ', $string)));
+
+        if (!$capitalizeFirstCharacter) {
+            $result[0] = strtolower($result[0]);
+        }
+
+        return $result;
+    }
+}
+
+if (!function_exists('removeByRegex')) {
+    function removeByRegex(string $regex, string $string): string {
+        return preg_replace($regex, '', $string);
+    }
+}
+
+if (!function_exists('removeNonDigit')) {
+    function removeNonDigit(string $string): string {
+        return removeByRegex('/\D/', $string);
     }
 }

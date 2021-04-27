@@ -73,8 +73,8 @@ class Invoice extends Model
      */
     public function getAuthorizedUsers(): LaravelCollection
     {
-        // @todo Pegar usuários do customer
-        // @todo Pegar funcionario administrador
-        // @todo Pegar funcionario financeiro
+        /** @todo Pegar usuários do customer */
+        /** @todo Pegar funcionario administrador */
+        /** @todo Pegar funcionario financeiro */
     }
 }

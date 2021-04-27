@@ -15,10 +15,11 @@ class CollectionStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(CollectionStatusEnum::PAYED, 'Pago', 'Indicates that a collection is payed.');
+        $this->create(CollectionStatusEnum::PAYED, 'Paga', 'Indicates that a collection was payed.');
+        $this->create(CollectionStatusEnum::CHARGED, 'Cobrada', 'Indicates that a collection was charged.');
         $this->create(CollectionStatusEnum::SCHEDULED, 'Agendado', 'Indicates that a collection is scheduled for payment.');
-        $this->create(CollectionStatusEnum::POSTPONED, 'Postergado', 'Indicates that a collection is postponed.');
-        $this->create(CollectionStatusEnum::CANCELED, 'Cancelado', 'Indicates that a collection is canceled.');
+        $this->create(CollectionStatusEnum::POSTPONED, 'Postergado', 'Indicates that a collection was postponed.');
+        $this->create(CollectionStatusEnum::CANCELED, 'Cancelado', 'Indicates that a collection was canceled.');
         $this->create(CollectionStatusEnum::ERROR, 'Erro', 'Indicates that a collection has a error on its processing.');
     }
 

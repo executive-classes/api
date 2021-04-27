@@ -37,25 +37,12 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Billing\StudentStatusSeeder::class,
             \Database\Seeders\Billing\EmployeeStatusSeeder::class,
             \Database\Seeders\Billing\UserSeeder::class,
-            // \Database\Seeders\Billing\CustomerSeeder::class, /** @todo Remove */
-            // \Database\Seeders\Billing\BillerSeeder::class, /** @todo Remove */
-            // \Database\Seeders\Billing\CollectionSeeder::class, /** @todo Remove */
-            // \Database\Seeders\Billing\InvoiceSeeder::class, /** @todo Remove */
-            // \Database\Seeders\Billing\TeacherSeeder::class, /** @todo Remove */
-            // \Database\Seeders\Billing\StudentSeeder::class, /** @todo Remove */
-            // \Database\Seeders\Billing\EmployeeSeeder::class, /** @todo Remove */
-            // \Database\Seeders\Billing\CollectionItemSeeder::class, /** @todo Remove */
-            // \Database\Seeders\Billing\InvoiceItemSeeder::class, /** @todo Remove */
 
             /**
              * Mailing Models Seeders
              */
             \Database\Seeders\Mailing\MessageStatusSeeder::class,
             \Database\Seeders\Mailing\MessageTypeSeeder::class,
-            // \Database\Seeders\Mailing\MessageFooterSeeder::class, /** @todo Remove */
-            // \Database\Seeders\Mailing\MessageHeaderSeeder::class, /** @todo Remove */
-            // \Database\Seeders\Mailing\MessageTemplateSeeder::class, /** @todo Remove */
-            // \Database\Seeders\Mailing\MessageSeeder::class, /** @todo Remove */
 
         ]);
     }

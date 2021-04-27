@@ -25,6 +25,7 @@ class BuildingFactory extends Factory
             'zip_code' => $this->faker->postcode,
             'street' => $this->faker->streetName,
             'number' => $this->faker->buildingNumber,
+            'district' => $this->faker->text(20),
             'city' => $this->faker->city,
             'city_code' => $this->faker->numberBetween(0,9999999),
             'state' => $this->faker->stateAbbr,

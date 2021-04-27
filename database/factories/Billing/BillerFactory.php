@@ -213,11 +213,12 @@ class BillerFactory extends Factory
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    public function credit_card()
+    public function credit_card(string $token_id = null)
     {
-        return $this->state(function (array $attributes) {
+        return $this->state(function (array $attributes) use ($token_id) {
             return [
                 'payment_method_id' => PaymentMethodEnum::CREDIT_CARD,
+                'token_id' => $token_id ?? config('test.paygo.token')
             ];
         });
     }
