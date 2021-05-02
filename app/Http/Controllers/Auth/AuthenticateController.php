@@ -8,6 +8,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Repositories\Billing\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class AuthenticateController extends Controller
 {
@@ -64,7 +65,7 @@ class AuthenticateController extends Controller
     {
         // Log in the logged user in the given user
         $cross_user = $this->userRepository->find($request->user_id);
-        $token = $cross_user->login($request->user()->email, $request->userAgent());
+        $token = $cross_user->crossLogin($request->user(), $request->userAgent());
 
         return $this->okResponse($token);
     }

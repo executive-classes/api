@@ -12,7 +12,11 @@ return [
     */
 
     'user' => [
-        'email' => 'ronaldo.stiene@executiveclasses.com.br',
+        'emails' => [
+            'dev' => 'ronaldo.stiene@executiveclasses.com.br',
+            'adm' => 'jeffrey.pinotti@executiveclasses.com.br',
+            'fin' => 'lilian.berna@executiveclasses.com.br'
+        ],
         'password' => 'Teste123@'
     ],
 

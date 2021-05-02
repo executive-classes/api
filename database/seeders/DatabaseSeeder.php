@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
              * System Models Seeders
              */
 
+            \Database\Seeders\System\SystemAppSeeder::class,
             \Database\Seeders\System\SystemLanguageSeeder::class,
 
             /**

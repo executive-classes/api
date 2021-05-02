@@ -3,7 +3,7 @@
          xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          colors="true"
-         stopOnFailure="true"
+         stopOnFailure="false"
 >
     <testsuites>
         <testsuite name="Unit">
@@ -12,14 +12,8 @@
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
-        <testsuite name="Authentication">
-            <directory suffix="Test.php">./tests/Feature/Authentication</directory>
-        </testsuite>
-        <testsuite name="Mailing">
-            <directory suffix="Test.php">./tests/Feature/Mailing</directory>
-        </testsuite>
-        <testsuite name="PayGo">
-            <directory suffix="Test.php">./tests/Feature/PayGo</directory>
+        <testsuite name="Integration">
+            <directory suffix="Test.php">./tests/Integration</directory>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">

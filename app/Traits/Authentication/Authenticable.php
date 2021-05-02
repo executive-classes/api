@@ -2,6 +2,7 @@
 
 namespace App\Traits\Authentication;
 
+use App\Models\Billing\User;
 use Laravel\Sanctum\Sanctum;
 
 trait Authenticable
@@ -23,7 +24,7 @@ trait Authenticable
             $request_agent = env('APP_NAME');
         }
 
-        $token_name = $request_email . "/" . $request_agent;
+        $token_name = $request_email . "|" . $request_agent;
 
         // Remove the tokens of the same source
         $this->tokens()->where('name', $token_name)->delete();
@@ -40,6 +41,11 @@ trait Authenticable
         $this->changeLanguage();
 
         return $token;
+    }
+
+    public function crossLogin(User $user, string $request_agent = null): \Laravel\Sanctum\NewAccessToken
+    {
+        return $this->login($user->email, $request_agent);
     }
 
     /**

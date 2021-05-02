@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Services\System\BugLogService;
 use App\Traits\ApiResponse;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
@@ -67,7 +68,9 @@ class Handler extends ExceptionHandler
                 : redirect()->guest(route('login'))->withErrors(__('auth.unauthorized'));
             }
         }
-            
+        
+        BugLogService::log($request, $exception);
+        
         return parent::render($request, $exception);
     }
 }

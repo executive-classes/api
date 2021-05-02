@@ -5,6 +5,7 @@ namespace App\Models\Billing;
 use App\Models\System\SystemLanguage;
 use App\Traits\Authentication\Authenticable as CanAuthenticate;
 use App\Traits\Authentication\CanChangeLanguage;
+use App\Traits\Authentication\HasCrossAuth;
 use App\Traits\Models\Billing\HasPrivileges;
 use App\Traits\Models\Billing\HasTax;
 use App\Traits\Scopes\Billing\UserScopes;
@@ -15,7 +16,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticable
 {
-    use UserScopes, HasPrivileges, CanAuthenticate, CanChangeLanguage, HasApiTokens, HasFactory, Notifiable, HasTax;
+    use UserScopes, HasPrivileges, CanAuthenticate, CanChangeLanguage, HasCrossAuth, HasApiTokens, HasFactory, Notifiable, HasTax;
 
     /**
      * The table associated with the model.

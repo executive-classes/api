@@ -24,5 +24,4 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     require("api/mailing/message.php");
     require("api/mailing/message_template.php");
-
 });

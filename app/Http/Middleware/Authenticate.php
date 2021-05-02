@@ -22,7 +22,7 @@ class Authenticate extends Middleware
     {
         $this->authenticate($request, $guards);
 
-        Auth::user()->changeLanguage();
+        $request->user()->changeLanguage();
 
         return $next($request);
     }

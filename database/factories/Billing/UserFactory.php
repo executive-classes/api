@@ -6,6 +6,7 @@ use App\Enums\Billing\TaxTypeEnum;
 use App\Enums\System\SystemLanguageEnum;
 use App\Models\Billing\User;
 use App\Models\System\SystemLanguage;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 
@@ -28,7 +29,7 @@ class UserFactory extends Factory
         return [
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
-            'email_verified_at' => now(),
+            'email_verified_at' => Carbon::now()->toDateTimeString(),
             'password' => Hash::make(config('test.user.password')),
             'tax_type_id' => TaxTypeEnum::CPF,
             'tax_code' => $this->faker->cpf,
