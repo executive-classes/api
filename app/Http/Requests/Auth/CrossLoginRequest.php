@@ -3,20 +3,10 @@
 namespace App\Http\Requests\Auth;
 
 use App\Enums\Billing\UserPrivilegeEnum;
-use App\Http\Requests\ApiRequest;
+use Illuminate\Foundation\Http\FormRequest;
 
-class CrossLoginRequest extends ApiRequest
+class CrossLoginRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return request()->user()->tokenCan(UserPrivilegeEnum::CROSS_AUTH) && parent::authorize();
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,11 +14,9 @@ class CrossLoginRequest extends ApiRequest
      */
     public function rules()
     {
-        $rules = [
+        return [
             'user_id'  => 'required|numeric|exists:user,id',
             'language' => 'sometimes|in:en,pt_BR',
         ];
-
-        return array_merge(parent::rules(), $rules);
     }
 }

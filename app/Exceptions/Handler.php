@@ -3,7 +3,6 @@
 namespace App\Exceptions;
 
 use App\Services\System\BugLogService;
-use App\Traits\ApiResponse;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -11,8 +10,6 @@ use Throwable;
 
 class Handler extends ExceptionHandler
 {
-    use ApiResponse;
-    
     /**
      * A list of the exception types that are not reported.
      *
@@ -58,18 +55,22 @@ class Handler extends ExceptionHandler
         if (isProduction()) {
             if ($exception instanceof AuthenticationException) {
                 return $request->expectsJson()
-                ? $this->unauthorizedResponse(__('auth.unauthenticated'))
-                : redirect()->guest($exception->redirectTo() ?? route('login'));
+                    ? api()->unauthorized(__('auth.unauthenticated'))
+                    : redirect()->guest($exception->redirectTo() ?? route('login'));
             }
             
             if ($exception instanceof AuthorizationException) {
                 return $request->expectsJson()
-                ? $this->forbiddenResponse(__('auth.unauthorized'))
-                : redirect()->guest(route('login'))->withErrors(__('auth.unauthorized'));
+                    ? api()->forbidden(__('auth.unauthorized'))
+                    : redirect()->guest(route('login'))->withErrors(__('auth.unauthorized'));
             }
         }
-        
+
         BugLogService::log($request, $exception);
+
+        if ($exception instanceof ApiException) {
+            return api()->error($exception->getCode(), $exception->getMessage());
+        }
         
         return parent::render($request, $exception);
     }

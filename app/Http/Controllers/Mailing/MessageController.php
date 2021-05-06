@@ -4,12 +4,10 @@ namespace App\Http\Controllers\Mailing;
 
 use App\Exceptions\Mailing\MessageException;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Mailing\Message\MessageCancelRequest;
 use App\Http\Requests\Mailing\Message\MessageCreateRequest;
-use App\Http\Requests\Mailing\Message\MessageDeleteRequest;
-use App\Http\Requests\Mailing\Message\MessageRequest;
 use App\Models\Mailing\Message;
 use App\Repositories\Mailing\MessageRepository;
+use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
@@ -31,25 +29,25 @@ class MessageController extends Controller
     /**
      * List all messages.
      *
-     * @param MessageRequest $request
+     * @param Request $request
      * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
-    public function list(MessageRequest $request)
+    public function list(Request $request)
     {
         $messages = $this->messageRepository->list();
-        return $this->okResponse($messages);
+        return api()->ok($messages);
     }
 
     /**
      * Show a message.
      *
-     * @param MessageRequest $request
+     * @param Request $request
      * @param Message $message
      * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
-    public function show(MessageRequest $request, Message $message)
+    public function show(Request $request, Message $message)
     {
-        return $this->okResponse($message);
+        return api()->ok($message);
     }
 
     /**
@@ -61,17 +59,17 @@ class MessageController extends Controller
     public function create(MessageCreateRequest $request)
     {
         $message = $this->messageRepository->create($request->all());
-        return $this->createdResponse($message);
+        return api()->created($message);
     }
 
     /**
      * Cancel a scheduled message.
      *
-     * @param MessageCancelRequest $request
+     * @param Request $request
      * @param Message $message
      * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
-    public function cancel(MessageCancelRequest $request, Message $message)
+    public function cancel(Request $request, Message $message)
     {
         try {
             $this->messageRepository->cancelScheduledMessage($message);
@@ -79,19 +77,19 @@ class MessageController extends Controller
             return $this->errorResponse($e->getMessage(), $e->getCode());
         }
 
-        return $this->noContentResponse();
+        return api()->noContent();
     }
 
     /**
      * Delete a message.
      *
-     * @param MessageDeleteRequest $request
+     * @param Request $request
      * @param Message $message
      * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
-    public function delete(MessageDeleteRequest $request, Message $message)
+    public function delete(Request $request, Message $message)
     {
         $this->messageRepository->delete($message->id);
-        return $this->noContentResponse();
+        return api()->noContent();
     }
 }

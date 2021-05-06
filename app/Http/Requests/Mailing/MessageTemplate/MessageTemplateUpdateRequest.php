@@ -3,20 +3,10 @@
 namespace App\Http\Requests\Mailing\MessageTemplate;
 
 use App\Enums\Billing\UserPrivilegeEnum;
-use App\Http\Requests\ApiRequest;
+use Illuminate\Foundation\Http\FormRequest;
 
-class MessageTemplateUpdateRequest extends ApiRequest
+class MessageTemplateUpdateRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return request()->user()->tokenCan(UserPrivilegeEnum::MESSAGE_TEMPLATE_UPDATE) && parent::authorize();
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,7 +14,7 @@ class MessageTemplateUpdateRequest extends ApiRequest
      */
     public function rules()
     {
-        $rules = [
+        return [
             'description'       => 'sometimes|string',
             'subject'           => 'sometimes|string',
             'content'           => 'sometimes|string',
@@ -32,7 +22,5 @@ class MessageTemplateUpdateRequest extends ApiRequest
             'message_header_id' => 'sometimes|alpha_dash',
             'message_footer_id' => 'sometimes|alpha_dash'
         ];
-
-        return array_merge(parent::rules(), $rules);
     }
 }

@@ -30,7 +30,7 @@ class UserFactory extends Factory
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => Carbon::now()->toDateTimeString(),
-            'password' => Hash::make(config('test.user.password')),
+            'password' => config('test.user.password'),
             'tax_type_id' => TaxTypeEnum::CPF,
             'tax_code' => $this->faker->cpf,
             'system_language_id' => SystemLanguage::inRandomOrder()->first()

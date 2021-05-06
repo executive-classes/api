@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Mailing;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Mailing\MessageTemplate\MessageTemplateCreateRequest;
-use App\Http\Requests\Mailing\MessageTemplate\MessageTemplateDeleteRequest;
-use App\Http\Requests\Mailing\MessageTemplate\MessageTemplateRequest;
 use App\Http\Requests\Mailing\MessageTemplate\MessageTemplateUpdateRequest;
 use App\Models\Mailing\MessageTemplate;
 use App\Repositories\Mailing\MessageTemplateRepository;
+use Illuminate\Http\Request;
 
 class MessageTemplateController extends Controller
 {
@@ -30,25 +29,25 @@ class MessageTemplateController extends Controller
     /**
      * List all templates
      *
-     * @param MessageTemplateRequest $request
+     * @param Request $request
      * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
-    public function list(MessageTemplateRequest $request)
+    public function list(Request $request)
     {
         $templates = $this->messageTemplateRepository->list();
-        return $this->okResponse($templates);
+        return api()->ok($templates);
     }
 
     /**
      * Get a template.
      *
-     * @param MessageTemplateRequest $request
+     * @param Request $request
      * @param MessageTemplate $messageTemplate
      * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
-    public function show(MessageTemplateRequest $request, MessageTemplate $messageTemplate)
+    public function show(Request $request, MessageTemplate $messageTemplate)
     {
-        return $this->okResponse($messageTemplate);
+        return api()->ok($messageTemplate);
     }
 
     /**
@@ -60,7 +59,7 @@ class MessageTemplateController extends Controller
     public function create(MessageTemplateCreateRequest $request)
     {
         $messageTemplate = $this->messageTemplateRepository->create($request->all());
-        return $this->createdResponse($messageTemplate);
+        return api()->created($messageTemplate);
     }
 
     /**
@@ -73,19 +72,19 @@ class MessageTemplateController extends Controller
     public function update(MessageTemplateUpdateRequest $request, MessageTemplate $messageTemplate)
     {
         $messageTemplate = $this->messageTemplateRepository->update($messageTemplate, $request->all());
-        return $this->okResponse($messageTemplate);
+        return api()->ok($messageTemplate);
     }
 
     /**
      * Delete a template.
      *
-     * @param MessageTemplateDeleteRequest $request
+     * @param Request $request
      * @param MessageTemplate $messageTemplate
      * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
      */
-    public function delete(MessageTemplateDeleteRequest $request, MessageTemplate $messageTemplate)
+    public function delete(Request $request, MessageTemplate $messageTemplate)
     {
         $this->messageTemplateRepository->delete($messageTemplate);
-        return $this->noContentResponse();
+        return api()->noContent();
     }
 }

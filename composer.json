@@ -19,7 +19,8 @@
         "laravel/tinker": "^2.5",
         "nfephp-org/sped-common": "^5.0",
         "nfephp-org/sped-da": "^1.0",
-        "nfephp-org/sped-nfe": "^5.0"
+        "nfephp-org/sped-nfe": "^5.0",
+        "pezzetti/ie-validator": "^2.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

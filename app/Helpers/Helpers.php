@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\Billing\UserPrivilegeEnum;
+use App\Http\Response\Api;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
@@ -33,6 +35,16 @@ if (!function_exists('isLocal')) {
 if (!function_exists('timezone')) {
     function timezone(): string {
         return config('app.timezone');
+    }
+}
+
+/**
+ * Facades helpers
+ */
+
+if (!function_exists('api')) {
+    function api(): Api {
+        return new Api;
     }
 }
 
@@ -127,11 +139,13 @@ if (!function_exists('render')) {
  */
 
 if (!function_exists('format_mask')) {
-    function format_mask(string $mask, $string): string {
+    function format_mask(string $mask, string $string): string {
         $string = str_replace(" ", "", $string);
 
-        foreach ($string as $key => $value) {
-            $mask[strpos($mask,"#")] = $string[$key];
+        for ($i=0; $i < strlen($string); $i++) { 
+            $test = $string[$i];
+            $test = $mask[strpos($mask,"#")];
+            $mask[strpos($mask,"#")] = $string[$i];
         }
 
         return $mask;
@@ -141,18 +155,6 @@ if (!function_exists('format_mask')) {
 if (!function_exists('format_zip')) {
     function format_zip($zip): string {
         return format_mask('#####-###', $zip);
-    }
-}
-
-if (!function_exists('format_cnpj')) {
-    function format_cnpj($cnpj): string {
-        return format_mask('##.###.###/####-#', $cnpj);
-    }
-}
-
-if (!function_exists('format_ie')) {
-    function format_ie($ie): string {
-        return format_mask('#.###.###-#', $ie);
     }
 }
 
@@ -207,5 +209,17 @@ if (!function_exists('removeByRegex')) {
 if (!function_exists('removeNonDigit')) {
     function removeNonDigit(string $string): string {
         return removeByRegex('/\D/', $string);
+    }
+}
+
+/**
+ * Array Helpers
+ */
+
+if (!function_exists('remove_array_empty')) {
+    function remove_array_empty(array $array): array {
+        return array_filter($array, function ($item) {
+            return !blank($item);
+        });
     }
 }

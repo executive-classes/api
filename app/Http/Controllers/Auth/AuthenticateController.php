@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\CrossLoginRequest;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Billing\User;
 use App\Repositories\Billing\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,15 +36,14 @@ class AuthenticateController extends Controller
      */
     public function login(LoginRequest $request)
     {
-        $credentials = $request->only('email', 'password');
+        $user = User::firstWhere('email', $request->email);
 
         // Validate the credentials
-        if (!Auth::attempt($credentials)) {
-            return $this->badRequestResponse(__('auth.password'));
+        if (!$user->check($request->password)) {
+            return api()->badRequest(__('auth.password'));
         }
 
         // Log in the user and gets the created token
-        $user = $this->userRepository->findByEmail($request->email);
         $token = $user->login($request->email, $request->userAgent());
 
         // Set the token in the remember_token user's column
@@ -52,7 +52,7 @@ class AuthenticateController extends Controller
             $user->save();
         }
 
-        return $this->okResponse($token);
+        return api()->ok($token);
     }
 
     /**
@@ -67,7 +67,7 @@ class AuthenticateController extends Controller
         $cross_user = $this->userRepository->find($request->user_id);
         $token = $cross_user->crossLogin($request->user(), $request->userAgent());
 
-        return $this->okResponse($token);
+        return api()->ok($token);
     }
 
     /**
@@ -82,6 +82,6 @@ class AuthenticateController extends Controller
             $request->user()->logout();
         }
         
-        return $this->noContentResponse();
+        return api()->noContent();
     }
 }

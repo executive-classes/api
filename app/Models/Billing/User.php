@@ -2,21 +2,32 @@
 
 namespace App\Models\Billing;
 
+use App\Enums\Billing\EmployeePositionEnum;
+use App\Filters\Filterable;
 use App\Models\System\SystemLanguage;
 use App\Traits\Authentication\Authenticable as CanAuthenticate;
 use App\Traits\Authentication\CanChangeLanguage;
-use App\Traits\Authentication\HasCrossAuth;
+use App\Traits\Authentication\CanCrossAuth;
 use App\Traits\Models\Billing\HasPrivileges;
 use App\Traits\Models\Billing\HasTax;
-use App\Traits\Scopes\Billing\UserScopes;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticable
 {
-    use UserScopes, HasPrivileges, CanAuthenticate, CanChangeLanguage, HasCrossAuth, HasApiTokens, HasFactory, Notifiable, HasTax;
+    use Notifiable;
+    use Filterable;
+    use CanAuthenticate;
+    use CanChangeLanguage;
+    use CanCrossAuth;
+    use HasPrivileges;
+    use HasApiTokens;
+    use HasFactory;
+    use HasTax;
 
     /**
      * The table associated with the model.
@@ -143,5 +154,42 @@ class User extends Authenticable
     public function student()
     {
         return $this->hasOne(Student::class, 'id', 'user_id');
+    }
+
+    /**
+     * Password attribute mutator.
+     *
+     * @param string $value
+     * @return void
+     */
+    public function setPasswordAttribute(string $value)
+    {
+        $this->attributes['password'] = Hash::make($value);
+    }
+    
+    /**
+     * Administrator User scope.
+     *
+     * @param Builder $query
+     * @return Builder
+     */
+    public function scopeAdmin($query)
+    {
+        return $query->whereHas('employee', function ($q) {
+            $q->where('employee_position_id', EmployeePositionEnum::ADMINISTRATOR);
+        });
+    }
+
+    /**
+     * Developer User scope.
+     *
+     * @param Builder $query
+     * @return Builder
+     */
+    public function scopeDev($query)
+    {
+        return $query->whereHas('employee', function ($q) {
+            $q->where('employee_position_id', EmployeePositionEnum::DEVELOPER);
+        });
     }
 }

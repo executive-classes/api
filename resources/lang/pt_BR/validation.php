@@ -95,6 +95,7 @@ return [
     'not_regex' => 'O formato do campo :attribute é inválido.', 
     'numeric' => 'O campo :attribute deve ser um número.', 
     'password' => 'A senha está incorreta.', 
+    'phone' => 'O telefone é invalido',
     'present' => 'O campo :attribute deve estar presente.', 
     'regex' => 'O formato do campo :attribute é inválido.', 
     'required' => 'O campo :attribute é obrigatório.', 
@@ -113,11 +114,13 @@ return [
     ], 
     'starts_with' => 'O campo :attribute deve começar com um dos seguintes: :values.', 
     'string' => 'O campo :attribute deve ser uma string.', 
+    'tax' => 'O documento :tax é invalido.',
     'timezone' => 'O campo :attribute deve ser uma zona válida.', 
     'unique' => 'O campo :attribute já foi tomada.', 
     'uploaded' => 'O campo :attribute não conseguiu carregar.', 
     'url' => 'O campo :attribute não é uma URL válido.',  
     'uuid' => 'O campo :attribute deve ser um UUID válido.',
+    'valid_password' => 'A senha é inválida.',
 
     /*
     |--------------------------------------------------------------------------

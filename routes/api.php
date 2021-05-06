@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Billing\UserPrivilegeEnum;
 use App\Http\Controllers\Auth\AuthenticateController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,14 +15,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () { return __('messages.welcome'); });
+Route::get('/', function () { return __('messages.welcome'); })
+    ->name('welcome');
 
-Route::post('/login', [AuthenticateController::class, 'login']);
+Route::post('/login', [AuthenticateController::class, 'login'])
+    ->name('login');
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::post('/login/cross', [AuthenticateController::class, 'crossLogin']);
-    Route::get('/logout', [AuthenticateController::class, 'logout']);
+    Route::get('/logout', [AuthenticateController::class, 'logout'])
+        ->name('logout');
 
+    Route::post('/login/cross', [AuthenticateController::class, 'crossLogin'])
+        ->name('login.cross')
+        ->middleware('can:' . UserPrivilegeEnum::CROSS_AUTH);
+
+    require("api/billing/profile.php");
+    require("api/billing/user.php");
     require("api/mailing/message.php");
     require("api/mailing/message_template.php");
 });

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d2aaaa618551286a6793f6a19b8ac6f",
+    "content-hash": "fcfc0ed0e0dc66f6192fde67344e3d44",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2864,6 +2864,51 @@
                 "source": "https://github.com/opis/closure/tree/3.6.1"
             },
             "time": "2020-11-07T02:01:34+00:00"
+        },
+        {
+            "name": "pezzetti/ie-validator",
+            "version": "2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pezzetti/ie-validator.git",
+                "reference": "41718baccb006b1ebf52ab3c2fe807fcc7b8c764"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pezzetti/ie-validator/zipball/41718baccb006b1ebf52ab3c2fe807fcc7b8c764",
+                "reference": "41718baccb006b1ebf52ab3c2fe807fcc7b8c764",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "codacy/coverage": "dev-master",
+                "phpunit/phpunit": "^6.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Pezzetti\\InscricaoEstadual\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rafael Pezzetti",
+                    "email": "rafael.pezzetti@gmail.com"
+                }
+            ],
+            "description": "PHP library for validating and printing Inscrição Estadual IE for brazilian states",
+            "homepage": "https://github.com/pezzetti/ie-validator",
+            "support": {
+                "issues": "https://github.com/pezzetti/ie-validator/issues",
+                "source": "https://github.com/pezzetti/ie-validator/tree/v2.1"
+            },
+            "time": "2020-12-17T14:41:20+00:00"
         },
         {
             "name": "phpoption/phpoption",

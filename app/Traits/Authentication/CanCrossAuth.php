@@ -4,7 +4,7 @@ namespace App\Traits\Authentication;
 
 use App\Models\Billing\User;
 
-trait HasCrossAuth
+trait CanCrossAuth
 {
     public function crossEmail()
     {

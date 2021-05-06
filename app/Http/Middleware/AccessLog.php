@@ -10,13 +10,6 @@ use Symfony\Component\HttpFoundation\Response;
 class AccessLog
 {
     /**
-     * Access Log.
-     * 
-     * @var \App\Models\System\SystemAccessLog
-     */
-    private $log;
-
-    /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request

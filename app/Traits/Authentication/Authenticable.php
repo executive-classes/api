@@ -3,6 +3,7 @@
 namespace App\Traits\Authentication;
 
 use App\Models\Billing\User;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\Sanctum;
 
 trait Authenticable
@@ -43,6 +44,13 @@ trait Authenticable
         return $token;
     }
 
+    /**
+     * Cross auth the user.
+     *
+     * @param User $user
+     * @param string $request_agent
+     * @return \Laravel\Sanctum\NewAccessToken
+     */
     public function crossLogin(User $user, string $request_agent = null): \Laravel\Sanctum\NewAccessToken
     {
         return $this->login($user->email, $request_agent);
@@ -56,5 +64,16 @@ trait Authenticable
     public function logout()
     {
         $this->currentAccessToken()->delete();
+    }
+
+    /**
+     * Check the password
+     *
+     * @param string $password
+     * @return bool
+     */
+    public function check(string $password): bool
+    {
+        return Hash::check($password, $this->password);
     }
 }

@@ -8,6 +8,6 @@ trait UseUsers
 {
     public function getDevUser()
     {
-        return User::where('email', config('test.user.emails.dev'))->first();
+        return User::dev()->first();
     }
 }
