@@ -57,7 +57,7 @@ class Api
      * @param array $content
      * @return JsonResponse
      */
-    private function response(bool $status, string $message = '', $data = null, array $content = []): JsonResponse
+    private function response(bool $status, string $message = null, $data = null, array $content = null): JsonResponse
     {
         return response()->json(
             $this->makeData($status, $message, $data, $content),
@@ -75,14 +75,17 @@ class Api
      * @param array $content
      * @return array
      */
-    private function makeData(bool $status, string $message = '', $data = null, array $content = []): array
+    private function makeData(bool $status, string $message = null, $data = null, array $content = null): array
     {
-        return remove_array_empty(
+        return array_filter(
             array_merge([
                 'status' => $status,
                 'message' => $message,
                 'data' => $data
-            ], $content)
+            ], $content ?? []),
+            function ($item) {
+                return $item !== null;
+            }
         );
     }
 
@@ -136,7 +139,7 @@ class Api
      * @param array $content
      * @return JsonResponse
      */
-    public function success(int $code, $data = null, $content = [], string $message = ''): JsonResponse
+    public function success(int $code, $data = null, $content = null, string $message = null): JsonResponse
     {
         return $this->code($code)->response(true, $message, $data, $content);
     }
@@ -150,7 +153,7 @@ class Api
      * @param array $content
      * @return JsonResponse
      */
-    public function error(int $code, string $message = '', $data = null, $content = []): JsonResponse
+    public function error(int $code, string $message = null, $data = null, $content = null): JsonResponse
     {
         return $this->code($code)->response(false, $message, $data, $content);
     }
@@ -186,17 +189,17 @@ class Api
      * 226        IM Used
      */
 
-    public function ok($data = null, array $content = [], string $message = ''): JsonResponse
+    public function ok($data = null, array $content = null, string $message = null): JsonResponse
     {
         return $this->success(200, $data, $content, $message);
     }
 
-    public function created($data = null, array $content = [], string $message = ''): JsonResponse
+    public function created($data = null, array $content = null, string $message = null): JsonResponse
     {
         return $this->success(201, $data, $content, $message);
     }
 
-    public function accepted($data = null, array $content = [], string $message = ''): JsonResponse
+    public function accepted($data = null, array $content = null, string $message = null): JsonResponse
     {
         return $this->success(202, $data, $content, $message);
     }
@@ -206,7 +209,7 @@ class Api
         return $this->success(204);
     }
 
-    public function multiStatus($data = null, array $content = [], string $message = ''): JsonResponse
+    public function multiStatus($data = null, array $content = null, string $message = null): JsonResponse
     {
         return $this->success(207, $data, $content, $message);
     }
@@ -267,67 +270,67 @@ class Api
      * 499        Client Closed Request
      */
 
-    public function badRequest(string $message, $data = null, array $content = []): JsonResponse
+    public function badRequest(string $message, $data = null, array $content = null): JsonResponse
     {
         return $this->error(400, $message, $data, $content);
     }
 
-    public function unauthorized(string $message, $data = null, array $content = []): JsonResponse
+    public function unauthorized(string $message, $data = null, array $content = null): JsonResponse
     {
         return $this->error(401, $message, $data, $content);
     }
 
-    public function forbidden(string $message, $data = null, array $content = []): JsonResponse
+    public function forbidden(string $message, $data = null, array $content = null): JsonResponse
     {
         return $this->error(403, $message, $data, $content);
     }
 
-    public function notFound(string $message, $data = null, array $content = []): JsonResponse
+    public function notFound(string $message, $data = null, array $content = null): JsonResponse
     {
         return $this->error(404, $message, $data, $content);
     }
 
-    public function notAcceptable(string $message, $data = null, array $content = []): JsonResponse
+    public function notAcceptable(string $message, $data = null, array $content = null): JsonResponse
     {
         return $this->error(406, $message, $data, $content);
     }
 
-    public function conflict(string $message, $data = null, array $content = []): JsonResponse
+    public function conflict(string $message, $data = null, array $content = null): JsonResponse
     {
         return $this->error(409, $message, $data, $content);
     }
 
-    public function preconditionFailed(string $message, $data = null, array $content = []): JsonResponse
+    public function preconditionFailed(string $message, $data = null, array $content = null): JsonResponse
     {
         return $this->error(412, $message, $data, $content);
     }
 
-    public function iAmATeapot(string $message, $data = null, array $content = []): JsonResponse
+    public function iAmATeapot(string $message, $data = null, array $content = null): JsonResponse
     {
         return $this->error(418, $message, $data, $content);
     }
 
-    public function unprocessableEntity(string $message, $data = null, array $content = []): JsonResponse
+    public function unprocessableEntity(string $message, $data = null, array $content = null): JsonResponse
     {
         return $this->error(422, $message, $data, $content);
     }
 
-    public function failedDependency(string $message, $data = null, array $content = []): JsonResponse
+    public function failedDependency(string $message, $data = null, array $content = null): JsonResponse
     {
         return $this->error(424, $message, $data, $content);
     }
 
-    public function upgradeRequired(string $message, $data = null, array $content = []): JsonResponse
+    public function upgradeRequired(string $message, $data = null, array $content = null): JsonResponse
     {
         return $this->error(426, $message, $data, $content);
     }
 
-    public function connectionClosedWithoutResponse(string $message, $data = null, array $content = []): JsonResponse
+    public function connectionClosedWithoutResponse(string $message, $data = null, array $content = null): JsonResponse
     {
         return $this->error(444, $message, $data, $content);
     }
 
-    public function unavaiableForLegalReasons(string $message, $data = null, array $content = []): JsonResponse
+    public function unavaiableForLegalReasons(string $message, $data = null, array $content = null): JsonResponse
     {
         return $this->error(451, $message, $data, $content);
     }
@@ -352,27 +355,27 @@ class Api
      * 599        Network Connect Timeout Error
      */
 
-    public function internalError(string $message, $data = null, array $content = []): JsonResponse
+    public function internalError(string $message, $data = null, array $content = null): JsonResponse
     {
         return $this->error(500, $message, $data, $content);
     }
 
-    public function notImplemented(string $message, $data = null, array $content = []): JsonResponse
+    public function notImplemented(string $message, $data = null, array $content = null): JsonResponse
     {
         return $this->error(501, $message, $data, $content);
     }
 
-    public function badGateway(string $message, $data = null, array $content = []): JsonResponse
+    public function badGateway(string $message, $data = null, array $content = null): JsonResponse
     {
         return $this->error(502, $message, $data, $content);
     }
 
-    public function serviceUnavaiable(string $message, $data = null, array $content = []): JsonResponse
+    public function serviceUnavaiable(string $message, $data = null, array $content = null): JsonResponse
     {
         return $this->error(503, $message, $data, $content);
     }
 
-    public function gatewayTimeout(string $message, $data = null, array $content = []): JsonResponse
+    public function gatewayTimeout(string $message, $data = null, array $content = null): JsonResponse
     {
         return $this->error(504, $message, $data, $content);
     }

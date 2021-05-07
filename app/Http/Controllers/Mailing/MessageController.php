@@ -79,17 +79,4 @@ class MessageController extends Controller
 
         return api()->noContent();
     }
-
-    /**
-     * Delete a message.
-     *
-     * @param Request $request
-     * @param Message $message
-     * @return \Illuminate\Http\Response|\Illuminate\Contracts\Routing\ResponseFactory
-     */
-    public function delete(Request $request, Message $message)
-    {
-        $this->messageRepository->delete($message->id);
-        return api()->noContent();
-    }
 }

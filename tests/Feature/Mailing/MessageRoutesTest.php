@@ -117,22 +117,6 @@ class MessageRoutesTest extends TestCase
     {
         [$message] = $provider();
 
-        $response = $this->patchJson('/api/messages/' . $message->id . '/cancel');
-
-        $response->assertNoContent();
-    }
-
-    /**
-     * Test the return of the message delete route.
-     *
-     * @dataProvider getMessage
-     * 
-     * @return void
-     */
-    public function test_message_delete_route_returns_a_confirmation(callable $provider)
-    {
-        [$message] = $provider();
-
         $response = $this->deleteJson('/api/messages/' . $message->id);
 
         $response->assertNoContent();

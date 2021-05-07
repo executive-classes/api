@@ -17,24 +17,40 @@ class EmployeePositionSeeder extends Seeder
     public function run()
     {
         // Admin
-        $this->create(EmployeePositionEnum::ADMINISTRATOR, 'Administrador.', null, [
-            UserPrivilegeEnum::CROSS_AUTH,
-            UserPrivilegeEnum::MESSAGE_GET,
-            UserPrivilegeEnum::MESSAGE_CREATE,
-            UserPrivilegeEnum::MESSAGE_CANCEL,
-            UserPrivilegeEnum::MESSAGE_TEMPLATE_GET,
-            UserPrivilegeEnum::MESSAGE_TEMPLATE_CREATE,
-            UserPrivilegeEnum::MESSAGE_TEMPLATE_UPDATE
+        $this->create(EmployeePositionEnum::ADMINISTRATOR, 'Administrador', null, [
+            UserPrivilegeEnum::ALL
         ]);
         
-        $this->create(EmployeePositionEnum::FINANCIAL, 'Financeiro.', EmployeePositionEnum::FINANCIAL, [
+        // Dev
+        $this->create(EmployeePositionEnum::DEVELOPER, 'Desenvolvedor', EmployeePositionEnum::ADMINISTRATOR, [
+            UserPrivilegeEnum::ALL
+        ]);
+        
+        // Finan
+        $this->create(EmployeePositionEnum::FINANCIAL, 'Financeiro', EmployeePositionEnum::ADMINISTRATOR, [
             UserPrivilegeEnum::MESSAGE_GET,
             UserPrivilegeEnum::MESSAGE_CREATE,
             UserPrivilegeEnum::MESSAGE_TEMPLATE_GET
         ]);
 
-        $this->create(EmployeePositionEnum::DEVELOPER, 'Desenvolvedor.', EmployeePositionEnum::ADMINISTRATOR, [
-            UserPrivilegeEnum::ALL
+        // Tech
+        $this->create(EmployeePositionEnum::TECHNICIAN, 'Técnico', EmployeePositionEnum::ADMINISTRATOR, [
+            UserPrivilegeEnum::USER_GET,
+            UserPrivilegeEnum::USER_UPDATE,
+            UserPrivilegeEnum::USER_CANCEL,
+            UserPrivilegeEnum::MESSAGE_GET,
+            UserPrivilegeEnum::MESSAGE_CREATE,
+            UserPrivilegeEnum::MESSAGE_TEMPLATE_GET
+        ]);
+
+        // Hr
+        $this->create(EmployeePositionEnum::HR, 'Recursos Humanos', EmployeePositionEnum::HR, [
+            UserPrivilegeEnum::USER_GET,
+            UserPrivilegeEnum::USER_UPDATE,
+            UserPrivilegeEnum::USER_CANCEL,
+            UserPrivilegeEnum::MESSAGE_GET,
+            UserPrivilegeEnum::MESSAGE_CREATE,
+            UserPrivilegeEnum::MESSAGE_TEMPLATE_GET
         ]);
     }
 

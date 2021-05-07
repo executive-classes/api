@@ -211,15 +211,3 @@ if (!function_exists('removeNonDigit')) {
         return removeByRegex('/\D/', $string);
     }
 }
-
-/**
- * Array Helpers
- */
-
-if (!function_exists('remove_array_empty')) {
-    function remove_array_empty(array $array): array {
-        return array_filter($array, function ($item) {
-            return !blank($item);
-        });
-    }
-}

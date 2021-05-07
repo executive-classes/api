@@ -12,7 +12,7 @@ use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class ProfileUpdateRequest extends FormRequest
+class UpdateProfileRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -25,11 +25,11 @@ class ProfileUpdateRequest extends FormRequest
             'name' => 'sometimes|string',
             'email' => 'sometimes|email|unique:user,email',
             'password' => ['sometimes', new ValidPassword],
-            'password_reminder' => 'sometimes|string',
+            'password_reminder' => 'sometimes|nullable|string',
             'tax_type_id' => ['required_with:tax_code', 'string', new EnumValue(TaxTypeEnum::class)],
             'tax_code' => ['sometimes', 'string', new TaxCode($this->tax_type_id)],
-            'tax_type_alt_id' => ['required_with:tax_code_alt', 'string', new EnumValue(TaxTypeEnum::class)],
-            'tax_code_alt' => ['sometimes', 'string', new TaxCode($this->tax_type_alt_id)],
+            'tax_type_alt_id' => ['required_with:tax_code_alt', 'nullable', 'string', new EnumValue(TaxTypeEnum::class)],
+            'tax_code_alt' => ['sometimes', 'nullable', 'string', new TaxCode($this->tax_type_alt_id)],
             'uf' => [
                 Rule::requiredIf(
                     in_array(
@@ -41,8 +41,8 @@ class ProfileUpdateRequest extends FormRequest
                 'max:2', 
                 new EnumValue(StateEnum::class)
             ],
-            'phone' => ['sometimes', new BrazillianPhone],
-            'phone_alt' => 'sometimes',
+            'phone' => ['sometimes', 'nullable', new BrazillianPhone],
+            'phone_alt' => 'sometimes|nullable',
             'system_language_id' => ['sometimes', 'string', new EnumValue(SystemLanguageEnum::class)]
         ];
     }

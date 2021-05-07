@@ -143,7 +143,7 @@ class User extends Authenticable
      */
     public function teacher()
     {
-        return $this->hasOne(Teacher::class, 'id', 'user_id');
+        return $this->hasOne(Teacher::class, 'user_id', 'id');
     }
 
     /**
@@ -153,7 +153,7 @@ class User extends Authenticable
      */
     public function student()
     {
-        return $this->hasOne(Student::class, 'id', 'user_id');
+        return $this->hasOne(Student::class, 'user_id', 'id');
     }
 
     /**
@@ -165,6 +165,54 @@ class User extends Authenticable
     public function setPasswordAttribute(string $value)
     {
         $this->attributes['password'] = Hash::make($value);
+    }
+
+    /**
+     * User Status scope.
+     *
+     * @param Builder $query
+     * @return Builder
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('active', true);
+    }
+
+    /**
+     * User Inactive Status scope.
+     *
+     * @param Builder $query
+     * @return Builder
+     */
+    public function scopeInactive($query)
+    {
+        return $query->where('active', false);
+    }
+
+    /**
+     * User Role Scope
+     *
+     * @param Builder $query
+     * @param string $value
+     * @return Builder
+     */
+    public function scopeRole($query, $value)
+    {
+        switch ($value) {
+            case 'student':
+                return $query->whereHas('student');
+                break;
+
+            case 'teacher':
+                return $query->whereHas('teacher');
+                break;
+            
+            default:
+                return $query->whereHas('employee', function ($q) use ($value) {
+                    $q->where('employee_position_id', $value);
+                });
+                break;
+        }
     }
     
     /**

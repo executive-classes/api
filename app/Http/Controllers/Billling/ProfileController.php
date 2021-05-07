@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Billling;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Billing\Profile\ProfileUpdateRequest;
+use App\Http\Requests\Billing\Profile\UpdateProfileRequest;
 use App\Http\Resources\Billling\ProfileResource;
 use Illuminate\Http\Request;
 
@@ -26,7 +26,7 @@ class ProfileController extends Controller
      * @param ProfileUpdateRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(ProfileUpdateRequest $request)
+    public function update(UpdateProfileRequest $request)
     {
         $user = $request->user()->fill($request->validated());
         $user->save();

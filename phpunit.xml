@@ -22,6 +22,11 @@
         <testsuite name="ApiResponse">
             <directory suffix="Test.php">./tests/Unit/System/ApiResponseTest.php</directory>
         </testsuite>
+
+        <!-- Features -->
+        <testsuite name="UserRoutes">
+            <directory suffix="Test.php">./tests/Feature/Billing/UserRoutesTest.php</directory>
+        </testsuite>
     </testsuites>
 
     <coverage processUncoveredFiles="true">

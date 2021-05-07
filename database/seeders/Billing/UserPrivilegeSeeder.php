@@ -22,10 +22,15 @@ class UserPrivilegeSeeder extends Seeder
         $this->create(UserPrivilegeEnum::CROSS_AUTH, 'Can cross-auth in others users.');
 
         // Mailing
+        $this->create(UserPrivilegeEnum::USER_GET, 'Can get or list users.');
+        $this->create(UserPrivilegeEnum::USER_CREATE, 'Can create new users.');
+        $this->create(UserPrivilegeEnum::USER_UPDATE, 'Can update a user.');
+        $this->create(UserPrivilegeEnum::USER_CANCEL, 'Can cancel a user.');
+
+        // Mailing
         $this->create(UserPrivilegeEnum::MESSAGE_GET, 'Can get or list messages.');
         $this->create(UserPrivilegeEnum::MESSAGE_CREATE, 'Can create new messages.');
         $this->create(UserPrivilegeEnum::MESSAGE_CANCEL, 'Can cancel scheduled messages.');
-        $this->create(UserPrivilegeEnum::MESSAGE_DELETE, 'Can delete messages.');
         $this->create(UserPrivilegeEnum::MESSAGE_TEMPLATE_GET, 'Can get or list messages templates.');
         $this->create(UserPrivilegeEnum::MESSAGE_TEMPLATE_CREATE, 'Can create messages templates.');
         $this->create(UserPrivilegeEnum::MESSAGE_TEMPLATE_UPDATE, 'Can update messages templates.');

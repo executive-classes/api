@@ -103,6 +103,20 @@ class EmployeeFactory extends Factory
     }
 
     /**
+     * Indicate that the employee is has a developer position.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function developer()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'employee_position_id' => EmployeePositionEnum::DEVELOPER,
+            ];
+        });
+    }
+    
+    /**
      * Indicate that the employee is has a financial position.
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
@@ -117,16 +131,31 @@ class EmployeeFactory extends Factory
     }
 
     /**
-     * Indicate that the employee is has a developer position.
+     * Indicate that the employee is has a technician position.
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    public function developer()
+    public function technician()
     {
         return $this->state(function (array $attributes) {
             return [
-                'employee_position_id' => EmployeePositionEnum::DEVELOPER,
+                'employee_position_id' => EmployeePositionEnum::TECHNICIAN,
             ];
         });
     }
+
+    /**
+     * Indicate that the employee is has a HR position.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function HR()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'employee_position_id' => EmployeePositionEnum::HR,
+            ];
+        });
+    }
+
 }
