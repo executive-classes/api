@@ -30,6 +30,9 @@
         <testsuite name="EmployeeRoutes">
             <directory suffix="Test.php">./tests/Feature/Billing/EmployeeRoutesTest.php</directory>
         </testsuite>
+        <testsuite name="TeacherRoutes">
+            <directory suffix="Test.php">./tests/Feature/Billing/TeacherRoutesTest.php</directory>
+        </testsuite>
     </testsuites>
 
     <coverage processUncoveredFiles="true">

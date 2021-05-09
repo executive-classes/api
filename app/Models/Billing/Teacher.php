@@ -2,11 +2,13 @@
 
 namespace App\Models\Billing;
 
+use App\Filters\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Teacher extends Model
 {
+    use Filterable;
     use HasFactory;
     
     /**
@@ -31,18 +33,27 @@ class Teacher extends Model
     protected $guarded = [
         'id',
         'created_at',
-        'updated_at',
-        'user_id'
+        'updated_at'
     ];
 
     /**
-     * User relation
+     * User relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /**
+     * Status relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function status()
+    {
+        return $this->belongsTo(TeacherStatus::class, 'teacher_status_id');
     }
 
     /**
@@ -53,5 +64,19 @@ class Teacher extends Model
     public static function privileges()
     {
         return UserPrivilege::where('teacher_can', true)->get();
+    }
+
+    /**
+     * Teacher Email Scope.
+     *
+     * @param Builder $query
+     * @param string $value
+     * @return Builder
+     */
+    public function scopeEmail($query, $value)
+    {
+        return $query->whereHas('user', function ($q) use ($value) {
+            return $q->where('email', $value);
+        });
     }
 }

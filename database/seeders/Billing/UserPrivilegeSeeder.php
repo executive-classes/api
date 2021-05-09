@@ -30,6 +30,10 @@ class UserPrivilegeSeeder extends Seeder
         $this->create(UserPrivilegeEnum::EMPLOYEE_CREATE, 'Can create new employees.');
         $this->create(UserPrivilegeEnum::EMPLOYEE_UPDATE, 'Can update a employee.');
         $this->create(UserPrivilegeEnum::EMPLOYEE_CANCEL, 'Can cancel a employee.');
+        $this->create(UserPrivilegeEnum::TEACHER_GET, 'Can get or list teachers.');
+        $this->create(UserPrivilegeEnum::TEACHER_CREATE, 'Can create new teachers.');
+        $this->create(UserPrivilegeEnum::TEACHER_UPDATE, 'Can update a teacher.');
+        $this->create(UserPrivilegeEnum::TEACHER_CANCEL, 'Can cancel a teacher.');
 
         // Mailing
         $this->create(UserPrivilegeEnum::MESSAGE_GET, 'Can get or list messages.');

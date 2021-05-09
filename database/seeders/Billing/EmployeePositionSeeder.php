@@ -39,6 +39,8 @@ class EmployeePositionSeeder extends Seeder
             UserPrivilegeEnum::USER_UPDATE,
             UserPrivilegeEnum::EMPLOYEE_GET,
             UserPrivilegeEnum::EMPLOYEE_UPDATE,
+            UserPrivilegeEnum::TEACHER_GET,
+            UserPrivilegeEnum::TEACHER_UPDATE,
             UserPrivilegeEnum::MESSAGE_GET,
             UserPrivilegeEnum::MESSAGE_CREATE,
             UserPrivilegeEnum::MESSAGE_TEMPLATE_GET
@@ -54,6 +56,10 @@ class EmployeePositionSeeder extends Seeder
             UserPrivilegeEnum::EMPLOYEE_CREATE,
             UserPrivilegeEnum::EMPLOYEE_UPDATE,
             UserPrivilegeEnum::EMPLOYEE_CANCEL,
+            UserPrivilegeEnum::TEACHER_GET,
+            UserPrivilegeEnum::TEACHER_CREATE,
+            UserPrivilegeEnum::TEACHER_UPDATE,
+            UserPrivilegeEnum::TEACHER_CANCEL,
             UserPrivilegeEnum::MESSAGE_GET,
             UserPrivilegeEnum::MESSAGE_CREATE,
             UserPrivilegeEnum::MESSAGE_TEMPLATE_GET

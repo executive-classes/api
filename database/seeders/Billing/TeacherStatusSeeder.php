@@ -18,7 +18,6 @@ class TeacherStatusSeeder extends Seeder
         $this->create(TeacherStatusEnum::ACTIVE, 'Ativo', 'Indicates that a teacher is active and can teach classes.');
         $this->create(TeacherStatusEnum::SUSPENDED, 'Suspenso', 'Indicates that a teacher is suspended and can not teach classes.');
         $this->create(TeacherStatusEnum::CANCELED, 'Cancelado', 'Indicates that a teacher is canceled and will no more teach classes.');
-        $this->create(TeacherStatusEnum::INACTIVE, 'Inativo', 'Indicates that a teacher is inactive.');
     }
 
     /**

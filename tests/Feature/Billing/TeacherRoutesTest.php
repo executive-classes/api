@@ -2,16 +2,15 @@
 
 namespace Tests\Feature\Billing;
 
-use App\Enums\Billing\EmployeeStatusEnum;
-use App\Models\Billing\Employee;
-use App\Models\Billing\EmployeePosition;
-use App\Models\Billing\EmployeeStatus;
+use App\Enums\Billing\TeacherStatusEnum;
+use App\Models\Billing\Teacher;
+use App\Models\Billing\TeacherStatus;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Tests\UseUsers;
 
-class EmployeeRoutesTest extends TestCase
+class TeacherRoutesTest extends TestCase
 {
     use RefreshDatabase, WithFaker, UseUsers;
 
@@ -32,12 +31,12 @@ class EmployeeRoutesTest extends TestCase
         parent::setUp();
         
         $this->getDevUser()->login();
-        Employee::factory()->count(3)->create();
+        Teacher::factory()->count(3)->create();
     }
 
     public function test_can_list_employees()
     {
-        $response = $this->getJson(route('employee.index'));
+        $response = $this->getJson(route('teacher.index'));
 
         $response->assertOk();
         $response->assertJsonStructure([
@@ -45,13 +44,13 @@ class EmployeeRoutesTest extends TestCase
             'data'
         ]);
         $response->assertJsonPath('status', true);
-        $response->assertJsonCount(Employee::count(), 'data');
+        $response->assertJsonCount(Teacher::count(), 'data');
     }
 
     public function test_can_filter_employee_list()
     {
-        $email = Employee::first()->user->email;
-        $response = $this->getJson(route('employee.index', ['email' => $email]));
+        $email = Teacher::first()->user->email;
+        $response = $this->getJson(route('teacher.index', ['email' => $email]));
 
         $response->assertOk();
         $response->assertJsonStructure([
@@ -59,13 +58,13 @@ class EmployeeRoutesTest extends TestCase
             'data'
         ]);
         $response->assertJsonPath('status', true);
-        $response->assertJsonCount(Employee::email($email)->count(), 'data');
+        $response->assertJsonCount(Teacher::email($email)->count(), 'data');
     }
 
     public function test_can_get_employee()
     {
-        $id = Employee::first()->id;
-        $response = $this->getJson(route('employee.show', ['employee' => $id]));
+        $id = Teacher::first()->id;
+        $response = $this->getJson(route('teacher.show', ['teacher' => $id]));
 
         $response->assertOk();
         $response->assertJsonStructure([
@@ -78,8 +77,8 @@ class EmployeeRoutesTest extends TestCase
 
     public function test_can_create_employee()
     {
-        $data = Employee::factory()->make()->toArray();
-        $response = $this->postJson(route('employee.store'), $data);
+        $data = Teacher::factory()->make()->toArray();
+        $response = $this->postJson(route('teacher.store'), $data);
 
         $response->assertCreated();
         $response->assertJsonStructure([
@@ -93,14 +92,13 @@ class EmployeeRoutesTest extends TestCase
     public function test_can_update_employee()
     {
         $data = [
-            'employee_position_id' => EmployeePosition::inRandomOrder()->first()->id,
-            'employee_status_id' => EmployeeStatus::where('id', '<>', EmployeeStatusEnum::CANCELED)
+            'teacher_status_id' => TeacherStatus::where('id', '<>', TeacherStatusEnum::CANCELED)
                 ->inRandomOrder()
                 ->first()
                 ->id
         ];
-        $id = Employee::first()->id;
-        $response = $this->putJson(route('employee.update', ['employee' => $id]), $data);
+        $id = Teacher::first()->id;
+        $response = $this->putJson(route('teacher.update', ['teacher' => $id]), $data);
 
         $response->assertOk();
         $response->assertJsonStructure([
@@ -109,23 +107,22 @@ class EmployeeRoutesTest extends TestCase
         ]);
         $response->assertJsonPath('status', true);
         $response->assertJsonPath('data.id', $id);
-        $response->assertJsonPath('data.position_id', $data['employee_position_id']);
-        $response->assertJsonPath('data.status_id', $data['employee_status_id']);
+        $response->assertJsonPath('data.status_id', $data['teacher_status_id']);
     }
 
     public function test_can_not_cancel_employee_by_update()
     {
-        $data = ['employee_status_id' => EmployeeStatusEnum::CANCELED];
-        $id = Employee::first()->id;
-        $response = $this->putJson(route('employee.update', ['employee' => $id]), $data);
+        $data = ['teacher_status_id' => TeacherStatusEnum::CANCELED];
+        $id = Teacher::first()->id;
+        $response = $this->putJson(route('teacher.update', ['teacher' => $id]), $data);
 
         $response->assertStatus(422);
     }
 
     public function test_can_cancel_employee()
     {
-        $id = Employee::first()->id;
-        $response = $this->deleteJson(route('employee.cancel', ['employee' => $id]));
+        $id = Teacher::first()->id;
+        $response = $this->deleteJson(route('teacher.cancel', ['teacher' => $id]));
 
         $response->assertOk();
         $response->assertJsonStructure([
@@ -134,6 +131,9 @@ class EmployeeRoutesTest extends TestCase
         ]);
         $response->assertJsonPath('status', true);
         $response->assertJsonPath('data.id', $id);
-        $response->assertJsonPath('data.status_id', EmployeeStatusEnum::CANCELED);
+        $response->assertJsonPath('data.status_id', TeacherStatusEnum::CANCELED);
+        
     }
+
+    
 }

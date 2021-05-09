@@ -31,6 +31,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     require("api/billing/employee.php");
     require("api/billing/profile.php");
+    require("api/billing/teacher.php");
     require("api/billing/user.php");
     require("api/mailing/message.php");
     require("api/mailing/message_template.php");
