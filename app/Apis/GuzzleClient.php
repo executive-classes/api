@@ -2,6 +2,7 @@
 
 namespace App\Apis;
 
+use App\Exceptions\ApiException;
 use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
@@ -64,7 +65,10 @@ abstract class GuzzleClient
      *
      * @return void
      */
-    abstract protected function _auth(): void;
+    protected function _auth(): void
+    {
+        // Auth
+    }
 
     /**
      * Throw a request error.
@@ -72,7 +76,11 @@ abstract class GuzzleClient
      * @param GuzzleResponse $response
      * @return Exception
      */
-    abstract protected function _throw(GuzzleResponse $response): Exception;
+    protected function _throw(GuzzleResponse $response): Exception
+    {
+        $message = $response->error->message;
+        return new ApiException($message, $response->code());
+    }
 
     /**
      * Set the URI.

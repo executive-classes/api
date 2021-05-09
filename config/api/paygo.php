@@ -14,6 +14,7 @@ return [
     /**
      * Default info
      */
+    
     'credit_card' => [
         'type' => 1,
         "capture" => false,

@@ -24,10 +24,10 @@ class GuzzleResponse
      * Create the Guzzle Response class.
      *
      * @param integer $code
-     * @param null|object $content
+     * @param null|object|array $content
      * @param string $message
      */
-    public function __construct(int $code, object $content = null)
+    public function __construct(int $code, $content = null)
     {
         if (!isHttpCode($code)) {
             throw new ApiException(__('system.apis.error.invalid_http_code', $code), 500);
@@ -49,6 +49,10 @@ class GuzzleResponse
             return null;
         }
 
+        if (is_array($this->content)) {
+            return $this->content[$property];
+        }
+
         return $this->content->$property;
     }
     
@@ -60,5 +64,15 @@ class GuzzleResponse
     public function code(): int
     {
         return $this->code;
+    }
+
+    /**
+     * Returns the response content.
+     *
+     * @return mixed
+     */
+    public function content()
+    {
+        return $this->content;
     }
 }

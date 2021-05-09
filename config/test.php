@@ -35,6 +35,23 @@ return [
             'invalid' => ['Hipercard']
         ],
         'token' => '32c76df1-038b-4562-98a9-b52d50455dc540251'
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default ViaCep Test Settings
+    |--------------------------------------------------------------------------
+    |
+    | This define the default settings for the ViaCep in the test environment.
+    |
+    */
+
+    'viacep' => [
+        'cep' => '01001000',
+        "logradouro" => "Praça da Sé",
+        "bairro" => "Sé",
+        "localidade" => "São Paulo",
+        "uf" => "SP"
     ]
 
 ];
