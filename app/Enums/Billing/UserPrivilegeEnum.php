@@ -25,6 +25,14 @@ final class UserPrivilegeEnum extends Enum
     const USER_CANCEL = 'user:cancel';
 
     /**
+     * Employees privileges.
+     */
+    const EMPLOYEE_GET = 'employee:get';
+    const EMPLOYEE_CREATE = 'employee:create';
+    const EMPLOYEE_UPDATE = 'employee:update';
+    const EMPLOYEE_CANCEL = 'employee:cancel';
+
+    /**
      * Message privileges.
      */
     const MESSAGE_GET    = 'message:get';

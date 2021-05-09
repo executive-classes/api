@@ -48,7 +48,7 @@ class UserRoutesTest extends TestCase
     public function test_can_filter_user_list()
     {
         $email = User::first()->email;
-        $response = $this->getJson(route('user.index'), ['email' => $email]);
+        $response = $this->getJson(route('user.index', ['email' => $email]));
 
         $response->assertOk();
         $response->assertJsonStructure([
@@ -56,7 +56,7 @@ class UserRoutesTest extends TestCase
             'data'
         ]);
         $response->assertJsonPath('status', true);
-        $response->assertJsonCount(User::count(), 'data');
+        $response->assertJsonCount(User::where('email', $email)->count(), 'data');
     }
 
     public function test_can_get_user()

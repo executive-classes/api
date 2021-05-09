@@ -27,9 +27,9 @@ class UpdateUserRequest extends FormRequest
             'password' => ['sometimes', new ValidPassword],
             'password_reminder' => 'sometimes|nullable|string',
             'tax_type_id' => ['required_with:tax_code', 'string', new EnumValue(TaxTypeEnum::class)],
-            'tax_code' => ['sometimes', 'string', new TaxCode($this->tax_type_id)],
+            'tax_code' => ['sometimes', 'string', new TaxCode($this->tax_type_id, $this->uf ?? null)],
             'tax_type_alt_id' => ['required_with:tax_code_alt', 'nullable', 'string', new EnumValue(TaxTypeEnum::class)],
-            'tax_code_alt' => ['sometimes', 'nullable', 'string', new TaxCode($this->tax_type_alt_id)],
+            'tax_code_alt' => ['sometimes', 'nullable', 'string', new TaxCode($this->tax_type_alt_id, $this->uf ?? null)],
             'uf' => [
                 Rule::requiredIf(
                     in_array(

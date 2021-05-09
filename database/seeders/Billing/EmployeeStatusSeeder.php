@@ -18,7 +18,6 @@ class EmployeeStatusSeeder extends Seeder
         $this->create(EmployeeStatusEnum::ACTIVE, 'Ativo', 'Indicates that a employee is active and can use the system.');
         $this->create(EmployeeStatusEnum::SUSPENDED, 'Suspenso', 'Indicates that a employee is suspended and can not use the system.');
         $this->create(EmployeeStatusEnum::CANCELED, 'Cancelado', 'Indicates that a employee is canceled and will no more use the system.');
-        $this->create(EmployeeStatusEnum::INACTIVE, 'Inativo', 'Indicates that a employee is inactive.');
     }
 
     /**

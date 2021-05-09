@@ -37,17 +37,23 @@ class EmployeePositionSeeder extends Seeder
         $this->create(EmployeePositionEnum::TECHNICIAN, 'Técnico', EmployeePositionEnum::ADMINISTRATOR, [
             UserPrivilegeEnum::USER_GET,
             UserPrivilegeEnum::USER_UPDATE,
-            UserPrivilegeEnum::USER_CANCEL,
+            UserPrivilegeEnum::EMPLOYEE_GET,
+            UserPrivilegeEnum::EMPLOYEE_UPDATE,
             UserPrivilegeEnum::MESSAGE_GET,
             UserPrivilegeEnum::MESSAGE_CREATE,
             UserPrivilegeEnum::MESSAGE_TEMPLATE_GET
         ]);
 
         // Hr
-        $this->create(EmployeePositionEnum::HR, 'Recursos Humanos', EmployeePositionEnum::HR, [
+        $this->create(EmployeePositionEnum::HR, 'Recursos Humanos', EmployeePositionEnum::ADMINISTRATOR, [
             UserPrivilegeEnum::USER_GET,
+            UserPrivilegeEnum::USER_CREATE,
             UserPrivilegeEnum::USER_UPDATE,
             UserPrivilegeEnum::USER_CANCEL,
+            UserPrivilegeEnum::EMPLOYEE_GET,
+            UserPrivilegeEnum::EMPLOYEE_CREATE,
+            UserPrivilegeEnum::EMPLOYEE_UPDATE,
+            UserPrivilegeEnum::EMPLOYEE_CANCEL,
             UserPrivilegeEnum::MESSAGE_GET,
             UserPrivilegeEnum::MESSAGE_CREATE,
             UserPrivilegeEnum::MESSAGE_TEMPLATE_GET

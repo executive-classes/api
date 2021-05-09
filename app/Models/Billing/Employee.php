@@ -2,11 +2,13 @@
 
 namespace App\Models\Billing;
 
+use App\Filters\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
+    use Filterable;
     use HasFactory;
     
     /**
@@ -31,9 +33,7 @@ class Employee extends Model
     protected $guarded = [
         'id',
         'created_at',
-        'updated_at',
-        'employee_position_id',
-        'user_id'
+        'updated_at'
     ];
 
     /**
@@ -47,6 +47,16 @@ class Employee extends Model
     }
 
     /**
+     * Status relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function status()
+    {
+        return $this->belongsTo(EmployeeStatus::class, 'employee_status_id');
+    }
+
+    /**
      * Position relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -54,5 +64,19 @@ class Employee extends Model
     public function position()
     {
         return $this->belongsTo(EmployeePosition::class, 'employee_position_id');
+    }
+
+    /**
+     * Employee Email Scope.
+     *
+     * @param Builder $query
+     * @param string $value
+     * @return Builder
+     */
+    public function scopeEmail($query, $value)
+    {
+        return $query->whereHas('user', function ($q) use ($value) {
+            return $q->where('email', $value);
+        });
     }
 }

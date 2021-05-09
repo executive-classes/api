@@ -114,6 +114,7 @@ return [
     ], 
     'starts_with' => 'O campo :attribute deve começar com um dos seguintes: :values.', 
     'string' => 'O campo :attribute deve ser uma string.', 
+    'tax_type' => 'Tipo de documento inválido fornecido.',
     'tax' => 'O documento :tax é invalido.',
     'timezone' => 'O campo :attribute deve ser uma zona válida.', 
     'unique' => 'O campo :attribute já foi tomada.', 

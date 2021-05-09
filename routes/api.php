@@ -29,6 +29,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         ->name('login.cross')
         ->middleware('can:' . UserPrivilegeEnum::CROSS_AUTH);
 
+    require("api/billing/employee.php");
     require("api/billing/profile.php");
     require("api/billing/user.php");
     require("api/mailing/message.php");

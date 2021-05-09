@@ -17,13 +17,21 @@ class TaxCode implements Rule
     private $taxType;
 
     /**
+     * The State.
+     * 
+     * @var StateEnum|null
+     */
+    private $state;
+
+    /**
      * Create the Tax Code rule.
      *
      * @param string|null $taxTypeId
      */
-    public function __construct($taxTypeId = null)
+    public function __construct($taxTypeId = null, string $uf = null)
     {
         $this->taxType = TaxType::find($taxTypeId);
+        $this->state = $uf ? StateEnum::fromValue($uf) : null;
     }
 
     /**
@@ -39,11 +47,7 @@ class TaxCode implements Rule
             return false;
         }
         
-        $state = $this->taxType->id == TaxTypeEnum::IE
-            ? StateEnum::fromValue(request()->get('uf'))
-            : null;
-
-        return $this->taxType->validate($value, $state);
+        return $this->taxType->validate($value, $this->state);
     }
 
     /**
@@ -53,6 +57,10 @@ class TaxCode implements Rule
      */
     public function message()
     {
+        if (!$this->taxType) {
+            return __('validation.tax_type');
+        }
+
         return __('validation.tax', ['tax' => $this->taxType->name]);
     }
 }

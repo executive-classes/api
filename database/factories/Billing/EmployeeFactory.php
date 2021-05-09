@@ -75,20 +75,6 @@ class EmployeeFactory extends Factory
     }
 
     /**
-     * Indicate that the employee is inactive.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function inactive()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'employee_status_id' => EmployeeStatusEnum::INACTIVE,
-            ];
-        });
-    }
-
-    /**
      * Indicate that the employee is has a administrator position.
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory

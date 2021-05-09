@@ -27,6 +27,9 @@
         <testsuite name="UserRoutes">
             <directory suffix="Test.php">./tests/Feature/Billing/UserRoutesTest.php</directory>
         </testsuite>
+        <testsuite name="EmployeeRoutes">
+            <directory suffix="Test.php">./tests/Feature/Billing/EmployeeRoutesTest.php</directory>
+        </testsuite>
     </testsuites>
 
     <coverage processUncoveredFiles="true">
