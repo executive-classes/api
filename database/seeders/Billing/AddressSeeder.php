@@ -2,10 +2,10 @@
 
 namespace Database\Seeders\Billing;
 
-use App\Models\Billing\Building;
+use App\Models\Billing\Address;
 use Illuminate\Database\Seeder;
 
-class BuildingSeeder extends Seeder
+class AddressSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class BuildingSeeder extends Seeder
      */
     public function run()
     {
-        Building::factory(5)
+        Address::factory(5)
             ->create();
     }
 }

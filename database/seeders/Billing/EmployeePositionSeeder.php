@@ -28,6 +28,17 @@ class EmployeePositionSeeder extends Seeder
         
         // Finan
         $this->create(EmployeePositionEnum::FINANCIAL, 'Financeiro', EmployeePositionEnum::ADMINISTRATOR, [
+            UserPrivilegeEnum::ADDRESS_GET,
+            UserPrivilegeEnum::ADDRESS_CREATE,
+            UserPrivilegeEnum::ADDRESS_UPDATE,
+            UserPrivilegeEnum::CUSTOMER_GET,
+            UserPrivilegeEnum::CUSTOMER_CREATE,
+            UserPrivilegeEnum::CUSTOMER_UPDATE,
+            UserPrivilegeEnum::BILLER_GET,
+            UserPrivilegeEnum::BILLER_CREATE,
+            UserPrivilegeEnum::BILLER_UPDATE,
+            UserPrivilegeEnum::STUDENT_GET,
+            UserPrivilegeEnum::STUDENT_UPDATE,
             UserPrivilegeEnum::MESSAGE_GET,
             UserPrivilegeEnum::MESSAGE_CREATE,
             UserPrivilegeEnum::MESSAGE_TEMPLATE_GET
@@ -35,12 +46,20 @@ class EmployeePositionSeeder extends Seeder
 
         // Tech
         $this->create(EmployeePositionEnum::TECHNICIAN, 'Técnico', EmployeePositionEnum::ADMINISTRATOR, [
+            UserPrivilegeEnum::ADDRESS_GET,
+            UserPrivilegeEnum::ADDRESS_UPDATE,
+            UserPrivilegeEnum::CUSTOMER_GET,
+            UserPrivilegeEnum::CUSTOMER_UPDATE,
+            UserPrivilegeEnum::BILLER_GET,
+            UserPrivilegeEnum::BILLER_UPDATE,
             UserPrivilegeEnum::USER_GET,
             UserPrivilegeEnum::USER_UPDATE,
             UserPrivilegeEnum::EMPLOYEE_GET,
             UserPrivilegeEnum::EMPLOYEE_UPDATE,
             UserPrivilegeEnum::TEACHER_GET,
             UserPrivilegeEnum::TEACHER_UPDATE,
+            UserPrivilegeEnum::STUDENT_GET,
+            UserPrivilegeEnum::STUDENT_UPDATE,
             UserPrivilegeEnum::MESSAGE_GET,
             UserPrivilegeEnum::MESSAGE_CREATE,
             UserPrivilegeEnum::MESSAGE_TEMPLATE_GET

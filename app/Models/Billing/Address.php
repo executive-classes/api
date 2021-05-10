@@ -2,11 +2,13 @@
 
 namespace App\Models\Billing;
 
+use App\Filters\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Building extends Model
+class Address extends Model
 {
+    use Filterable;
     use HasFactory;
 
     /**
@@ -14,7 +16,7 @@ class Building extends Model
      *
      * @var string
      */
-    protected $table = 'building';
+    protected $table = 'address';
 
     /**
      * The primary key associated with the table.
@@ -51,6 +53,17 @@ class Building extends Model
      */
     public function biller()
     {
-        return $this->hasOne(Biller::class, 'building_id');
+        return $this->hasOne(Biller::class, 'address_id');
+    }
+
+    /**
+     * Zip attribute mutator.
+     *
+     * @param string $value
+     * @return void
+     */
+    public function setZipAttribute(string $value)
+    {
+        $this->attributes['zip'] = preg_replace('/-/', '', $value);
     }
 }

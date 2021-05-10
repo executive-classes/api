@@ -4,7 +4,7 @@ namespace Database\Factories\Billing;
 
 use App\Enums\Billing\CustomerStatusEnum;
 use App\Enums\Billing\TaxTypeEnum;
-use App\Models\Billing\Building;
+use App\Models\Billing\Address;
 use App\Models\Billing\Customer;
 use App\Models\Billing\CustomerStatus;
 use App\Traits\Factories\HasMultipleTaxTypes;
@@ -32,7 +32,7 @@ class CustomerFactory extends Factory
             'name' => $this->faker->company,
             'tax_type_id' => TaxTypeEnum::CNPJ,
             'tax_code' => $this->faker->unique()->cnpj,
-            'building_id' => Building::factory(),
+            'address_id' => Address::factory(),
             'email' => $this->faker->companyEmail,
             'phone' => $this->faker->phoneNumber,
             'phone_alt' => $this->faker->phoneNumber,

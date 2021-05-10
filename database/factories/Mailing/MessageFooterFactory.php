@@ -22,7 +22,7 @@ class MessageFooterFactory extends Factory
     public function definition()
     {
         return [
-            'id' => $this->faker->unique()->word(),
+            'id' => preg_replace('/\s|\./', '', $this->faker->text(20)),
             'description' => 'Test Footer',
             'content' => '<h1>Titulo</h1>'
         ];

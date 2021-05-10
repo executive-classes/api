@@ -2,11 +2,13 @@
 
 namespace App\Models\Billing;
 
+use App\Filters\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Biller extends Model
 {
+    use Filterable;
     use HasFactory;
 
     /**
@@ -67,13 +69,13 @@ class Biller extends Model
     }
 
     /**
-     * Building relation.
+     * Address relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function building()
+    public function address()
     {
-        return $this->belongsTo(Building::class, 'building_id');
+        return $this->belongsTo(Address::class, 'address_id');
     }
 
     /**

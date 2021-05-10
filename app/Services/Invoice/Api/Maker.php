@@ -2,8 +2,11 @@
 
 namespace App\Services\Invoice\Api;
 
+use App\Enums\Billing\CountryEnum;
 use App\Enums\Billing\PaymentMethodEnum;
-use App\Models\Billing\Building;
+use App\Models\Billing\Address;
+use App\Models\Billing\AddressCity;
+use App\Models\Billing\AddressCountry;
 use App\Models\Billing\Collection;
 use App\Models\Billing\Customer;
 use App\Models\Billing\Invoice;
@@ -77,7 +80,7 @@ class Maker extends Api
         $this->makeRecipientTag($invoice->collection->customer);
 
         // Make the address recipient tag
-        $this->makeRecipientAddressTag($invoice->collection->customer->building);
+        $this->makeRecipientAddressTag($invoice->collection->customer->address);
 
         // Make the products tag
         $this->makeProductsTag($invoice->itens);
@@ -340,42 +343,44 @@ class Maker extends Api
     /**
      * Create the invoice recipient address tags.
      *
-     * @param Building $building
+     * @param Address $address
      * @return void
      */
-    protected function makeRecipientAddressTag(Building $building)
+    protected function makeRecipientAddressTag(Address $address)
     {
         $std = new \stdClass();
         
         // Address
-        $std->xLgr = $building->street;
+        $std->xLgr = $address->street;
         
         // Number
-        $std->nro = $building->number;
+        $std->nro = $address->number;
         
         // Complement
-        $std->xCpl = $building->complement;
+        $std->xCpl = $address->complement;
         
         // Neighborhood
-        $std->xBairro = $building->number;
+        $std->xBairro = $address->number;
         
         // City code
-        $std->cMun = $building->city_code;
+        $std->cMun = $address->country == CountryEnum::BR
+            ? AddressCity::firstWhere('name', $address->city)->id
+            : null;
         
         // City name
-        $std->xMun = $building->city;
+        $std->xMun = $address->city;
         
         // State name
-        $std->UF = $building->state;
+        $std->UF = $address->state;
         
         // ZIP code
-        $std->CEP = format_zip($building->zip_code);
+        $std->CEP = format_zip($address->zip);
         
         // Country code
-        $std->cPais = $building->country;
+        $std->cPais = AddressCountry::firstWhere('short_name', $address->country);
         
         // Country name
-        $std->xPais = $building->country_code;
+        $std->xPais = $address->country;
 
         $this->nfe->tagenderDest($std);
     }

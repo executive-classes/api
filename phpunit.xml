@@ -22,6 +22,12 @@
         <testsuite name="ApiResponse">
             <directory suffix="Test.php">./tests/Unit/System/ApiResponseTest.php</directory>
         </testsuite>
+        <testsuite name="AddressFormatter">
+            <directory suffix="Test.php">./tests/Unit/Billing/AddressFormatterTest.php</directory>
+        </testsuite>
+        <testsuite name="BrazillianAddress">
+            <directory suffix="Test.php">./tests/Unit/Billing/BrazillianAddressTest.php</directory>
+        </testsuite>
 
         <!-- Features -->
         <testsuite name="UserRoutes">
@@ -32,6 +38,26 @@
         </testsuite>
         <testsuite name="TeacherRoutes">
             <directory suffix="Test.php">./tests/Feature/Billing/TeacherRoutesTest.php</directory>
+        </testsuite>
+        <testsuite name="StudentRoutes">
+            <directory suffix="Test.php">./tests/Feature/Billing/StudentRoutesTest.php</directory>
+        </testsuite>
+        <testsuite name="AddressRoutes">
+            <directory suffix="Test.php">./tests/Feature/Billing/AddressRoutesTest.php</directory>
+        </testsuite>
+        <testsuite name="CustomerRoutes">
+            <directory suffix="Test.php">./tests/Feature/Billing/CustomerRoutesTest.php</directory>
+        </testsuite>
+        <testsuite name="BillerRoutes">
+            <directory suffix="Test.php">./tests/Feature/Billing/BillerRoutesTest.php</directory>
+        </testsuite>
+
+        <!-- Features -->
+        <testsuite name="PayGo">
+            <directory suffix="Test.php">./tests/Integration/PayGo</directory>
+        </testsuite>
+        <testsuite name="ViaCep">
+            <directory suffix="Test.php">./tests/Integration/ViaCep</directory>
         </testsuite>
     </testsuites>
 

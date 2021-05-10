@@ -6,28 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\CrossLoginRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\Billing\User;
-use App\Repositories\Billing\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Sanctum\PersonalAccessToken;
 
 class AuthenticateController extends Controller
 {
-    /**
-     * The User Respository.
-     */
-    protected UserRepository $userRepository;
-
-    /**
-     * Create the authentication controller.
-     *
-     * @param UserRepository $userRepository
-     */
-    public function __construct(UserRepository $userRepository) 
-    {
-        $this->userRepository = $userRepository;
-    }
-
     /**
      * Log in with the given credentials.
      *
@@ -64,7 +47,7 @@ class AuthenticateController extends Controller
     public function crossLogin(CrossLoginRequest $request)
     {
         // Log in the logged user in the given user
-        $cross_user = $this->userRepository->find($request->user_id);
+        $cross_user = User::find($request->user_id);
         $token = $cross_user->crossLogin($request->user(), $request->userAgent());
 
         return api()->ok($token);

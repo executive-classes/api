@@ -25,6 +25,9 @@ class DatabaseSeeder extends Seeder
             /**
              * Billing Models Seeders
              */
+            \Database\Seeders\Billing\AddressCountrySeeder::class,
+            \Database\Seeders\Billing\AddressStateSeeder::class,
+            \Database\Seeders\Billing\AddressCitySeeder::class,
             \Database\Seeders\Billing\TaxTypeSeeder::class,
             \Database\Seeders\Billing\UserPrivilegeSeeder::class,
             \Database\Seeders\Billing\EmployeePositionSeeder::class,

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Billing\Employee;
+namespace App\Http\Requests\Billing\Teacher;
 
 use App\Enums\Billing\TeacherStatusEnum;
 use BenSampo\Enum\Rules\EnumValue;

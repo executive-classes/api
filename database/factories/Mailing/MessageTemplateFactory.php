@@ -25,7 +25,7 @@ class MessageTemplateFactory extends Factory
     public function definition()
     {
         return [
-            'id' => $this->faker->unique()->word(),
+            'id' => preg_replace('/\s|\./', '', $this->faker->text(20)),
             'message_type_id' => MessageType::inRandomOrder()->first(),
             'description' => $this->faker->text(),
             'subject' => $this->faker->text(50),

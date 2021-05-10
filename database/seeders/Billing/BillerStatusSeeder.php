@@ -16,6 +16,9 @@ class BillerStatusSeeder extends Seeder
     public function run()
     {
         $this->create(BillerStatusEnum::ACTIVE, 'Ativo', 'Indicates that a biller is active and realize its payments.');
+        $this->create(BillerStatusEnum::SUSPENDED, 'Suspenso', 'Indicates that a biller is suspended and will not generate collections.');
+        $this->create(BillerStatusEnum::CANCELED, 'Cancelado', 'Indicates that a biller is canceled and will be no more generate collections.');
+        $this->create(BillerStatusEnum::INACTIVE, 'Inativo', 'Indicates that a biller is inactive.');
     }
 
     /**

@@ -5,7 +5,7 @@ namespace App\Filters\Billing;
 use App\Filters\QueryFilter;
 
 class EmployeeFilter extends QueryFilter
-{    
+{
     public function email($query, $value)
     {
         return $query->whereHas('user', function ($q) use ($value) {

@@ -2,13 +2,16 @@
 
 namespace App\Models\Billing;
 
+use App\Filters\Filterable;
 use App\Traits\Models\Billing\HasTax;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    use HasFactory, HasTax;
+    use Filterable;
+    use HasFactory;
+    use HasTax;
     
     /**
      * The table associated with the model.
@@ -68,13 +71,13 @@ class Customer extends Model
     }
 
     /**
-     * Building relation.
+     * Address relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function building()
+    public function address()
     {
-        return $this->belongsTo(Building::class, 'building_id');
+        return $this->belongsTo(Address::class, 'address_id');
     }
 
     /**

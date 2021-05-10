@@ -2,7 +2,7 @@
 
 use App\Enums\Billing\BillerStatusEnum;
 use App\Models\Billing\BillerStatus;
-use App\Models\Billing\Building;
+use App\Models\Billing\Address;
 use App\Models\Billing\Customer;
 use App\Models\Billing\PaymentInterval;
 use App\Models\Billing\PaymentMethod;
@@ -60,10 +60,10 @@ class CreateBillerTable extends Migration
                 ->comment('Biller tax code.');
 
             // Biller contact data
-            $table->foreignIdFor(Building::class, 'building_id')
+            $table->foreignIdFor(Address::class, 'address_id')
                 ->references('id')
-                ->on('building')
-                ->comment('Determine the building of the biller.');
+                ->on('address')
+                ->comment('Determine the address of the biller.');
 
             $table->string('email')
                 ->nullable()

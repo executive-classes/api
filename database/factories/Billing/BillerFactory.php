@@ -7,7 +7,7 @@ use App\Enums\Billing\PaymentIntervalEnum;
 use App\Enums\Billing\PaymentMethodEnum;
 use App\Enums\Billing\TaxTypeEnum;
 use App\Models\Billing\Biller;
-use App\Models\Billing\Building;
+use App\Models\Billing\Address;
 use App\Models\Billing\Customer;
 use App\Models\Billing\PaymentInterval;
 use App\Models\Billing\PaymentMethod;
@@ -37,7 +37,7 @@ class BillerFactory extends Factory
             'name' => $this->faker->company,
             'tax_type_id' => TaxTypeEnum::CNPJ,
             'tax_code' => $this->faker->cnpj,
-            'building_id' => Building::factory(),
+            'address_id' => Address::factory(),
             'email' => $this->faker->companyEmail,
             'phone' => $this->faker->phoneNumber,
             'phone_alt' => $this->faker->phoneNumber,

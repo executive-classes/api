@@ -122,6 +122,7 @@ return [
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
     'valid_password' => 'The password is invalid.',
+    'zip' => 'The Zip Code is invalid.',
 
     /*
     |--------------------------------------------------------------------------

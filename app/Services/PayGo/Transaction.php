@@ -5,7 +5,7 @@ namespace App\Services\PayGo;
 use App\Apis\GuzzleResponse;
 use App\Apis\PayGo\Gate2AllClient;
 use App\Models\Billing\Biller;
-use App\Models\Billing\Building;
+use App\Models\Billing\Address;
 use App\Models\Billing\Collection;
 use App\Models\Billing\Customer;
 use App\Services\PayGo\Contracts\PaymentContract;
@@ -63,20 +63,20 @@ class Transaction
             'name' => $customer->name,
             'document' => removeNonDigit($customer->tax_code),
             'email' => $customer->email,
-            'address' => $this->getAddressData($customer->building)
+            'address' => $this->getAddressData($customer->address)
         ];
     }
 
-    private function getAddressData(Building $building): array
+    private function getAddressData(Address $address): array
     {
         return [
-            "address" => $building->street,
-            "number"  => $building->number,
-            "complement" => $building->complement,
-            "district" => $building->district,
-            "zipcode" => removeNonDigit($building->zip_code),
-            "city" => $building->city,
-            "state" => $building->state,
+            "address" => $address->street,
+            "number"  => $address->number,
+            "complement" => $address->complement,
+            "district" => $address->district,
+            "zipcode" => removeNonDigit($address->zip),
+            "city" => $address->city,
+            "state" => $address->state,
         ];
     }
 

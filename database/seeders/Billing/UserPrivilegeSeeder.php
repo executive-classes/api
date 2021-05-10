@@ -22,6 +22,18 @@ class UserPrivilegeSeeder extends Seeder
         $this->create(UserPrivilegeEnum::CROSS_AUTH, 'Can cross-auth in others users.');
 
         // Billing
+        $this->create(UserPrivilegeEnum::ADDRESS_GET, 'Can get or list addresses.');
+        $this->create(UserPrivilegeEnum::ADDRESS_CREATE, 'Can create new addresses.');
+        $this->create(UserPrivilegeEnum::ADDRESS_UPDATE, 'Can update a address.');
+        $this->create(UserPrivilegeEnum::ADDRESS_DELETE, 'Can cancel a address.');
+        $this->create(UserPrivilegeEnum::BILLER_GET, 'Can get or list billers.');
+        $this->create(UserPrivilegeEnum::BILLER_CREATE, 'Can create new billers.');
+        $this->create(UserPrivilegeEnum::BILLER_UPDATE, 'Can update a biller.');
+        $this->create(UserPrivilegeEnum::BILLER_CANCEL, 'Can cancel a biller.');
+        $this->create(UserPrivilegeEnum::CUSTOMER_GET, 'Can get or list customers.');
+        $this->create(UserPrivilegeEnum::CUSTOMER_CREATE, 'Can create new customers.');
+        $this->create(UserPrivilegeEnum::CUSTOMER_UPDATE, 'Can update a customer.');
+        $this->create(UserPrivilegeEnum::CUSTOMER_CANCEL, 'Can cancel a customer.');
         $this->create(UserPrivilegeEnum::USER_GET, 'Can get or list users.');
         $this->create(UserPrivilegeEnum::USER_CREATE, 'Can create new users.');
         $this->create(UserPrivilegeEnum::USER_UPDATE, 'Can update a user.');
@@ -34,6 +46,10 @@ class UserPrivilegeSeeder extends Seeder
         $this->create(UserPrivilegeEnum::TEACHER_CREATE, 'Can create new teachers.');
         $this->create(UserPrivilegeEnum::TEACHER_UPDATE, 'Can update a teacher.');
         $this->create(UserPrivilegeEnum::TEACHER_CANCEL, 'Can cancel a teacher.');
+        $this->create(UserPrivilegeEnum::STUDENT_GET, 'Can get or list students.');
+        $this->create(UserPrivilegeEnum::STUDENT_CREATE, 'Can create new students.');
+        $this->create(UserPrivilegeEnum::STUDENT_UPDATE, 'Can update a student.');
+        $this->create(UserPrivilegeEnum::STUDENT_CANCEL, 'Can cancel a student.');
 
         // Mailing
         $this->create(UserPrivilegeEnum::MESSAGE_GET, 'Can get or list messages.');

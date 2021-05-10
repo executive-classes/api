@@ -17,6 +17,30 @@ final class UserPrivilegeEnum extends Enum
     const CROSS_AUTH = 'auth:cross';
 
     /**
+     * Address privileges.
+     */
+    const ADDRESS_GET = 'address:get';
+    const ADDRESS_CREATE = 'address:create';
+    const ADDRESS_UPDATE = 'address:update';
+    const ADDRESS_DELETE = 'address:delete';
+
+    /**
+     * Biller privileges.
+     */
+    const BILLER_GET = 'biller:get';
+    const BILLER_CREATE = 'biller:create';
+    const BILLER_UPDATE = 'biller:update';
+    const BILLER_CANCEL = 'biller:cancel';
+
+    /**
+     * Customer privileges.
+     */
+    const CUSTOMER_GET = 'customer:get';
+    const CUSTOMER_CREATE = 'customer:create';
+    const CUSTOMER_UPDATE = 'customer:update';
+    const CUSTOMER_CANCEL = 'customer:cancel';
+
+    /**
      * User privileges.
      */
     const USER_GET = 'user:get';
@@ -39,6 +63,14 @@ final class UserPrivilegeEnum extends Enum
     const TEACHER_CREATE = 'teacher:create';
     const TEACHER_UPDATE = 'teacher:update';
     const TEACHER_CANCEL = 'teacher:cancel';
+
+    /**
+     * Students privileges.
+     */
+    const STUDENT_GET = 'student:get';
+    const STUDENT_CREATE = 'student:create';
+    const STUDENT_UPDATE = 'student:update';
+    const STUDENT_CANCEL = 'student:cancel';
 
     /**
      * Message privileges.

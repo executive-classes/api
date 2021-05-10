@@ -122,6 +122,7 @@ return [
     'url' => 'O campo :attribute não é uma URL válido.',  
     'uuid' => 'O campo :attribute deve ser um UUID válido.',
     'valid_password' => 'A senha é inválida.',
+    'zip' => 'O CEP é inválido.',
 
     /*
     |--------------------------------------------------------------------------

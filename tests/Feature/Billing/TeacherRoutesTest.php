@@ -34,7 +34,7 @@ class TeacherRoutesTest extends TestCase
         Teacher::factory()->count(3)->create();
     }
 
-    public function test_can_list_employees()
+    public function test_can_list_teachers()
     {
         $response = $this->getJson(route('teacher.index'));
 
@@ -47,7 +47,7 @@ class TeacherRoutesTest extends TestCase
         $response->assertJsonCount(Teacher::count(), 'data');
     }
 
-    public function test_can_filter_employee_list()
+    public function test_can_filter_teacher_list()
     {
         $email = Teacher::first()->user->email;
         $response = $this->getJson(route('teacher.index', ['email' => $email]));
@@ -61,7 +61,7 @@ class TeacherRoutesTest extends TestCase
         $response->assertJsonCount(Teacher::email($email)->count(), 'data');
     }
 
-    public function test_can_get_employee()
+    public function test_can_get_teacher()
     {
         $id = Teacher::first()->id;
         $response = $this->getJson(route('teacher.show', ['teacher' => $id]));
@@ -75,7 +75,7 @@ class TeacherRoutesTest extends TestCase
         $response->assertJsonPath('data.id', $id);
     }
 
-    public function test_can_create_employee()
+    public function test_can_create_teacher()
     {
         $data = Teacher::factory()->make()->toArray();
         $response = $this->postJson(route('teacher.store'), $data);
@@ -89,7 +89,7 @@ class TeacherRoutesTest extends TestCase
         $response->assertJsonPath('data.user_id', $data['user_id']);
     }
 
-    public function test_can_update_employee()
+    public function test_can_update_teacher()
     {
         $data = [
             'teacher_status_id' => TeacherStatus::where('id', '<>', TeacherStatusEnum::CANCELED)
@@ -110,7 +110,7 @@ class TeacherRoutesTest extends TestCase
         $response->assertJsonPath('data.status_id', $data['teacher_status_id']);
     }
 
-    public function test_can_not_cancel_employee_by_update()
+    public function test_can_not_cancel_teacher_by_update()
     {
         $data = ['teacher_status_id' => TeacherStatusEnum::CANCELED];
         $id = Teacher::first()->id;
@@ -119,7 +119,7 @@ class TeacherRoutesTest extends TestCase
         $response->assertStatus(422);
     }
 
-    public function test_can_cancel_employee()
+    public function test_can_cancel_teacher()
     {
         $id = Teacher::first()->id;
         $response = $this->deleteJson(route('teacher.cancel', ['teacher' => $id]));
@@ -132,8 +132,5 @@ class TeacherRoutesTest extends TestCase
         $response->assertJsonPath('status', true);
         $response->assertJsonPath('data.id', $id);
         $response->assertJsonPath('data.status_id', TeacherStatusEnum::CANCELED);
-        
     }
-
-    
 }

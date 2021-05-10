@@ -1,7 +1,7 @@
 <?php
 
 use App\Enums\Billing\CustomerStatusEnum;
-use App\Models\Billing\Building;
+use App\Models\Billing\Address;
 use App\Models\Billing\CustomerStatus;
 use App\Models\Billing\TaxType;
 use Illuminate\Database\Migrations\Migration;
@@ -65,10 +65,10 @@ class CreateCustomerTable extends Migration
                 ->comment('Customer alternative tax code.');
 
             // Customer contact data
-            $table->foreignIdFor(Building::class, 'building_id')
+            $table->foreignIdFor(Address::class, 'address_id')
                 ->references('id')
-                ->on('building')
-                ->comment('Determine the building of the customer.');
+                ->on('address')
+                ->comment('Determine the address of the customer.');
 
             $table->string('email')
                 ->nullable()

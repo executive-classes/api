@@ -18,7 +18,6 @@ class StudentStatusSeeder extends Seeder
         $this->create(StudentStatusEnum::ACTIVE, 'Ativo', 'Indicates that a student is active and can attend classes.');
         $this->create(StudentStatusEnum::SUSPENDED, 'Suspenso', 'Indicates that a student is suspended and can not attend classes.');
         $this->create(StudentStatusEnum::CANCELED, 'Cancelado', 'Indicates that a student is canceled and will no more attend classes.');
-        $this->create(StudentStatusEnum::INACTIVE, 'Inativo', 'Indicates that a student is inactive.');
     }
 
     /**
