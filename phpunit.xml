@@ -22,6 +22,9 @@
         <testsuite name="ApiResponse">
             <directory suffix="Test.php">./tests/Unit/System/ApiResponseTest.php</directory>
         </testsuite>
+        <testsuite name="BugLog">
+            <directory suffix="Test.php">./tests/Unit/System/BugLogTest.php</directory>
+        </testsuite>
         <testsuite name="AddressFormatter">
             <directory suffix="Test.php">./tests/Unit/Billing/AddressFormatterTest.php</directory>
         </testsuite>
@@ -53,6 +56,9 @@
         </testsuite>
         <testsuite name="BillerRoutes">
             <directory suffix="Test.php">./tests/Feature/Billing/BillerRoutesTest.php</directory>
+        </testsuite>
+        <testsuite name="BugLogRoutes">
+            <directory suffix="Test.php">./tests/Feature/System/BugLogRoutesTest.php</directory>
         </testsuite>
 
         <!-- Features -->

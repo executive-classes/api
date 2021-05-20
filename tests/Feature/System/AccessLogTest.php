@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Tests\UseUsers;
 
-class AccessLogRouteTest extends TestCase
+class AccessLogTest extends TestCase
 {
     use RefreshDatabase, WithFaker, UseUsers;
 

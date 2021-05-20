@@ -66,7 +66,7 @@ class Handler extends ExceptionHandler
             }
         }
 
-        BugLogService::log($request, $exception);
+        BugLogService::log($request, $exception, $this->dontFlash);
 
         if ($exception instanceof ApiException) {
             return api()->error($exception->getCode(), $exception->getMessage());

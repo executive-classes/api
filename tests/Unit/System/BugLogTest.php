@@ -22,7 +22,7 @@ class BugLogTest extends TestCase
      * @var bool
      */
     protected $seed = true;
-    
+
     /**
      * Test Set Up.
      *
@@ -122,4 +122,23 @@ class BugLogTest extends TestCase
         }
     }
 
+    /**
+     * Test if a exception can be logged with request data.
+     *
+     * @dataProvider getExceptionWithRequestData
+     * 
+     * @param callable $provider
+     * @return void
+     */
+    public function test_exception_can_not_log_except_request_data(callable $provider)
+    {
+        [$exception, $request] = $provider();
+        $param = getFirstElement($request->all(), true);
+        $except = [$param];
+
+        $bug = BugLogService::log($request, $exception, $except);
+
+        $this->assertDatabaseHas('system_buglog', ['id' => $bug->id]);
+        $this->assertNotContains($param, json_decode($bug->data, true));
+    }
 }

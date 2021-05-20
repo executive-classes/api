@@ -2,12 +2,14 @@
 
 namespace App\Models\System;
 
+use App\Filters\Filterable;
 use App\Models\Billing\User;
 use Illuminate\Database\Eloquent\Model;
-use stdClass;
 
 class SystemBuglog extends Model
 {
+    use Filterable;
+    
     /**
      * The table associated with the model.
      *

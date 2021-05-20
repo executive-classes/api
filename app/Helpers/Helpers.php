@@ -211,3 +211,15 @@ if (!function_exists('removeNonDigit')) {
         return removeByRegex('/\D/', $string);
     }
 }
+
+/**
+ * Iterable Helpers
+ */
+
+if (!function_exists('getFirstElement')) {
+    function getFirstElement($iterable, bool $returnKey = false) {
+        foreach ($iterable as $key => $value) {
+            return $returnKey ? $key : $value;
+        }
+    }
+}

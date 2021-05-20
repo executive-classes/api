@@ -59,6 +59,9 @@ class UserPrivilegeSeeder extends Seeder
         $this->create(UserPrivilegeEnum::MESSAGE_TEMPLATE_CREATE, 'Can create messages templates.');
         $this->create(UserPrivilegeEnum::MESSAGE_TEMPLATE_UPDATE, 'Can update messages templates.');
         $this->create(UserPrivilegeEnum::MESSAGE_TEMPLATE_DELETE, 'Can delete messages templates.');
+
+        // System
+        $this->create(UserPrivilegeEnum::BUG_LOG_GET, 'Can get the bug log.');
     }
 
     /**

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Tests\UseUsers;
 
-class BugLogRouteTest extends TestCase
+class BugLogTest extends TestCase
 {
     use RefreshDatabase, WithFaker, UseUsers;
 

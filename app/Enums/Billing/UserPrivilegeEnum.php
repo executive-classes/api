@@ -88,4 +88,10 @@ final class UserPrivilegeEnum extends Enum
     const MESSAGE_TEMPLATE_UPDATE = 'message_template:update';
     const MESSAGE_TEMPLATE_DELETE = 'message_template:delete';
 
+    /**
+     * System Bug Log privileges
+     */
+
+    const BUG_LOG_GET    = 'buglog:get';
+
 }
