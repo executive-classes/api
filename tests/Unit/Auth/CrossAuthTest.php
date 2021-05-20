@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Authentication;
+namespace Tests\Unit\Auth;
 
 use App\Models\Billing\User;
 use Tests\Providers\Billing\UserProvider;

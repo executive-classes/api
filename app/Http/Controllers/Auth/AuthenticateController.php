@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\CrossLoginRequest;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Resources\Auth\TokenResource;
 use App\Models\Billing\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +36,7 @@ class AuthenticateController extends Controller
             $user->save();
         }
 
-        return api()->ok($token);
+        return new TokenResource($token);
     }
 
     /**
@@ -50,7 +51,7 @@ class AuthenticateController extends Controller
         $cross_user = User::find($request->user_id);
         $token = $cross_user->crossLogin($request->user(), $request->userAgent());
 
-        return api()->ok($token);
+        return new TokenResource($token);
     }
 
     /**

@@ -152,7 +152,7 @@ class AuditLogTest extends TestCase
     }
 
     /**
-     * Test if a changed model can audit with the authentication data.
+     * Test if a changed model can audit with the Auth data.
      *
      * @dataProvider getModelWithAutentication
      * 

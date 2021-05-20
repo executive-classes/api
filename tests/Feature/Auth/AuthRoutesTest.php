@@ -1,18 +1,18 @@
 <?php
 
-namespace Tests\Feature\Authentication;
+namespace Tests\Feature\Auth;
 
 use App\Models\Billing\User;
-use Tests\Providers\Authentication\AuthenticationProvider;
+use Tests\Providers\Auth\AuthProvider;
 use Tests\Providers\Billing\UserProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Tests\UseUsers;
 
-class AutheticationRoutesTest extends TestCase
+class AuthRoutesTest extends TestCase
 {
-    use RefreshDatabase, WithFaker, AuthenticationProvider, UserProvider, UseUsers;
+    use RefreshDatabase, WithFaker, AuthProvider, UserProvider, UseUsers;
 
     /**
      * Indicates that the database should seed.
@@ -54,9 +54,11 @@ class AutheticationRoutesTest extends TestCase
             'status',
             'data' => [
                 'accessToken',
-                'plainTextToken'
+                'plainTextToken',
+                'user'
             ]
         ]);
+        $response->assertJsonPath('data.user.id', $this->user->id);
         $response->assertJsonPath('data.accessToken.tokenable_id', $this->user->id);
     }
 
@@ -99,9 +101,11 @@ class AutheticationRoutesTest extends TestCase
             'status',
             'data' => [
                 'accessToken',
-                'plainTextToken'
+                'plainTextToken',
+                'user'
             ]
         ]);
+        $response->assertJsonPath('data.user.id', $user->id);
         $response->assertJsonPath('data.accessToken.tokenable_id', $user->id);
     }
 

@@ -14,8 +14,8 @@ return [
     */
 
     'failed' => 'These credentials do not match our records.',
-    'user' => 'The provided user does not exists.',
-    'password' => 'The provided password is incorrect.',
+    'user' => 'The user does not exists.',
+    'password' => 'The password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'cross_auth' => 'Could not perform cross-auth.',
     'unauthenticated' => 'Not authenticated. Please login again.',

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Authentication;
+namespace Tests\Unit\Auth;
 
 use App\Models\Billing\User;
 use Tests\Providers\Billing\UserProvider;
@@ -9,7 +9,7 @@ use Laravel\Sanctum\NewAccessToken;
 use Laravel\Sanctum\PersonalAccessToken;
 use Tests\TestCase;
 
-class AuthenticationTest extends TestCase
+class AuthTest extends TestCase
 {
     use RefreshDatabase, UserProvider;
 

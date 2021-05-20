@@ -30,6 +30,9 @@
         </testsuite>
 
         <!-- Features -->
+        <testsuite name="AuthRoutes">
+            <directory suffix="Test.php">./tests/Feature/Auth/AuthRoutesTest.php</directory>
+        </testsuite>
         <testsuite name="UserRoutes">
             <directory suffix="Test.php">./tests/Feature/Billing/UserRoutesTest.php</directory>
         </testsuite>

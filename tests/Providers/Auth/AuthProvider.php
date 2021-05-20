@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Providers\Authentication;
+namespace Tests\Providers\Auth;
 
 use App\Models\Billing\User;
 
-trait AuthenticationProvider
+trait AuthProvider
 {
     public function loginByRoute(User $user, string $password = null, string $language = 'en')
     {

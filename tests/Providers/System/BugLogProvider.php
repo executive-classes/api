@@ -22,7 +22,7 @@ trait BugLogProvider
         ];
     }
     
-    public function getExceptionWithAuthentication()
+    public function getExceptionWithAuth()
     {
         return [
             'without-user' => [

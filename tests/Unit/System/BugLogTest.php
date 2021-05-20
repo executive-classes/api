@@ -80,7 +80,7 @@ class BugLogTest extends TestCase
     /**
      * Test if a exception can be logged with user info.
      *
-     * @dataProvider getExceptionWithAuthentication
+     * @dataProvider getExceptionWithAuth
      * 
      * @return void
      */
