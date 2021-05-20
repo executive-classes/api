@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Auth;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AccessTokenResource extends JsonResource
@@ -37,8 +38,9 @@ class AccessTokenResource extends JsonResource
             "abilities" => $this->abilities,
             "tokenable_id" => $this->tokenable_id,
             "tokenable_type" => $this->tokenable_type,
-            "updated_at" => $this->updated_at,
-            "created_at" => $this->created_at,
+            "updated_at" => Carbon::parse($this->updated_at)->toDateTimeString(),
+            "created_at" => Carbon::parse($this->created_at)->toDateTimeString(),
+            "expires_at" => Carbon::parse($this->created_at)->addMinutes(config('sanctum.expiration'))->toDateTimeString(),
             "id" => $this->id
         ];
     }
