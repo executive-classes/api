@@ -14,7 +14,7 @@ class BugLogController extends Controller
     {
         $logs = SystemBuglog::filter($filter)
             ->limit($request->get('limit', 1000))
-            ->paginate($request->get('paginate', 20));
+            ->get();
 
         return new BugLogCollection($logs);
     }

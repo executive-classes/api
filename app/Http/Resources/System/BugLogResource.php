@@ -3,6 +3,7 @@
 namespace App\Http\Resources\System;
 
 use App\Http\Resources\Billling\UserResource;
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class BugLogResource extends JsonResource
@@ -42,6 +43,7 @@ class BugLogResource extends JsonResource
             'cross_user' => new UserResource($this->cross_user),
             'agent' => $this->agent,
             'url' => $this->url,
+            'route' => $this->route,
             'method' => $this->method,
             'ajax' => $this->ajax,
             'app' => $this->app->name,

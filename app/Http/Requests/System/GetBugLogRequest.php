@@ -14,6 +14,16 @@ class GetBugLogRequest extends FormRequest
     protected $stopOnFirstFailure = true;
 
     /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation()
+    {
+
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -22,7 +32,7 @@ class GetBugLogRequest extends FormRequest
     {
         return [
             'limit' => 'sometimes|numeric|max:1000',
-            'paginate' => 'sometimes|numeric|min:10|max:100'
+            'paginate' => 'sometimes|numeric|min:5|max:100'
         ];
     }
 }

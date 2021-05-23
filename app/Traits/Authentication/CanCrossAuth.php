@@ -11,6 +11,10 @@ trait CanCrossAuth
         try {
             $token = $this->currentAccessToken();
             $email = explode('|', $token->name)[0];
+
+            if ($email == $this->email) {
+                return null;
+            }
         } catch (\Throwable $th) {
             return null;
         }
