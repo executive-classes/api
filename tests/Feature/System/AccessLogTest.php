@@ -21,7 +21,7 @@ class AccessLogTest extends TestCase
     protected $seed = true;
     
     /**
-     * The test uri
+     * The test route
      * 
      * @var string
      */
@@ -36,18 +36,17 @@ class AccessLogTest extends TestCase
     {
         parent::setUp();
 
-        $this->uri = '/test';
+        $this->route = 'test';
     }
-
     
     public function test_access_create_log()
     {
-        $response = $this->get($this->uri);
+        $response = $this->get(route($this->route));
         $response->assertOk();
 
-        $this->assertDatabaseHas('system_accesslog', ['route' => $this->uri]);
+        $this->assertDatabaseHas('system_accesslog', ['route' => $this->route]);
 
-        $log = SystemAccessLog::firstWhere('route', $this->uri);
+        $log = SystemAccessLog::firstWhere('route', $this->route);
         $this->assertInstanceOf(SystemAccessLog::class, $log);
 
         $this->assertEquals(200, $log->code);
@@ -59,12 +58,12 @@ class AccessLogTest extends TestCase
         $user = $this->getDevUser();
 
         $user->login();
-        $response = $this->get($this->uri);
+        $response = $this->get(route($this->route));
         $response->assertOk();
 
-        $this->assertDatabaseHas('system_accesslog', ['route' => $this->uri]);
+        $this->assertDatabaseHas('system_accesslog', ['route' => $this->route]);
 
-        $log = SystemAccessLog::firstWhere('route', $this->uri);
+        $log = SystemAccessLog::firstWhere('route', $this->route);
         $this->assertInstanceOf(SystemAccessLog::class, $log);
 
         $this->assertEquals($user->id, $log->user_id);

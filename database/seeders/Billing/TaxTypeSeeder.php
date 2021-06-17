@@ -15,10 +15,10 @@ class TaxTypeSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(TaxTypeEnum::CNPJ, 'CNPJ');
-        $this->create(TaxTypeEnum::CPF, 'CPF');
-        $this->create(TaxTypeEnum::RG, 'RG');
-        $this->create(TaxTypeEnum::IE, 'IE');
+        $this->create(TaxTypeEnum::CNPJ, 'CNPJ', 1, '##.###.###/####-##');
+        $this->create(TaxTypeEnum::CPF, 'CPF', 1, '###.###.###-##');
+        $this->create(TaxTypeEnum::RG, 'RG', 2, '##.###.###-X');
+        $this->create(TaxTypeEnum::IE, 'IE', 2);
     }
 
     /**
@@ -29,9 +29,9 @@ class TaxTypeSeeder extends Seeder
      * @param string $pattern
      * @return void
      */
-    protected function create(string $id, string $name)
+    protected function create(string $id, string $name, int $priority, string $pattern = null)
     {
-        $taxType = new TaxType(compact('id', 'name'));
+        $taxType = new TaxType(compact('id', 'name', 'priority', 'pattern'));
         $taxType->save();
     }
 }

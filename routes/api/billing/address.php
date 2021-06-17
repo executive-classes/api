@@ -2,6 +2,7 @@
 
 use App\Enums\Billing\UserPrivilegeEnum;
 use App\Http\Controllers\Billling\AddressController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/addresses', [AddressController::class, 'index'])
     ->name('address.index')

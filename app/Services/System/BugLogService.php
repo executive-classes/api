@@ -26,7 +26,7 @@ class BugLogService
             $bug->method = $request->method();
             $bug->ajax = $request->ajax();
             $bug->app_id = SystemAppEnum::API;
-            $bug->route = $route->getName() ?? null;
+            $bug->route = $route ? $route->getName() : $request->getRequestUri();
             $bug->data = json_encode(self::getData($request, $except));
             $bug->error = json_encode(self::getError($th));
 

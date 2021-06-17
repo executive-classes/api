@@ -23,6 +23,13 @@ class CreateTaxTypeTable extends Migration
             // Tax type data
             $table->string('name')
                 ->comment('Tax type name.');
+
+            $table->integer('priority')
+                ->comment('Tax type priority.');
+
+            $table->string('pattern')
+                ->nullable()
+                ->comment('Tax type pattern.');
         });
     }
 

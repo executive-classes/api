@@ -127,10 +127,15 @@ class ProfileRoutesTest extends TestCase
             'data'
         ]);
         $response->assertJsonPath('status', true);
-        $response->assertJsonPath('data.tax_type', $data['tax_type_id']);
+        $response->assertJsonPath('data.tax_type.id', $data['tax_type_id']);
         $response->assertJsonPath('data.tax_code', $data['tax_code']);
-        $response->assertJsonPath('data.tax_type_alt', $data['tax_type_alt_id']);
+        $response->assertJsonPath('data.tax_type_alt.id', $data['tax_type_alt_id']);
         $response->assertJsonPath('data.tax_code_alt', $data['tax_code_alt']);
+        $this->assertDatabaseHas('user', [
+            'id' => $this->user->id,
+            'tax_code' => $data['tax_code'] ? removeNonDigit($data['tax_code']) : $data['tax_code'],
+            'tax_code_alt' => $data['tax_code_alt'] ? removeNonDigit($data['tax_code_alt']) : $data['tax_code_alt']
+        ]);
     }
 
     public function test_user_can_update_phone()
@@ -150,6 +155,11 @@ class ProfileRoutesTest extends TestCase
         $response->assertJsonPath('status', true);
         $response->assertJsonPath('data.phone', $data['phone']);
         $response->assertJsonPath('data.phone_alt', $data['phone_alt']);
+        $this->assertDatabaseHas('user', [
+            'id' => $this->user->id, 
+            'phone' => $data['phone'] ? removeNonDigit($data['phone']) : $data['phone'], 
+            'phone_alt' => $data['phone'] ? removeNonDigit($data['phone_alt']) : $data['phone']
+        ]);
     }
 
     public function test_user_can_update_language()
@@ -166,7 +176,7 @@ class ProfileRoutesTest extends TestCase
             'data'
         ]);
         $response->assertJsonPath('status', true);
-        $response->assertJsonPath('data.language', $data['system_language_id']);
+        $response->assertJsonPath('data.language.id', $data['system_language_id']);
     }
 
     

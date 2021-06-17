@@ -69,7 +69,7 @@ class AccessLogTest extends TestCase
         $this->assertEquals($log->agent, $request->userAgent());
         $this->assertEquals($log->url, $request->fullUrl());
         $this->assertEquals($log->method, $request->method());
-        $this->assertEquals($log->route, $request->getRequestUri());
+        $this->assertEquals($log->route, $request->route()->getName());
         $this->assertIsBool($log->ajax);
     }
 

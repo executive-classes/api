@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () { 
     return response('', 200); 
-});
+})->name('test');
 
 Route::get('/error', function () {
     throw new Exception("Error", 500);
-});
+})->name('test.error');

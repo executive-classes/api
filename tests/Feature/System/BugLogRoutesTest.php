@@ -41,29 +41,25 @@ class BugLogRoutesTest extends TestCase
         $response->assertOk();
         $response->assertJsonStructure([
             'status',
-            'data',
-            'links',
-            'meta'
+            'data'
         ]);
         $response->assertJsonPath('status', true);
         $response->assertJsonCount(SystemBuglog::count(), 'data');
     }
 
-    public function test_can_paginate_bug_logs()
-    {
-        $per_page = 40;
-        $response = $this->getJson(route('logs.bugs.index', ['paginate' => $per_page]));
+    // public function test_can_paginate_bug_logs()
+    // {
+    //     $per_page = 40;
+    //     $response = $this->getJson(route('logs.bugs.index', ['paginate' => $per_page]));
 
-        $response->assertOk();
-        $response->assertJsonStructure([
-            'status',
-            'data',
-            'links',
-            'meta'
-        ]);
-        $response->assertJsonPath('status', true);
-        $response->assertJsonPath('meta.per_page', "$per_page");
-    }
+    //     $response->assertOk();
+    //     $response->assertJsonStructure([
+    //         'status',
+    //         'data'
+    //     ]);
+    //     $response->assertJsonPath('status', true);
+    //     $response->assertJsonPath('meta.per_page', "$per_page");
+    // }
 
     public function test_can_filter_bug_log_list()
     {
@@ -73,9 +69,7 @@ class BugLogRoutesTest extends TestCase
         $response->assertOk();
         $response->assertJsonStructure([
             'status',
-            'data',
-            'links',
-            'meta'
+            'data'
         ]);
         $response->assertJsonPath('status', true);
         $response->assertJsonCount(SystemBuglog::where('date', '>=', $date)->count(), 'data');

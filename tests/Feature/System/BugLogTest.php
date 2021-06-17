@@ -42,17 +42,17 @@ class BugLogTest extends TestCase
     {
         parent::setUp();
         
-        $this->uri = '/test/error';
+        $this->route = 'test.error';
         $this->error = 'Error';
     }
 
     public function test_bug_create_log()
     {
-        $this->get($this->uri);
+        $this->get(route($this->route));
 
-        $this->assertDatabaseHas('system_buglog', ['route' => $this->uri]);
+        $this->assertDatabaseHas('system_buglog', ['route' => $this->route]);
 
-        $log = SystemBuglog::firstWhere('route', $this->uri);
+        $log = SystemBuglog::firstWhere('route', $this->route);
         $this->assertInstanceOf(SystemBuglog::class, $log);
         
         $this->assertEquals($this->error, json_decode($log->error)->message);
@@ -63,10 +63,10 @@ class BugLogTest extends TestCase
         $user = $this->getDevUser();
         $user->login();
 
-        $this->get($this->uri);
-        $this->assertDatabaseHas('system_buglog', ['route' => $this->uri]);
+        $this->get(route($this->route));
+        $this->assertDatabaseHas('system_buglog', ['route' => $this->route]);
 
-        $log = SystemBuglog::firstWhere('route', $this->uri);
+        $log = SystemBuglog::firstWhere('route', $this->route);
         $this->assertInstanceOf(SystemBuglog::class, $log);
 
         $this->assertEquals($user->id, $log->user_id);

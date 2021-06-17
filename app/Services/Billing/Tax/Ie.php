@@ -18,6 +18,10 @@ class Ie extends Tax
      */
     public function validate(string $tax, StateEnum $state = null): bool
     {
+        if (!$state) {
+            return false;
+        }
+
         return Validator::check($state->value, $tax);
     }
 

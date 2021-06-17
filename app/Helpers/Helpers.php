@@ -2,6 +2,7 @@
 
 use App\Enums\Billing\UserPrivilegeEnum;
 use App\Http\Response\Api;
+use App\Services\Mask\MaskService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
@@ -139,16 +140,9 @@ if (!function_exists('render')) {
  */
 
 if (!function_exists('format_mask')) {
-    function format_mask(string $mask, string $string): string {
-        $string = str_replace(" ", "", $string);
-
-        for ($i=0; $i < strlen($string); $i++) { 
-            $test = $string[$i];
-            $test = $mask[strpos($mask,"#")];
-            $mask[strpos($mask,"#")] = $string[$i];
-        }
-
-        return $mask;
+    function format_mask($masks, string $string): string {
+        $maksService = new MaskService($masks, $string);
+        return $maksService->mask();
     }
 }
 
@@ -209,6 +203,12 @@ if (!function_exists('removeByRegex')) {
 if (!function_exists('removeNonDigit')) {
     function removeNonDigit(string $string): string {
         return removeByRegex('/\D/', $string);
+    }
+}
+
+if (!function_exists('sanitazeTax')) {
+    function sanitazeTax(string $string): string {
+        return removeByRegex('/(?!(\d|x))./', $string);
     }
 }
 

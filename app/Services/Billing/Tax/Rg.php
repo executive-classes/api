@@ -11,7 +11,7 @@ class Rg extends Tax
      * 
      * @var string
      */
-    public $mask = '##.###.###-#';
+    public $mask = '##.###.###-X';
 
     /**
      * Validate the RG.

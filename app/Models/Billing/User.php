@@ -8,6 +8,7 @@ use App\Models\System\SystemLanguage;
 use App\Traits\Authentication\Authenticable as CanAuthenticate;
 use App\Traits\Authentication\CanChangeLanguage;
 use App\Traits\Authentication\CanCrossAuth;
+use App\Traits\Models\Billing\HasPhone;
 use App\Traits\Models\Billing\HasPrivileges;
 use App\Traits\Models\Billing\HasTax;
 use Illuminate\Database\Eloquent\Builder;
@@ -27,6 +28,7 @@ class User extends Authenticable
     use HasPrivileges;
     use HasApiTokens;
     use HasFactory;
+    use HasPhone;
     use HasTax;
 
     /**
@@ -93,7 +95,17 @@ class User extends Authenticable
      */
     public function taxType()
     {
-        return $this->belongsTo(TaxType::class, 'tax_type_id', 'id');
+        return $this->belongsTo(TaxType::class, 'tax_type_id');
+    }
+
+    /**
+     * User alternative tax type relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function taxTypeAlt()
+    {
+        return $this->belongsTo(TaxType::class, 'tax_type_alt_id');
     }
 
     /**

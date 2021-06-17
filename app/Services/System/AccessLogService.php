@@ -12,7 +12,7 @@ class AccessLogService
     public static function access(Request $request): SystemAccessLog
     {
         $user = $request->user();
-
+        $route = $request->route();
         $log = new SystemAccessLog();
 
         $log->user_id = $user ? $user->id : null;
@@ -20,7 +20,7 @@ class AccessLogService
         $log->agent = $request->userAgent();
         $log->method = $request->method();
         $log->url = $request->fullUrl();
-        $log->route = $request->getRequestUri();
+        $log->route = $route ? $route->getName() : $request->getRequestUri();
         $log->ajax = $request->ajax();
         
         $log->save();

@@ -68,4 +68,14 @@ trait HasTax
     {
         return $this->getTaxCode(TaxTypeEnum::IE, $findOrFail);
     }
+
+    public function setTaxCodeAttribute(string $value)
+    {
+        $this->attributes['tax_code'] = sanitazeTax($value ?? '');
+    }
+
+    public function setTaxCodeAltAttribute(string $value = null)
+    {
+        $this->attributes['tax_code_alt'] = sanitazeTax($value ?? '');
+    }
 }

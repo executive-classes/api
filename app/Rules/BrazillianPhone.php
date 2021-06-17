@@ -2,6 +2,7 @@
 
 namespace App\Rules;
 
+use App\Services\Billing\Phone\BrazillianPhone as PhoneBrazillianPhone;
 use Illuminate\Contracts\Validation\Rule;
 
 /**
@@ -18,7 +19,12 @@ class BrazillianPhone implements Rule
      */
     public function passes($attribute, $value)
     {
-        return preg_match('/^(?:(?:\+|00)?(55)\s?)?(?:\(?([0-0]?[0-9]{1}[0-9]{1})\)?\s?)??(?:((?:9[2-9]|[2-9])\d{3}\-?\d{4}))$/', $value);
+        if (!$value) {
+            return false;
+        }
+
+        $phone = new PhoneBrazillianPhone();
+        return $phone->validate($value);
     }
 
     /**

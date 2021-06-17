@@ -31,6 +31,6 @@ class ProfileController extends Controller
         $user = $request->user()->fill($request->validated());
         $user->save();
 
-        return new ProfileResource($user);
+        return new ProfileResource($user->refresh());
     }
 }

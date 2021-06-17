@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources\Billling;
 
+use App\Http\Resources\System\LanguageResource;
+use App\Services\Billing\Phone\BrazillianPhone;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProfileResource extends JsonResource
@@ -37,14 +39,13 @@ class ProfileResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'email_verified' => $this->email_verified_at !== null,
-            'active' => $this->active,
-            'tax_type' => $this->tax_type_id,
-            'tax_code' => $this->tax_code,
-            'tax_type_alt' => $this->tax_type_alt_id,
-            'tax_code_alt' => $this->tax_code_alt,
-            'phone' => $this->phone,
-            'phone_alt' => $this->phone_alt,
-            'language' => $this->system_language_id
+            'tax_type' => new TaxTypeResource($this->taxType),
+            'tax_code' => $this->taxType->mask($this->tax_code),
+            'tax_type_alt' => new TaxTypeResource($this->taxTypeAlt),
+            'tax_code_alt' => $this->taxTypeAlt ? $this->taxTypeAlt->mask($this->tax_code_alt) : null,
+            'phone' => $this->phone ? BrazillianPhone::format($this->phone) : null,
+            'phone_alt' => $this->phone ? BrazillianPhone::format($this->phone_alt) : null,
+            'language' => new LanguageResource($this->language)
         ];
     }
 }

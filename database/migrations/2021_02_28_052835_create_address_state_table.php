@@ -24,6 +24,10 @@ class CreateAddressStateTable extends Migration
 
             $table->string('name', 255)
                 ->comment('State name.');
+
+            $table->string('ie_mask', 255)
+                ->nullable()
+                ->comment('State IE Mask.');
         });
     }
 

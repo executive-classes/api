@@ -35,7 +35,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     require("api/billing/customer.php");
     require("api/billing/employee.php");
     require("api/billing/profile.php");
+    require("api/billing/state.php");
     require("api/billing/student.php");
+    require("api/billing/tax_type.php");
     require("api/billing/teacher.php");
     require("api/billing/user.php");
 
@@ -45,4 +47,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     // System
     require("api/system/buglog.php");
+    require("api/system/language.php");
 });

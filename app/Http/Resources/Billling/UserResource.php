@@ -42,14 +42,14 @@ class UserResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'email_verified' => $this->email_verified_at !== null,
+            'status' => $this->active ? 'Ativo' : 'Suspenso',
             'active' => $this->active,
-            'tax_type' => $this->tax_type_id,
+            'tax_type' => $this->taxType->name ?? null,
             'tax_code' => $this->tax_code,
-            'tax_type_alt' => $this->tax_type_alt_id,
+            'tax_type_alt' => $this->taxTypeAlt->name ?? null,
             'tax_code_alt' => $this->tax_code_alt,
             'phone' => $this->phone,
-            'phone_alt' => $this->phone_alt,
-            'language' => $this->system_language_id
+            'phone_alt' => $this->phone_alt
         ];
     }
 }

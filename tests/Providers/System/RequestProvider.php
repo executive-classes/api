@@ -19,6 +19,10 @@ trait RequestProvider
 
         $request = request();
         $route = $this->makeRoute()->bind($request);
+        
+        $request->setRouteResolver(function () use ($route) {
+            return $route;
+        });
 
         if ($authenticate) {
             $this->requestAuthenticate($crossAuthenticate);

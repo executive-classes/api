@@ -18,6 +18,7 @@ class AuditLogService
         array $relations = []
     ): SystemAuditLog {
         $user = $request->user();
+        $route = $request->route();
         $log = new SystemAuditLog();
 
         $log->user_id = $user ? $user->id : null;
@@ -26,7 +27,7 @@ class AuditLogService
         $log->agent = $request->userAgent();
         $log->method = $request->method();
         $log->url = $request->fullUrl();
-        $log->route = $request->getRequestUri();
+        $log->route = $route ? $route->getName() : $request->getRequestUri();
         $log->ajax = $request->ajax();
         $log->type = $typeEnum->value;
         $log->table = $model->getTable();

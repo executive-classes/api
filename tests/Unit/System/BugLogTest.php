@@ -51,7 +51,7 @@ class BugLogTest extends TestCase
         $this->assertEquals($bug->agent, $request->userAgent());
         $this->assertEquals($bug->url, $request->fullUrl());
         $this->assertEquals($bug->method, $request->method());
-        $this->assertEquals($bug->route, $request->getRequestUri());
+        $this->assertEquals($bug->route, $request->route()->getName());
         $this->assertIsBool($bug->ajax);
     }
 

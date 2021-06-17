@@ -46,6 +46,10 @@ class TaxCode implements Rule
         if (!$this->taxType) {
             return false;
         }
+
+        if (!$value) {
+            return false;
+        }
         
         return $this->taxType->validate($value, $this->state);
     }
