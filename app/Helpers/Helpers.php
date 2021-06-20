@@ -33,6 +33,12 @@ if (!function_exists('isLocal')) {
     }
 }
 
+if (!function_exists('isTest')) {
+    function isTest(): bool {
+        return env('APP_ENV') === 'testing';
+    }
+}
+
 if (!function_exists('timezone')) {
     function timezone(): string {
         return config('app.timezone');

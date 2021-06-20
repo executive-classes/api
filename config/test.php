@@ -12,10 +12,43 @@ return [
     */
 
     'user' => [
-        'emails' => [
-            'dev' => 'ronaldo.stiene@executiveclasses.com.br',
-            'adm' => 'jeffrey.pinotti@executiveclasses.com.br',
-            'fin' => 'lilian.berna@executiveclasses.com.br'
+        'type' => [
+            'dev' => [
+                'email' => 'ronaldo.stiene@executiveclasses.com.br',
+                'name' => 'Ronaldo Stiene',
+                'tax_type_id' => 'cpf',
+                'tax_code' => '47020345883'
+            ],
+            'adm' => [
+                'email' => 'adm@executiveclasses.com.br',
+                'name' => 'Admin',
+                'tax_type_id' => 'cpf',
+                'tax_code' => '62258731046'
+            ],
+            'fin' => [
+                'email' => 'financial@executiveclasses.com.br',
+                'name' => 'Financeiro',
+                'tax_type_id' => 'cpf',
+                'tax_code' => '36863037017'
+            ],
+            'tech' => [
+                'email' => 'tech@executiveclasses.com.br',
+                'name' => 'Técnico',
+                'tax_type_id' => 'cpf',
+                'tax_code' => '89702480051'
+            ],
+            'teacher' => [
+                'email' => 'maria.souza@executiveclasses.com.br',
+                'name' => 'Maria Souza',
+                'tax_type_id' => 'cpf',
+                'tax_code' => '32707859095'
+            ],
+            'student' => [
+                'email' => 'joao.silva@executiveclasses.com.br',
+                'name' => 'João da Silva',
+                'tax_type_id' => 'cpf',
+                'tax_code' => '95845912075'
+            ],
         ],
         'password' => 'Teste123@'
     ],
