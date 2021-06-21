@@ -63,6 +63,32 @@ class AuthRoutesTest extends TestCase
     }
 
     /**
+     * Test if can show data from current token.
+     *
+     * @return void
+     */
+    public function test_show_data_from_current_token()
+    {
+        $loginResponse = $this->loginByRoute($this->user);
+
+        $response = $this->getJson(route('token.show'), [
+            'Authorization' => 'Bearer ' . $loginResponse->original->plainTextToken
+        ]);
+
+        $response->assertOk();
+        $response->assertJsonStructure([
+            'status',
+            'data' => [
+                'accessToken',
+                'plainTextToken',
+                'user'
+            ]
+        ]);
+        $response->assertJsonPath('data.user.id', $this->user->id);
+        $response->assertJsonPath('data.accessToken.tokenable_id', $this->user->id);
+    }
+
+    /**
      * Test the return of the login with error route.
      *
      * @return void

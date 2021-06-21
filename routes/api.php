@@ -1,6 +1,5 @@
 <?php
 
-use App\Enums\Billing\UserPrivilegeEnum;
 use App\Http\Controllers\Auth\AuthenticateController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,9 +24,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/logout', [AuthenticateController::class, 'logout'])
         ->name('logout');
 
-    Route::post('/login/cross', [AuthenticateController::class, 'crossLogin'])
-        ->name('login.cross')
-        ->middleware('can:' . UserPrivilegeEnum::CROSS_AUTH);
+    // Auth
+    require("api/auth/access_token.php");
+    require("api/auth/cross_auth.php");
 
     // Billing
     require("api/billing/address.php");

@@ -92,6 +92,6 @@ final class UserPrivilegeEnum extends Enum
      * System Bug Log privileges
      */
 
-    const BUG_LOG_GET    = 'buglog:get';
+    const BUG_LOG_GET = 'buglog:get';
 
 }

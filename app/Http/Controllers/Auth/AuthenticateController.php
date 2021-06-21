@@ -9,6 +9,7 @@ use App\Http\Resources\Auth\TokenResource;
 use App\Models\Billing\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Sanctum\NewAccessToken;
 
 class AuthenticateController extends Controller
 {
@@ -52,6 +53,11 @@ class AuthenticateController extends Controller
         $token = $cross_user->crossLogin($request->user(), $request->userAgent());
 
         return new TokenResource($token);
+    }
+
+    public function token(Request $request)
+    {
+        return new TokenResource(new NewAccessToken($request->user()->currentAccessToken(), $request->bearerToken()));
     }
 
     /**
