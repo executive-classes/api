@@ -44,6 +44,7 @@ class StudentController extends Controller
     public function cancel(Student $student)
     {
         $student->student_status_id = StudentStatusEnum::CANCELED;
+        /** @todo Cancelar usuário */
         $student->save();
 
         return new StudentResource($student);

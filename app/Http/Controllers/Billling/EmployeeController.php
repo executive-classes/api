@@ -22,6 +22,7 @@ class EmployeeController extends Controller
     public function store(CreateEmployeeRequest $request)
     {
         $employee = new Employee($request->validated());
+        $employee->user_id = $request->user_id;
         $employee->save();
         
         return new EmployeeResource($employee->refresh());
@@ -43,6 +44,7 @@ class EmployeeController extends Controller
     public function cancel(Employee $employee)
     {
         $employee->employee_status_id = EmployeeStatusEnum::CANCELED;
+        /** @todo Cancelar usuário */
         $employee->save();
 
         return new EmployeeResource($employee);

@@ -42,11 +42,11 @@ class EmployeePosition extends Model
     public $timestamps = false;
 
     /**
-     * The attributes that aren't mass assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $guarded = [];
+    protected $fillable = [];
 
     /**
      * Privileges relation.
@@ -66,5 +66,25 @@ class EmployeePosition extends Model
     public function employees()
     {
         return $this->hasMany(Employee::class, 'employee_position_id');
+    }
+
+    /**
+     * Parent relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function parent()
+    {
+        return $this->belongsTo(EmployeePosition::class, 'parent_id', 'id');
+    }
+
+    /**
+     * Children relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
+    public function children()
+    {
+        return $this->hasMany(EmployeePosition::class, 'parent_id', 'id');
     }
 }

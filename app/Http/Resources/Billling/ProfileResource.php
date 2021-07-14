@@ -37,6 +37,7 @@ class ProfileResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'password_reminder' => $this->password_reminder,
             'email' => $this->email,
             'email_verified' => $this->email_verified_at !== null,
             'tax_type' => new TaxTypeResource($this->taxType),
@@ -44,7 +45,7 @@ class ProfileResource extends JsonResource
             'tax_type_alt' => new TaxTypeResource($this->taxTypeAlt),
             'tax_code_alt' => $this->taxTypeAlt ? $this->taxTypeAlt->mask($this->tax_code_alt) : null,
             'phone' => $this->phone ? BrazillianPhone::format($this->phone) : null,
-            'phone_alt' => $this->phone ? BrazillianPhone::format($this->phone_alt) : null,
+            'phone_alt' => $this->phone_alt ? BrazillianPhone::format($this->phone_alt) : null,
             'language' => new LanguageResource($this->language)
         ];
     }

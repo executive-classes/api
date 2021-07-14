@@ -15,6 +15,7 @@ return [
 
     'failed' => 'Essas credenciais não correspondem aos nossos registros.',
     'user' => 'O usuário não existe.',
+    'inactive' => 'Sem permissão para entrar.',
     'password' => 'A senha incorreta.',
     'throttle' => 'Muitas tentativas de login. Tente novamente em :seconds segundos.',
     'cross_auth' => 'Não foi possível realizar a autenticação cruzada.',

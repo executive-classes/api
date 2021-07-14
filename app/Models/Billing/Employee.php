@@ -26,14 +26,13 @@ class Employee extends Model
     protected $primaryKey = 'id';
 
     /**
-     * The attributes that aren't mass assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $guarded = [
-        'id',
-        'created_at',
-        'updated_at'
+    protected $fillable = [
+        'employee_status_id',
+        'employee_position_id'
     ];
 
     /**

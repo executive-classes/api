@@ -2,18 +2,15 @@
 
 namespace App\Traits\Models\Billing;
 
-use App\Enums\Billing\TaxTypeEnum;
-use App\Exceptions\Billing\TaxTypeException;
-
 trait HasPhone
 {
-    public function setPhoneAttribute(string $value)
+    public function setPhoneAttribute(string $value = null)
     {
-        $this->attributes['phone'] = removeNonDigit($value);
+        $this->attributes['phone'] = $value ? removeNonDigit($value) : null;
     }
 
-    public function setPhoneAltAttribute(string $value)
+    public function setPhoneAltAttribute(string $value = null)
     {
-        $this->attributes['phone_alt'] = removeNonDigit($value);
+        $this->attributes['phone_alt'] = $value ? removeNonDigit($value) : null;
     }
 }

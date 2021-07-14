@@ -2,6 +2,7 @@
 
 namespace App\Rules;
 
+use App\Services\Billing\Password\Password;
 use Illuminate\Contracts\Validation\Rule;
 
 class ValidPassword implements Rule
@@ -15,7 +16,7 @@ class ValidPassword implements Rule
      */
     public function passes($attribute, $value)
     {
-        return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\W|_])(?=.{8}).*$/', $value);
+        return Password::validate($value);
     }
 
     /**

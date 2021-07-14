@@ -32,8 +32,6 @@ class CreateUserRequest extends FormRequest
         return [
             'name' => 'required|string',
             'email' => 'required|email|unique:user,email',
-            'password' => ['required', new ValidPassword],
-            'password_reminder' => 'sometimes|string',
             'tax_type_id' => [
                 'required',
                 'string',

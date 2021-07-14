@@ -2,6 +2,8 @@
 
 use App\Enums\Billing\UserPrivilegeEnum;
 use App\Http\Controllers\Billling\EmployeeController;
+use App\Http\Controllers\Billling\EmployeePositionController;
+use App\Http\Controllers\Billling\EmployeeStatusController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/employees', [EmployeeController::class, 'index'])
@@ -11,6 +13,14 @@ Route::get('/employees', [EmployeeController::class, 'index'])
 Route::post('/employees', [EmployeeController::class, 'store'])
     ->name('employee.store')
     ->middleware('can:' . UserPrivilegeEnum::EMPLOYEE_CREATE);
+
+Route::get('/employees/status', [EmployeeStatusController::class, 'index'])
+    ->name('employee.status.index')
+    ->middleware('can:' . UserPrivilegeEnum::EMPLOYEE_GET);
+
+Route::get('/employees/positions', [EmployeePositionController::class, 'index'])
+    ->name('employee.position.index')
+    ->middleware('can:' . UserPrivilegeEnum::EMPLOYEE_GET);
 
 Route::get('/employees/{employee}', [EmployeeController::class, 'show'])
     ->name('employee.show')

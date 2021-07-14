@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources\Billling;
 
+use App\Http\Resources\System\LanguageResource;
+use App\Services\Billing\Phone\BrazillianPhone;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -44,12 +46,14 @@ class UserResource extends JsonResource
             'email_verified' => $this->email_verified_at !== null,
             'status' => $this->active ? 'Ativo' : 'Suspenso',
             'active' => $this->active,
-            'tax_type' => $this->taxType->name ?? null,
-            'tax_code' => $this->tax_code,
-            'tax_type_alt' => $this->taxTypeAlt->name ?? null,
-            'tax_code_alt' => $this->tax_code_alt,
-            'phone' => $this->phone,
-            'phone_alt' => $this->phone_alt
+            'tax_type' => new TaxTypeResource($this->taxType),
+            'tax_code' => $this->taxType->mask($this->tax_code),
+            'tax_type_alt' => new TaxTypeResource($this->taxTypeAlt),
+            'tax_code_alt' => $this->taxTypeAlt ? $this->taxTypeAlt->mask($this->tax_code_alt) : null,
+            'phone' => $this->phone ? BrazillianPhone::format($this->phone) : null,
+            'phone_alt' => $this->phone_alt ? BrazillianPhone::format($this->phone_alt) : null,
+            'language' => new LanguageResource($this->language)
+
         ];
     }
 }

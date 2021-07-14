@@ -23,6 +23,11 @@ class AuthenticateController extends Controller
     {
         $user = User::firstWhere('email', $request->email);
 
+        // Validate if the user is active
+        if (!$user->active) {
+            return api()->forbidden(__('auth.inactive'));
+        }
+
         // Validate the credentials
         if (!$user->check($request->password)) {
             return api()->badRequest(__('auth.password'));
@@ -48,13 +53,25 @@ class AuthenticateController extends Controller
      */
     public function crossLogin(CrossLoginRequest $request)
     {
-        // Log in the logged user in the given user
         $cross_user = User::find($request->user_id);
+
+        // Validate if the user is active
+        if (!$cross_user->active) {
+            return api()->forbidden(__('auth.inactive'));
+        }
+
+        // Log in the logged user in the given user
         $token = $cross_user->crossLogin($request->user(), $request->userAgent());
 
         return new TokenResource($token);
     }
 
+    /**
+     * Get the token information.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function token(Request $request)
     {
         return new TokenResource(new NewAccessToken($request->user()->currentAccessToken(), $request->bearerToken()));

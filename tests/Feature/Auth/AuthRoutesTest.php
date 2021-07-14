@@ -155,6 +155,15 @@ class AuthRoutesTest extends TestCase
         $response->assertStatus(403);
     }
 
+    public function test_error_in_inactive_user_login()
+    {
+        $this->user->active = false;
+        $this->user->save();
+        $response = $this->loginByRoute($this->user);
+
+        $response->assertStatus(403);
+    }
+
     /**
      * Test the return of the logout route. 
      *

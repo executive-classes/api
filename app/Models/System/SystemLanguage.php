@@ -42,11 +42,11 @@ class SystemLanguage extends Model
     public $timestamps = false;
 
     /**
-     * The model's default values for attributes.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $attributes = [];
+    protected $fillable = [];
     
     /**
      * Update system locale.

@@ -3,6 +3,7 @@
 namespace App\Models\Billing;
 
 use App\Enums\Billing\EmployeePositionEnum;
+use App\Enums\System\SystemLanguageEnum;
 use App\Filters\Filterable;
 use App\Models\System\SystemLanguage;
 use App\Traits\Authentication\Authenticable as CanAuthenticate;
@@ -46,18 +47,22 @@ class User extends Authenticable
     protected $primaryKey = 'id';
 
     /**
-     * The attributes that aren't mass assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $guarded = [
-        'id',
-        'created_at',
-        'updated_at',
-        'inactve_at',
-        'reactive_at',
-        'email_verified_at',
-        'salt'
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'password_reminder',
+        'tax_type_id',
+        'tax_code',
+        'tax_type_alt_id',
+        'tax_code_alt',
+        'phone',
+        'phone_alt',
+        'system_language_id'
     ];
 
     /**
@@ -66,8 +71,7 @@ class User extends Authenticable
      * @var array
      */
     protected $hidden = [
-        'password',
-        'password_reminder'
+        'password'
     ];
 
     /**
@@ -76,7 +80,8 @@ class User extends Authenticable
      * @var array
      */
     protected $attributes = [
-        'active' => true
+        'active' => true,
+        'system_language_id' => SystemLanguageEnum::PT_BR
     ];
 
     /**

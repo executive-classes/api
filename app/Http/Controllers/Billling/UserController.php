@@ -9,6 +9,7 @@ use App\Http\Requests\Billing\User\UpdateUserRequest;
 use App\Http\Resources\Billling\UserCollection;
 use App\Http\Resources\Billling\UserResource;
 use App\Models\Billing\User;
+use App\Services\Billing\Password\Password;
 
 class UserController extends Controller
 {
@@ -20,6 +21,7 @@ class UserController extends Controller
     public function store(CreateUserRequest $request)
     {
         $user = new User($request->validated());
+        $user->password = Password::generate();
         $user->save();
 
         return new UserResource($user);

@@ -32,8 +32,6 @@ class UpdateUserRequest extends FormRequest
         return [
             'name' => 'sometimes|string',
             'email' => 'sometimes|email|unique:user,email',
-            'password' => ['sometimes', new ValidPassword],
-            'password_reminder' => 'sometimes|nullable|string',
             'tax_type_id' => [
                 'required_with:tax_code',
                 'string',

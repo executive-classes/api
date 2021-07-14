@@ -87,7 +87,7 @@ class EmployeeRoutesTest extends TestCase
             'data'
         ]);
         $response->assertJsonPath('status', true);
-        $response->assertJsonPath('data.user_id', $data['user_id']);
+        $response->assertJsonPath('data.user.id', $data['user_id']);
     }
 
     public function test_can_update_employee()
@@ -109,8 +109,8 @@ class EmployeeRoutesTest extends TestCase
         ]);
         $response->assertJsonPath('status', true);
         $response->assertJsonPath('data.id', $id);
-        $response->assertJsonPath('data.position_id', $data['employee_position_id']);
-        $response->assertJsonPath('data.status_id', $data['employee_status_id']);
+        $response->assertJsonPath('data.position.id', $data['employee_position_id']);
+        $response->assertJsonPath('data.status.id', $data['employee_status_id']);
     }
 
     public function test_can_not_cancel_employee_by_update()
@@ -134,6 +134,6 @@ class EmployeeRoutesTest extends TestCase
         ]);
         $response->assertJsonPath('status', true);
         $response->assertJsonPath('data.id', $id);
-        $response->assertJsonPath('data.status_id', EmployeeStatusEnum::CANCELED);
+        $response->assertJsonPath('data.status.id', EmployeeStatusEnum::CANCELED);
     }
 }

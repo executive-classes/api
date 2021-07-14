@@ -71,11 +71,11 @@ trait HasTax
 
     public function setTaxCodeAttribute(string $value)
     {
-        $this->attributes['tax_code'] = sanitazeTax($value ?? '');
+        $this->attributes['tax_code'] = $value ? sanitazeTax($value) : null;
     }
 
     public function setTaxCodeAltAttribute(string $value = null)
     {
-        $this->attributes['tax_code_alt'] = sanitazeTax($value ?? '');
+        $this->attributes['tax_code_alt'] = $value ? sanitazeTax($value) : null;
     }
 }

@@ -42,6 +42,7 @@ class TeacherController extends Controller
     public function cancel(Teacher $teacher)
     {
         $teacher->teacher_status_id = TeacherStatusEnum::CANCELED;
+        /** @todo Cancelar usuário */
         $teacher->save();
 
         return new TeacherResource($teacher);
