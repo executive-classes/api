@@ -1,12 +1,14 @@
 <?php
 
-use App\Enums\Billing\TeacherStatusEnum;
+namespace Tests\Feature\Billing;
+
+use App\Models\Billing\EmployeePosition;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Tests\UseUsers;
 
-class TeacherStatusRoutes extends TestCase
+class EmployeePositionRoutesTest extends TestCase
 {
     use RefreshDatabase, WithFaker, UseUsers;
 
@@ -29,9 +31,9 @@ class TeacherStatusRoutes extends TestCase
         $this->getDevUser()->login();
     }
 
-    public function test_can_list_teacher_status()
+    public function test_can_list_employee_position()
     {
-        $response = $this->getJson(route('teacher.status.index'));
+        $response = $this->getJson(route('employee.position.index'));
 
         $response->assertOk();
         $response->assertJsonStructure([
@@ -39,6 +41,6 @@ class TeacherStatusRoutes extends TestCase
             'data'
         ]);
         $response->assertJsonPath('status', true);
-        $response->assertJsonCount(count(TeacherStatusEnum::getUpdatableValues()), 'data');
+        $response->assertJsonCount(EmployeePosition::count(), 'data');
     }
 }

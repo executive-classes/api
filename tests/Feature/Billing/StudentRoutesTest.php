@@ -86,7 +86,7 @@ class StudentRoutesTest extends TestCase
             'data'
         ]);
         $response->assertJsonPath('status', true);
-        $response->assertJsonPath('data.user_id', $data['user_id']);
+        $response->assertJsonPath('data.user.id', $data['user_id']);
     }
 
     public function test_can_update_student()
@@ -107,7 +107,7 @@ class StudentRoutesTest extends TestCase
         ]);
         $response->assertJsonPath('status', true);
         $response->assertJsonPath('data.id', $id);
-        $response->assertJsonPath('data.status_id', $data['student_status_id']);
+        $response->assertJsonPath('data.status.id', $data['student_status_id']);
     }
 
     public function test_can_not_cancel_student_by_update()
@@ -131,6 +131,6 @@ class StudentRoutesTest extends TestCase
         ]);
         $response->assertJsonPath('status', true);
         $response->assertJsonPath('data.id', $id);
-        $response->assertJsonPath('data.status_id', StudentStatusEnum::CANCELED);
+        $response->assertJsonPath('data.status.id', StudentStatusEnum::CANCELED);
     }
 }

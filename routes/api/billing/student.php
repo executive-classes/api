@@ -2,6 +2,7 @@
 
 use App\Enums\Billing\UserPrivilegeEnum;
 use App\Http\Controllers\Billling\StudentController;
+use App\Http\Controllers\Billling\StudentStatusController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/students', [StudentController::class, 'index'])
@@ -11,6 +12,10 @@ Route::get('/students', [StudentController::class, 'index'])
 Route::post('/students', [StudentController::class, 'store'])
     ->name('student.store')
     ->middleware('can:' . UserPrivilegeEnum::STUDENT_CREATE);
+
+Route::get('/students/status', [StudentStatusController::class, 'index'])
+    ->name('student.status.index')
+    ->middleware('can:' . UserPrivilegeEnum::STUDENT_GET);
 
 Route::get('/students/{student}', [StudentController::class, 'show'])
     ->name('student.show')
