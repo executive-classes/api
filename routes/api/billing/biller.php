@@ -2,6 +2,7 @@
 
 use App\Enums\Billing\UserPrivilegeEnum;
 use App\Http\Controllers\Billling\BillerController;
+use App\Http\Controllers\Billling\BillerStatusController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/billers', [BillerController::class, 'index'])
@@ -11,6 +12,10 @@ Route::get('/billers', [BillerController::class, 'index'])
 Route::post('/billers', [BillerController::class, 'store'])
     ->name('biller.store')
     ->middleware('can:' . UserPrivilegeEnum::BILLER_CREATE);
+
+Route::get('/billers/status', [BillerStatusController::class, 'index'])
+    ->name('biller.status.index')
+    ->middleware('can:' . UserPrivilegeEnum::BILLER_GET);
 
 Route::get('/billers/{biller}', [BillerController::class, 'show'])
     ->name('biller.show')

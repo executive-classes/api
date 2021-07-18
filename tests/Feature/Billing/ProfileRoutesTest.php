@@ -127,10 +127,10 @@ class ProfileRoutesTest extends TestCase
             'data'
         ]);
         $response->assertJsonPath('status', true);
-        $response->assertJsonPath('data.tax_type.id', $data['tax_type_id']);
-        $response->assertJsonPath('data.tax_code', $data['tax_code']);
-        $response->assertJsonPath('data.tax_type_alt.id', $data['tax_type_alt_id']);
-        $response->assertJsonPath('data.tax_code_alt', $data['tax_code_alt']);
+        $response->assertJsonPath('data.tax.id', $data['tax_type_id']);
+        $response->assertJsonPath('data.tax.code', $data['tax_code']);
+        $response->assertJsonPath('data.tax_alt.id', $data['tax_type_alt_id']);
+        $response->assertJsonPath('data.tax_alt.code', $data['tax_code_alt']);
         $this->assertDatabaseHas('user', [
             'id' => $this->user->id,
             'tax_code' => $data['tax_code'] ? removeNonDigit($data['tax_code']) : $data['tax_code'],

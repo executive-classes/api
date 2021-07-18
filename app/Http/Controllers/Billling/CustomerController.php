@@ -21,6 +21,7 @@ class CustomerController extends Controller
     public function store(CreateCustomerRequest $request)
     {
         $customer = new Customer($request->validated());
+        /** @todo Criar biller */
         $customer->save();
         
         return new CustomerResource($customer->refresh());

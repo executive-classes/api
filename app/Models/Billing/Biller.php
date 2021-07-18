@@ -3,6 +3,7 @@
 namespace App\Models\Billing;
 
 use App\Filters\Filterable;
+use App\Traits\Models\Billing\HasTax;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +11,7 @@ class Biller extends Model
 {
     use Filterable;
     use HasFactory;
+    use HasTax;
 
     /**
      * The table associated with the model.
@@ -56,6 +58,16 @@ class Biller extends Model
     public function taxType()
     {
         return $this->belongsTo(TaxType::class, 'tax_type_id');
+    }
+
+    /**
+     * Tax type relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function taxTypeAlt()
+    {
+        return $this->belongsTo(TaxType::class, 'tax_type_alt_id');
     }
 
     /**

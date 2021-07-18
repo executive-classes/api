@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Billling;
+namespace App\Http\Resources\Billling\Tax;
 
-use App\Services\Billing\Address\AddressFormatter;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AddressResource extends JsonResource
+class TaxTypeResource extends JsonResource
 {
     /**
      * The additional meta data that should be added to the resource response.
@@ -35,15 +34,9 @@ class AddressResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'zip' => format_zip($this->zip),
-            'street' => $this->street,
-            'number' => $this->number,
-            'complement' => $this->complement,
-            'district' => $this->district,
-            'city' => $this->city,
-            'state' => $this->state,
-            'country' => $this->country,
-            'full_address' => AddressFormatter::format($this->resource)
+            'name' => $this->name,
+            'priority' => $this->priority,
+            'mask' => $this->pattern
         ];
     }
 }

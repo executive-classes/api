@@ -38,6 +38,7 @@ class StudentResource extends JsonResource
             'id' => $this->id,
             'created_at' => Carbon::parse($this->created_at)->toDateTimeString(),
             'updated_at' => Carbon::parse($this->updated_at)->toDateTimeString(),
+            'customer' => new CustomerResource($this->customer),
             'user' => new UserResource($this->user),
             'status' => new StudentStatusResource($this->status)
         ];

@@ -5,7 +5,12 @@ namespace App\Filters\Billing;
 use App\Filters\QueryFilter;
 
 class StudentFilter extends QueryFilter
-{    
+{
+    public function customerId($query, $value)
+    {
+        return $query->where('customer_id', $value);
+    }
+    
     public function email($query, $value)
     {
         return $query->whereHas('user', function ($q) use ($value) {

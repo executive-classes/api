@@ -2,27 +2,16 @@
 
 namespace App\Http\Resources\Billling;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Billling\Address\AddressResource;
+use App\Http\Resources\Billling\CustomerStatus\CustomerStatusResource;
+use App\Http\Resources\Resource;
+use App\Traits\Resources\WithPhones;
+use App\Traits\Resources\WithTaxes;
+use Carbon\Carbon;
 
-class CustomerResource extends JsonResource
+class CustomerResource extends Resource
 {
-    /**
-     * The additional meta data that should be added to the resource response.
-     *
-     * Added during response construction by the developer.
-     *
-     * @var array
-     */
-    public $additional = [
-        'status' => true
-    ];
-
-    /**
-     * The "data" wrapper that should be applied.
-     *
-     * @var string
-     */
-    public static $wrap = 'data';
+    use WithTaxes, WithPhones;
 
     /**
      * Transform the resource into an array.
@@ -34,16 +23,17 @@ class CustomerResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'created_at' => Carbon::parse($this->created_at)->toDateTimeString(),
+            'updated_at' => Carbon::parse($this->updated_at)->toDateTimeString(),
+            'inactive_at' => $this->inactive_at ? Carbon::parse($this->inactive_at)->toDateTimeString() : null,
+            'reactive_at' => $this->reactive_at ? Carbon::parse($this->reactive_at)->toDateTimeString() : null,
             'name' => $this->name,
-            'tax_type' => $this->tax_type_id,
-            'tax_code' => $this->tax_code,
-            'tax_type_alt' => $this->tax_type_alt_id,
-            'tax_code_alt' => $this->tax_code_alt,
+            'tax' => $this->makeTax($this->taxType, $this->tax_code),
+            'tax_alt' => $this->makeTax($this->taxTypeAlt, $this->tax_code_alt),
             'email' => $this->email,
-            'phone' => $this->phone,
-            'phone_alt' => $this->phone_alt,
-            'status' => $this->status->name,
-            'status_id' => $this->customer_status_id,
+            'phone' => $this->makePhone($this->phone),
+            'phone_alt' => $this->makePhone($this->phone_alt),
+            'status' => new CustomerStatusResource($this->status),
             'address' => new AddressResource($this->address)
         ];
     }

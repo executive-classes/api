@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Billling;
+namespace App\Http\Resources\Billling\Tax;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TaxTypeResource extends JsonResource
+class TaxResource extends JsonResource
 {
     /**
      * The additional meta data that should be added to the resource response.
@@ -33,10 +33,11 @@ class TaxTypeResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'priority' => $this->priority,
-            'mask' => $this->pattern
+            'id' => $this->id ?? null,
+            'name' => $this->name ?? null,
+            'code' => $this->code ?? null,
+            'priority' => $this->priority ?? null,
+            'mask' => $this->pattern ?? null
         ];
     }
 }

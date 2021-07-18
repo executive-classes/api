@@ -31,8 +31,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // Billing
     require("api/billing/address.php");
     require("api/billing/biller.php");
+    require("api/billing/country.php");
     require("api/billing/customer.php");
     require("api/billing/employee.php");
+    require("api/billing/payment.php");
     require("api/billing/profile.php");
     require("api/billing/state.php");
     require("api/billing/student.php");

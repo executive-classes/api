@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Billing\Address;
+namespace App\Services\Billing\Address\Countries;
 
 use App\Models\Billing\Address;
 use App\Services\Billing\Address\Contract\AddressMaker;

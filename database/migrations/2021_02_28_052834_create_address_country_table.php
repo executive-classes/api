@@ -23,6 +23,11 @@ class CreateAddressCountryTable extends Migration
                 ->nullable()
                 ->comment('Country short name.');
 
+            // Country Data
+            $table->boolean('active')
+                ->default(false)
+                ->comment('Country is active.');
+
             $table->string('name', 255)
                 ->comment('Country name.');
 

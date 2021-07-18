@@ -60,6 +60,23 @@ class AddressRoutesTest extends TestCase
         $response->assertJsonCount(Address::where('zip', $zip)->count(), 'data');
     }
 
+    public function test_can_search_address()
+    {
+        $response = $this->getJson(route('address.search', ['cep' => config('test.viacep.cep')]));
+
+        $response->assertOk();
+        $response->assertJsonStructure([
+            'status',
+            'data'
+        ]);
+        $response->assertJsonPath('status', true);
+        $response->assertJsonPath('data.id', null);
+        $response->assertJsonPath('data.street', config('test.viacep.logradouro'));
+        $response->assertJsonPath('data.district', config('test.viacep.bairro'));
+        $response->assertJsonPath('data.city', config('test.viacep.localidade'));
+        $response->assertJsonPath('data.state', config('test.viacep.uf'));
+    }
+
     public function test_can_get_address()
     {
         $address = Address::first();
@@ -73,7 +90,6 @@ class AddressRoutesTest extends TestCase
         ]);
         $response->assertJsonPath('status', true);
         $response->assertJsonPath('data.id', $id);
-        $response->assertJsonPath('data.full_address', AddressFormatter::format($address));
     }
 
     public function test_can_create_address()

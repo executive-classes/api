@@ -2,31 +2,16 @@
 
 namespace App\Http\Resources\Billling;
 
+use App\Http\Resources\Resource;
 use App\Http\Resources\System\LanguageResource;
-use App\Services\Billing\Phone\BrazillianPhone;
+use App\Traits\Resources\WithPhones;
+use App\Traits\Resources\WithTaxes;
 use Carbon\Carbon;
-use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserResource extends JsonResource
+class UserResource extends Resource
 {
-    /**
-     * The additional meta data that should be added to the resource response.
-     *
-     * Added during response construction by the developer.
-     *
-     * @var array
-     */
-    public $additional = [
-        'status' => true
-    ];
-
-    /**
-     * The "data" wrapper that should be applied.
-     *
-     * @var string
-     */
-    public static $wrap = 'data';
-
+    use WithTaxes, WithPhones;
+    
     /**
      * Transform the resource into an array.
      *
@@ -46,12 +31,10 @@ class UserResource extends JsonResource
             'email_verified' => $this->email_verified_at !== null,
             'status' => $this->active ? 'Ativo' : 'Suspenso',
             'active' => $this->active,
-            'tax_type' => new TaxTypeResource($this->taxType),
-            'tax_code' => $this->taxType->mask($this->tax_code),
-            'tax_type_alt' => new TaxTypeResource($this->taxTypeAlt),
-            'tax_code_alt' => $this->taxTypeAlt ? $this->taxTypeAlt->mask($this->tax_code_alt) : null,
-            'phone' => $this->phone ? BrazillianPhone::format($this->phone) : null,
-            'phone_alt' => $this->phone_alt ? BrazillianPhone::format($this->phone_alt) : null,
+            'tax' => $this->makeTax($this->taxType, $this->tax_code),
+            'tax_alt' => $this->makeTax($this->taxTypeAlt, $this->tax_code_alt),
+            'phone' => $this->makePhone($this->phone),
+            'phone_alt' => $this->makePhone($this->phone_alt),
             'language' => new LanguageResource($this->language)
 
         ];

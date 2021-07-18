@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Billling;
+namespace App\Http\Resources\Billling\Tax;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 

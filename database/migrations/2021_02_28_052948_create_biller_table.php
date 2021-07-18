@@ -59,6 +59,17 @@ class CreateBillerTable extends Migration
                 ->unique()
                 ->comment('Biller tax code.');
 
+            $table->foreignIdFor(TaxType::class, 'tax_type_alt_id')
+                ->nullable()
+                ->references('id')
+                ->on('tax_type')
+                ->comment('Biller alternative tax type.');
+
+            $table->string('tax_code_alt')
+                ->nullable()
+                ->unique()
+                ->comment('Biller alternative tax code.');
+
             // Biller contact data
             $table->foreignIdFor(Address::class, 'address_id')
                 ->references('id')

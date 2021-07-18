@@ -84,8 +84,8 @@ class UpdateCustomerRequest extends FormRequest
                 new EnumValue(CustomerStatusEnum::class)
             ],
             'email' => 'sometimes|nullable|email',
-            'phone' => ['sometimes', new BrazillianPhone],
-            'phone_alt' => 'sometimes',
+            'phone' => ['sometimes', 'nullable', new BrazillianPhone],
+            'phone_alt' => 'sometimes|nullable',
         ];
     }
 }

@@ -125,6 +125,6 @@ class CustomerRoutesTest extends TestCase
         ]);
         $response->assertJsonPath('status', true);
         $response->assertJsonPath('data.id', $id);
-        $response->assertJsonPath('data.status_id', CustomerStatusEnum::CANCELED);
+        $response->assertJsonPath('data.status.id', CustomerStatusEnum::CANCELED);
     }
 }

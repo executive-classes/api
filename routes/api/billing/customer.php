@@ -2,6 +2,7 @@
 
 use App\Enums\Billing\UserPrivilegeEnum;
 use App\Http\Controllers\Billling\CustomerController;
+use App\Http\Controllers\Billling\CustomerStatusController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/customers', [CustomerController::class, 'index'])
@@ -11,6 +12,10 @@ Route::get('/customers', [CustomerController::class, 'index'])
 Route::post('/customers', [CustomerController::class, 'store'])
     ->name('customer.store')
     ->middleware('can:' . UserPrivilegeEnum::CUSTOMER_CREATE);
+
+Route::get('/customers/status', [CustomerStatusController::class, 'index'])
+    ->name('customer.status.index')
+    ->middleware('can:' . UserPrivilegeEnum::CUSTOMER_GET);
 
 Route::get('/customers/{customer}', [CustomerController::class, 'show'])
     ->name('customer.show')

@@ -12,6 +12,9 @@ Route::post('/addresses', [AddressController::class, 'store'])
     ->name('address.store')
     ->middleware('can:' . UserPrivilegeEnum::ADDRESS_CREATE);
 
+Route::get('/addresses/search/{cep}', [AddressController::class, 'search'])
+    ->name('address.search');
+
 Route::get('/addresses/{address}', [AddressController::class, 'show'])
     ->name('address.show')
     ->middleware('can:' . UserPrivilegeEnum::ADDRESS_GET);

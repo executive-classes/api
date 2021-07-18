@@ -58,8 +58,8 @@ class CreateUserRequest extends FormRequest
                 'max:2',
                 new EnumValue(StateEnum::class)
             ],
-            'phone' => ['sometimes', new BrazillianPhone],
-            'phone_alt' => 'sometimes',
+            'phone' => ['sometimes', 'nullable', new BrazillianPhone],
+            'phone_alt' => 'sometimes|nullable',
             'system_language_id' => ['sometimes', 'string', new EnumValue(SystemLanguageEnum::class)]
         ];
     }

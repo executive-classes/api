@@ -57,6 +57,16 @@ class Address extends Model
     }
 
     /**
+     * Country relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function countryModel()
+    {
+        return $this->belongsTo(AddressCountry::class, 'country', 'short_name');
+    }
+
+    /**
      * Zip attribute mutator.
      *
      * @param string $value

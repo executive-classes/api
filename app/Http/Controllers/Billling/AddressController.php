@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Billling;
 
+use App\Apis\ViaCep\ViaCepClient;
 use App\Filters\Billing\AddressFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Billing\Address\AddressRequest;
-use App\Http\Resources\Billling\AddressCollection;
-use App\Http\Resources\Billling\AddressResource;
+use App\Http\Resources\Billling\Address\AddressSearchResource;
+use App\Http\Resources\Billling\Address\AddressCollection;
+use App\Http\Resources\Billling\Address\AddressResource;
 use App\Models\Billing\Address;
 use App\Services\Billing\Address\Contract\AddressMaker;
 
@@ -21,6 +23,21 @@ class AddressController extends Controller
     {
         $address = $addressMaker->create($request->validated());
         return new AddressResource($address->refresh());
+    }
+
+    public function search(string $cep, ViaCepClient $client)
+    {
+        try {
+            $response = $client->consult($cep);
+
+            if ($response->content()->erro ?? false) {
+                return api()->notFound(__('billing.address.fail.search', ['zip' => $cep]));
+            }
+        } catch (\Throwable $th) {
+            return api()->notFound(__('billing.address.fail.search', ['zip' => $cep]));
+        }
+        
+        return new AddressSearchResource($response->content());
     }
 
     public function show(Address $address)

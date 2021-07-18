@@ -57,8 +57,8 @@ class CreateCustomerRequest extends FormRequest
             ],
             'address_id' => 'required|numeric|exists:address,id',
             'email' => 'sometimes|nullable|email',
-            'phone' => ['sometimes', new BrazillianPhone],
-            'phone_alt' => 'sometimes',
+            'phone' => ['sometimes', 'nullable', new BrazillianPhone],
+            'phone_alt' => 'sometimes|nullable',
         ];
     }
 }

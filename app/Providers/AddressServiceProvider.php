@@ -2,12 +2,10 @@
 
 namespace App\Providers;
 
-use App\Apis\ViaCep\ViaCepClient;
 use App\Enums\Billing\CountryEnum;
-use App\Http\Controllers\Billling\AddressController;
 use App\Services\Billing\Address\Contract\AddressMaker;
 use App\Services\Billing\Address\Countries\BrazillianAddress;
-use App\Services\Billing\Address\GenericAddress;
+use App\Services\Billing\Address\Countries\GenericAddress;
 use Illuminate\Support\ServiceProvider;
 
 class AddressServiceProvider extends ServiceProvider

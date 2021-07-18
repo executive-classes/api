@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Billling;
+namespace App\Http\Resources\Billling\CustomerStatus;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class AddressStateCollection extends ResourceCollection
+class CustomerStatusCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -16,7 +16,7 @@ class AddressStateCollection extends ResourceCollection
     {
         return [
             'status' => true,
-            'data' => $this->collection->sortBy('short_name')->toArray()
+            'data' => $this->collection
         ];
     }
 }

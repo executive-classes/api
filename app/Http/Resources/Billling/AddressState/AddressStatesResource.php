@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Billling;
+namespace App\Http\Resources\Billling\AddressState;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Resources\Json\JsonResource;

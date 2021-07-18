@@ -125,7 +125,7 @@ class BillerRoutesTest extends TestCase
         ]);
         $response->assertJsonPath('status', true);
         $response->assertJsonPath('data.id', $id);
-        $response->assertJsonPath('data.status_id', BillerStatusEnum::CANCELED);
+        $response->assertJsonPath('data.status.id', BillerStatusEnum::CANCELED);
     }
 
     

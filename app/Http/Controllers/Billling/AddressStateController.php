@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Billling;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Billling\AddressStateCollection;
+use App\Http\Resources\Billling\AddressState\AddressStateCollection;
 use App\Models\Billing\AddressState;
 
 class AddressStateController extends Controller
