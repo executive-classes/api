@@ -25,7 +25,6 @@ class CollectionFactory extends Factory
      */
     public function definition()
     {
-        $biller = $this->faker->randomElement(Biller::all());
         return [
             'expire_at' => Carbon::now()->addWeek(1)->toDateTimeString(),
             'biller_id' => Biller::factory(),

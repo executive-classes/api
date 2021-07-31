@@ -16,6 +16,12 @@ class DatabaseSeeder extends Seeder
         $this->call([
 
             /**
+             * General Models Seeders
+             */
+
+            \Database\Seeders\General\CategoryTypeSeeder::class,
+
+            /**
              * System Models Seeders
              */
 
@@ -41,6 +47,17 @@ class DatabaseSeeder extends Seeder
             \Database\Seeders\Billing\StudentStatusSeeder::class,
             \Database\Seeders\Billing\EmployeeStatusSeeder::class,
             \Database\Seeders\Billing\UserSeeder::class,
+
+            /**
+             * Classroom Models Seeders
+             */
+
+            \Database\Seeders\Classroom\TestStatusSeeder::class,
+            \Database\Seeders\Classroom\CourseStatusSeeder::class,
+            \Database\Seeders\Classroom\ModuleStatusSeeder::class,
+            \Database\Seeders\Classroom\LessonStatusSeeder::class,
+            \Database\Seeders\Classroom\QuestionStatusSeeder::class,
+            \Database\Seeders\Classroom\MaterialStatusSeeder::class,
 
             /**
              * Mailing Models Seeders

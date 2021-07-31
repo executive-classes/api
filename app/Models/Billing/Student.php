@@ -3,6 +3,9 @@
 namespace App\Models\Billing;
 
 use App\Filters\Filterable;
+use App\Models\Classroom\Course;
+use App\Models\Classroom\Lesson;
+use App\Models\Classroom\Question;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -84,6 +87,76 @@ class Student extends Model
     public static function privileges()
     {
         return UserPrivilege::where('student_can', true)->get();
+    }
+
+    /**
+     * Teachers relation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
+     */
+    public function teachers()
+    {
+        return $this->belongsToMany(Teacher::class, 'lesson_x_student', 'student_id', 'teacher_id');
+    }
+
+    /**
+     * Lessons relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
+     */
+    public function lessons()
+    {
+        return $this->belongsToMany(Lesson::class, 'lesson_x_student', 'student_id', 'lesson_id');
+    }
+
+    /**
+     * Modules relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
+     */
+    public function modules()
+    {
+        return $this->belongsToMany(Lesson::class, 'module_x_student', 'student_id', 'module_id');
+    }
+
+    /**
+     * Courses relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
+     */
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'course_x_student', 'student_id', 'course_id');
+    }
+
+    /**
+     * Lesson Questions relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
+     */
+    public function lessonQuestions()
+    {
+        return $this->belongsToMany(Question::class, 'lessonQuestion_x_student', 'student_id', 'question_id');
+    }
+
+    /**
+     * Test Questions relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
+     */
+    public function testQuestions()
+    {
+        return $this->belongsToMany(Question::class, 'testQuestion_x_student', 'student_id', 'question_id');
+    }
+
+    /**
+     * Test Questions relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
+     */
+    public function tests()
+    {
+        return $this->belongsToMany(Test::class, 'test_x_student', 'student_id', 'test_id');
     }
 
     /**
