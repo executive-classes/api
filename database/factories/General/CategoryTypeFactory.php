@@ -3,17 +3,17 @@
 namespace Database\Factories\General;
 
 use App\Enums\General\CategoryTypeEnum;
-use App\Models\General\Category;
+use App\Models\General\CategoryType;
 use Database\Factories\Factory;
 
-class CategoryFactory extends Factory
+class CategoryTypeFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Category::class;
+    protected $model = CategoryType::class;
 
     /**
      * Define the model's default state.
@@ -23,9 +23,8 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->text(15),
-            'description' => $this->faker->text,
-            'category_type_id' => CategoryTypeEnum::getRandomValue()
+            'id' => CategoryTypeEnum::getRandomValue(),
+            'name' => $this->faker->text(15)
         ];
     }
 }

@@ -33,7 +33,7 @@ class UserFactory extends Factory
             'password' => config('test.user.password'),
             'tax_type_id' => TaxTypeEnum::CPF,
             'tax_code' => $this->faker->cpf,
-            'system_language_id' => SystemLanguage::inRandomOrder()->first()
+            'system_language_id' => SystemLanguageEnum::EN
         ];
     }
 

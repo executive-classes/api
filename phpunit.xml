@@ -19,75 +19,25 @@
         </testsuite>
 
         <!-- Units -->
-        <testsuite name="ApiResponse">
-            <directory suffix="Test.php">./tests/Unit/System/ApiResponseTest.php</directory>
+        <testsuite name="Filters">
+            <directory suffix="Test.php">./tests/Unit/Filters</directory>
         </testsuite>
-        <testsuite name="BugLog">
-            <directory suffix="Test.php">./tests/Unit/System/BugLogTest.php</directory>
+        <testsuite name="Controllers">
+            <directory suffix="Test.php">./tests/Unit/Http/Controllers</directory>
         </testsuite>
-        <testsuite name="AddressFormatter">
-            <directory suffix="Test.php">./tests/Unit/Billing/AddressFormatterTest.php</directory>
+        <testsuite name="Requests">
+            <directory suffix="Test.php">./tests/Unit/Http/Requests</directory>
         </testsuite>
-        <testsuite name="BrazillianAddress">
-            <directory suffix="Test.php">./tests/Unit/Billing/BrazillianAddressTest.php</directory>
+        <testsuite name="Resources">
+            <directory suffix="Test.php">./tests/Unit/Http/Resources</directory>
         </testsuite>
-        <testsuite name="Mask">
-            <directory suffix="Test.php">./tests/Unit/System/MaskTest.php</directory>
-        </testsuite>
-        <testsuite name="Phone">
-            <directory suffix="Test.php">./tests/Unit/Billing/PhoneTest.php</directory>
+        <testsuite name="Models">
+            <directory suffix="Test.php">./tests/Unit/Models</directory>
         </testsuite>
 
-        <!-- Features -->
-        <testsuite name="AuthRoutes">
-            <directory suffix="Test.php">./tests/Feature/Auth/AuthRoutesTest.php</directory>
-        </testsuite>
-        <testsuite name="ProfileRoutes">
-            <directory suffix="Test.php">./tests/Feature/Billing/ProfileRoutesTest.php</directory>
-        </testsuite>
-        <testsuite name="UserRoutes">
-            <directory suffix="Test.php">./tests/Feature/Billing/UserRoutesTest.php</directory>
-        </testsuite>
-        <testsuite name="EmployeeRoutes">
-            <directory suffix="Test.php">./tests/Feature/Billing/EmployeeRoutesTest.php</directory>
-        </testsuite>
-        <testsuite name="TeacherRoutes">
-            <directory suffix="Test.php">./tests/Feature/Billing/TeacherRoutesTest.php</directory>
-        </testsuite>
-        <testsuite name="StudentRoutes">
-            <directory suffix="Test.php">./tests/Feature/Billing/StudentRoutesTest.php</directory>
-        </testsuite>
-        <testsuite name="AddressRoutes">
-            <directory suffix="Test.php">./tests/Feature/Billing/AddressRoutesTest.php</directory>
-        </testsuite>
-        <testsuite name="CustomerRoutes">
-            <directory suffix="Test.php">./tests/Feature/Billing/CustomerRoutesTest.php</directory>
-        </testsuite>
-        <testsuite name="BillerRoutes">
-            <directory suffix="Test.php">./tests/Feature/Billing/BillerRoutesTest.php</directory>
-        </testsuite>
-        <testsuite name="AccessLog">
-            <directory suffix="Test.php">./tests/Feature/System/AccessLogTest.php</directory>
-        </testsuite>
-        <testsuite name="BugLogRoutes">
-            <directory suffix="Test.php">./tests/Feature/System/BugLogRoutesTest.php</directory>
-        </testsuite>
-        <testsuite name="TaxTypeRoutes">
-            <directory suffix="Test.php">./tests/Feature/Billing/TaxTypeRoutesTest.php</directory>
-        </testsuite>
-        <testsuite name="AddressStatesRoutes">
-            <directory suffix="Test.php">./tests/Feature/Billing/AddressStatesRoutesTest.php</directory>
-        </testsuite>
-        <testsuite name="LanguageRoutes">
-            <directory suffix="Test.php">./tests/Feature/System/LanguageRoutesTest.php</directory>
-        </testsuite>
-
-        <!-- Integration -->
-        <testsuite name="PayGo">
-            <directory suffix="Test.php">./tests/Integration/PayGo</directory>
-        </testsuite>
-        <testsuite name="ViaCep">
-            <directory suffix="Test.php">./tests/Integration/ViaCep</directory>
+        <!-- Feature -->
+        <testsuite name="Classroom">
+            <directory suffix="Test.php">./tests/Feature/Classroom</directory>
         </testsuite>
     </testsuites>
 

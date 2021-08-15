@@ -28,10 +28,12 @@ class AccessLogService
         return $log;
     }
 
-    public static function response(SystemAccessLog $log, Response $response): void
+    public static function response(SystemAccessLog $log = null, Response $response): void
     {
-        $log->code = $response->getStatusCode();
-        $log->allowed = !in_array($log->code, [403, 401]);
-        $log->save();
+        if ($log) {
+            $log->code = $response->getStatusCode();
+            $log->allowed = !in_array($log->code, [403, 401]);
+            $log->save();
+        }
     }
 }

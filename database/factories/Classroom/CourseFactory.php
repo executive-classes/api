@@ -4,7 +4,7 @@ namespace Database\Factories\Classroom;
 
 use App\Models\Classroom\Course;
 use App\Models\General\Category;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\Factory;
 
 class CourseFactory extends Factory
 {
@@ -24,7 +24,8 @@ class CourseFactory extends Factory
     {
         return [
             'name' => $this->faker->text(15),
-            'category_id' => Category::factory()
+            'active' => true,
+            'category_id' => $this->relation(Category::class)
         ];
     }
 }

@@ -73,6 +73,22 @@ final class UserPrivilegeEnum extends Enum
     const STUDENT_CANCEL = 'student:cancel';
 
     /**
+     * Course privileges.
+     */
+    const COURSE_GET = 'course:get';
+    const COURSE_CREATE = 'course:create';
+    const COURSE_UPDATE = 'course:update';
+    const COURSE_CANCEL = 'course:cancel';
+
+    /**
+     * Category privileges.
+     */
+    const CATEGORY_GET = 'category:get';
+    const CATEGORY_CREATE = 'category:create';
+    const CATEGORY_UPDATE = 'category:update';
+    const CATEGORY_DELETE = 'category:delete';
+
+    /**
      * Message privileges.
      */
     const MESSAGE_GET    = 'message:get';
@@ -82,7 +98,6 @@ final class UserPrivilegeEnum extends Enum
     /**
      * Message template privileges
      */
-
     const MESSAGE_TEMPLATE_GET    = 'message_template:get';
     const MESSAGE_TEMPLATE_CREATE = 'message_template:create';
     const MESSAGE_TEMPLATE_UPDATE = 'message_template:update';
@@ -91,7 +106,6 @@ final class UserPrivilegeEnum extends Enum
     /**
      * System Bug Log privileges
      */
-
     const BUG_LOG_GET = 'buglog:get';
 
 }
