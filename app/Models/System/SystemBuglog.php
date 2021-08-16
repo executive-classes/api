@@ -32,12 +32,22 @@ class SystemBuglog extends Model
     public $timestamps = false;
 
     /**
-     * The attributes that aren't mass assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $guarded = [
-        'id'
+    protected $fillable = [
+        'date',
+        'user_id',
+        'cross_user_id',
+        'agent',
+        'url',
+        'method',
+        'ajax',
+        'app_id',
+        'route',
+        'data',
+        'error'
     ];
 
     /**

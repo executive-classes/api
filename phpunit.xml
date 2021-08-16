@@ -39,6 +39,9 @@
         <testsuite name="Classroom">
             <directory suffix="Test.php">./tests/Feature/Classroom</directory>
         </testsuite>
+        <testsuite name="General">
+            <directory suffix="Test.php">./tests/Feature/General</directory>
+        </testsuite>
     </testsuites>
 
     <coverage processUncoveredFiles="true">

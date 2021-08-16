@@ -24,16 +24,12 @@ class CollectionItem extends Model
     protected $primaryKey = 'id';
 
     /**
-     * The attributes that aren't mass assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $guarded = [
-        'id',
-        'created_at',
-        'updated_at',
-        'collection_id',
-        'student_id'
+    protected $fillable = [
+        'amount'
     ];
 
     /**

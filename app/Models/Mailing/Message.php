@@ -32,14 +32,23 @@ class Message extends Model
     public $timestamps = false;
 
     /**
-     * The attributes that aren't mass assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $guarded = [
-        'id',
-        'created_at',
-        'sent_at'
+    protected $fillable = [
+        'should_proccess_at',
+        'message_status_id',
+        'reply_to',
+        'to',
+        'cc',
+        'bcc',
+        'subject',
+        'content',
+        'message_template_id',
+        'params',
+        'retries',
+        'error_message'
     ];
 
     /**

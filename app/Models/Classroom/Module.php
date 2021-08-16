@@ -2,12 +2,17 @@
 
 namespace App\Models\Classroom;
 
+use App\Filters\Filterable;
 use App\Models\Billing\Student;
 use App\Models\General\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Module extends Model
 {
+    use Filterable;
+    use HasFactory;
+    
     /**
      * The table associated with the model.
      *

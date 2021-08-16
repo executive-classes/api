@@ -3,11 +3,11 @@
 namespace App\Models\Billing;
 
 use App\Filters\Filterable;
+use App\Models\Classroom\Test;
 use App\Models\Classroom\Lesson;
 use App\Models\Classroom\Question;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Test;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Teacher extends Model
 {
@@ -29,14 +29,13 @@ class Teacher extends Model
     protected $primaryKey = 'id';
 
     /**
-     * The attributes that aren't mass assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $guarded = [
-        'id',
-        'created_at',
-        'updated_at'
+    protected $fillable = [
+        'user_id',
+        'teacher_status_id'
     ];
 
     /**

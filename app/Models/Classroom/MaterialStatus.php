@@ -47,11 +47,4 @@ class MaterialStatus extends Model
      * @var array
      */
     protected $fillable = [];
-
-    /**
-     * The model's default values for attributes.
-     *
-     * @var array
-     */
-    protected $attributes = [];
 }

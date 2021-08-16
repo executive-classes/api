@@ -3,23 +3,21 @@
 namespace Tests\Unit\Filters\General;
 
 use App\Filters\General\CategoryFilter;
-use Tests\TestCase;
+use Tests\Unit\Filters\FilterTestCase;
 
-class CategoryFilterTest extends TestCase
+class CategoryFilterTest extends FilterTestCase
 {
     /**
-     * Test Set Up.
-     *
-     * @return void
+     * @var CategoryFilter
      */
-    public function setUp(): void
-    {
-        parent::setUp();
+    protected $filter;
 
-        $this->filter = new CategoryFilter();
-    }
+    /**
+     * @var string
+     */
+    protected $filterClass = CategoryFilter::class;
 
-    public function test_category_filter()
+    public function test_type_filter()
     {
         $this->assertHasMethod($this->filter, 'type');
     }

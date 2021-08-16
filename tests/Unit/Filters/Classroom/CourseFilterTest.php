@@ -3,21 +3,19 @@
 namespace Tests\Unit\Filters\Classroom;
 
 use App\Filters\Classroom\CourseFilter;
-use Tests\TestCase;
+use Tests\Unit\Filters\FilterTestCase;
 
-class CourseFilterTest extends TestCase
+class CourseFilterTest extends FilterTestCase
 {
     /**
-     * Test Set Up.
-     *
-     * @return void
+     * @var CourseFilter
      */
-    public function setUp(): void
-    {
-        parent::setUp();
-        
-        $this->filter = new CourseFilter();
-    }
+    protected $filter;
+
+    /**
+     * @var string
+     */
+    protected $filterClass = CourseFilter::class;
 
     public function test_category_filter()
     {

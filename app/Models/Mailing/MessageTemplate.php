@@ -38,13 +38,17 @@ class MessageTemplate extends Model
     protected $keyType = 'string';
 
     /**
-     * The attributes that aren't mass assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $guarded = [
-        'created_at',
-        'updated_at'
+    protected $fillable = [
+        'message_type_id',
+        'description',
+        'subject',
+        'content',
+        'message_header_id',
+        'message_footer_id'
     ];
 
     /**

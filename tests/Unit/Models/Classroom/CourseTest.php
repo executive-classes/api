@@ -3,32 +3,28 @@
 namespace Tests\Unit\Model\Classroom;
 
 use App\Models\Classroom\Course;
+use Tests\Unit\Models\HasFactoryAsserts;
+use Tests\Unit\Models\HasFilterAsserts;
 use Tests\Unit\Models\ModelTestCase;
 
 class CourseTest extends ModelTestCase
 {
+    use HasFactoryAsserts, HasFilterAsserts;
+    
     /**
      * @var Course
      */
     protected $model;
 
     /**
-     * Test Set Up.
-     *
-     * @return void
+     * @var string
      */
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        $this->model = new Course();
-    }
+    protected $modelClass = Course::class;
 
     public function test_model()
     {
         $this->runModelAssertions($this->model, [
             'table' => 'course',
-            'primaryKey' => 'id',
             'fillable' => [
                 'name',
                 'active',

@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Collection extends Model
 {
-    use HasFactory, HasPayGo;
+    use HasFactory;
+    use HasPayGo;
 
     /**
      * The table associated with the model.
@@ -25,14 +26,18 @@ class Collection extends Model
     protected $primaryKey = 'id';
 
     /**
-     * The attributes that aren't mass assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $guarded = [
-        'id',
-        'biller_id',
-        'collection_status_id'
+    protected $fillable = [
+        'expire_at',
+        'amount',
+        'description',
+        'truncatedDescription',
+        'payment_interval_id',
+        'payment_method_id',
+        'token_id'
     ];
 
     /**

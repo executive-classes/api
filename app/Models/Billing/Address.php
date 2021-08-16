@@ -26,14 +26,19 @@ class Address extends Model
     protected $primaryKey = 'id';
 
     /**
-     * The model's default values for attributes.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $guarded = [
-        'id',
-        'created_at',
-        'updated_at'
+    protected $fillable = [
+        'zip',
+        'street',
+        'number',
+        'complement',
+        'district',
+        'city',
+        'state',
+        'country'
     ];
 
     /**
@@ -43,7 +48,7 @@ class Address extends Model
      */
     public function customer()
     {
-        return $this->hasOne(Customer::class, 'bulding_id');
+        return $this->hasOne(Customer::class, 'address_id');
     }
 
     /**

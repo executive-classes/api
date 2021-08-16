@@ -3,6 +3,7 @@
 namespace App\Models\Billing;
 
 use App\Filters\Filterable;
+use App\Traits\Models\Billing\HasPhone;
 use App\Traits\Models\Billing\HasTax;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,6 +13,7 @@ class Biller extends Model
     use Filterable;
     use HasFactory;
     use HasTax;
+    use HasPhone;
 
     /**
      * The table associated with the model.
@@ -28,16 +30,24 @@ class Biller extends Model
     protected $primaryKey = 'id';
 
     /**
-     * The attributes that aren't mass assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $guarded = [
-        'id',
-        'created_at',
-        'updated_at',
-        'inactive_at',
-        'reactive_at'
+    protected $fillable = [
+        'customer_id',
+        'biller_status_id',
+        'name',
+        'tax_type_id',
+        'tax_code',
+        'tax_type_alt_id',
+        'tax_code_alt',
+        'address_id',
+        'email',
+        'phone',
+        'phone_alt',
+        'payment_interval_id',
+        'payment_method_id'
     ];
 
     /**

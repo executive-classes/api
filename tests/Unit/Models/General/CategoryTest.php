@@ -4,31 +4,27 @@ namespace Tests\Unit\Model\Classroom;
 
 use App\Models\General\Category;
 use Tests\Unit\Models\ModelTestCase;
+use Tests\Unit\Models\HasFilterAsserts;
+use Tests\Unit\Models\HasFactoryAsserts;
 
 class CategoryTest extends ModelTestCase
 {
+    use HasFactoryAsserts, HasFilterAsserts;
+
     /**
-     * @var Course
+     * @var Category
      */
     protected $model;
 
     /**
-     * Test Set Up.
-     *
-     * @return void
+     * @var string
      */
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        $this->model = new Category();
-    }
+    protected $modelClass = Category::class;
 
     public function test_model()
     {
         $this->runModelAssertions($this->model, [
             'table' => 'category',
-            'primaryKey' => 'id',
             'timestamps' => false,
             'fillable' => [
                 'name',

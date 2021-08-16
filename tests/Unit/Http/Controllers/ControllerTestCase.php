@@ -3,7 +3,6 @@
 namespace Tests\Unit\Http\Controllers;
 
 use Mockery;
-use Symfony\Component\HttpFoundation\ParameterBag;
 use Tests\MocksDatabase;
 use Tests\TestCase;
 
