@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Billling;
 
-use App\Models\Billing\User\UserFilters;
+use App\Models\Billing\User\User;
 use App\Http\Controllers\Controller;
+use App\Models\Billing\User\UserFilters;
+use App\Services\Billing\Password\Password;
+use App\Http\Resources\Billling\User\UserResource;
+use App\Http\Resources\Billling\User\UserCollection;
 use App\Http\Requests\Billing\User\CreateUserRequest;
 use App\Http\Requests\Billing\User\UpdateUserRequest;
-use App\Http\Resources\Billling\UserCollection;
-use App\Http\Resources\Billling\UserResource;
-use App\Models\Billing\User\User;
-use App\Services\Billing\Password\Password;
 
 class UserController extends Controller
 {

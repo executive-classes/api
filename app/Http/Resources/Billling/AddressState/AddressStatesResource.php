@@ -2,29 +2,11 @@
 
 namespace App\Http\Resources\Billling\AddressState;
 
+use App\Http\Resources\Resource;
 use Illuminate\Support\Str;
-use Illuminate\Http\Resources\Json\JsonResource;
 
-class AddressStatesResource extends JsonResource
+class AddressStatesResource extends Resource
 {
-    /**
-     * The additional meta data that should be added to the resource response.
-     *
-     * Added during response construction by the developer.
-     *
-     * @var array
-     */
-    public $additional = [
-        'status' => true
-    ];
-
-    /**
-     * The "data" wrapper that should be applied.
-     *
-     * @var string
-     */
-    public static $wrap = 'data';
-
     /**
      * Transform the resource into an array.
      *

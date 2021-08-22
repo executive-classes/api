@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Billling;
 
+use App\Http\Controllers\Controller;
+use App\Models\Billing\Biller\Biller;
 use App\Enums\Billing\BillerStatusEnum;
 use App\Models\Billing\Biller\BillerFilters;
-use App\Http\Controllers\Controller;
+use App\Http\Resources\Billling\Biller\BillerResource;
+use App\Http\Resources\Billling\Biller\BillerCollection;
 use App\Http\Requests\Billing\Biller\CreateBillerRequest;
 use App\Http\Requests\Billing\Biller\UpdateBillerRequest;
-use App\Http\Resources\Billling\BillerCollection;
-use App\Http\Resources\Billling\BillerResource;
-use App\Models\Billing\Biller\Biller;
 
 class BillerController extends Controller
 {

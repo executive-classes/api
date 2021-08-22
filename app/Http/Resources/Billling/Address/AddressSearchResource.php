@@ -4,30 +4,11 @@ namespace App\Http\Resources\Billling\Address;
 
 use App\Enums\Billing\CountryEnum;
 use App\Http\Resources\Billling\AddressCountry\AddressCountryResource;
+use App\Http\Resources\Resource;
 use App\Models\Billing\AddressCountry\AddressCountry;
-use App\Services\Billing\Address\AddressFormatter;
-use Illuminate\Http\Resources\Json\JsonResource;
 
-class AddressSearchResource extends JsonResource
+class AddressSearchResource extends Resource
 {
-    /**
-     * The additional meta data that should be added to the resource response.
-     *
-     * Added during response construction by the developer.
-     *
-     * @var array
-     */
-    public $additional = [
-        'status' => true
-    ];
-
-    /**
-     * The "data" wrapper that should be applied.
-     *
-     * @var string
-     */
-    public static $wrap = 'data';
-
     /**
      * Transform the resource into an array.
      *

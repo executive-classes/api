@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Billling;
 
-use App\Enums\Billing\CustomerStatusEnum;
-use App\Models\Billing\Customer\CustomerFilters;
 use App\Http\Controllers\Controller;
+use App\Enums\Billing\CustomerStatusEnum;
+use App\Models\Billing\Customer\Customer;
+use App\Models\Billing\Customer\CustomerFilters;
+use App\Http\Resources\Billling\Customer\CustomerResource;
+use App\Http\Resources\Billling\Customer\CustomerCollection;
 use App\Http\Requests\Billing\Customer\CreateCustomerRequest;
 use App\Http\Requests\Billing\Customer\UpdateCustomerRequest;
-use App\Http\Resources\Billling\CustomerCollection;
-use App\Http\Resources\Billling\CustomerResource;
-use App\Models\Billing\Customer\Customer;
 
 class CustomerController extends Controller
 {

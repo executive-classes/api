@@ -1,17 +1,15 @@
 <?php
 
-namespace App\Http\Resources\Billling;
+namespace App\Http\Resources\Billling\Customer;
 
 use App\Http\Resources\Billling\Address\AddressResource;
-use App\Http\Resources\Billling\BillerStatus\BillerStatusResource;
-use App\Http\Resources\Billling\PaymentInterval\PaymentIntervalResource;
-use App\Http\Resources\Billling\PaymentMethod\PaymentMethodResource;
+use App\Http\Resources\Billling\CustomerStatus\CustomerStatusResource;
 use App\Http\Resources\Resource;
 use App\Traits\Resources\WithPhones;
 use App\Traits\Resources\WithTaxes;
 use Carbon\Carbon;
 
-class BillerResource extends Resource
+class CustomerResource extends Resource
 {
     use WithTaxes, WithPhones;
 
@@ -35,11 +33,8 @@ class BillerResource extends Resource
             'email' => $this->email,
             'phone' => $this->makePhone($this->phone),
             'phone_alt' => $this->makePhone($this->phone_alt),
-            'status' => new BillerStatusResource($this->status),
-            'interval' => new PaymentIntervalResource($this->interval),
-            'payment_method' => new PaymentMethodResource($this->paymentMethod),
-            'customer' => new CustomerResource($this->customer),
-            'address' => new AddressResource($this->address),
+            'status' => new CustomerStatusResource($this->status),
+            'address' => new AddressResource($this->address)
         ];
     }
 }

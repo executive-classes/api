@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Billling;
 
-use App\Models\Billing\Teacher\Teacher;
 use App\Http\Controllers\Controller;
-use App\Models\Billing\Teacher\TeacherFilters;
+use App\Models\Billing\Teacher\Teacher;
 use App\Enums\Billing\TeacherStatusEnum;
-use App\Http\Resources\Billling\TeacherResource;
-use App\Http\Resources\Billling\TeacherCollection;
+use App\Models\Billing\Teacher\TeacherFilters;
+use App\Http\Resources\Billling\Teacher\TeacherResource;
+use App\Http\Resources\Billling\Teacher\TeacherCollection;
 use App\Http\Requests\Billing\Teacher\CreateTeacherRequest;
 use App\Http\Requests\Billing\Teacher\UpdateTeacherRequest;
 

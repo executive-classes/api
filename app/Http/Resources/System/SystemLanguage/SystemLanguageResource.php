@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Billling;
+namespace App\Http\Resources\System\SystemLanguage;
 
-use App\Http\Resources\Billling\StudentStatus\StudentStatusResource;
-use Carbon\Carbon;
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Resource;
 
-class StudentResource extends JsonResource
+class SystemLanguageResource extends Resource
 {
     /**
      * The additional meta data that should be added to the resource response.
@@ -36,11 +34,7 @@ class StudentResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'created_at' => Carbon::parse($this->created_at)->toDateTimeString(),
-            'updated_at' => Carbon::parse($this->updated_at)->toDateTimeString(),
-            'customer' => new CustomerResource($this->customer),
-            'user' => new UserResource($this->user),
-            'status' => new StudentStatusResource($this->status)
+            'name' => $this->name
         ];
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources\Billling\PaymentMethod;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Resource;
 
-class PaymentMethodResource extends JsonResource
+class PaymentMethodResource extends Resource
 {
     /**
      * Transform the resource into an array.

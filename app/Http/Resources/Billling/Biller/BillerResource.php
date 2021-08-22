@@ -1,17 +1,22 @@
 <?php
 
-namespace App\Http\Resources\Billling;
+namespace App\Http\Resources\Billling\Biller;
 
-use App\Http\Resources\Resource;
-use App\Http\Resources\System\LanguageResource;
-use App\Traits\Resources\WithPhones;
-use App\Traits\Resources\WithTaxes;
 use Carbon\Carbon;
+use App\Http\Resources\Resource;
+use App\Traits\Resources\WithTaxes;
+use App\Traits\Resources\WithPhones;
+use App\Http\Resources\Billling\Address\AddressResource;
+use App\Http\Resources\Billling\Customer\CustomerResource;
+use App\Http\Resources\Billling\BillerStatus\BillerStatusResource;
+use App\Http\Resources\Billling\PaymentMethod\PaymentMethodResource;
+use App\Http\Resources\Billling\PaymentInterval\PaymentIntervalResource;
 
-class UserResource extends Resource
+class BillerResource extends Resource
 {
-    use WithTaxes, WithPhones;
-    
+    use WithTaxes;
+    use WithPhones;
+
     /**
      * Transform the resource into an array.
      *
@@ -27,16 +32,16 @@ class UserResource extends Resource
             'inactive_at' => $this->inactive_at ? Carbon::parse($this->inactive_at)->toDateTimeString() : null,
             'reactive_at' => $this->reactive_at ? Carbon::parse($this->reactive_at)->toDateTimeString() : null,
             'name' => $this->name,
-            'email' => $this->email,
-            'email_verified' => $this->email_verified_at !== null,
-            'status' => $this->active ? 'Ativo' : 'Suspenso',
-            'active' => $this->active,
             'tax' => $this->makeTax($this->taxType, $this->tax_code),
             'tax_alt' => $this->makeTax($this->taxTypeAlt, $this->tax_code_alt),
+            'email' => $this->email,
             'phone' => $this->makePhone($this->phone),
             'phone_alt' => $this->makePhone($this->phone_alt),
-            'language' => new LanguageResource($this->language)
-
+            'status' => new BillerStatusResource($this->status),
+            'interval' => new PaymentIntervalResource($this->interval),
+            'payment_method' => new PaymentMethodResource($this->paymentMethod),
+            'customer' => new CustomerResource($this->customer),
+            'address' => new AddressResource($this->address),
         ];
     }
 }

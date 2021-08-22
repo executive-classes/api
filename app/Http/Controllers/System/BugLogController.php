@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\System;
 
-use App\Models\System\SystemBugLog\SystemBugLogFilters;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\System\GetBugLogRequest;
-use App\Http\Resources\System\BugLogCollection;
 use App\Models\System\SystemBugLog\SystemBugLog;
+use App\Models\System\SystemBugLog\SystemBugLogFilters;
+use App\Http\Resources\System\SystemBugLog\SystemBugLogCollection;
 
 class BugLogController extends Controller
 {
@@ -16,6 +16,6 @@ class BugLogController extends Controller
             ->limit($request->get('limit', 1000))
             ->get();
 
-        return new BugLogCollection($logs);
+        return new SystemBugLogCollection($logs);
     }
 }

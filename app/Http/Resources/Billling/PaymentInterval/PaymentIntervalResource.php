@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources\Billling\PaymentInterval;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Resource;
 
-class PaymentIntervalResource extends JsonResource
+class PaymentIntervalResource extends Resource
 {
     /**
      * Transform the resource into an array.

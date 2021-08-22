@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Resources\Billling;
+namespace App\Http\Resources\Billling\User;
 
 use App\Http\Resources\Resource;
-use App\Http\Resources\System\LanguageResource;
-use App\Traits\Resources\WithPhones;
 use App\Traits\Resources\WithTaxes;
+use App\Traits\Resources\WithPhones;
+use App\Http\Resources\System\SystemLanguage\SystemLanguageResource;
 
 class ProfileResource extends Resource
 {
@@ -29,7 +29,7 @@ class ProfileResource extends Resource
             'tax_alt' => $this->makeTax($this->taxTypeAlt, $this->tax_code_alt),
             'phone' => $this->makePhone($this->phone),
             'phone_alt' => $this->makePhone($this->phone_alt),
-            'language' => new LanguageResource($this->language)
+            'language' => new SystemLanguageResource($this->language)
         ];
     }
 }

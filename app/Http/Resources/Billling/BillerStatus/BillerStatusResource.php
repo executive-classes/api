@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources\Billling\BillerStatus;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Resource;
 
-class BillerStatusResource extends JsonResource
+class BillerStatusResource extends Resource
 {
     /**
      * Transform the resource into an array.

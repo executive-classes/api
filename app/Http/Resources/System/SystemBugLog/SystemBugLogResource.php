@@ -1,31 +1,12 @@
 <?php
 
-namespace App\Http\Resources\System;
+namespace App\Http\Resources\System\SystemBugLog;
 
-use App\Http\Resources\Billling\UserResource;
-use Carbon\Carbon;
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Resource;
+use App\Http\Resources\Billling\User\UserResource;
 
-class BugLogResource extends JsonResource
+class SystemBugLogResource extends Resource
 {
-    /**
-     * The additional meta data that should be added to the resource response.
-     *
-     * Added during response construction by the developer.
-     *
-     * @var array
-     */
-    public $additional = [
-        'status' => true
-    ];
-
-    /**
-     * The "data" wrapper that should be applied.
-     *
-     * @var string
-     */
-    public static $wrap = 'data';
-
     /**
      * Transform the resource into an array.
      *

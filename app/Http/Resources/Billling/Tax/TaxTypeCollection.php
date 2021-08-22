@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources\Billling\Tax;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use App\Http\Resources\ResourceCollection;
 
 class TaxTypeCollection extends ResourceCollection
 {

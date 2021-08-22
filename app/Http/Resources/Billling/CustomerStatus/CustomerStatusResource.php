@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources\Billling\CustomerStatus;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Resource;
 
-class CustomerStatusResource extends JsonResource
+class CustomerStatusResource extends Resource
 {
     /**
      * Transform the resource into an array.

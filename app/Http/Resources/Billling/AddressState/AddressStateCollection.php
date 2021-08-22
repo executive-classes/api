@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources\Billling\AddressState;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use App\Http\Resources\ResourceCollection;
 
 class AddressStateCollection extends ResourceCollection
 {

@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Resources\Billling;
+namespace App\Http\Resources\Billling\User;
 
-use App\Http\Resources\Billling\Address\AddressResource;
-use App\Http\Resources\Billling\CustomerStatus\CustomerStatusResource;
-use App\Http\Resources\Resource;
-use App\Traits\Resources\WithPhones;
-use App\Traits\Resources\WithTaxes;
 use Carbon\Carbon;
+use App\Http\Resources\Resource;
+use App\Traits\Resources\WithTaxes;
+use App\Traits\Resources\WithPhones;
+use App\Http\Resources\System\SystemLanguage\SystemLanguageResource;
 
-class CustomerResource extends Resource
+class UserResource extends Resource
 {
     use WithTaxes, WithPhones;
-
+    
     /**
      * Transform the resource into an array.
      *
@@ -28,13 +27,15 @@ class CustomerResource extends Resource
             'inactive_at' => $this->inactive_at ? Carbon::parse($this->inactive_at)->toDateTimeString() : null,
             'reactive_at' => $this->reactive_at ? Carbon::parse($this->reactive_at)->toDateTimeString() : null,
             'name' => $this->name,
+            'email' => $this->email,
+            'email_verified' => $this->email_verified_at !== null,
+            'status' => $this->active ? 'Ativo' : 'Suspenso',
+            'active' => $this->active,
             'tax' => $this->makeTax($this->taxType, $this->tax_code),
             'tax_alt' => $this->makeTax($this->taxTypeAlt, $this->tax_code_alt),
-            'email' => $this->email,
             'phone' => $this->makePhone($this->phone),
             'phone_alt' => $this->makePhone($this->phone_alt),
-            'status' => new CustomerStatusResource($this->status),
-            'address' => new AddressResource($this->address)
+            'language' => new SystemLanguageResource($this->language)
         ];
     }
 }

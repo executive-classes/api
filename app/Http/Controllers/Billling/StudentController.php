@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Billling;
 
+use App\Http\Controllers\Controller;
+use App\Models\Billing\Student\Student;
 use App\Enums\Billing\StudentStatusEnum;
 use App\Models\Billing\Student\StudentFilters;
-use App\Http\Controllers\Controller;
+use App\Http\Resources\Billling\Student\StudentResource;
+use App\Http\Resources\Billling\Student\StudentCollection;
 use App\Http\Requests\Billing\Student\CreateStudentRequest;
 use App\Http\Requests\Billing\Student\UpdateStudentRequest;
-use App\Http\Resources\Billling\StudentCollection;
-use App\Http\Resources\Billling\StudentResource;
-use App\Models\Billing\Student\Student;
 
 class StudentController extends Controller
 {
