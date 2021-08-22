@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Billing;
 
-use App\Models\Billing\PaymentMethod;
+use App\Models\Billing\PaymentMethod\PaymentMethod;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;

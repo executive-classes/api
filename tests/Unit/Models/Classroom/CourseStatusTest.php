@@ -3,7 +3,7 @@
 namespace Tests\Unit\Model\Classroom;
 
 use Tests\Unit\Models\ModelTestCase;
-use App\Models\Classroom\CourseStatus;
+use App\Models\Classroom\CourseStatus\CourseStatus;
 use Tests\Unit\Traits\Models\HasFilterAsserts;
 use Tests\Unit\Traits\Models\HasFactoryAsserts;
 

@@ -2,8 +2,8 @@
 
 namespace Tests;
 
-use App\Models\Billing\Employee;
-use App\Models\Billing\User;
+use App\Models\Billing\Employee\Employee;
+use App\Models\Billing\User\User;
 
 trait CreatesUser
 {

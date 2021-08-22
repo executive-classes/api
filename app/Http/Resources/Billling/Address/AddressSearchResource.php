@@ -4,7 +4,7 @@ namespace App\Http\Resources\Billling\Address;
 
 use App\Enums\Billing\CountryEnum;
 use App\Http\Resources\Billling\AddressCountry\AddressCountryResource;
-use App\Models\Billing\AddressCountry;
+use App\Models\Billing\AddressCountry\AddressCountry;
 use App\Services\Billing\Address\AddressFormatter;
 use Illuminate\Http\Resources\Json\JsonResource;
 

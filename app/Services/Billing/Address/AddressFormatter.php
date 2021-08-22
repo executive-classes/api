@@ -2,7 +2,7 @@
 
 namespace App\Services\Billing\Address;
 
-use App\Models\Billing\Address;
+use App\Models\Billing\Address\Address;
 use CommerceGuys\Addressing\Address as AddressingAddress;
 use CommerceGuys\Addressing\AddressFormat\AddressFormatRepository;
 use CommerceGuys\Addressing\Country\CountryRepository;

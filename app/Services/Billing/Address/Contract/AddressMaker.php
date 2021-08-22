@@ -2,7 +2,7 @@
 
 namespace App\Services\Billing\Address\Contract;
 
-use App\Models\Billing\Address;
+use App\Models\Billing\Address\Address;
 
 interface AddressMaker
 {

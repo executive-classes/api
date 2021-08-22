@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Mailing\MessageStatus;
+use App\Models\Mailing\MessageStatus\MessageStatus;
 use App\Enums\Mailing\MessageStatusEnum;
-use App\Models\Mailing\MessageTemplate;
+use App\Models\Mailing\MessageTemplate\MessageTemplate;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

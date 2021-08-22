@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Billling;
 
-use App\Models\Billing\Teacher;
+use App\Models\Billing\Teacher\Teacher;
 use App\Http\Controllers\Controller;
-use App\Filters\Billing\TeacherFilter;
+use App\Models\Billing\Teacher\TeacherFilters;
 use App\Enums\Billing\TeacherStatusEnum;
 use App\Http\Resources\Billling\TeacherResource;
 use App\Http\Resources\Billling\TeacherCollection;
@@ -13,7 +13,7 @@ use App\Http\Requests\Billing\Teacher\UpdateTeacherRequest;
 
 class TeacherController extends Controller
 {
-    public function index(TeacherFilter $filter)
+    public function index(TeacherFilters $filter)
     {
         return new TeacherCollection(Teacher::filter($filter)->get());
     }

@@ -2,14 +2,13 @@
 
 namespace Tests\Unit\Http\Controllers\Classroom;
 
-use App\Filters\Classroom\CourseFilter;
+use App\Models\Classroom\Course\CourseFilters;
 use App\Http\Controllers\Classroom\CourseController;
 use App\Http\Requests\Classroom\Course\CreateCourseRequest;
 use App\Http\Requests\Classroom\Course\UpdateCourseRequest;
 use App\Http\Resources\Classroom\Course\CourseCollection;
 use App\Http\Resources\Classroom\Course\CourseResource;
-use App\Models\Classroom\Course;
-use Mockery;
+use App\Models\Classroom\Course\Course;
 use Tests\Providers\Classroom\CourseProvider;
 use Tests\Unit\Http\Controllers\ControllerTestCase;
 
@@ -32,7 +31,7 @@ class CourseControllerTest extends ControllerTestCase
         $this->db->shouldReceive('select')
             ->andReturn($this->courses(3));
 
-        $collection = $this->controller->index(new CourseFilter());
+        $collection = $this->controller->index(new CourseFilters());
 
         $this->assertInstanceOf(CourseCollection::class, $collection);
         $this->assertCount(3, $collection);

@@ -2,20 +2,20 @@
 
 namespace Tests\Unit\Filters\Billing;
 
-use App\Filters\Billing\BillerFilter;
+use App\Models\Billing\Biller\BillerFilters;
 use Tests\Unit\Filters\FilterTestCase;
 
 class BillerFilterTest extends FilterTestCase
 {
     /**
-     * @var BillerFilter
+     * @var BillerFilters
      */
     protected $filter;
 
     /**
      * @var string
      */
-    protected $filterClass = BillerFilter::class;
+    protected $filterClass = BillerFilters::class;
 
     public function test_customerId_filter()
     {

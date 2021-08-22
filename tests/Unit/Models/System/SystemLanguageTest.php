@@ -4,7 +4,7 @@ namespace Tests\Unit\Models\System;
 
 use Illuminate\Support\Facades\App;
 use Tests\Unit\Models\ModelTestCase;
-use App\Models\System\SystemLanguage;
+use App\Models\System\SystemLanguage\SystemLanguage;
 use App\Enums\System\SystemLanguageEnum;
 
 class SystemLanguageTest extends ModelTestCase

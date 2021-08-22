@@ -2,20 +2,20 @@
 
 namespace Tests\Unit\Models\System;
 
-use App\Models\System\SystemBuglog;
+use App\Models\System\SystemBugLog\SystemBugLog;
 use Tests\Unit\Models\ModelTestCase;
 
 class SystemBuglogTest extends ModelTestCase
 {
     /**
-     * @var SystemBuglog
+     * @var SystemBugLog
      */
     protected $model;
 
     /**
      * @var string
      */
-    protected $modelClass = SystemBuglog::class;
+    protected $modelClass = SystemBugLog::class;
 
     public function test_model()
     {

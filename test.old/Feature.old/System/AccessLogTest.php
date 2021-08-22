@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\System;
 
-use App\Models\Billing\User;
-use App\Models\System\SystemAccessLog;
+use App\Models\Billing\User\User;
+use App\Models\System\SystemAccessLog\SystemAccessLog;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;

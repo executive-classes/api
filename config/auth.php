@@ -68,7 +68,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => \App\Models\Billing\User::class,
+            'model' => \App\Models\Billing\User\User::class,
         ],
     ],
 

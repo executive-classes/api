@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\Billing;
 
-use App\Models\Billing\StudentStatus;
+use App\Models\Billing\StudentStatus\StudentStatus;
 use Tests\Unit\Models\ModelTestCase;
 
 class StudentStatusTest extends ModelTestCase

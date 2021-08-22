@@ -1,8 +1,8 @@
 <?php
 
 use App\Enums\System\SystemLanguageEnum;
-use App\Models\Billing\TaxType;
-use App\Models\System\SystemLanguage;
+use App\Models\Billing\TaxType\TaxType;
+use App\Models\System\SystemLanguage\SystemLanguage;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

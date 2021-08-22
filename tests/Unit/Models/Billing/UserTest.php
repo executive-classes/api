@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\Billing;
 
-use App\Models\Billing\User;
+use App\Models\Billing\User\User;
 use Tests\Unit\Models\ModelTestCase;
 use App\Enums\System\SystemLanguageEnum;
 use Tests\Unit\Traits\Models\HasTaxAsserts;

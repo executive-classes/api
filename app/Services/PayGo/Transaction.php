@@ -4,10 +4,10 @@ namespace App\Services\PayGo;
 
 use App\Apis\GuzzleResponse;
 use App\Apis\PayGo\Gate2AllClient;
-use App\Models\Billing\Biller;
-use App\Models\Billing\Address;
-use App\Models\Billing\Collection;
-use App\Models\Billing\Customer;
+use App\Models\Billing\Biller\Biller;
+use App\Models\Billing\Address\Address;
+use App\Models\Billing\Collection\Collection;
+use App\Models\Billing\Customer\Customer;
 use App\Services\PayGo\Contracts\PaymentContract;
 
 class Transaction

@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Auth;
 
 use App\Enums\System\SystemLanguageEnum;
-use App\Models\System\SystemLanguage;
+use App\Models\System\SystemLanguage\SystemLanguage;
 use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Foundation\Http\FormRequest;
 

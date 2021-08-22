@@ -2,20 +2,20 @@
 
 namespace Tests\Unit\Filters\Billing;
 
-use App\Filters\Billing\EmployeeFilter;
+use App\Models\Billing\Employee\EmployeeFilters;
 use Tests\Unit\Filters\FilterTestCase;
 
 class EmployeeFilterTest extends FilterTestCase
 {
     /**
-     * @var EmployeeFilter
+     * @var EmployeeFilters
      */
     protected $filter;
 
     /**
      * @var string
      */
-    protected $filterClass = EmployeeFilter::class;
+    protected $filterClass = EmployeeFilters::class;
 
     public function test_email_filter()
     {

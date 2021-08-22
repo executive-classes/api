@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\Billing;
 
-use App\Models\Billing\Invoice;
+use App\Models\Billing\Invoice\Invoice;
 use Illuminate\Database\Seeder;
 
 class InvoiceSeeder extends Seeder

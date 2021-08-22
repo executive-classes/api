@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers\Billling;
 
-use App\Filters\Billing\UserFilter;
+use App\Models\Billing\User\UserFilters;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Billing\User\CreateUserRequest;
 use App\Http\Requests\Billing\User\UpdateUserRequest;
 use App\Http\Resources\Billling\UserCollection;
 use App\Http\Resources\Billling\UserResource;
-use App\Models\Billing\User;
+use App\Models\Billing\User\User;
 use App\Services\Billing\Password\Password;
 
 class UserController extends Controller
 {
-    public function index(UserFilter $filter)
+    public function index(UserFilters $filter)
     {
         return new UserCollection(User::filter($filter)->get());
     }

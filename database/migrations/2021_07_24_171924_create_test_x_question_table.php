@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Classroom\Question;
-use App\Models\Classroom\Test;
+use App\Models\Classroom\Question\Question;
+use App\Models\Classroom\Test\Test;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

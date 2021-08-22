@@ -2,20 +2,20 @@
 
 namespace Tests\Unit\Filters\Billing;
 
-use App\Filters\Billing\UserFilter;
+use App\Models\Billing\User\UserFilters;
 use Tests\Unit\Filters\FilterTestCase;
 
 class UserFilterTest extends FilterTestCase
 {
     /**
-     * @var UserFilter
+     * @var UserFilters
      */
     protected $filter;
 
     /**
      * @var string
      */
-    protected $filterClass = UserFilter::class;
+    protected $filterClass = UserFilters::class;
 
     public function test_email_filter()
     {

@@ -4,9 +4,9 @@ namespace App\Services\Billing\Address\Countries;
 
 use App\Apis\ViaCep\ViaCepClient;
 use App\Enums\Billing\CountryEnum;
-use App\Models\Billing\Address;
-use App\Models\Billing\AddressCity;
-use App\Models\Billing\AddressState;
+use App\Models\Billing\Address\Address;
+use App\Models\Billing\AddressCity\AddressCity;
+use App\Models\Billing\AddressState\AddressState;
 use App\Services\Billing\Address\Contract\AddressMaker;
 
 class BrazillianAddress implements AddressMaker

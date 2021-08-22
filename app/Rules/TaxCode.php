@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use App\Enums\Billing\StateEnum;
 use App\Enums\Billing\TaxTypeEnum;
-use App\Models\Billing\TaxType;
+use App\Models\Billing\TaxType\TaxType;
 use Illuminate\Contracts\Validation\Rule;
 
 class TaxCode implements Rule

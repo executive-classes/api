@@ -3,9 +3,9 @@
 namespace App\Mail;
 
 use App\Exceptions\Mailing\MessageException;
-use App\Models\Mailing\Message;
-use App\Models\Mailing\MessageFooter;
-use App\Models\Mailing\MessageHeader;
+use App\Models\Mailing\Message\Message;
+use App\Models\Mailing\MessageFooter\MessageFooter;
+use App\Models\Mailing\MessageHeader\MessageHeader;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;

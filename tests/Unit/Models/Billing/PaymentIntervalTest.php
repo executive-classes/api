@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\Billing;
 
-use App\Models\Billing\PaymentInterval;
+use App\Models\Billing\PaymentInterval\PaymentInterval;
 use Tests\Unit\Models\ModelTestCase;
 
 class PaymentIntervalTest extends ModelTestCase

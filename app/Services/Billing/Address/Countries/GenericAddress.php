@@ -2,7 +2,7 @@
 
 namespace App\Services\Billing\Address\Countries;
 
-use App\Models\Billing\Address;
+use App\Models\Billing\Address\Address;
 use App\Services\Billing\Address\Contract\AddressMaker;
 
 class GenericAddress implements AddressMaker

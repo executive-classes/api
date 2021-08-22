@@ -2,7 +2,7 @@
 
 namespace Tests\Providers\Auth;
 
-use App\Models\Billing\User;
+use App\Models\Billing\User\User;
 
 trait AuthProvider
 {

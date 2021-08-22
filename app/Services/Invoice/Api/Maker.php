@@ -2,22 +2,22 @@
 
 namespace App\Services\Invoice\Api;
 
-use App\Enums\Billing\CountryEnum;
-use App\Enums\Billing\PaymentMethodEnum;
-use App\Models\Billing\Address;
-use App\Models\Billing\AddressCity;
-use App\Models\Billing\AddressCountry;
-use App\Models\Billing\Collection;
-use App\Models\Billing\Customer;
-use App\Models\Billing\Invoice;
-use App\Services\Invoice\Api;
+use stdClass;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection as Entries;
 use NFePHP\Common\Keys;
 use NFePHP\Common\UFList;
 use NFePHP\NFe\Complements;
 use NFePHP\NFe\Make as Nfe;
-use stdClass;
+use App\Services\Invoice\Api;
+use App\Models\Billing\Invoice\Invoice;
+use App\Models\Billing\Customer\Customer;
+use App\Enums\Billing\CountryEnum;
+use App\Models\Billing\Collection\Collection;
+use App\Models\Billing\AddressCountry\AddressCountry;
+use App\Models\Billing\Address\Address;
+use App\Enums\Billing\PaymentMethodEnum;
+use App\Models\Billing\AddressCity\AddressCity;
+use Illuminate\Database\Eloquent\Collection as Entries;
 
 /**
  * Create the Invoice XML with the given data.

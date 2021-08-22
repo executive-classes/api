@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\General;
 
-use App\Filters\General\CategoryFilter;
+use App\Models\General\Category\CategoryFilters;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\General\Category\CreateCategoryRequest;
 use App\Http\Requests\General\Category\UpdateCategoryRequest;
 use App\Http\Resources\General\Category\CategoryCollection;
 use App\Http\Resources\General\Category\CategoryResource;
-use App\Models\General\Category;
+use App\Models\General\Category\Category;
 
 class CategoryController extends Controller
 {
-    public function index(CategoryFilter $filter)
+    public function index(CategoryFilters $filter)
     {
         return new CategoryCollection(Category::filter($filter)->get());
     }

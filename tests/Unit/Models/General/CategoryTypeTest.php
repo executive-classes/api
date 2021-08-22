@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\General;
 
-use App\Models\General\CategoryType;
+use App\Models\General\CategoryType\CategoryType;
 use Tests\Unit\Models\ModelTestCase;
 use Tests\Unit\Traits\Models\HasFactoryAsserts;
 

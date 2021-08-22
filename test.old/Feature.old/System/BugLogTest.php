@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\System;
 
-use App\Models\System\SystemBuglog;
+use App\Models\System\SystemBugLog\SystemBugLog;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -52,8 +52,8 @@ class BugLogTest extends TestCase
 
         $this->assertDatabaseHas('system_buglog', ['route' => $this->route]);
 
-        $log = SystemBuglog::firstWhere('route', $this->route);
-        $this->assertInstanceOf(SystemBuglog::class, $log);
+        $log = SystemBugLog::firstWhere('route', $this->route);
+        $this->assertInstanceOf(SystemBugLog::class, $log);
         
         $this->assertEquals($this->error, json_decode($log->error)->message);
     }
@@ -66,8 +66,8 @@ class BugLogTest extends TestCase
         $this->get(route($this->route));
         $this->assertDatabaseHas('system_buglog', ['route' => $this->route]);
 
-        $log = SystemBuglog::firstWhere('route', $this->route);
-        $this->assertInstanceOf(SystemBuglog::class, $log);
+        $log = SystemBugLog::firstWhere('route', $this->route);
+        $this->assertInstanceOf(SystemBugLog::class, $log);
 
         $this->assertEquals($user->id, $log->user_id);
     }

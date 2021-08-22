@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Billing\Invoice;
-use App\Models\Billing\Student;
+use App\Models\Billing\Invoice\Invoice;
+use App\Models\Billing\Student\Student;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

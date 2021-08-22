@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Billling;
 
 use App\Enums\Billing\BillerStatusEnum;
-use App\Filters\Billing\BillerFilter;
+use App\Models\Billing\Biller\BillerFilters;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Billing\Biller\CreateBillerRequest;
 use App\Http\Requests\Billing\Biller\UpdateBillerRequest;
 use App\Http\Resources\Billling\BillerCollection;
 use App\Http\Resources\Billling\BillerResource;
-use App\Models\Billing\Biller;
+use App\Models\Billing\Biller\Biller;
 
 class BillerController extends Controller
 {
-    public function index(BillerFilter $filter)
+    public function index(BillerFilters $filter)
     {
         return new BillerCollection(Biller::filter($filter)->get());
     }

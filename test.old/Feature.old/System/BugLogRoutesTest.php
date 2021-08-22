@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\System;
 
-use App\Models\System\SystemBuglog;
+use App\Models\System\SystemBugLog\SystemBugLog;
 use App\Services\System\BugLogService;
 use Exception;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -44,7 +44,7 @@ class BugLogRoutesTest extends TestCase
             'data'
         ]);
         $response->assertJsonPath('status', true);
-        $response->assertJsonCount(SystemBuglog::count(), 'data');
+        $response->assertJsonCount(SystemBugLog::count(), 'data');
     }
 
     // public function test_can_paginate_bug_logs()
@@ -63,7 +63,7 @@ class BugLogRoutesTest extends TestCase
 
     public function test_can_filter_bug_log_list()
     {
-        $date = SystemBuglog::first()->date;
+        $date = SystemBugLog::first()->date;
         $response = $this->getJson(route('logs.bugs.index', ['date' => $date]));
 
         $response->assertOk();
@@ -72,7 +72,7 @@ class BugLogRoutesTest extends TestCase
             'data'
         ]);
         $response->assertJsonPath('status', true);
-        $response->assertJsonCount(SystemBuglog::where('date', '>=', $date)->count(), 'data');
+        $response->assertJsonCount(SystemBugLog::where('date', '>=', $date)->count(), 'data');
     }
 
     

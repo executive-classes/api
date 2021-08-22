@@ -2,7 +2,7 @@
 
 namespace App\Services\PayGo\Payment;
 
-use App\Models\Billing\Collection;
+use App\Models\Billing\Collection\Collection;
 use App\Services\PayGo\Contracts\PaymentContract;
 use Carbon\Carbon;
 

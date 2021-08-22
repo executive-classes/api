@@ -2,7 +2,7 @@
 
 namespace App\Services\System;
 
-use App\Models\System\SystemAccessLog;
+use App\Models\System\SystemAccessLog\SystemAccessLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;

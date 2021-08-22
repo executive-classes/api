@@ -4,7 +4,7 @@ namespace Tests\Integration\PayGo;
 
 use App\Apis\PayGo\Gate2AllClient;
 use App\Exceptions\PayGo\PayGoException;
-use App\Models\Billing\Biller;
+use App\Models\Billing\Biller\Biller;
 use App\Services\PayGo\Transaction;
 use Tests\Providers\Billing\CollectionProvider;
 use Tests\Providers\PayGo\CreditCartProvider;

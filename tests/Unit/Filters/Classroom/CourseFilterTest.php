@@ -2,20 +2,20 @@
 
 namespace Tests\Unit\Filters\Classroom;
 
-use App\Filters\Classroom\CourseFilter;
+use App\Models\Classroom\Course\CourseFilters;
 use Tests\Unit\Filters\FilterTestCase;
 
 class CourseFilterTest extends FilterTestCase
 {
     /**
-     * @var CourseFilter
+     * @var CourseFilters
      */
     protected $filter;
 
     /**
      * @var string
      */
-    protected $filterClass = CourseFilter::class;
+    protected $filterClass = CourseFilters::class;
 
     public function test_category_filter()
     {

@@ -4,7 +4,7 @@ namespace Database\Seeders\Billing;
 
 use App\Enums\Billing\EmployeePositionEnum;
 use App\Enums\Billing\UserPrivilegeEnum;
-use App\Models\Billing\EmployeePosition;
+use App\Models\Billing\EmployeePosition\EmployeePosition;
 use Illuminate\Database\Seeder;
 
 class EmployeePositionSeeder extends Seeder

@@ -4,7 +4,7 @@ namespace Tests\Unit\Http\Resources\General;
 
 use App\Http\Resources\General\Category\CategoryCollection;
 use App\Http\Resources\General\Category\CategoryResource;
-use App\Models\General\Category;
+use App\Models\General\Category\Category;
 use Tests\Providers\General\CategoryProvider;
 use Tests\Unit\Http\Resources\ResourceTestCase;
 

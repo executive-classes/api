@@ -3,7 +3,7 @@
 namespace Database\Seeders\Billing;
 
 use App\Enums\Billing\InvoiceStatusEnum;
-use App\Models\Billing\InvoiceStatus;
+use App\Models\Billing\InvoiceStatus\InvoiceStatus;
 use Illuminate\Database\Seeder;
 
 class InvoiceStatusSeeder extends Seeder

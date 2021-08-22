@@ -3,7 +3,7 @@
 namespace Database\Seeders\General;
 
 use App\Enums\General\CategoryTypeEnum;
-use App\Models\General\CategoryType;
+use App\Models\General\CategoryType\CategoryType;
 use Illuminate\Database\Seeder;
 
 class CategoryTypeSeeder extends Seeder

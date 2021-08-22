@@ -12,7 +12,7 @@ class CourseTest extends FeatureTestCase
     use RefreshDatabase, CreatesUser, CourseProvider;
 
     /**
-     * @var \App\Models\Billing\User
+     * @var \App\Models\Billing\User\User
      */
     protected $user;
 

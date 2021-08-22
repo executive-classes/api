@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Billing\Student;
-use App\Models\Classroom\Course;
-use App\Models\Classroom\LessonStatus;
-use App\Models\Classroom\Module;
+use App\Models\Billing\Student\Student;
+use App\Models\Classroom\Course\Course;
+use App\Models\Classroom\LessonStatus\LessonStatus;
+use App\Models\Classroom\Module\Module;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Billling;
 
 use App\Apis\ViaCep\ViaCepClient;
-use App\Filters\Billing\AddressFilter;
+use App\Models\Billing\Address\AddressFilters;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Billing\Address\AddressRequest;
 use App\Http\Resources\Billling\Address\AddressSearchResource;
 use App\Http\Resources\Billling\Address\AddressCollection;
 use App\Http\Resources\Billling\Address\AddressResource;
-use App\Models\Billing\Address;
+use App\Models\Billing\Address\Address;
 use App\Services\Billing\Address\Contract\AddressMaker;
 
 class AddressController extends Controller
 {
-    public function index(AddressFilter $filter)
+    public function index(AddressFilters $filter)
     {
         return new AddressCollection(Address::filter($filter)->get());
     }

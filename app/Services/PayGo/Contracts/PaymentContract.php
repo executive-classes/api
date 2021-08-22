@@ -2,7 +2,7 @@
 
 namespace App\Services\PayGo\Contracts;
 
-use App\Models\Billing\Collection;
+use App\Models\Billing\Collection\Collection;
 
 interface PaymentContract
 {

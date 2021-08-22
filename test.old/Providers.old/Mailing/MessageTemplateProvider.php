@@ -2,10 +2,10 @@
 
 namespace Tests\Providers\Mailing;
 
-use App\Models\Mailing\MessageFooter;
-use App\Models\Mailing\MessageHeader;
-use App\Models\Mailing\MessageTemplate;
-use App\Models\Mailing\MessageType;
+use App\Models\Mailing\MessageFooter\MessageFooter;
+use App\Models\Mailing\MessageHeader\MessageHeader;
+use App\Models\Mailing\MessageTemplate\MessageTemplate;
+use App\Models\Mailing\MessageType\MessageType;
 
 trait MessageTemplateProvider
 {

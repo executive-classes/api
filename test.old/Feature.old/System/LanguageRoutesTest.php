@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\System;
 
-use App\Models\System\SystemLanguage;
+use App\Models\System\SystemLanguage\SystemLanguage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;

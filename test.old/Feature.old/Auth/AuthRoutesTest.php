@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
-use App\Models\Billing\User;
+use App\Models\Billing\User\User;
 use Tests\Providers\Auth\AuthProvider;
 use Tests\Providers\Billing\UserProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;

@@ -3,7 +3,7 @@
 namespace Database\Seeders\Classroom;
 
 use App\Enums\Classroom\MaterialStatusEnum;
-use App\Models\Classroom\MaterialStatus;
+use App\Models\Classroom\MaterialStatus\MaterialStatus;
 use Illuminate\Database\Seeder;
 
 class MaterialStatusSeeder extends Seeder

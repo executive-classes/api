@@ -2,20 +2,20 @@
 
 namespace Tests\Unit\Filters\System;
 
-use App\Filters\System\BugLogFilter;
+use App\Models\System\SystemBugLog\SystemBugLogFilters;
 use Tests\Unit\Filters\FilterTestCase;
 
 class BugLogFilterTest extends FilterTestCase
 {
     /**
-     * @var BugLogFilter
+     * @var SystemBugLogFilters
      */
     protected $filter;
 
     /**
      * @var string
      */
-    protected $filterClass = BugLogFilter::class;
+    protected $filterClass = SystemBugLogFilters::class;
 
     public function test_date_filter()
     {

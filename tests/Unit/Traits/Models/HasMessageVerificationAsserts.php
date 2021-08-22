@@ -3,7 +3,7 @@
 namespace Tests\Unit\Traits\Models;
 
 use Carbon\Carbon;
-use App\Models\Mailing\MessageTemplate;
+use App\Models\Mailing\MessageTemplate\MessageTemplate;
 use App\Enums\Mailing\MessageStatusEnum;
 
 trait HasMessageVerificationAsserts

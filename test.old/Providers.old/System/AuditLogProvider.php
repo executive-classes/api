@@ -2,7 +2,7 @@
 
 namespace Tests\Providers\System;
 
-use App\Models\Billing\User;
+use App\Models\Billing\User\User;
 use Closure;
 
 /**

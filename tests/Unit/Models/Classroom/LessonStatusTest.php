@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Model\Classroom;
 
-use App\Models\Classroom\LessonStatus;
+use App\Models\Classroom\LessonStatus\LessonStatus;
 use Tests\Unit\Models\ModelTestCase;
 
 class LessonStatusTest extends ModelTestCase

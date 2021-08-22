@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Billling;
 use App\Enums\Billing\StudentStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Billling\StudentStatus\StudentStatusCollection;
-use App\Models\Billing\StudentStatus;
+use App\Models\Billing\StudentStatus\StudentStatus;
 
 class StudentStatusController extends Controller
 {

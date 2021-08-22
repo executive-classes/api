@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\Billing;
 
-use App\Models\Billing\Collection;
+use App\Models\Billing\Collection\Collection;
 use Tests\Unit\Models\ModelTestCase;
 use Tests\Unit\Traits\Models\HasPayGoAsserts;
 use Tests\Unit\Traits\Models\HasFactoryAsserts;

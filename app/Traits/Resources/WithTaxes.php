@@ -3,7 +3,7 @@
 namespace App\Traits\Resources;
 
 use App\Http\Resources\Billling\Tax\TaxResource;
-use App\Models\Billing\TaxType;
+use App\Models\Billing\TaxType\TaxType;
 
 trait WithTaxes
 {

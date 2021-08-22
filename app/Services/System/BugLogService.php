@@ -3,7 +3,7 @@
 namespace App\Services\System;
 
 use App\Enums\System\SystemAppEnum;
-use App\Models\System\SystemBuglog;
+use App\Models\System\SystemBugLog\SystemBugLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -17,7 +17,7 @@ class BugLogService
             $user = $request->user();
             $route = $request->route();
 
-            $bug = new SystemBuglog();
+            $bug = new SystemBugLog();
 
             $bug->user_id = $user ? $user->id : null;;
             $bug->cross_user_id = $user ? $user->crossId() : null;;

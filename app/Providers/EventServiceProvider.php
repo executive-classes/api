@@ -37,6 +37,7 @@ class EventServiceProvider extends ServiceProvider
      */
     private function auditObservers()
     {
-        \App\Models\Billing\User::observe(AuditObserver::class);
+        \App\Models\Billing\User\User::observe(AuditObserver::class);
+        /** @todo Register others models observes */
     }
 }

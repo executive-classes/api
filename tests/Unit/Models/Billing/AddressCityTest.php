@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\Billing;
 
-use App\Models\Billing\AddressCity;
+use App\Models\Billing\AddressCity\AddressCity;
 use Tests\Unit\Models\ModelTestCase;
 
 class AddressCityTest extends ModelTestCase

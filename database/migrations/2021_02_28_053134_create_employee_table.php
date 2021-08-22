@@ -1,9 +1,9 @@
 <?php
 
 use App\Enums\Billing\EmployeeStatusEnum;
-use App\Models\Billing\EmployeePosition;
-use App\Models\Billing\EmployeeStatus;
-use App\Models\Billing\User;
+use App\Models\Billing\EmployeePosition\EmployeePosition;
+use App\Models\Billing\EmployeeStatus\EmployeeStatus;
+use App\Models\Billing\User\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

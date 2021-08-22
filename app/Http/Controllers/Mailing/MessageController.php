@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Mailing;
 use App\Exceptions\Mailing\MessageException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Mailing\Message\MessageCreateRequest;
-use App\Models\Mailing\Message;
-use App\Repositories\Mailing\MessageRepository;
+use App\Models\Mailing\Message\Message;
+use App\Models\Mailing\Message\MessageRepository;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller

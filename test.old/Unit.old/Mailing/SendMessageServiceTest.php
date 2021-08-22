@@ -4,9 +4,9 @@ namespace Tests\Unit\Mailing;
 
 use App\Exceptions\Mailing\MessageException;
 use App\Mail\Messenger;
-use App\Models\Mailing\Message;
+use App\Models\Mailing\Message\Message;
 use App\Enums\Mailing\MessageStatusEnum;
-use App\Repositories\Mailing\MessageRepository;
+use App\Models\Mailing\Message\MessageRepository;
 use App\Services\Mailing\SendMessageService;
 use Tests\Providers\Mailing\MessageProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;

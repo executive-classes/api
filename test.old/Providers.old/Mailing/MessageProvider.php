@@ -2,9 +2,9 @@
 
 namespace Tests\Providers\Mailing;
 
-use App\Models\Mailing\Message;
+use App\Models\Mailing\Message\Message;
 use App\Enums\Mailing\MessageStatusEnum;
-use App\Models\Mailing\MessageTemplate;
+use App\Models\Mailing\MessageTemplate\MessageTemplate;
 use Carbon\Carbon;
 use Closure;
 use Illuminate\Database\Eloquent\Collection;

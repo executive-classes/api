@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\Billing;
 
-use App\Models\Billing\PaymentMethod;
+use App\Models\Billing\PaymentMethod\PaymentMethod;
 use Tests\Unit\Models\ModelTestCase;
 
 class PaymentMethodTest extends ModelTestCase

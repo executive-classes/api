@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\Billing;
 
-use App\Models\Billing\Address;
+use App\Models\Billing\Address\Address;
 use Tests\Unit\Models\ModelTestCase;
 use Tests\Unit\Traits\Models\HasFilterAsserts;
 use Tests\Unit\Traits\Models\HasFactoryAsserts;

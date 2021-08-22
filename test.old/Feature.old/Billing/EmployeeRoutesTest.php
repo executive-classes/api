@@ -3,9 +3,9 @@
 namespace Tests\Feature\Billing;
 
 use App\Enums\Billing\EmployeeStatusEnum;
-use App\Models\Billing\Employee;
-use App\Models\Billing\EmployeePosition;
-use App\Models\Billing\EmployeeStatus;
+use App\Models\Billing\Employee\Employee;
+use App\Models\Billing\EmployeePosition\EmployeePosition;
+use App\Models\Billing\EmployeeStatus\EmployeeStatus;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;

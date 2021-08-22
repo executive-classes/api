@@ -3,7 +3,7 @@
 namespace App\Services\PayGo\Payment;
 
 use App\Exceptions\PayGo\PayGoException;
-use App\Models\Billing\Collection;
+use App\Models\Billing\Collection\Collection;
 use App\Services\PayGo\Contracts\PaymentContract;
 
 class Transfer implements PaymentContract

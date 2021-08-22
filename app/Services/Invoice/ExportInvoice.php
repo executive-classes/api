@@ -2,8 +2,8 @@
 
 namespace App\Services\Invoice;
 
-use App\Models\Billing\Invoice;
-use App\Repositories\Billing\InvoiceRepository;
+use App\Models\Billing\Invoice\Invoice;
+use App\Models\Billing\Invoice\InvoiceRepository;
 use App\Services\Invoice\Api\Maker;
 
 class ExportInvoice

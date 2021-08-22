@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Mailing;
 
-use App\Models\Billing\User;
-use App\Models\Mailing\Message;
-use App\Models\Mailing\MessageTemplate;
+use App\Models\Billing\User\User;
+use App\Models\Mailing\Message\Message;
+use App\Models\Mailing\MessageTemplate\MessageTemplate;
 use Tests\Providers\Mailing\MessageProvider;
 use Tests\Providers\Mailing\MessageTemplateProvider;
 use Carbon\Carbon;

@@ -2,13 +2,10 @@
 
 namespace Tests\Providers\General;
 
-use App\Models\General\Category;
-use App\Models\General\CategoryType;
+use App\Models\General\Category\Category;
 
 trait CategoryProvider
 {
-    use CategoryTypeProvider;
-    
     /**
      * Make a category for test.
      *

@@ -2,13 +2,10 @@
 
 namespace Tests\Providers\Classroom;
 
-use App\Models\Classroom\Course;
-use Tests\Providers\General\CategoryProvider;
+use App\Models\Classroom\Course\Course;
 
 trait CourseProvider
 {
-    use CategoryProvider;
-
     /**
      * Make a course for test.
      *

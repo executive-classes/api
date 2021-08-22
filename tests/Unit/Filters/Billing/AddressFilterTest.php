@@ -2,20 +2,20 @@
 
 namespace Tests\Unit\Filters\Billing;
 
-use App\Filters\Billing\AddressFilter;
+use App\Models\Billing\Address\AddressFilters;
 use Tests\Unit\Filters\FilterTestCase;
 
 class AddressFilterTest extends FilterTestCase
 {
     /**
-     * @var AddressFilter
+     * @var AddressFilters
      */
     protected $filter;
 
     /**
      * @var string
      */
-    protected $filterClass = AddressFilter::class;
+    protected $filterClass = AddressFilters::class;
 
     public function test_zip_filter()
     {

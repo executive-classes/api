@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\Mailing;
 
-use App\Models\Mailing\MessageType;
+use App\Models\Mailing\MessageType\MessageType;
 use Tests\Unit\Models\ModelTestCase;
 
 class MessageTypeTest extends ModelTestCase

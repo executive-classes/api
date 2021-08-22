@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\General\Category;
-use App\Models\General\CategoryType;
+use App\Models\General\Category\Category;
+use App\Models\General\CategoryType\CategoryType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

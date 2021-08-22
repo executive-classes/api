@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Billing\EmployeePosition;
+use App\Models\Billing\EmployeePosition\EmployeePosition;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

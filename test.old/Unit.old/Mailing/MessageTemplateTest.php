@@ -2,11 +2,11 @@
 
 namespace Tests\Unit\Mailing;
 
-use App\Models\Mailing\MessageFooter;
-use App\Models\Mailing\MessageHeader;
-use App\Models\Mailing\MessageTemplate;
-use App\Models\Mailing\MessageType;
-use App\Repositories\Mailing\MessageTemplateRepository;
+use App\Models\Mailing\MessageFooter\MessageFooter;
+use App\Models\Mailing\MessageHeader\MessageHeader;
+use App\Models\Mailing\MessageTemplate\MessageTemplate;
+use App\Models\Mailing\MessageType\MessageType;
+use App\Models\Mailing\MessageTemplate\MessageTemplateRepository;
 use Tests\Providers\Mailing\MessageTemplateProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;

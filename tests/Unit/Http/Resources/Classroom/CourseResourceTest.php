@@ -4,7 +4,7 @@ namespace Tests\Unit\Http\Resources\Classroom;
 
 use App\Http\Resources\Classroom\Course\CourseCollection;
 use App\Http\Resources\Classroom\Course\CourseResource;
-use App\Models\Classroom\Course;
+use App\Models\Classroom\Course\Course;
 use Tests\Providers\Classroom\CourseProvider;
 use Tests\Unit\Http\Resources\ResourceTestCase;
 

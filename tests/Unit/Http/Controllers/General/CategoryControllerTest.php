@@ -2,21 +2,20 @@
 
 namespace Tests\Unit\Http\Controllers\General;
 
-use App\Filters\General\CategoryFilter;
+use App\Models\General\Category\CategoryFilters;
 use App\Http\Controllers\General\CategoryController;
 use App\Http\Requests\General\Category\CreateCategoryRequest;
 use App\Http\Requests\General\Category\UpdateCategoryRequest;
 use App\Http\Resources\General\Category\CategoryCollection;
 use App\Http\Resources\General\Category\CategoryResource;
-use App\Models\General\Category;
+use App\Models\General\Category\Category;
 use Illuminate\Http\JsonResponse;
-use Mockery;
-use Tests\Providers\Classroom\CourseProvider;
+use Tests\Providers\General\CategoryProvider;
 use Tests\Unit\Http\Controllers\ControllerTestCase;
 
-class CourseControllerTest extends ControllerTestCase
+class CategoryControllerTest extends ControllerTestCase
 {
-    use CourseProvider;
+    use CategoryProvider;
 
     /**
      * @var \App\Http\Controllers\General\CategoryController
@@ -31,9 +30,9 @@ class CourseControllerTest extends ControllerTestCase
     public function test_index_returns_json_list()
     {
         $this->db->shouldReceive('select')
-            ->andReturn($this->courses(3));
+            ->andReturn($this->categories(3));
 
-        $collection = $this->controller->index(new CategoryFilter());
+        $collection = $this->controller->index(new CategoryFilters());
 
         $this->assertInstanceOf(CategoryCollection::class, $collection);
         $this->assertCount(3, $collection);

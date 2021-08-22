@@ -3,18 +3,17 @@
 namespace App\Http\Controllers\Billling;
 
 use App\Enums\Billing\EmployeeStatusEnum;
-use App\Filters\Billing\EmployeeFilter;
+use App\Models\Billing\Employee\EmployeeFilters;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Billing\Employee\CreateEmployeeRequest;
 use App\Http\Requests\Billing\Employee\UpdateEmployeeRequest;
 use App\Http\Resources\Billling\EmployeeCollection;
 use App\Http\Resources\Billling\EmployeeResource;
-use App\Models\Billing\Employee;
-use App\Models\Billing\User;
+use App\Models\Billing\Employee\Employee;
 
 class EmployeeController extends Controller
 {
-    public function index(EmployeeFilter $filter)
+    public function index(EmployeeFilters $filter)
     {
         return new EmployeeCollection(Employee::filter($filter)->get());
     }

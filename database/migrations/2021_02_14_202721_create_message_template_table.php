@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Mailing\MessageFooter;
-use App\Models\Mailing\MessageHeader;
-use App\Models\Mailing\MessageType;
+use App\Models\Mailing\MessageFooter\MessageFooter;
+use App\Models\Mailing\MessageHeader\MessageHeader;
+use App\Models\Mailing\MessageType\MessageType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

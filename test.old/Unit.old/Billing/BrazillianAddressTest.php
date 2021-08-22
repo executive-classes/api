@@ -4,7 +4,7 @@ namespace Tests\Unit\Billing;
 
 use App\Apis\ViaCep\ViaCepClient;
 use App\Enums\Billing\CountryEnum;
-use App\Models\Billing\Address;
+use App\Models\Billing\Address\Address;
 use App\Services\Billing\Address\Countries\BrazillianAddress;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;

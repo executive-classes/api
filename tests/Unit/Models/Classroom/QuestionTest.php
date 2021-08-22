@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Model\Classroom;
 
-use App\Models\Classroom\Question;
+use App\Models\Classroom\Question\Question;
 use Tests\Unit\Models\ModelTestCase;
 use Tests\Unit\Traits\Models\HasFilterAsserts;
 use Tests\Unit\Traits\Models\HasFactoryAsserts;

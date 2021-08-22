@@ -2,20 +2,20 @@
 
 namespace Tests\Unit\Filters\General;
 
-use App\Filters\General\CategoryFilter;
+use App\Models\General\Category\CategoryFilters;
 use Tests\Unit\Filters\FilterTestCase;
 
 class CategoryFilterTest extends FilterTestCase
 {
     /**
-     * @var CategoryFilter
+     * @var CategoryFilters
      */
     protected $filter;
 
     /**
      * @var string
      */
-    protected $filterClass = CategoryFilter::class;
+    protected $filterClass = CategoryFilters::class;
 
     public function test_type_filter()
     {

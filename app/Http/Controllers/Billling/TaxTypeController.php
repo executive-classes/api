@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Billling;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Billing\TaxType\ValidateTaxTypeRequest;
 use App\Http\Resources\Billling\Tax\TaxTypeCollection;
-use App\Models\Billing\TaxType;
+use App\Models\Billing\TaxType\TaxType;
 
 class TaxTypeController extends Controller
 {

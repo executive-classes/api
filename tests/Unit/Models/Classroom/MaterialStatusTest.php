@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Model\Classroom;
 
-use App\Models\Classroom\MaterialStatus;
+use App\Models\Classroom\MaterialStatus\MaterialStatus;
 use Tests\Unit\Models\ModelTestCase;
 
 class MaterialStatusTest extends ModelTestCase

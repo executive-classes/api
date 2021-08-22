@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Classroom;
 
-use App\Filters\Classroom\CourseFilter;
+use App\Models\Classroom\Course\CourseFilters;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Classroom\Course\CreateCourseRequest;
 use App\Http\Requests\Classroom\Course\UpdateCourseRequest;
 use App\Http\Resources\Classroom\Course\CourseCollection;
 use App\Http\Resources\Classroom\Course\CourseResource;
-use App\Models\Classroom\Course;
+use App\Models\Classroom\Course\Course;
 
 class CourseController extends Controller
 {
-    public function index(CourseFilter $filter)
+    public function index(CourseFilters $filter)
     {
         return new CourseCollection(Course::filter($filter)->get());
     }

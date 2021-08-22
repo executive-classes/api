@@ -1,10 +1,10 @@
 <?php
 
 use App\Enums\Billing\CollectionStatusEnum;
-use App\Models\Billing\Biller;
-use App\Models\Billing\CollectionStatus;
-use App\Models\Billing\PaymentInterval;
-use App\Models\Billing\PaymentMethod;
+use App\Models\Billing\Biller\Biller;
+use App\Models\Billing\CollectionStatus\CollectionStatus;
+use App\Models\Billing\PaymentInterval\PaymentInterval;
+use App\Models\Billing\PaymentMethod\PaymentMethod;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
