@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Models;
+namespace Tests\Unit\Traits\Models;
 
 use App\Enums\Billing\PaymentMethodEnum;
 use App\Services\PayGo\Payment\BankSlip;

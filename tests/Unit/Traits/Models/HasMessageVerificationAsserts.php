@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Models;
+namespace Tests\Unit\Traits\Models;
 
 use Carbon\Carbon;
 use App\Models\Mailing\MessageTemplate;

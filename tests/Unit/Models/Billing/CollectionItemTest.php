@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\Models\Billing;
 
-use App\Models\Billing\CollectionItem;
-use Tests\Unit\Models\HasFactoryAsserts;
 use Tests\Unit\Models\ModelTestCase;
+use App\Models\Billing\CollectionItem;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class CollectionItemTest extends ModelTestCase
 {

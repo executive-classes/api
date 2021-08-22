@@ -4,7 +4,7 @@ namespace Tests\Unit\Models\General;
 
 use App\Models\General\CategoryType;
 use Tests\Unit\Models\ModelTestCase;
-use Tests\Unit\Models\HasFactoryAsserts;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class CategoryTypeTest extends ModelTestCase
 {

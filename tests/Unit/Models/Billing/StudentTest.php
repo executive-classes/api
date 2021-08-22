@@ -3,13 +3,14 @@
 namespace Tests\Unit\Models\Billing;
 
 use App\Models\Billing\Student;
-use Tests\Unit\Models\HasFactoryAsserts;
-use Tests\Unit\Models\HasFilterAsserts;
 use Tests\Unit\Models\ModelTestCase;
+use Tests\Unit\Traits\Models\HasFilterAsserts;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class StudentTest extends ModelTestCase
 {
-    use HasFactoryAsserts, HasFilterAsserts;
+    use HasFactoryAsserts;
+    use HasFilterAsserts;
 
     /**
      * @var Student

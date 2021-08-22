@@ -3,13 +3,14 @@
 namespace Tests\Unit\Models\Billing;
 
 use App\Models\Billing\Collection;
-use Tests\Unit\Models\HasFactoryAsserts;
-use Tests\Unit\Models\HasPayGoAsserts;
 use Tests\Unit\Models\ModelTestCase;
+use Tests\Unit\Traits\Models\HasPayGoAsserts;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class CollectionTest extends ModelTestCase
 {
-    use HasFactoryAsserts, HasPayGoAsserts;
+    use HasFactoryAsserts;
+    use HasPayGoAsserts;
 
     /**
      * @var Collection

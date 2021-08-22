@@ -3,18 +3,17 @@
 namespace Tests\Unit\Models\Billing;
 
 use App\Models\Billing\User;
-use Illuminate\Support\Facades\Hash;
-use Tests\Unit\Models\HasTaxAsserts;
 use Tests\Unit\Models\ModelTestCase;
-use Tests\Unit\Models\HasPhoneAsserts;
-use Tests\Unit\Models\HasTokenAsserts;
-use Tests\Unit\Models\HasFilterAsserts;
 use App\Enums\System\SystemLanguageEnum;
-use Tests\Unit\Models\HasFactoryAsserts;
-use Tests\Unit\Models\HasLanguageAsserts;
-use Tests\Unit\Models\HasPrivilegesAsserts;
-use Tests\Unit\Models\HasAuthenticationAsserts;
-use Tests\Unit\Models\HasCrossAuthAuthenticationAsserts;
+use Tests\Unit\Traits\Models\HasTaxAsserts;
+use Tests\Unit\Traits\Models\HasPhoneAsserts;
+use Tests\Unit\Traits\Models\HasTokenAsserts;
+use Tests\Unit\Traits\Models\HasFilterAsserts;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
+use Tests\Unit\Traits\Models\HasLanguageAsserts;
+use Tests\Unit\Traits\Models\HasPrivilegesAsserts;
+use Tests\Unit\Traits\Models\HasAuthenticationAsserts;
+use Tests\Unit\Traits\Models\HasCrossAuthAuthenticationAsserts;
 
 class UserTest extends ModelTestCase
 {

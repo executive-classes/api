@@ -3,13 +3,14 @@
 namespace Tests\Unit\Models\Mailing;
 
 use App\Models\Mailing\Message;
-use Tests\Unit\Models\HasFactoryAsserts;
-use Tests\Unit\Models\HasMessageVerificationAsserts;
 use Tests\Unit\Models\ModelTestCase;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
+use Tests\Unit\Traits\Models\HasMessageVerificationAsserts;
 
 class MessageTest extends ModelTestCase
 {
-    use HasFactoryAsserts, HasMessageVerificationAsserts;
+    use HasFactoryAsserts;
+    use HasMessageVerificationAsserts;
 
     /**
      * @var Message

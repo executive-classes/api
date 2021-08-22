@@ -3,13 +3,14 @@
 namespace Tests\Unit\Model\Classroom;
 
 use App\Models\Classroom\Course;
-use Tests\Unit\Models\HasFactoryAsserts;
-use Tests\Unit\Models\HasFilterAsserts;
 use Tests\Unit\Models\ModelTestCase;
+use Tests\Unit\Traits\Models\HasFilterAsserts;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class CourseTest extends ModelTestCase
 {
-    use HasFactoryAsserts, HasFilterAsserts;
+    use HasFactoryAsserts;
+    use HasFilterAsserts;
     
     /**
      * @var Course

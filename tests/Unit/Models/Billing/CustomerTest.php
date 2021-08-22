@@ -3,15 +3,18 @@
 namespace Tests\Unit\Models\Billing;
 
 use App\Models\Billing\Customer;
-use Tests\Unit\Models\HasTaxAsserts;
 use Tests\Unit\Models\ModelTestCase;
-use Tests\Unit\Models\HasFilterAsserts;
-use Tests\Unit\Models\HasFactoryAsserts;
-use Tests\Unit\Models\HasPhoneAsserts;
+use Tests\Unit\Traits\Models\HasTaxAsserts;
+use Tests\Unit\Traits\Models\HasPhoneAsserts;
+use Tests\Unit\Traits\Models\HasFilterAsserts;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class CustomerTest extends ModelTestCase
 {
-    use HasFactoryAsserts, HasFilterAsserts, HasTaxAsserts, HasPhoneAsserts;
+    use HasFactoryAsserts;
+    use HasFilterAsserts;
+    use HasTaxAsserts;
+    use HasPhoneAsserts;
 
     /**
      * @var Customer

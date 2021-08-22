@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Models;
+namespace Tests\Unit\Traits\Models;
 
 use Illuminate\Support\Str;
 use App\Enums\Billing\TaxTypeEnum;

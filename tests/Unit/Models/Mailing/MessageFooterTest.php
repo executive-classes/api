@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\Models\Mailing;
 
-use App\Models\Mailing\MessageFooter;
-use Tests\Unit\Models\HasFactoryAsserts;
 use Tests\Unit\Models\ModelTestCase;
+use App\Models\Mailing\MessageFooter;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class MessageFooterTest extends ModelTestCase
 {
