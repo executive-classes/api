@@ -3,7 +3,7 @@
 namespace Database\Seeders\Billing;
 
 use App\Enums\Billing\PaymentMethodEnum;
-use App\Models\Billing\PaymentMethod\PaymentMethod;
+use App\Models\Eloquent\Billing\PaymentMethod\PaymentMethod;
 use Illuminate\Database\Seeder;
 
 class PaymentMethodSeeder extends Seeder

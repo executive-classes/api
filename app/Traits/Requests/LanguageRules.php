@@ -4,7 +4,7 @@ namespace App\Traits\Requests;
 
 use BenSampo\Enum\Rules\EnumValue;
 use App\Enums\System\SystemLanguageEnum;
-use App\Models\System\SystemLanguage\SystemLanguage;
+use App\Models\Eloquent\System\SystemLanguage\SystemLanguage;
 
 trait LanguageRules
 {

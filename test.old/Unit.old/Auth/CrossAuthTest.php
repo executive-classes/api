@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Auth;
 
-use App\Models\Billing\User\User;
+use App\Models\Eloquent\Billing\User\User;
 use Tests\Providers\Billing\UserProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\PersonalAccessToken;

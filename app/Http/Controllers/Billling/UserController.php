@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Billling;
 
-use App\Models\Billing\User\User;
+use App\Models\Eloquent\Billing\User\User;
 use App\Http\Controllers\Controller;
-use App\Models\Billing\User\UserFilters;
+use App\Models\Eloquent\Billing\User\UserFilters;
 use App\Services\Billing\Password\Password;
 use App\Http\Resources\Billling\User\UserResource;
 use App\Http\Resources\Billling\User\UserCollection;

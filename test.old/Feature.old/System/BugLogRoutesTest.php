@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\System;
 
-use App\Models\System\SystemBugLog\SystemBugLog;
+use App\Models\Eloquent\System\SystemBugLog\SystemBugLog;
 use App\Services\System\BugLogService;
 use Exception;
 use Illuminate\Foundation\Testing\RefreshDatabase;

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\Mailing;
 
-use App\Models\Mailing\MessageHeader\MessageHeader;
+use App\Models\Eloquent\Mailing\MessageHeader\MessageHeader;
 use Illuminate\Database\Seeder;
 
 class MessageHeaderSeeder extends Seeder

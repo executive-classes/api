@@ -3,7 +3,7 @@
 namespace App\Console\Commands\Mailing;
 
 use App\Console\Command;
-use App\Models\Mailing\Message\MessageRepository;
+use App\Models\Eloquent\Mailing\Message\MessageRepository;
 use App\Services\Mailing\SendMessageService;
 
 class SendMessage extends Command

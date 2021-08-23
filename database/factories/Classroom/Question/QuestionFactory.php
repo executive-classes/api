@@ -2,8 +2,8 @@
 
 namespace Database\Factories\Classroom\Question;
 
-use App\Models\Classroom\Question\Question;
-use App\Models\General\Category\Category;
+use App\Models\Eloquent\Classroom\Question\Question;
+use App\Models\Eloquent\General\Category\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class QuestionFactory extends Factory

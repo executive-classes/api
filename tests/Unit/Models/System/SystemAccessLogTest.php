@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\System;
 
-use App\Models\System\SystemAccessLog\SystemAccessLog;
+use App\Models\Eloquent\System\SystemAccessLog\SystemAccessLog;
 use Tests\Unit\Models\ModelTestCase;
 
 class SystemAccessLogTest extends ModelTestCase

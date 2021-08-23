@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\Mailing;
 
-use App\Models\Mailing\MessageStatus\MessageStatus;
+use App\Models\Eloquent\Mailing\MessageStatus\MessageStatus;
 use App\Enums\Mailing\MessageStatusEnum;
 use Illuminate\Database\Seeder;
 

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\Billing;
 
-use App\Models\Billing\Student\Student;
+use App\Models\Eloquent\Billing\Student\Student;
 use Illuminate\Database\Seeder;
 
 class StudentSeeder extends Seeder

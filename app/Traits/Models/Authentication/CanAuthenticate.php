@@ -2,7 +2,7 @@
 
 namespace App\Traits\Models\Authentication;
 
-use App\Models\Billing\User\User;
+use App\Models\Eloquent\Billing\User\User;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\Sanctum;
 

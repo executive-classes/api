@@ -4,8 +4,8 @@ namespace App\Http\Controllers\System;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\System\GetBugLogRequest;
-use App\Models\System\SystemBugLog\SystemBugLog;
-use App\Models\System\SystemBugLog\SystemBugLogFilters;
+use App\Models\Eloquent\System\SystemBugLog\SystemBugLog;
+use App\Models\Eloquent\System\SystemBugLog\SystemBugLogFilters;
 use App\Http\Resources\System\SystemBugLog\SystemBugLogCollection;
 
 class BugLogController extends Controller

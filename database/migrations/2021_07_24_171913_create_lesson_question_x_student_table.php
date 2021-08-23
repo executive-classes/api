@@ -1,10 +1,10 @@
 <?php
 
-use App\Models\Billing\Student\Student;
-use App\Models\Billing\Teacher\Teacher;
-use App\Models\Classroom\Lesson\Lesson;
-use App\Models\Classroom\Question\Question;
-use App\Models\Classroom\QuestionStatus\QuestionStatus;
+use App\Models\Eloquent\Billing\Student\Student;
+use App\Models\Eloquent\Billing\Teacher\Teacher;
+use App\Models\Eloquent\Classroom\Lesson\Lesson;
+use App\Models\Eloquent\Classroom\Question\Question;
+use App\Models\Eloquent\Classroom\QuestionStatus\QuestionStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

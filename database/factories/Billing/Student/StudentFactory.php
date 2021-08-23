@@ -2,14 +2,16 @@
 
 namespace Database\Factories\Billing\Student;
 
-use App\Enums\Billing\StudentStatusEnum;
-use App\Models\Billing\Biller\Biller;
-use App\Models\Billing\Student\Student;
-use App\Models\Billing\User\User;
+use App\Models\Eloquent\Billing\User\User;
+use App\Models\Eloquent\Billing\Biller\Biller;
+use App\Models\Eloquent\Billing\Student\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\Billing\Student\StudentFactoryStates;
 
 class StudentFactory extends Factory
 {
+    use StudentFactoryStates;
+
     /**
      * The name of the factory's corresponding model.
      *
@@ -31,47 +33,5 @@ class StudentFactory extends Factory
             },
             'user_id' => User::factory()
         ];
-    }
-
-    /**
-     * Indicate that the student is active.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function active()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'student_status_id' => StudentStatusEnum::ACTIVE,
-            ];
-        });
-    }
-
-    /**
-     * Indicate that the student is suspended.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function suspended()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'student_status_id' => StudentStatusEnum::SUSPENDED,
-            ];
-        });
-    }
-
-    /**
-     * Indicate that the student is canceled.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function canceled()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'student_status_id' => StudentStatusEnum::CANCELED,
-            ];
-        });
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Services\System;
 
 use App\Enums\System\AuditLogTypeEnum;
-use App\Models\System\SystemAuditLog\SystemAuditLog;
+use App\Models\Eloquent\System\SystemAuditLog\SystemAuditLog;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 

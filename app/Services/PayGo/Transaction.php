@@ -2,12 +2,12 @@
 
 namespace App\Services\PayGo;
 
-use App\Apis\GuzzleResponse;
-use App\Apis\PayGo\Gate2AllClient;
-use App\Models\Billing\Biller\Biller;
-use App\Models\Billing\Address\Address;
-use App\Models\Billing\Collection\Collection;
-use App\Models\Billing\Customer\Customer;
+use App\Support\Api\GuzzleResponse;
+use App\Support\Api\PayGo\Gate2AllClient;
+use App\Models\Eloquent\Billing\Biller\Biller;
+use App\Models\Eloquent\Billing\Address\Address;
+use App\Models\Eloquent\Billing\Collection\Collection;
+use App\Models\Eloquent\Billing\Customer\Customer;
 use App\Services\PayGo\Contracts\PaymentContract;
 
 class Transaction

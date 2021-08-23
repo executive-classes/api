@@ -3,7 +3,7 @@
 namespace Database\Seeders\Billing;
 
 use App\Enums\Billing\CustomerStatusEnum;
-use App\Models\Billing\CustomerStatus\CustomerStatus;
+use App\Models\Eloquent\Billing\CustomerStatus\CustomerStatus;
 use Illuminate\Database\Seeder;
 
 class CustomerStatusSeeder extends Seeder

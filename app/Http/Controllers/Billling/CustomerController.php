@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Billling;
 
 use App\Http\Controllers\Controller;
 use App\Enums\Billing\CustomerStatusEnum;
-use App\Models\Billing\Customer\Customer;
-use App\Models\Billing\Customer\CustomerFilters;
+use App\Models\Eloquent\Billing\Customer\Customer;
+use App\Models\Eloquent\Billing\Customer\CustomerFilters;
 use App\Http\Resources\Billling\Customer\CustomerResource;
 use App\Http\Resources\Billling\Customer\CustomerCollection;
 use App\Http\Requests\Billing\Customer\CreateCustomerRequest;

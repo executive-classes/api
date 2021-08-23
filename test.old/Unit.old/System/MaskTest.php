@@ -3,7 +3,7 @@
 namespace Tests\Unit\System;
 
 use App\Exceptions\ApiException;
-use App\Services\Mask\MaskService;
+use App\Support\Mask\Mask;
 use Tests\TestCase;
 
 class MaskTest extends TestCase
@@ -20,19 +20,19 @@ class MaskTest extends TestCase
 
     public function test_can_mask_numbers()
     {
-        $mask = new MaskService('###-###', '123456');
+        $mask = new Mask('###-###', '123456');
         $this->assertEquals('123-456', $mask->mask());
     }
 
     public function test_can_mask_alphanumeric()
     {
-        $mask = new MaskService('###-XXX', '123ab6');
+        $mask = new Mask('###-XXX', '123ab6');
         $this->assertEquals('123-ab6', $mask->mask());
     }
 
     public function test_can_use_multiple_masks()
     {
-        $mask = new MaskService(['###', '###-###'], '123456');
+        $mask = new Mask(['###', '###-###'], '123456');
         $this->assertEquals('123-456', $mask->mask());
     }
 
@@ -40,7 +40,7 @@ class MaskTest extends TestCase
     {
         $this->expectException(ApiException::class);
         
-        $mask = new MaskService('###-##', '123226');
+        $mask = new Mask('###-##', '123226');
         $mask->mask();
     }
 }

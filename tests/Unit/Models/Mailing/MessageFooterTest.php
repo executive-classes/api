@@ -3,7 +3,7 @@
 namespace Tests\Unit\Models\Mailing;
 
 use Tests\Unit\Models\ModelTestCase;
-use App\Models\Mailing\MessageFooter\MessageFooter;
+use App\Models\Eloquent\Mailing\MessageFooter\MessageFooter;
 use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class MessageFooterTest extends ModelTestCase

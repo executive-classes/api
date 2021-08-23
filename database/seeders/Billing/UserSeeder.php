@@ -2,10 +2,10 @@
 
 namespace Database\Seeders\Billing;
 
-use App\Models\Billing\Employee\Employee;
-use App\Models\Billing\Student\Student;
-use App\Models\Billing\Teacher\Teacher;
-use App\Models\Billing\User\User;
+use App\Models\Eloquent\Billing\Employee\Employee;
+use App\Models\Eloquent\Billing\Student\Student;
+use App\Models\Eloquent\Billing\Teacher\Teacher;
+use App\Models\Eloquent\Billing\User\User;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder

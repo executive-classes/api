@@ -2,9 +2,9 @@
 
 namespace Database\Factories\Billing\CollectionItem;
 
-use App\Models\Billing\Collection\Collection;
-use App\Models\Billing\CollectionItem\CollectionItem;
-use App\Models\Billing\Student\Student;
+use App\Models\Eloquent\Billing\Collection\Collection;
+use App\Models\Eloquent\Billing\CollectionItem\CollectionItem;
+use App\Models\Eloquent\Billing\Student\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CollectionItemFactory extends Factory

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\Mailing;
 
-use App\Models\Mailing\MessageFooter\MessageFooter;
+use App\Models\Eloquent\Mailing\MessageFooter\MessageFooter;
 use Illuminate\Database\Seeder;
 
 class MessageFooterSeeder extends Seeder

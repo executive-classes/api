@@ -2,10 +2,10 @@
 
 namespace Database\Factories\Mailing\MessageTemplate;
 
-use App\Models\Mailing\MessageFooter\MessageFooter;
-use App\Models\Mailing\MessageHeader\MessageHeader;
-use App\Models\Mailing\MessageTemplate\MessageTemplate;
-use App\Models\Mailing\MessageType\MessageType;
+use App\Models\Eloquent\Mailing\MessageFooter\MessageFooter;
+use App\Models\Eloquent\Mailing\MessageHeader\MessageHeader;
+use App\Models\Eloquent\Mailing\MessageTemplate\MessageTemplate;
+use App\Models\Eloquent\Mailing\MessageType\MessageType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MessageTemplateFactory extends Factory

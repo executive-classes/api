@@ -2,7 +2,7 @@
 
 namespace App\Traits\Requests;
 
-use App\Rules\TaxCode;
+use App\Http\Rules\TaxCode;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use App\Enums\Billing\TaxTypeEnum;

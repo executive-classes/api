@@ -2,13 +2,15 @@
 
 namespace Database\Factories\Billing\Teacher;
 
-use App\Enums\Billing\TeacherStatusEnum;
-use App\Models\Billing\Teacher\Teacher;
-use App\Models\Billing\User\User;
+use App\Models\Eloquent\Billing\User\User;
+use App\Models\Eloquent\Billing\Teacher\Teacher;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\Billing\Teacher\TeacherFactoryStates;
 
 class TeacherFactory extends Factory
 {
+    use TeacherFactoryStates;
+
     /**
      * The name of the factory's corresponding model.
      *
@@ -26,47 +28,5 @@ class TeacherFactory extends Factory
         return [
             'user_id' => User::factory()
         ];
-    }
-
-    /**
-     * Indicate that the teacher is active.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function active()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'teacher_status_id' => TeacherStatusEnum::ACTIVE,
-            ];
-        });
-    }
-
-    /**
-     * Indicate that the teacher is suspended.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function suspended()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'teacher_status_id' => TeacherStatusEnum::SUSPENDED,
-            ];
-        });
-    }
-
-    /**
-     * Indicate that the teacher is canceled.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function canceled()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'teacher_status_id' => TeacherStatusEnum::CANCELED,
-            ];
-        });
     }
 }

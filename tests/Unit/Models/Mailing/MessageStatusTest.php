@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\Mailing;
 
-use App\Models\Mailing\MessageStatus\MessageStatus;
+use App\Models\Eloquent\Mailing\MessageStatus\MessageStatus;
 use Tests\Unit\Models\ModelTestCase;
 
 class MessageStatusTest extends ModelTestCase

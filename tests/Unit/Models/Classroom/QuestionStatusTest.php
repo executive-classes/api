@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Model\Classroom;
 
-use App\Models\Classroom\QuestionStatus\QuestionStatus;
+use App\Models\Eloquent\Classroom\QuestionStatus\QuestionStatus;
 use Tests\Unit\Models\ModelTestCase;
 
 class QuestionStatusTest extends ModelTestCase

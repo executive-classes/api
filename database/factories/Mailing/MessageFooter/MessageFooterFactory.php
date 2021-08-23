@@ -2,7 +2,7 @@
 
 namespace Database\Factories\Mailing\MessageFooter;
 
-use App\Models\Mailing\MessageFooter\MessageFooter;
+use App\Models\Eloquent\Mailing\MessageFooter\MessageFooter;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MessageFooterFactory extends Factory

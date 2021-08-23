@@ -5,7 +5,7 @@ namespace App\Http\Resources\Billling\Address;
 use App\Enums\Billing\CountryEnum;
 use App\Http\Resources\Billling\AddressCountry\AddressCountryResource;
 use App\Http\Resources\Resource;
-use App\Models\Billing\AddressCountry\AddressCountry;
+use App\Models\Eloquent\Billing\AddressCountry\AddressCountry;
 
 class AddressSearchResource extends Resource
 {

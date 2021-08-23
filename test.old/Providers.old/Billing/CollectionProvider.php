@@ -3,7 +3,7 @@
 namespace Tests\Providers\Billing;
 
 use App\Enums\Billing\PaymentMethodEnum;
-use App\Models\Billing\Collection\Collection;
+use App\Models\Eloquent\Billing\Collection\Collection;
 use Closure;
 
 trait CollectionProvider

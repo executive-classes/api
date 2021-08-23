@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Billling;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Billling\PaymentInterval\PaymentIntervalCollection;
-use App\Models\Billing\PaymentInterval\PaymentInterval;
+use App\Models\Eloquent\Billing\PaymentInterval\PaymentInterval;
 
 class PaymentIntervalController extends Controller
 {

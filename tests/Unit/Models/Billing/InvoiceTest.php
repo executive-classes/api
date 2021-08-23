@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\Billing;
 
-use App\Models\Billing\Invoice\Invoice;
+use App\Models\Eloquent\Billing\Invoice\Invoice;
 use Tests\Unit\Models\ModelTestCase;
 use Tests\Unit\Traits\Models\HasFactoryAsserts;
 

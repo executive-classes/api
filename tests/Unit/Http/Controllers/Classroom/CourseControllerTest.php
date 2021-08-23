@@ -2,13 +2,13 @@
 
 namespace Tests\Unit\Http\Controllers\Classroom;
 
-use App\Models\Classroom\Course\CourseFilters;
+use App\Models\Eloquent\Classroom\Course\CourseFilters;
 use App\Http\Controllers\Classroom\CourseController;
 use App\Http\Requests\Classroom\Course\CreateCourseRequest;
 use App\Http\Requests\Classroom\Course\UpdateCourseRequest;
 use App\Http\Resources\Classroom\Course\CourseCollection;
 use App\Http\Resources\Classroom\Course\CourseResource;
-use App\Models\Classroom\Course\Course;
+use App\Models\Eloquent\Classroom\Course\Course;
 use Tests\Providers\Classroom\CourseProvider;
 use Tests\Unit\Http\Controllers\ControllerTestCase;
 

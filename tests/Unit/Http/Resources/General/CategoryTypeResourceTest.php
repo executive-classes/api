@@ -3,7 +3,7 @@
 namespace Tests\Unit\Http\Resources\General;
 
 use App\Http\Resources\General\CategoryType\CategoryTypeResource;
-use App\Models\General\CategoryType\CategoryType;
+use App\Models\Eloquent\General\CategoryType\CategoryType;
 use Tests\Providers\General\CategoryTypeProvider;
 use Tests\Unit\Http\Resources\ResourceTestCase;
 

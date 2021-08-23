@@ -4,7 +4,7 @@ namespace Tests\Unit\Billing;
 
 use Tests\TestCase;
 use Illuminate\Support\Str;
-use App\Models\Billing\Address\Address;
+use App\Models\Eloquent\Billing\Address\Address;
 use App\Services\Billing\Address\AddressFormatter;
 
 class AddressFormatterTest extends TestCase

@@ -3,7 +3,7 @@
 namespace Tests\Unit\Models\Mailing;
 
 use Tests\Unit\Models\ModelTestCase;
-use App\Models\Mailing\MessageHeader\MessageHeader;
+use App\Models\Eloquent\Mailing\MessageHeader\MessageHeader;
 use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class MessageHeaderTest extends ModelTestCase

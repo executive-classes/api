@@ -3,7 +3,7 @@
 namespace Tests\Unit\Models\Billing;
 
 use Tests\Unit\Models\ModelTestCase;
-use App\Models\Billing\CollectionItem\CollectionItem;
+use App\Models\Eloquent\Billing\CollectionItem\CollectionItem;
 use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class CollectionItemTest extends ModelTestCase

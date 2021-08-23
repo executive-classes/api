@@ -3,7 +3,7 @@
 namespace Database\Seeders\System;
 
 use App\Enums\System\SystemLanguageEnum;
-use App\Models\System\SystemLanguage\SystemLanguage;
+use App\Models\Eloquent\System\SystemLanguage\SystemLanguage;
 use Illuminate\Database\Seeder;
 
 class SystemLanguageSeeder extends Seeder

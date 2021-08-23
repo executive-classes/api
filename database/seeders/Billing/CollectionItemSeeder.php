@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\Billing;
 
-use App\Models\Billing\CollectionItem\CollectionItem;
+use App\Models\Eloquent\Billing\CollectionItem\CollectionItem;
 use Illuminate\Database\Seeder;
 
 class CollectionItemSeeder extends Seeder

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Billling;
 
 use App\Http\Controllers\Controller;
-use App\Models\Billing\Teacher\Teacher;
+use App\Models\Eloquent\Billing\Teacher\Teacher;
 use App\Enums\Billing\TeacherStatusEnum;
-use App\Models\Billing\Teacher\TeacherFilters;
+use App\Models\Eloquent\Billing\Teacher\TeacherFilters;
 use App\Http\Resources\Billling\Teacher\TeacherResource;
 use App\Http\Resources\Billling\Teacher\TeacherCollection;
 use App\Http\Requests\Billing\Teacher\CreateTeacherRequest;

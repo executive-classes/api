@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\Billing;
 
-use App\Models\Billing\Address\Address;
+use App\Models\Eloquent\Billing\Address\Address;
 use Illuminate\Database\Seeder;
 
 class AddressSeeder extends Seeder

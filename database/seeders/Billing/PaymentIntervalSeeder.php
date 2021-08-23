@@ -3,7 +3,7 @@
 namespace Database\Seeders\Billing;
 
 use App\Enums\Billing\PaymentIntervalEnum;
-use App\Models\Billing\PaymentInterval\PaymentInterval;
+use App\Models\Eloquent\Billing\PaymentInterval\PaymentInterval;
 use Illuminate\Database\Seeder;
 
 class PaymentIntervalSeeder extends Seeder

@@ -3,7 +3,7 @@
 namespace Database\Seeders\Classroom;
 
 use App\Enums\Classroom\LessonStatusEnum;
-use App\Models\Classroom\LessonStatus\LessonStatus;
+use App\Models\Eloquent\Classroom\LessonStatus\LessonStatus;
 use Illuminate\Database\Seeder;
 
 class LessonStatusSeeder extends Seeder

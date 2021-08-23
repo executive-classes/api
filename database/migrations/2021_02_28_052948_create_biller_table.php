@@ -1,12 +1,12 @@
 <?php
 
 use App\Enums\Billing\BillerStatusEnum;
-use App\Models\Billing\BillerStatus\BillerStatus;
-use App\Models\Billing\Address\Address;
-use App\Models\Billing\Customer\Customer;
-use App\Models\Billing\PaymentInterval\PaymentInterval;
-use App\Models\Billing\PaymentMethod\PaymentMethod;
-use App\Models\Billing\TaxType\TaxType;
+use App\Models\Eloquent\Billing\BillerStatus\BillerStatus;
+use App\Models\Eloquent\Billing\Address\Address;
+use App\Models\Eloquent\Billing\Customer\Customer;
+use App\Models\Eloquent\Billing\PaymentInterval\PaymentInterval;
+use App\Models\Eloquent\Billing\PaymentMethod\PaymentMethod;
+use App\Models\Eloquent\Billing\TaxType\TaxType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

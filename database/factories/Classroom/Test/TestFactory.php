@@ -2,8 +2,8 @@
 
 namespace Database\Factories\Classroom\Test;
 
-use App\Models\Classroom\Test\Test;
-use App\Models\General\Category\Category;
+use App\Models\Eloquent\Classroom\Test\Test;
+use App\Models\Eloquent\General\Category\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TestFactory extends Factory

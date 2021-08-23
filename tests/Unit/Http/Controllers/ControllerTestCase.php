@@ -11,7 +11,7 @@ class ControllerTestCase extends TestCase
     use MocksDatabase;
 
     /**
-     * @var \Mockery\Mock|\App\Models\Classroom\Course
+     * @var \Mockery\Mock|\App\Models\Eloquent\Classroom\Course
      */
     protected $modelMock;
 

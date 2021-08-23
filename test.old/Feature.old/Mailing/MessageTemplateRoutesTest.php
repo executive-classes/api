@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Mailing;
 
-use App\Models\Billing\User\User;
-use App\Models\Mailing\MessageFooter\MessageFooter;
-use App\Models\Mailing\MessageHeader\MessageHeader;
-use App\Models\Mailing\MessageTemplate\MessageTemplate;
-use App\Models\Mailing\MessageType\MessageType;
+use App\Models\Eloquent\Billing\User\User;
+use App\Models\Eloquent\Mailing\MessageFooter\MessageFooter;
+use App\Models\Eloquent\Mailing\MessageHeader\MessageHeader;
+use App\Models\Eloquent\Mailing\MessageTemplate\MessageTemplate;
+use App\Models\Eloquent\Mailing\MessageType\MessageType;
 use Tests\Providers\Mailing\MessageTemplateProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;

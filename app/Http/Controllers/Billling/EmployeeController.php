@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Billling;
 
 use App\Http\Controllers\Controller;
 use App\Enums\Billing\EmployeeStatusEnum;
-use App\Models\Billing\Employee\Employee;
-use App\Models\Billing\Employee\EmployeeFilters;
+use App\Models\Eloquent\Billing\Employee\Employee;
+use App\Models\Eloquent\Billing\Employee\EmployeeFilters;
 use App\Http\Resources\Billling\Employee\EmployeeResource;
 use App\Http\Resources\Billling\Employee\EmployeeCollection;
 use App\Http\Requests\Billing\Employee\CreateEmployeeRequest;

@@ -1,10 +1,10 @@
 <?php
 
 use App\Enums\Billing\StudentStatusEnum;
-use App\Models\Billing\Biller\Biller;
-use App\Models\Billing\Customer\Customer;
-use App\Models\Billing\StudentStatus\StudentStatus;
-use App\Models\Billing\User\User;
+use App\Models\Eloquent\Billing\Biller\Biller;
+use App\Models\Eloquent\Billing\Customer\Customer;
+use App\Models\Eloquent\Billing\StudentStatus\StudentStatus;
+use App\Models\Eloquent\Billing\User\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

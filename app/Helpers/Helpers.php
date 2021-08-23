@@ -2,7 +2,7 @@
 
 use App\Enums\Billing\UserPrivilegeEnum;
 use App\Http\Response\Api;
-use App\Services\Mask\MaskService;
+use App\Support\Mask\Mask;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
@@ -147,7 +147,7 @@ if (!function_exists('render')) {
 
 if (!function_exists('format_mask')) {
     function format_mask($masks, string $string): string {
-        $maksService = new MaskService($masks, $string);
+        $maksService = new Mask($masks, $string);
         return $maksService->mask();
     }
 }

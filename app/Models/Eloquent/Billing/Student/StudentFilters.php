@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Models\Eloquent\Billing\Student;
+
+use App\Support\QueryFilter\QueryFilter;
+
+class StudentFilters extends QueryFilter
+{
+    public function customerId($query, $value)
+    {
+        return $query->where('customer_id', $value);
+    }
+    
+    public function email($query, $value)
+    {
+        return $query->whereHas('user', function ($q) use ($value) {
+            $q->where('email', 'like', "%$value%");
+        });
+    }
+
+    public function name($query, $value)
+    {
+        return $query->whereHas('user', function ($q) use ($value) {
+            $q->where('name', 'like', "%$value%");
+        });
+    }
+
+    public function taxCode($query, $value)
+    {
+        return $query->whereHas('user', function ($q) use ($value) {
+            $q->where('tax_code', $value)->whereOr('tax_code_alt', $value);
+        });
+    }
+
+    public function status($query, $value)
+    {
+        return $query->where('student_status_id', $value);
+    }
+}

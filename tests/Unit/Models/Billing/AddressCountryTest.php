@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\Billing;
 
-use App\Models\Billing\AddressCountry\AddressCountry;
+use App\Models\Eloquent\Billing\AddressCountry\AddressCountry;
 use Tests\Unit\Models\ModelTestCase;
 
 class AddressCountryTest extends ModelTestCase

@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Billing;
 
-use App\Models\Billing\AddressState\AddressState;
+use App\Models\Eloquent\Billing\AddressState\AddressState;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;

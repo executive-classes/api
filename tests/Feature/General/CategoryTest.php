@@ -12,7 +12,7 @@ class CategoryTest extends FeatureTestCase
     use RefreshDatabase, CreatesUser, CategoryProvider;
 
     /**
-     * @var \App\Models\Billing\User\User
+     * @var \App\Models\Eloquent\Billing\User\User
      */
     protected $user;
 

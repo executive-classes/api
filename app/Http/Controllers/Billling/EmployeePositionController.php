@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Billling;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Billling\EmployeePosition\EmployeePositionCollection;
-use App\Models\Billing\EmployeePosition\EmployeePosition;
+use App\Models\Eloquent\Billing\EmployeePosition\EmployeePosition;
 
 class EmployeePositionController extends Controller
 {

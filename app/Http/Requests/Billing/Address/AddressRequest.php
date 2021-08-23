@@ -4,7 +4,7 @@ namespace App\Http\Requests\Billing\Address;
 
 use App\Enums\Billing\CountryEnum;
 use App\Http\Requests\Request;
-use App\Rules\Zip;
+use App\Http\Rules\Zip;
 use BenSampo\Enum\Rules\EnumValue;
 use Illuminate\Validation\Rule;
 

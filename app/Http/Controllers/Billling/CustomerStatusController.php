@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Billling;
 use App\Enums\Billing\CustomerStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Billling\CustomerStatus\CustomerStatusCollection;
-use App\Models\Billing\CustomerStatus\CustomerStatus;
+use App\Models\Eloquent\Billing\CustomerStatus\CustomerStatus;
 
 class CustomerStatusController extends Controller
 {

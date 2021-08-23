@@ -2,14 +2,16 @@
 
 namespace Database\Factories\Mailing\Message;
 
-use App\Enums\Mailing\MessageStatusEnum;
-use App\Models\Mailing\Message\Message;
-use App\Models\Mailing\MessageTemplate\MessageTemplate;
 use Carbon\Carbon;
+use App\Models\Eloquent\Mailing\Message\Message;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\Mailing\Message\MessageFactoryStates;
+use App\Models\Eloquent\Mailing\MessageTemplate\MessageTemplate;
 
 class MessageFactory extends Factory
 {
+    use MessageFactoryStates;
+    
     /**
      * The name of the factory's corresponding model.
      *
@@ -33,61 +35,5 @@ class MessageFactory extends Factory
             'message_template_id' => MessageTemplate::factory(),
             'params' => json_encode(['testMessage' => 'Hello World']),
         ];
-    }
-
-    /**
-     * Indicate that the message is scheduled.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function scheduled()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'message_status_id' => MessageStatusEnum::SCHEDULED,
-            ];
-        });
-    }
-
-    /**
-     * Indicate that the message is sent.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function sent()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'message_status_id' => MessageStatusEnum::SENT,
-            ];
-        });
-    }
-
-    /**
-     * Indicate that the message is canceled.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function canceled()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'message_status_id' => MessageStatusEnum::CANCELED,
-            ];
-        });
-    }
-
-    /**
-     * Indicate that the message is with a error.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function error()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'message_status_id' => MessageStatusEnum::ERROR,
-            ];
-        });
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\System;
 
-use App\Models\System\SystemAuditLog\SystemAuditLog;
+use App\Models\Eloquent\System\SystemAuditLog\SystemAuditLog;
 use Tests\Unit\Models\ModelTestCase;
 
 class SystemAuditLogTest extends ModelTestCase

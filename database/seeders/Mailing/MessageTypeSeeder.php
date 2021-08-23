@@ -3,7 +3,7 @@
 namespace Database\Seeders\Mailing;
 
 use App\Enums\Mailing\MessageTypeEnum;
-use App\Models\Mailing\MessageType\MessageType;
+use App\Models\Eloquent\Mailing\MessageType\MessageType;
 use Illuminate\Database\Seeder;
 
 class MessageTypeSeeder extends Seeder

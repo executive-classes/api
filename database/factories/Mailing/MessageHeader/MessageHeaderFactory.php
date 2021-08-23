@@ -2,7 +2,7 @@
 
 namespace Database\Factories\Mailing\MessageHeader;
 
-use App\Models\Mailing\MessageHeader\MessageHeader;
+use App\Models\Eloquent\Mailing\MessageHeader\MessageHeader;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MessageHeaderFactory extends Factory

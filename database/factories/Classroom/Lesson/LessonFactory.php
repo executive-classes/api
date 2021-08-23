@@ -2,8 +2,8 @@
 
 namespace Database\Factories\Classroom\Lesson;
 
-use App\Models\Classroom\Lesson\Lesson;
-use App\Models\General\Category\Category;
+use App\Models\Eloquent\Classroom\Lesson\Lesson;
+use App\Models\Eloquent\General\Category\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class LessonFactory extends Factory

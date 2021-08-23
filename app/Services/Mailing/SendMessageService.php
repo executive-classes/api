@@ -4,8 +4,8 @@ namespace App\Services\Mailing;
 
 use App\Exceptions\Mailing\MessageException;
 use App\Mail\Messenger;
-use App\Models\Mailing\Message\Message;
-use App\Models\Mailing\Message\MessageRepository;
+use App\Models\Eloquent\Mailing\Message\Message;
+use App\Models\Eloquent\Mailing\Message\MessageRepository;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Mail;
 

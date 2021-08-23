@@ -4,7 +4,7 @@ namespace Tests\Unit\Billing;
 
 use App\Enums\Billing\StateEnum;
 use App\Enums\Billing\TaxTypeEnum;
-use App\Models\Billing\TaxType\TaxType;
+use App\Models\Eloquent\Billing\TaxType\TaxType;
 use App\Services\Billing\Tax\Cnpj;
 use App\Services\Billing\Tax\Cpf;
 use App\Services\Billing\Tax\Ie;

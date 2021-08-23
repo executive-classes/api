@@ -2,7 +2,7 @@
 
 namespace Tests\Providers\General;
 
-use App\Models\General\Category\Category;
+use App\Models\Eloquent\General\Category\Category;
 
 trait CategoryProvider
 {

@@ -3,7 +3,7 @@
 namespace Database\Seeders\Classroom;
 
 use App\Enums\Classroom\ModuleStatusEnum;
-use App\Models\Classroom\ModuleStatus\ModuleStatus;
+use App\Models\Eloquent\Classroom\ModuleStatus\ModuleStatus;
 use Illuminate\Database\Seeder;
 
 class ModuleStatusSeeder extends Seeder

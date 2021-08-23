@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Billling;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Billling\AddressCountry\AddressCountryCollection;
-use App\Models\Billing\AddressCountry\AddressCountry;
+use App\Models\Eloquent\Billing\AddressCountry\AddressCountry;
 
 class AddressCountryController extends Controller
 {

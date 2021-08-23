@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Filters\Billing;
 
-use App\Models\Billing\Biller\BillerFilters;
+use App\Models\Eloquent\Billing\Biller\BillerFilters;
 use Tests\Unit\Filters\FilterTestCase;
 
 class BillerFilterTest extends FilterTestCase

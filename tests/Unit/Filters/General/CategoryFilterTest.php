@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Filters\General;
 
-use App\Models\General\Category\CategoryFilters;
+use App\Models\Eloquent\General\Category\CategoryFilters;
 use Tests\Unit\Filters\FilterTestCase;
 
 class CategoryFilterTest extends FilterTestCase

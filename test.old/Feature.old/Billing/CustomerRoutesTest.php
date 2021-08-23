@@ -3,7 +3,7 @@
 namespace Tests\Feature\Billing;
 
 use App\Enums\Billing\CustomerStatusEnum;
-use App\Models\Billing\Customer\Customer;
+use App\Models\Eloquent\Billing\Customer\Customer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;

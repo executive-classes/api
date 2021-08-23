@@ -3,7 +3,7 @@
 namespace Database\Factories\General\CategoryType;
 
 use App\Enums\General\CategoryTypeEnum;
-use App\Models\General\CategoryType\CategoryType;
+use App\Models\Eloquent\General\CategoryType\CategoryType;
 use Database\Factories\Factory;
 
 class CategoryTypeFactory extends Factory

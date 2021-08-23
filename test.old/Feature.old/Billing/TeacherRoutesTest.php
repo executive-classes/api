@@ -3,8 +3,8 @@
 namespace Tests\Feature\Billing;
 
 use App\Enums\Billing\TeacherStatusEnum;
-use App\Models\Billing\Teacher\Teacher;
-use App\Models\Billing\TeacherStatus\TeacherStatus;
+use App\Models\Eloquent\Billing\Teacher\Teacher;
+use App\Models\Eloquent\Billing\TeacherStatus\TeacherStatus;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;

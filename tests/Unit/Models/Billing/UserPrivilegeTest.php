@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\Billing;
 
-use App\Models\Billing\UserPrivilege\UserPrivilege;
+use App\Models\Eloquent\Billing\UserPrivilege\UserPrivilege;
 use Tests\Unit\Models\ModelTestCase;
 
 class UserPrivilegeTest extends ModelTestCase

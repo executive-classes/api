@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Filters;
 
-use App\Exceptions\TestCaseException;
+use App\Exceptions\Tests\TestCaseException;
 use Tests\TestCase;
 
 class FilterTestCase extends TestCase

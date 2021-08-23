@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Mailing;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Mailing\MessageTemplate\MessageTemplateCreateRequest;
 use App\Http\Requests\Mailing\MessageTemplate\MessageTemplateUpdateRequest;
-use App\Models\Mailing\MessageTemplate\MessageTemplate;
-use App\Models\Mailing\MessageTemplate\MessageTemplateRepository;
+use App\Models\Eloquent\Mailing\MessageTemplate\MessageTemplate;
+use App\Models\Eloquent\Mailing\MessageTemplate\MessageTemplateRepository;
 use Illuminate\Http\Request;
 
 class MessageTemplateController extends Controller

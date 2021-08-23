@@ -2,7 +2,7 @@
 
 namespace App\Traits\Requests;
 
-use App\Rules\BrazillianPhone;
+use App\Http\Rules\BrazillianPhone;
 
 trait PhoneRules
 {

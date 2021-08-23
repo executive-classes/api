@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Billing\Profile;
 
-use App\Rules\ValidPassword;
+use App\Http\Rules\ValidPassword;
 use App\Http\Requests\Request;
 use App\Traits\Requests\TaxRules;
 use App\Traits\Requests\PhoneRules;

@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\Billing;
 
-use App\Models\Billing\EmployeeStatus\EmployeeStatus;
+use App\Models\Eloquent\Billing\EmployeeStatus\EmployeeStatus;
 use Tests\Unit\Models\ModelTestCase;
 
 class EmployeeStatusTest extends ModelTestCase

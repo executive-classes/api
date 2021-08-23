@@ -2,7 +2,7 @@
 
 namespace Tests\Integration\PayGo;
 
-use App\Apis\PayGo\Gate2AllClient;
+use App\Support\Api\PayGo\Gate2AllClient;
 use App\Enums\Apis\PayGoStatusEnum;
 use App\Enums\Billing\PaymentMethodEnum;
 use App\Exceptions\PayGo\PayGoException;

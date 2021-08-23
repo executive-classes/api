@@ -3,7 +3,7 @@
 namespace Database\Seeders\Billing;
 
 use App\Enums\Billing\TaxTypeEnum;
-use App\Models\Billing\TaxType\TaxType;
+use App\Models\Eloquent\Billing\TaxType\TaxType;
 use Illuminate\Database\Seeder;
 
 class TaxTypeSeeder extends Seeder

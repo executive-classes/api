@@ -3,7 +3,7 @@
 namespace Database\Seeders\System;
 
 use App\Enums\System\SystemAppEnum;
-use App\Models\System\SystemApp\SystemApp;
+use App\Models\Eloquent\System\SystemApp\SystemApp;
 use Illuminate\Database\Seeder;
 
 class SystemAppSeeder extends Seeder

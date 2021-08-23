@@ -2,9 +2,8 @@
 
 namespace App\Services\System;
 
-use App\Models\System\SystemAccessLog\SystemAccessLog;
+use App\Models\Eloquent\System\SystemAccessLog\SystemAccessLog;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class AccessLogService

@@ -2,9 +2,9 @@
 
 namespace Tests\Integration\PayGo;
 
-use App\Apis\PayGo\Gate2AllClient;
+use App\Support\Api\PayGo\Gate2AllClient;
 use App\Exceptions\PayGo\PayGoException;
-use App\Models\Billing\Biller\Biller;
+use App\Models\Eloquent\Billing\Biller\Biller;
 use App\Services\PayGo\Transaction;
 use Tests\Providers\Billing\CollectionProvider;
 use Tests\Providers\PayGo\CreditCartProvider;

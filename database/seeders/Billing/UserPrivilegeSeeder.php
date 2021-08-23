@@ -3,7 +3,7 @@
 namespace Database\Seeders\Billing;
 
 use App\Enums\Billing\UserPrivilegeEnum;
-use App\Models\Billing\UserPrivilege\UserPrivilege;
+use App\Models\Eloquent\Billing\UserPrivilege\UserPrivilege;
 use Illuminate\Database\Seeder;
 
 class UserPrivilegeSeeder extends Seeder

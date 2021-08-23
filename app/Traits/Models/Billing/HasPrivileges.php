@@ -2,8 +2,8 @@
 
 namespace App\Traits\Models\Billing;
 
-use App\Models\Billing\Student\Student;
-use App\Models\Billing\Teacher\Teacher;
+use App\Models\Eloquent\Billing\Student\Student;
+use App\Models\Eloquent\Billing\Teacher\Teacher;
 
 trait HasPrivileges
 {

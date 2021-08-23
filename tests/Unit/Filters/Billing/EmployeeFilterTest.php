@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Filters\Billing;
 
-use App\Models\Billing\Employee\EmployeeFilters;
+use App\Models\Eloquent\Billing\Employee\EmployeeFilters;
 use Tests\Unit\Filters\FilterTestCase;
 
 class EmployeeFilterTest extends FilterTestCase

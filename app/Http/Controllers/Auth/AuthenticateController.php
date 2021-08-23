@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\CrossLoginRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Resources\Auth\AccessToken\TokenResource;
-use App\Models\Billing\User\User;
+use App\Models\Eloquent\Billing\User\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\NewAccessToken;

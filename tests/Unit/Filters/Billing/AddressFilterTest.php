@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Filters\Billing;
 
-use App\Models\Billing\Address\AddressFilters;
+use App\Models\Eloquent\Billing\Address\AddressFilters;
 use Tests\Unit\Filters\FilterTestCase;
 
 class AddressFilterTest extends FilterTestCase

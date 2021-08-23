@@ -3,9 +3,8 @@
 namespace App\Services\System;
 
 use App\Enums\System\SystemAppEnum;
-use App\Models\System\SystemBugLog\SystemBugLog;
+use App\Models\Eloquent\System\SystemBugLog\SystemBugLog;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 

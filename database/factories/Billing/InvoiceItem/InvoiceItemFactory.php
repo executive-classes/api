@@ -2,9 +2,9 @@
 
 namespace Database\Factories\Billing\InvoiceItem;
 
-use App\Models\Billing\Invoice\Invoice;
-use App\Models\Billing\InvoiceItem\InvoiceItem;
-use App\Models\Billing\Student\Student;
+use App\Models\Eloquent\Billing\Invoice\Invoice;
+use App\Models\Eloquent\Billing\InvoiceItem\InvoiceItem;
+use App\Models\Eloquent\Billing\Student\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class InvoiceItemFactory extends Factory

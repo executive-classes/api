@@ -3,11 +3,13 @@
 namespace Database\Factories\Billing\Address;
 
 use App\Enums\Billing\CountryEnum;
-use App\Models\Billing\Address\Address;
+use App\Models\Eloquent\Billing\Address\Address;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AddressFactory extends Factory
 {
+    use AddressFactoryStates;
+    
     /**
      * The name of the factory's corresponding model.
      *
@@ -31,33 +33,5 @@ class AddressFactory extends Factory
             'state' => $this->faker->stateAbbr,
             'country' => CountryEnum::getRandomValue(),
         ];
-    }
-
-    /**
-     * Indicate that the address is from Brazil.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function br()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'country' => CountryEnum::BR,
-            ];
-        });
-    }
-
-    /**
-     * Indicate that the address is from United States.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function us()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'country' => CountryEnum::US,
-            ];
-        });
     }
 }

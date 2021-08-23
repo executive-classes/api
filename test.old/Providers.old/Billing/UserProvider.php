@@ -3,7 +3,7 @@
 namespace Tests\Providers\Billing;
 
 use App\Enums\System\SystemLanguageEnum;
-use App\Models\Billing\User\User;
+use App\Models\Eloquent\Billing\User\User;
 use Closure;
 
 trait UserProvider

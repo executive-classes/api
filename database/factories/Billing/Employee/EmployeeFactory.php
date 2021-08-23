@@ -2,16 +2,16 @@
 
 namespace Database\Factories\Billing\Employee;
 
-use App\Enums\Billing\EmployeePositionEnum;
-use App\Enums\Billing\EmployeeStatusEnum;
-use App\Models\Billing\Employee\Employee;
-use App\Models\Billing\EmployeePosition\EmployeePosition;
-use App\Models\Billing\EmployeeStatus\EmployeeStatus;
-use App\Models\Billing\User\User;
+use App\Models\Eloquent\Billing\User\User;
+use App\Models\Eloquent\Billing\Employee\Employee;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\Billing\Employee\EmployeeFactoryStates;
+use App\Models\Eloquent\Billing\EmployeePosition\EmployeePosition;
 
 class EmployeeFactory extends Factory
 {
+    use EmployeeFactoryStates;
+
     /**
      * The name of the factory's corresponding model.
      *
@@ -31,117 +31,4 @@ class EmployeeFactory extends Factory
             'employee_position_id' => EmployeePosition::inRandomOrder()->first()
         ];
     }
-
-    /**
-     * Indicate that the employee is active.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function active()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'employee_status_id' => EmployeeStatusEnum::ACTIVE,
-            ];
-        });
-    }
-
-    /**
-     * Indicate that the employee is suspended.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function suspended()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'employee_status_id' => EmployeeStatusEnum::SUSPENDED,
-            ];
-        });
-    }
-
-    /**
-     * Indicate that the employee is canceled.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function canceled()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'employee_status_id' => EmployeeStatusEnum::CANCELED,
-            ];
-        });
-    }
-
-    /**
-     * Indicate that the employee is has a administrator position.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function administrator()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'employee_position_id' => EmployeePositionEnum::ADMINISTRATOR,
-            ];
-        });
-    }
-
-    /**
-     * Indicate that the employee is has a developer position.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function developer()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'employee_position_id' => EmployeePositionEnum::DEVELOPER,
-            ];
-        });
-    }
-    
-    /**
-     * Indicate that the employee is has a financial position.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function financial()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'employee_position_id' => EmployeePositionEnum::FINANCIAL,
-            ];
-        });
-    }
-
-    /**
-     * Indicate that the employee is has a technician position.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function technician()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'employee_position_id' => EmployeePositionEnum::TECHNICIAN,
-            ];
-        });
-    }
-
-    /**
-     * Indicate that the employee is has a HR position.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function HR()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'employee_position_id' => EmployeePositionEnum::HR,
-            ];
-        });
-    }
-
 }

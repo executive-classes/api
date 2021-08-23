@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Billing\Collection\Collection;
-use App\Models\Billing\Student\Student;
+use App\Models\Eloquent\Billing\Collection\Collection;
+use App\Models\Eloquent\Billing\Student\Student;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

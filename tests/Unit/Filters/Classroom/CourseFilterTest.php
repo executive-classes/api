@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Filters\Classroom;
 
-use App\Models\Classroom\Course\CourseFilters;
+use App\Models\Eloquent\Classroom\Course\CourseFilters;
 use Tests\Unit\Filters\FilterTestCase;
 
 class CourseFilterTest extends FilterTestCase

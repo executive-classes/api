@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\Mailing;
 
-use App\Models\Mailing\MessageTemplate\MessageTemplate;
+use App\Models\Eloquent\Mailing\MessageTemplate\MessageTemplate;
 use Illuminate\Database\Seeder;
 
 class MessageTemplateSeeder extends Seeder

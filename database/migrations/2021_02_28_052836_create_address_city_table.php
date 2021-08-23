@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Billing\AddressState\AddressState;
+use App\Models\Eloquent\Billing\AddressState\AddressState;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

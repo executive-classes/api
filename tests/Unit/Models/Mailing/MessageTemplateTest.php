@@ -3,7 +3,7 @@
 namespace Tests\Unit\Models\Mailing;
 
 use Tests\Unit\Models\ModelTestCase;
-use App\Models\Mailing\MessageTemplate\MessageTemplate;
+use App\Models\Eloquent\Mailing\MessageTemplate\MessageTemplate;
 use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class MessageTemplateTest extends ModelTestCase

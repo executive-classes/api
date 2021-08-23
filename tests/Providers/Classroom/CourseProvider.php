@@ -2,7 +2,7 @@
 
 namespace Tests\Providers\Classroom;
 
-use App\Models\Classroom\Course\Course;
+use App\Models\Eloquent\Classroom\Course\Course;
 
 trait CourseProvider
 {

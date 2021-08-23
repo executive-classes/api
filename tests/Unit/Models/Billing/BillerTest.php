@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\Billing;
 
-use App\Models\Billing\Biller\Biller;
+use App\Models\Eloquent\Billing\Biller\Biller;
 use Tests\Unit\Models\ModelTestCase;
 use Tests\Unit\Traits\Models\HasTaxAsserts;
 use Tests\Unit\Traits\Models\HasPhoneAsserts;

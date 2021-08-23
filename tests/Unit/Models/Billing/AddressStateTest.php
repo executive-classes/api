@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\Billing;
 
-use App\Models\Billing\AddressState\AddressState;
+use App\Models\Eloquent\Billing\AddressState\AddressState;
 use Tests\Unit\Models\ModelTestCase;
 
 class AddressStateTest extends ModelTestCase

@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\System;
 
-use App\Models\System\SystemApp\SystemApp;
+use App\Models\Eloquent\System\SystemApp\SystemApp;
 use Tests\Unit\Models\ModelTestCase;
 
 class SystemAppTest extends ModelTestCase

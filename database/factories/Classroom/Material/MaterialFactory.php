@@ -2,8 +2,8 @@
 
 namespace Database\Factories\Classroom\Material;
 
-use App\Models\Classroom\Material\Material;
-use App\Models\General\Category\Category;
+use App\Models\Eloquent\Classroom\Material\Material;
+use App\Models\Eloquent\General\Category\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MaterialFactory extends Factory

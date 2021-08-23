@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\System;
 
-use App\Models\System\SystemBugLog\SystemBugLog;
+use App\Models\Eloquent\System\SystemBugLog\SystemBugLog;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;

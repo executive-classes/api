@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\Billing;
 
-use App\Models\Billing\BillerStatus\BillerStatus;
+use App\Models\Eloquent\Billing\BillerStatus\BillerStatus;
 use Tests\Unit\Models\ModelTestCase;
 
 class BillerStatusTest extends ModelTestCase

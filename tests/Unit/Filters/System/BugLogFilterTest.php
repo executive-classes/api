@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Filters\System;
 
-use App\Models\System\SystemBugLog\SystemBugLogFilters;
+use App\Models\Eloquent\System\SystemBugLog\SystemBugLogFilters;
 use Tests\Unit\Filters\FilterTestCase;
 
 class BugLogFilterTest extends FilterTestCase

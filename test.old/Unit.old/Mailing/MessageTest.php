@@ -3,9 +3,9 @@
 namespace Tests\Unit\Mailing;
 
 use App\Exceptions\Mailing\MessageException;
-use App\Models\Mailing\Message\Message;
+use App\Models\Eloquent\Mailing\Message\Message;
 use App\Enums\Mailing\MessageStatusEnum;
-use App\Models\Mailing\Message\MessageRepository;
+use App\Models\Eloquent\Mailing\Message\MessageRepository;
 use Tests\Providers\Mailing\MessageProvider;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;

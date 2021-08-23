@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\Mailing;
 
-use App\Models\Mailing\Message\Message;
+use App\Models\Eloquent\Mailing\Message\Message;
 use Tests\Unit\Models\ModelTestCase;
 use Tests\Unit\Traits\Models\HasFactoryAsserts;
 use Tests\Unit\Traits\Models\HasMessageVerificationAsserts;

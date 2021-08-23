@@ -4,8 +4,8 @@ namespace Tests\Feature\Billing;
 
 use App\Enums\Billing\TaxTypeEnum;
 use App\Http\Resources\Billling\ProfileResource;
-use App\Models\Billing\User\User;
-use App\Models\System\SystemLanguage\SystemLanguage;
+use App\Models\Eloquent\Billing\User\User;
+use App\Models\Eloquent\System\SystemLanguage\SystemLanguage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;

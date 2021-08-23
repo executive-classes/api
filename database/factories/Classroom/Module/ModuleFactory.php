@@ -2,8 +2,8 @@
 
 namespace Database\Factories\Classroom\Module;
 
-use App\Models\Classroom\Module\Module;
-use App\Models\General\Category\Category;
+use App\Models\Eloquent\Classroom\Module\Module;
+use App\Models\Eloquent\General\Category\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ModuleFactory extends Factory

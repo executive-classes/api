@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models\Billing;
 
-use App\Models\Billing\TaxType\TaxType;
+use App\Models\Eloquent\Billing\TaxType\TaxType;
 use App\Enums\Billing\TaxTypeEnum;
 use Tests\Unit\Models\ModelTestCase;
 use App\Services\Billing\Tax\Contract\Tax;

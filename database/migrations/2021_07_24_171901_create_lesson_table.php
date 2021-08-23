@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Classroom\Course\Course;
-use App\Models\Classroom\Module\Module;
-use App\Models\General\Category\Category;
+use App\Models\Eloquent\Classroom\Course\Course;
+use App\Models\Eloquent\Classroom\Module\Module;
+use App\Models\Eloquent\General\Category\Category;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
