@@ -2,17 +2,16 @@
 
 namespace App\Http\Requests\Mailing\Message;
 
-use App\Enums\Billing\UserPrivilegeEnum;
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Request;
 
-class MessageCreateRequest extends FormRequest
+class MessageCreateRequest extends Request
 {
     /**
-     * Get the validation rules that apply to the request.
+     * Get the request rules.
      *
      * @return array
      */
-    public function rules()
+    public function getRules(): array
     {
         return [
             'should_proccess_at'  => 'sometimes|date',

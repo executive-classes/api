@@ -3,51 +3,44 @@
 namespace App\Http\Requests\Billing\Address;
 
 use App\Enums\Billing\CountryEnum;
+use App\Http\Requests\Request;
 use App\Rules\Zip;
 use BenSampo\Enum\Rules\EnumValue;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class AddressRequest extends FormRequest
+class AddressRequest extends Request
 {
     /**
-     * Indicates if the validator should stop on the first rule failure.
-     *
-     * @var bool
-     */
-    protected $stopOnFirstFailure = true;
-
-    /**
-     * Get the validation rules that apply to the request.
+     * Get the request rules.
      *
      * @return array
      */
-    public function rules()
+    public function getRules(): array
     {
         return [
-            'zip' => ['required', new Zip($this->get('country', null))],
-            'number' => 'required|max:10',
+            'zip'        => ['required', new Zip($this->get('country', null))],
+            'number'     => 'required|max:10',
             'complement' => 'sometimes|nullable|string|max:255',
-            'country' => ['sometimes', 'string', new EnumValue(CountryEnum::class)],
-            'street' => [
+            'country'    => ['sometimes', 'string', new EnumValue(CountryEnum::class)],
+            'street'     => [
                 Rule::requiredIf(function () {
                     return !in_array($this->get('country'), [CountryEnum::BR, null]);
                 }), 
                 'string'
             ],
-            'district' => [
+            'district'   => [
                 Rule::requiredIf(function () {
                     return !in_array($this->get('country'), [CountryEnum::BR, null]);
                 }), 
                 'string'
             ],
-            'city' => [
+            'city'       => [
                 Rule::requiredIf(function () {
                     return !in_array($this->get('country'), [CountryEnum::BR, null]);
                 }), 
                 'string'
             ],
-            'state' => [
+            'state'      => [
                 Rule::requiredIf(function () {
                     return !in_array($this->get('country'), [CountryEnum::BR, null]);
                 }), 

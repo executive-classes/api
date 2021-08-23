@@ -2,21 +2,53 @@
 
 namespace App\Http\Requests\Auth;
 
-use App\Enums\Billing\UserPrivilegeEnum;
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Request;
+use App\Traits\Requests\LanguageRules;
 
-class CrossLoginRequest extends FormRequest
+class CrossLoginRequest extends Request
 {
+    use LanguageRules;
+
     /**
-     * Get the validation rules that apply to the request.
+     * Additional rules set of the request.
+     *
+     * @var array
+     */
+    protected $additionalRules = [
+        'systemLanguage' => 'sometimes'
+    ];
+
+    /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation()
+    {
+        $this->changeLanguageFromRequest($this->get('language', null));
+    }
+    
+    /**
+     * Get the request rules.
      *
      * @return array
      */
-    public function rules()
+    public function getRules(): array
     {
         return [
-            'user_id'  => 'required|numeric|exists:user,id',
-            'language' => 'sometimes|in:en,pt_BR',
+            'user_id' => 'required|numeric|exists:user,id'
+        ];
+    }
+
+    /**
+     * Get the request messages.
+     *
+     * @return array
+     */
+    public function getMessages(): array
+    {
+        return [
+            'user_id.exists' => __('auth.user')
         ];
     }
 }

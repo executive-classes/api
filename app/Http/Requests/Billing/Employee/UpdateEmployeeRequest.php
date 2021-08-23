@@ -4,18 +4,18 @@ namespace App\Http\Requests\Billing\Employee;
 
 use App\Enums\Billing\EmployeePositionEnum;
 use App\Enums\Billing\EmployeeStatusEnum;
+use App\Http\Requests\Request;
 use BenSampo\Enum\Rules\EnumValue;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateEmployeeRequest extends FormRequest
+class UpdateEmployeeRequest extends Request
 {
     /**
-     * Get the validation rules that apply to the request.
+     * Get the request rules.
      *
      * @return array
      */
-    public function rules()
+    public function getRules(): array
     {
         return [
             'employee_status_id' => [

@@ -2,24 +2,30 @@
 
 namespace App\Http\Requests\Billing\Biller;
 
-use App\Rules\TaxCode;
-use Illuminate\Support\Str;
-use App\Rules\BrazillianPhone;
 use Illuminate\Validation\Rule;
-use App\Enums\Billing\StateEnum;
-use App\Enums\Billing\TaxTypeEnum;
 use BenSampo\Enum\Rules\EnumValue;
 use App\Enums\Billing\BillerStatusEnum;
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Request;
+use App\Traits\Requests\EmailRules;
+use App\Traits\Requests\PhoneRules;
+use App\Traits\Requests\TaxRules;
 
-class UpdateBillerRequest extends FormRequest
+class UpdateBillerRequest extends Request
 {
+    use TaxRules;
+    use PhoneRules;
+    use EmailRules;
+
     /**
-     * Indicates if the validator should stop on the first rule failure.
+     * Additional rules set of the request.
      *
-     * @var bool
+     * @var array
      */
-    protected $stopOnFirstFailure = true;
+    protected $additionalRules = [
+        'tax' => 'sometimes',
+        'phone' => 'sometimes',
+        'email' => 'sometimes'
+    ];
 
     /**
      * Prepare the data for validation.
@@ -28,66 +34,27 @@ class UpdateBillerRequest extends FormRequest
      */
     protected function prepareForValidation()
     {
-        $data = [];
-
-        if ($this->get('tax_type_id', false)) {
-            $data['tax_type_id'] = Str::lower($this->input('tax_type_id'));
-        }
-
-        if ($this->get('tax_type_alt_id', false)) {
-            $data['tax_type_alt_id'] = Str::lower($this->input('tax_type_alt_id'));
-        }
-
-        $this->merge($data);
+        $this->merge($this->formatTaxTypeId());
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Get the request rules.
      *
      * @return array
      */
-    public function rules()
+    public function getRules(): array
     {
         return [
-            'name' => 'sometimes|string',
-            'tax_type_id' => [
-                'required_with:tax_code',
-                'string',
-                'different:tax_type_alt_id',
-                new EnumValue(TaxTypeEnum::class)
-            ],
-            'tax_code' => ['sometimes', 'string', new TaxCode($this->tax_type_id, $this->uf ?? null)],
-            'tax_type_alt_id' => [
-                'required_with:tax_code_alt',
-                'nullable',
-                'string',
-                'different:tax_type_id',
-                new EnumValue(TaxTypeEnum::class)
-            ],
-            'tax_code_alt' => ['sometimes', 'nullable', 'string', new TaxCode($this->tax_type_alt_id, $this->uf ?? null)],
-            'uf' => [
-                Rule::requiredIf(
-                    in_array(
-                        TaxTypeEnum::IE, 
-                        $this->only(['tax_type_id','tax_type_alt_id'])
-                    )
-                ), 
-                'string', 
-                'max:2', 
-                new EnumValue(StateEnum::class)
-            ],
-            'address_id' => 'sometimes|numeric|exists:address,id',
-            'biller_status_id' => [
-                'sometimes', 
-                'string',
-                Rule::in(BillerStatusEnum::getUpdatableValues()), 
-                new EnumValue(BillerStatusEnum::class)
-            ],
-            'email' => 'sometimes|nullable|email',
-            'phone' => ['sometimes', new BrazillianPhone],
-            'phone_alt' => 'sometimes',
+            'name'                => 'sometimes|string',
+            'address_id'          => 'sometimes|numeric|exists:address,id',
             'payment_interval_id' => 'sometimes|numeric|exists:payment_interval,id',
-            'payment_method_id' => 'sometimes|string|exists:payment_method,id',
+            'payment_method_id'   => 'sometimes|string|exists:payment_method,id',
+            'biller_status_id'    => [
+                'sometimes',
+                'string',
+                Rule::in(BillerStatusEnum::getUpdatableValues()),
+                new EnumValue(BillerStatusEnum::class)
+            ]
         ];
     }
 }

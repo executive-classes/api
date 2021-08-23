@@ -2,17 +2,16 @@
 
 namespace App\Http\Requests\Mailing\MessageTemplate;
 
-use App\Enums\Billing\UserPrivilegeEnum;
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Request;
 
-class MessageTemplateCreateRequest extends FormRequest
+class MessageTemplateCreateRequest extends Request
 {
     /**
-     * Get the validation rules that apply to the request.
+     * Get the request rules.
      *
      * @return array
      */
-    public function rules()
+    public function getRules(): array
     {
         return [
             'id'                => 'required|alpha_dash',

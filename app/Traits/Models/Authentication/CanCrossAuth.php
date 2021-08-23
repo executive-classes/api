@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits\Authentication;
+namespace App\Traits\Models\Authentication;
 
 use App\Models\Billing\User\User;
 

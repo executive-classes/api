@@ -2,33 +2,16 @@
 
 namespace App\Http\Requests\System;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Request;
 
-class GetBugLogRequest extends FormRequest
+class GetBugLogRequest extends Request
 {
     /**
-     * Indicates if the validator should stop on the first rule failure.
-     *
-     * @var bool
-     */
-    protected $stopOnFirstFailure = true;
-
-    /**
-     * Prepare the data for validation.
-     *
-     * @return void
-     */
-    protected function prepareForValidation()
-    {
-
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
+     * Get the request rules.
      *
      * @return array
      */
-    public function rules()
+    public function getRules(): array
     {
         return [
             'limit' => 'sometimes|numeric|max:1000',

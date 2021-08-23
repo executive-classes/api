@@ -2,18 +2,18 @@
 
 namespace App\Models\Billing\User;
 
-use App\Enums\System\SystemLanguageEnum;
-use App\Support\QueryFilter\Filterable;
-use App\Traits\Authentication\Authenticable as CanAuthenticate;
-use App\Traits\Authentication\CanChangeLanguage;
-use App\Traits\Authentication\CanCrossAuth;
-use App\Traits\Models\Billing\HasPhone;
-use App\Traits\Models\Billing\HasPrivileges;
-use App\Traits\Models\Billing\HasTax;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticable;
-use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Traits\Models\Billing\HasTax;
+use App\Support\QueryFilter\Filterable;
+use App\Traits\Models\Billing\HasPhone;
+use App\Enums\System\SystemLanguageEnum;
+use Illuminate\Notifications\Notifiable;
+use App\Traits\Models\Billing\HasPrivileges;
+use App\Traits\Models\Authentication\CanCrossAuth;
+use App\Traits\Models\Authentication\CanAuthenticate;
+use Illuminate\Foundation\Auth\User as Authenticable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\Models\Authentication\CanChangeLanguage;
 
 class User extends Authenticable
 {

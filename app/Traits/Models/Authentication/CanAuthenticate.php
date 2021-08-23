@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Traits\Authentication;
+namespace App\Traits\Models\Authentication;
 
 use App\Models\Billing\User\User;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\Sanctum;
 
-trait Authenticable
+trait CanAuthenticate
 {
     /**
      * Log in the user.

@@ -2,16 +2,16 @@
 
 namespace App\Http\Requests\Classroom\Course;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Request;
 
-class UpdateCourseRequest extends FormRequest
+class UpdateCourseRequest extends Request
 {
     /**
-     * Get the validation rules that apply to the request.
+     * Get the request rules.
      *
      * @return array
      */
-    public function rules()
+    public function getRules(): array
     {
         return [
             'name'        => 'sometimes|min:3',

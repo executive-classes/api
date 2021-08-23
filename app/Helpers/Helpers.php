@@ -229,3 +229,21 @@ if (!function_exists('getFirstElement')) {
         }
     }
 }
+
+/**
+ * Class helpers
+ */
+
+if (!function_exists('executeMethod')) {
+    function executeMethod(object $object, string $method, array $params = null, $default = null) {
+        if (!method_exists($object, $method)) {
+            return $default;
+        }
+
+        if ($params) {
+            return $object->$method(...$params);
+        }
+
+        return $object->$method();
+    }
+}

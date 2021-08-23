@@ -3,18 +3,18 @@
 namespace App\Http\Requests\Billing\Student;
 
 use App\Enums\Billing\StudentStatusEnum;
+use App\Http\Requests\Request;
 use BenSampo\Enum\Rules\EnumValue;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateStudentRequest extends FormRequest
+class UpdateStudentRequest extends Request
 {
     /**
-     * Get the validation rules that apply to the request.
+     * Get the request rules.
      *
      * @return array
      */
-    public function rules()
+    public function getRules(): array
     {
         return [
             'customer_id' => 'sometimes|numeric|exists:customer,id',

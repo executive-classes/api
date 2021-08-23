@@ -3,20 +3,20 @@
 namespace App\Http\Requests\Billing\Employee;
 
 use App\Enums\Billing\EmployeePositionEnum;
+use App\Http\Requests\Request;
 use BenSampo\Enum\Rules\EnumValue;
-use Illuminate\Foundation\Http\FormRequest;
 
-class CreateEmployeeRequest extends FormRequest
+class CreateEmployeeRequest extends Request
 {
     /**
-     * Get the validation rules that apply to the request.
+     * Get the request rules.
      *
      * @return array
      */
-    public function rules()
+    public function getRules(): array
     {
         return [
-            'user_id' => 'required|numeric|exists:user,id',
+            'user_id'              => 'required|numeric|exists:user,id',
             'employee_position_id' => ['required', 'string', new EnumValue(EmployeePositionEnum::class)]
         ];
     }

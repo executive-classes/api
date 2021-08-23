@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits\Authentication;
+namespace App\Traits\Models\Authentication;
 
 trait CanChangeLanguage
 {

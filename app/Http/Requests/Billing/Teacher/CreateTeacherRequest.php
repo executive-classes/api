@@ -2,16 +2,16 @@
 
 namespace App\Http\Requests\Billing\Teacher;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Request;
 
-class CreateTeacherRequest extends FormRequest
+class CreateTeacherRequest extends Request
 {
     /**
-     * Get the validation rules that apply to the request.
+     * Get the request rules.
      *
      * @return array
      */
-    public function rules()
+    public function getRules(): array
     {
         return [
             'user_id' => 'required|numeric|exists:user,id',

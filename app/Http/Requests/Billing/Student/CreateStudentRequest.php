@@ -2,16 +2,16 @@
 
 namespace App\Http\Requests\Billing\Student;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Request;
 
-class CreateStudentRequest extends FormRequest
+class CreateStudentRequest extends Request
 {
     /**
-     * Get the validation rules that apply to the request.
+     * Get the request rules.
      *
      * @return array
      */
-    public function rules()
+    public function getRules(): array
     {
         return [
             'customer_id' => 'required|numeric|exists:customer,id',

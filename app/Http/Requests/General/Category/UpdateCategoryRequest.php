@@ -3,17 +3,17 @@
 namespace App\Http\Requests\General\Category;
 
 use App\Enums\General\CategoryTypeEnum;
+use App\Http\Requests\Request;
 use BenSampo\Enum\Rules\EnumValue;
-use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCategoryRequest extends FormRequest
+class UpdateCategoryRequest extends Request
 {
     /**
-     * Get the validation rules that apply to the request.
+     * Get the request rules.
      *
      * @return array
      */
-    public function rules()
+    public function getRules(): array
     {
         return [
             'name' => 'sometimes|min:3',
