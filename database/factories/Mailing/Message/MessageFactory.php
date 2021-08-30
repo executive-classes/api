@@ -4,9 +4,9 @@ namespace Database\Factories\Mailing\Message;
 
 use Carbon\Carbon;
 use App\Models\Eloquent\Mailing\Message\Message;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Database\Factories\Mailing\Message\MessageFactoryStates;
 use App\Models\Eloquent\Mailing\MessageTemplate\MessageTemplate;
+use Database\Factories\Factory;
 
 class MessageFactory extends Factory
 {
@@ -32,7 +32,7 @@ class MessageFactory extends Factory
             'to' => $this->faker->email,
             'subject' => 'Test',
             'content' => '<h1>Hello World</h1>',
-            'message_template_id' => MessageTemplate::factory(),
+            'message_template_id' => $this->relation(MessageTemplate::class),
             'params' => json_encode(['testMessage' => 'Hello World']),
         ];
     }

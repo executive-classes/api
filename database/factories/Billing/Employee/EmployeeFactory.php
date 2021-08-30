@@ -2,11 +2,12 @@
 
 namespace Database\Factories\Billing\Employee;
 
+use App\Enums\Billing\EmployeePositionEnum;
 use App\Models\Eloquent\Billing\User\User;
 use App\Models\Eloquent\Billing\Employee\Employee;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Database\Factories\Billing\Employee\EmployeeFactoryStates;
 use App\Models\Eloquent\Billing\EmployeePosition\EmployeePosition;
+use Database\Factories\Factory;
 
 class EmployeeFactory extends Factory
 {
@@ -27,8 +28,8 @@ class EmployeeFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
-            'employee_position_id' => EmployeePosition::inRandomOrder()->first()
+            'user_id' => $this->relation(User::class),
+            'employee_position_id' => EmployeePositionEnum::getRandomValue()
         ];
     }
 }

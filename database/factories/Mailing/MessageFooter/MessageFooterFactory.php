@@ -3,7 +3,7 @@
 namespace Database\Factories\Mailing\MessageFooter;
 
 use App\Models\Eloquent\Mailing\MessageFooter\MessageFooter;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\Factory;
 
 class MessageFooterFactory extends Factory
 {

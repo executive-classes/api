@@ -4,7 +4,7 @@ namespace Database\Seeders\Billing;
 
 use App\Enums\Billing\UserPrivilegeEnum;
 use App\Models\Eloquent\Billing\UserPrivilege\UserPrivilege;
-use Illuminate\Database\Seeder;
+use Database\Seeders\Seeder;
 
 class UserPrivilegeSeeder extends Seeder
 {

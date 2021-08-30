@@ -29,7 +29,7 @@ if (!function_exists('isProduction')) {
 
 if (!function_exists('isLocal')) {
     function isLocal(): bool {
-        return !isProduction();
+        return env('APP_ENV') === 'local';
     }
 }
 

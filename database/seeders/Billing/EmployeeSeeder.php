@@ -3,17 +3,27 @@
 namespace Database\Seeders\Billing;
 
 use App\Models\Eloquent\Billing\Employee\Employee;
-use Illuminate\Database\Seeder;
+use Database\Seeders\Seeder;
 
 class EmployeeSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the local database seeds.
      *
      * @return void
      */
-    public function run()
+    protected function local()
     {
-        Employee::factory()->create();
+        // Creating employee for every status
+        Employee::factory()->persist()->active()->create();
+        Employee::factory()->persist()->suspended()->create();
+        Employee::factory()->persist()->canceled()->create();
+
+        // Creating employee for every position
+        Employee::factory()->persist()->administrator()->create();
+        Employee::factory()->persist()->developer()->create();
+        Employee::factory()->persist()->financial()->create();
+        Employee::factory()->persist()->technician()->create();
+        Employee::factory()->persist()->hr()->create();
     }
 }

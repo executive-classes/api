@@ -4,7 +4,7 @@ namespace Database\Factories\Classroom\Test;
 
 use App\Models\Eloquent\Classroom\Test\Test;
 use App\Models\Eloquent\General\Category\Category;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\Factory;
 
 class TestFactory extends Factory
 {
@@ -24,7 +24,7 @@ class TestFactory extends Factory
     {
         return [
             'name' => $this->faker->text(15),
-            'category_id' => Category::factory()
+            'category_id' => $this->relation(Category::class)
         ];
     }
 }

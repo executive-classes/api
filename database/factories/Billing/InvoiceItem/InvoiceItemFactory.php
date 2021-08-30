@@ -5,7 +5,7 @@ namespace Database\Factories\Billing\InvoiceItem;
 use App\Models\Eloquent\Billing\Invoice\Invoice;
 use App\Models\Eloquent\Billing\InvoiceItem\InvoiceItem;
 use App\Models\Eloquent\Billing\Student\Student;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\Factory;
 
 class InvoiceItemFactory extends Factory
 {
@@ -24,8 +24,8 @@ class InvoiceItemFactory extends Factory
     public function definition()
     {
         return [
-            'invoice_id' => Invoice::factory(),
-            'student_id' => Student::factory(),
+            'invoice_id' => $this->relation(Invoice::class),
+            'student_id' => $this->relation(Student::class),
             'description' => $this->faker->text,
             'qty' => $this->faker->numberBetween(0, 99),
             'unity_price' => $this->faker->randomFloat(2, 0, 999),

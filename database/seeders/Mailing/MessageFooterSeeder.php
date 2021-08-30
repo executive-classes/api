@@ -3,17 +3,17 @@
 namespace Database\Seeders\Mailing;
 
 use App\Models\Eloquent\Mailing\MessageFooter\MessageFooter;
-use Illuminate\Database\Seeder;
+use Database\Seeders\Seeder;
 
 class MessageFooterSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the local database seeds.
      *
      * @return void
      */
-    public function run()
+    protected function local()
     {
-        MessageFooter::factory()->create();
+        MessageFooter::factory()->persist()->create();
     }
 }

@@ -6,48 +6,71 @@ use App\Models\Eloquent\Billing\Employee\Employee;
 use App\Models\Eloquent\Billing\Student\Student;
 use App\Models\Eloquent\Billing\Teacher\Teacher;
 use App\Models\Eloquent\Billing\User\User;
-use Illuminate\Database\Seeder;
+use Database\Seeders\Seeder;
 
 class UserSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the local database seeds.
      *
      * @return void
      */
-    public function run()
+    protected function local()
     {
-        // Create a dev
-        User::factory()
-            ->has(Employee::factory()->developer(), 'employee')
+        // Creating test users
+        User::factory()->persist()
+            ->has(Employee::factory()->persist()->developer(), 'employee')
             ->create(config('test.user.type.dev'));
         
-        if (!isTest()) {
-            // Create a admin
-            User::factory()
-                ->has(Employee::factory()->administrator(), 'employee')
-                ->create(config('test.user.type.adm'));
-    
-            // Create a financial
-            User::factory()
-                ->has(Employee::factory()->financial(), 'employee')
-                ->create(config('test.user.type.fin'));
-    
-            // Create a technician
-            User::factory()
-                ->has(Employee::factory()->technician(), 'employee')
-                ->create(config('test.user.type.tech'));
-    
-            // Create a teacher
-            User::factory()
-                ->has(Teacher::factory(), 'teacher')
-                ->create(config('test.user.type.teacher'));
-    
-            // Create a student
-            User::factory()
-                ->has(Student::factory(), 'student')
-                ->create(config('test.user.type.student'));
-        }
+        // Create a admin
+        User::factory()->persist()
+            ->has(Employee::factory()->persist()->administrator(), 'employee')
+            ->create(config('test.user.type.adm'));
 
+        // Create a financial
+        User::factory()->persist()
+            ->has(Employee::factory()->persist()->financial(), 'employee')
+            ->create(config('test.user.type.fin'));
+
+        // Create a technician
+        User::factory()->persist()
+            ->has(Employee::factory()->persist()->technician(), 'employee')
+            ->create(config('test.user.type.tech'));
+
+        // Create a teacher
+        User::factory()->persist()
+            ->has(Teacher::factory()->persist(), 'teacher')
+            ->create(config('test.user.type.teacher'));
+
+        // Create a student
+        User::factory()->persist()
+            ->has(Student::factory()->persist(), 'student')
+            ->create(config('test.user.type.student'));
+
+        // Creating user for every tax
+        User::factory()->persist()->cnpj()->create();
+        User::factory()->persist()->cpf()->create();
+
+        // Creating user for every status
+        User::factory()->persist()->active()->create();
+        User::factory()->persist()->inactive()->create();
+
+        // Creating user for every language
+        User::factory()->persist()->en()->create();
+        User::factory()->persist()->pt_BR()->create();
+
+    }
+
+    /**
+     * Run the test database seeds.
+     *
+     * @return void
+     */
+    protected function test()
+    {
+        // Creating test users
+        User::factory()->persist()
+            ->has(Employee::factory()->persist()->developer(), 'employee')
+            ->create(config('test.user.type.dev'));
     }
 }

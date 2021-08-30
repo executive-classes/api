@@ -82,7 +82,7 @@ trait TaxStates
     {
         return [
             $alt ? 'tax_type_id' : 'tax_type_alt_id' => $type,
-            $alt ? 'tax_code' : 'tax_alt_code' => $value
+            $alt ? 'tax_code' : 'tax_code_alt' => $value
         ];
     }
 }

@@ -49,14 +49,4 @@ trait CourseRelations
     {
         return $this->hasMany(Lesson::class, 'course_id', 'id');
     }
-
-    /**
-     * Test relation.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function test()
-    {
-        return $this->belongsTo(Test::class, 'test_id', 'id');
-    }
 }

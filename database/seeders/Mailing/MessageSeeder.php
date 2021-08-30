@@ -3,17 +3,21 @@
 namespace Database\Seeders\Mailing;
 
 use App\Models\Eloquent\Mailing\Message\Message;
-use Illuminate\Database\Seeder;
+use Database\Seeders\Seeder;
 
 class MessageSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the local database seeds.
      *
      * @return void
      */
-    public function run()
+    protected function local()
     {
-        Message::factory()->create();
+        // Creating message for every status
+        Message::factory()->persist()->scheduled()->create();
+        Message::factory()->persist()->sent()->create();
+        Message::factory()->persist()->canceled()->create();
+        Message::factory()->persist()->error()->create();
     }
 }

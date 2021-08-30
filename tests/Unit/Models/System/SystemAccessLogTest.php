@@ -2,11 +2,14 @@
 
 namespace Tests\Unit\Models\System;
 
-use App\Models\Eloquent\System\SystemAccessLog\SystemAccessLog;
 use Tests\Unit\Models\ModelTestCase;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
+use App\Models\Eloquent\System\SystemAccessLog\SystemAccessLog;
 
 class SystemAccessLogTest extends ModelTestCase
 {
+    use HasFactoryAsserts;
+
     /**
      * @var SystemAccessLog
      */

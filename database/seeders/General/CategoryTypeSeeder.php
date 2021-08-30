@@ -4,7 +4,7 @@ namespace Database\Seeders\General;
 
 use App\Enums\General\CategoryTypeEnum;
 use App\Models\Eloquent\General\CategoryType\CategoryType;
-use Illuminate\Database\Seeder;
+use Database\Seeders\Seeder;
 
 class CategoryTypeSeeder extends Seeder
 {

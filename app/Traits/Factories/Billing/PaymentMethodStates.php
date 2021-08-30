@@ -9,15 +9,19 @@ trait PaymentMethodStates
     /**
      * Indicate that the biller is payed with credit card.
      *
+     * @param boolean $withToken
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    public function credit_card(string $token_id = null)
+    public function credit_card(bool $withToken = false)
     {
-        return $this->state(function (array $attributes) use ($token_id) {
-            return [
-                'payment_method_id' => PaymentMethodEnum::CREDIT_CARD,
-                'token_id' => $token_id ?? config('test.paygo.token')
-            ];
+        return $this->state(function (array $attributes) use ($withToken) {
+            $data['payment_method_id'] = PaymentMethodEnum::CREDIT_CARD;
+
+            if ($withToken) {
+                $data['token_id'] = config('test.paygo.token');
+            }
+
+            return $data;
         });
     }
 

@@ -4,7 +4,7 @@ namespace Database\Seeders\System;
 
 use App\Enums\System\SystemAppEnum;
 use App\Models\Eloquent\System\SystemApp\SystemApp;
-use Illuminate\Database\Seeder;
+use Database\Seeders\Seeder;
 
 class SystemAppSeeder extends Seeder
 {

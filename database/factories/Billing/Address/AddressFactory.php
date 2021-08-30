@@ -2,9 +2,9 @@
 
 namespace Database\Factories\Billing\Address;
 
+use Database\Factories\Factory;
 use App\Enums\Billing\CountryEnum;
 use App\Models\Eloquent\Billing\Address\Address;
-use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AddressFactory extends Factory
 {

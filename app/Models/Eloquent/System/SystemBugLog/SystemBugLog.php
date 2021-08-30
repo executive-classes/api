@@ -3,11 +3,13 @@
 namespace App\Models\Eloquent\System\SystemBugLog;
 
 use App\Support\QueryFilter\Filterable;
+use App\Traits\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class SystemBugLog extends Model
 {
     use SystemBugLogRelations;
+    use HasFactory;
     use Filterable;
     
     /**

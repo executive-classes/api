@@ -6,7 +6,7 @@ use App\Models\Eloquent\Mailing\MessageFooter\MessageFooter;
 use App\Models\Eloquent\Mailing\MessageHeader\MessageHeader;
 use App\Models\Eloquent\Mailing\MessageTemplate\MessageTemplate;
 use App\Models\Eloquent\Mailing\MessageType\MessageType;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\Factory;
 
 class MessageTemplateFactory extends Factory
 {
@@ -30,8 +30,8 @@ class MessageTemplateFactory extends Factory
             'description' => $this->faker->text(),
             'subject' => $this->faker->text(50),
             'content' => '<h3>{{$testMessage}} from a Template</h3>',
-            'message_header_id' => MessageHeader::factory(),
-            'message_footer_id' => MessageFooter::factory()
+            'message_header_id' => $this->relation(MessageHeader::class),
+            'message_footer_id' => $this->relation(MessageFooter::class)
         ];
     }
 }

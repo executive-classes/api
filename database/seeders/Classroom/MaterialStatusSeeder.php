@@ -4,7 +4,7 @@ namespace Database\Seeders\Classroom;
 
 use App\Enums\Classroom\MaterialStatusEnum;
 use App\Models\Eloquent\Classroom\MaterialStatus\MaterialStatus;
-use Illuminate\Database\Seeder;
+use Database\Seeders\Seeder;
 
 class MaterialStatusSeeder extends Seeder
 {

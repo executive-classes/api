@@ -4,7 +4,7 @@ namespace Database\Factories\Classroom\Material;
 
 use App\Models\Eloquent\Classroom\Material\Material;
 use App\Models\Eloquent\General\Category\Category;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\Factory;
 
 class MaterialFactory extends Factory
 {
@@ -27,7 +27,7 @@ class MaterialFactory extends Factory
             'title' => $this->faker->text(15),
             'content' => '<h3>Material test</h3>',
             'style' => 'h3 { color: red; }',
-            'category_id' => Category::factory()
+            'category_id' => $this->relation(Category::class)
         ];
     }
 }

@@ -7,7 +7,6 @@ use App\Enums\Billing\EmployeePositionEnum;
 
 trait EmployeeFactoryStates
 {
-
     /**
      * Indicate that the employee is active.
      *
@@ -111,7 +110,7 @@ trait EmployeeFactoryStates
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    public function HR()
+    public function hr()
     {
         return $this->state(function (array $attributes) {
             return [

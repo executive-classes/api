@@ -65,11 +65,4 @@ class CourseTest extends ModelTestCase
 
         $this->assertHasManyRelation($relation, $this->model, 'course_id');
     }
-
-    public function test_test_relation()
-    {
-        $relation = $this->model->test();
-
-        $this->assertBelongsToRelation($relation, $this->model, 'test_id');
-    }
 }

@@ -4,7 +4,7 @@ namespace Database\Seeders\Classroom;
 
 use App\Enums\Classroom\TestStatusEnum;
 use App\Models\Eloquent\Classroom\TestStatus\TestStatus;
-use Illuminate\Database\Seeder;
+use Database\Seeders\Seeder;
 
 class TestStatusSeeder extends Seeder
 {

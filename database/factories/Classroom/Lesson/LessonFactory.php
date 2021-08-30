@@ -4,10 +4,12 @@ namespace Database\Factories\Classroom\Lesson;
 
 use App\Models\Eloquent\Classroom\Lesson\Lesson;
 use App\Models\Eloquent\General\Category\Category;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\Factory;
 
 class LessonFactory extends Factory
 {
+    use LessonFactoryStates;
+    
     /**
      * The name of the factory's corresponding model.
      *
@@ -24,7 +26,7 @@ class LessonFactory extends Factory
     {
         return [
             'name' => $this->faker->text(15),
-            'category_id' => Category::factory()
+            'category_id' => $this->relation(Category::class)
         ];
     }
 }

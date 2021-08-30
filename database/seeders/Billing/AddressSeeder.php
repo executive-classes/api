@@ -3,18 +3,19 @@
 namespace Database\Seeders\Billing;
 
 use App\Models\Eloquent\Billing\Address\Address;
-use Illuminate\Database\Seeder;
+use Database\Seeders\Seeder;
 
 class AddressSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the local database seeds.
      *
      * @return void
      */
-    public function run()
+    protected function local()
     {
-        Address::factory(5)
-            ->create();
+        // Creating address for every country
+        Address::factory()->persist()->br()->create();
+        Address::factory()->persist()->us()->create();
     }
 }

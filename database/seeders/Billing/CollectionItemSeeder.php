@@ -3,17 +3,17 @@
 namespace Database\Seeders\Billing;
 
 use App\Models\Eloquent\Billing\CollectionItem\CollectionItem;
-use Illuminate\Database\Seeder;
+use Database\Seeders\Seeder;
 
 class CollectionItemSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the local database seeds.
      *
      * @return void
      */
-    public function run()
+    protected function local()
     {
-        CollectionItem::factory()->create();
+        CollectionItem::factory(5)->persist()->create();
     }
 }

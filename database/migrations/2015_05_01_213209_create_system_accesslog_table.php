@@ -59,7 +59,7 @@ class CreateSystemAccesslogTable extends Migration
             
             $table->smallInteger('code')
                 ->nullable()
-                ->comment('Indicates if the access was allowed.');
+                ->comment('Indicates the http return code.');
         });
     }
 

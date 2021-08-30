@@ -2,11 +2,13 @@
 
 namespace App\Models\Eloquent\System\SystemAuditLog;
 
+use App\Traits\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class SystemAuditLog extends Model
 {
     use SystemAuditLogRelations;
+    use HasFactory;
 
     /**
      * The table associated with the model.

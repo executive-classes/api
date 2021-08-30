@@ -4,7 +4,7 @@ namespace Database\Seeders\Billing;
 
 use App\Enums\Billing\BillerStatusEnum;
 use App\Models\Eloquent\Billing\BillerStatus\BillerStatus;
-use Illuminate\Database\Seeder;
+use Database\Seeders\Seeder;
 
 class BillerStatusSeeder extends Seeder
 {

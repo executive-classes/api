@@ -5,6 +5,7 @@ namespace App\Models\Eloquent\Billing\Invoice;
 use App\Models\Eloquent\Billing\InvoiceItem\InvoiceItem;
 use App\Models\Eloquent\Billing\Biller\Biller;
 use App\Models\Eloquent\Billing\Collection\Collection;
+use App\Models\Eloquent\Billing\InvoiceStatus\InvoiceStatus;
 
 trait InvoiceRelations
 {
@@ -26,6 +27,16 @@ trait InvoiceRelations
     public function collection()
     {
         return $this->belongsTo(Collection::class, 'collection_id', 'id');
+    }
+
+    /**
+     * Status relation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function status()
+    {
+        return $this->belongsTo(InvoiceStatus::class, 'invoice_status_id', 'id');
     }
 
     /**

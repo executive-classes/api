@@ -2,8 +2,8 @@
 
 namespace Database\Factories\Billing\Invoice;
 
+use Database\Factories\Factory;
 use App\Models\Eloquent\Billing\Invoice\Invoice;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Eloquent\Billing\Collection\Collection;
 use Database\Factories\Billing\Invoice\InvoiceFactoryStates;
 
@@ -26,7 +26,7 @@ class InvoiceFactory extends Factory
     public function definition()
     {
         return [
-            'collection_id' => Collection::factory()
+            'collection_id' => $this->relation(Collection::class)
         ];
     }
 }

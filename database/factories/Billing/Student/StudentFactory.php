@@ -5,8 +5,8 @@ namespace Database\Factories\Billing\Student;
 use App\Models\Eloquent\Billing\User\User;
 use App\Models\Eloquent\Billing\Biller\Biller;
 use App\Models\Eloquent\Billing\Student\Student;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Database\Factories\Billing\Student\StudentFactoryStates;
+use Database\Factories\Factory;
 
 class StudentFactory extends Factory
 {
@@ -27,11 +27,11 @@ class StudentFactory extends Factory
     public function definition()
     {
         return [
-            'biller_id' => Biller::factory(),
+            'biller_id' => $this->relation(Biller::class),
             'customer_id' => function (array $attributes) {
                 return Biller::find($attributes['biller_id'])->customer_id;
             },
-            'user_id' => User::factory()
+            'user_id' => $this->relation(User::class)
         ];
     }
 }

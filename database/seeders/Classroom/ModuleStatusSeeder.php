@@ -4,7 +4,7 @@ namespace Database\Seeders\Classroom;
 
 use App\Enums\Classroom\ModuleStatusEnum;
 use App\Models\Eloquent\Classroom\ModuleStatus\ModuleStatus;
-use Illuminate\Database\Seeder;
+use Database\Seeders\Seeder;
 
 class ModuleStatusSeeder extends Seeder
 {

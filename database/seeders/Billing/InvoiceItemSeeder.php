@@ -3,17 +3,17 @@
 namespace Database\Seeders\Billing;
 
 use App\Models\Eloquent\Billing\InvoiceItem\InvoiceItem;
-use Illuminate\Database\Seeder;
+use Database\Seeders\Seeder;
 
 class InvoiceItemSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the local database seeds.
      *
      * @return void
      */
-    public function run()
+    protected function local()
     {
-        InvoiceItem::factory()->create();
+        InvoiceItem::factory(5)->persist()->create();
     }
 }

@@ -4,8 +4,8 @@ namespace Database\Factories\Billing\Teacher;
 
 use App\Models\Eloquent\Billing\User\User;
 use App\Models\Eloquent\Billing\Teacher\Teacher;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Database\Factories\Billing\Teacher\TeacherFactoryStates;
+use Database\Factories\Factory;
 
 class TeacherFactory extends Factory
 {
@@ -26,7 +26,7 @@ class TeacherFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory()
+            'user_id' => $this->relation(User::class)
         ];
     }
 }

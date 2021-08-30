@@ -4,7 +4,7 @@ namespace Database\Seeders\Billing;
 
 use App\Enums\Billing\EmployeeStatusEnum;
 use App\Models\Eloquent\Billing\EmployeeStatus\EmployeeStatus;
-use Illuminate\Database\Seeder;
+use Database\Seeders\Seeder;
 
 class EmployeeStatusSeeder extends Seeder
 {

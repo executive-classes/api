@@ -3,17 +3,20 @@
 namespace Database\Seeders\Billing;
 
 use App\Models\Eloquent\Billing\Teacher\Teacher;
-use Illuminate\Database\Seeder;
+use Database\Seeders\Seeder;
 
 class TeacherSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the local database seeds.
      *
      * @return void
      */
-    public function run()
+    protected function local()
     {
-        Teacher::factory()->create();
+        // Creating teacher for every status
+        Teacher::factory()->persist()->active()->create();
+        Teacher::factory()->persist()->suspended()->create();
+        Teacher::factory()->persist()->canceled()->create();
     }
 }

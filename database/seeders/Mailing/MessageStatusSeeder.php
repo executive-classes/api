@@ -4,7 +4,7 @@ namespace Database\Seeders\Mailing;
 
 use App\Models\Eloquent\Mailing\MessageStatus\MessageStatus;
 use App\Enums\Mailing\MessageStatusEnum;
-use Illuminate\Database\Seeder;
+use Database\Seeders\Seeder;
 
 class MessageStatusSeeder extends Seeder
 {

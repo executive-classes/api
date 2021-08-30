@@ -5,7 +5,7 @@ namespace Database\Seeders\Billing;
 use App\Enums\Billing\EmployeePositionEnum;
 use App\Enums\Billing\UserPrivilegeEnum;
 use App\Models\Eloquent\Billing\EmployeePosition\EmployeePosition;
-use Illuminate\Database\Seeder;
+use Database\Seeders\Seeder;
 
 class EmployeePositionSeeder extends Seeder
 {

@@ -5,10 +5,12 @@ namespace Database\Factories\Billing\Customer;
 use App\Enums\Billing\TaxTypeEnum;
 use App\Models\Eloquent\Billing\Address\Address;
 use App\Models\Eloquent\Billing\Customer\Customer;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\Factory;
 
 class CustomerFactory extends Factory
 {
+    use CustomerFactoryStates;
+    
     /**
      * The name of the factory's corresponding model.
      *
@@ -27,7 +29,7 @@ class CustomerFactory extends Factory
             'name' => $this->faker->company,
             'tax_type_id' => TaxTypeEnum::CNPJ,
             'tax_code' => $this->faker->unique()->cnpj,
-            'address_id' => Address::factory(),
+            'address_id' => $this->relation(Address::class),
             'email' => $this->faker->companyEmail,
             'phone' => $this->faker->phoneNumber,
             'phone_alt' => $this->faker->phoneNumber,

@@ -2,11 +2,13 @@
 
 namespace App\Models\Eloquent\System\SystemAccessLog;
 
+use App\Traits\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class SystemAccessLog extends Model
 {
     use SystemAccessLogRelations;
+    use HasFactory;
     
     /**
      * The table associated with the model.

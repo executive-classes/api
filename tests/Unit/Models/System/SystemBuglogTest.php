@@ -4,9 +4,12 @@ namespace Tests\Unit\Models\System;
 
 use App\Models\Eloquent\System\SystemBugLog\SystemBugLog;
 use Tests\Unit\Models\ModelTestCase;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class SystemBuglogTest extends ModelTestCase
 {
+    use HasFactoryAsserts;
+    
     /**
      * @var SystemBugLog
      */

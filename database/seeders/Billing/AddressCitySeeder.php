@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\Billing;
 
-use Illuminate\Database\Seeder;
+use Database\Seeders\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 

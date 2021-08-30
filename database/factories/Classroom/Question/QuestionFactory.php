@@ -4,7 +4,7 @@ namespace Database\Factories\Classroom\Question;
 
 use App\Models\Eloquent\Classroom\Question\Question;
 use App\Models\Eloquent\General\Category\Category;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\Factory;
 
 class QuestionFactory extends Factory
 {
@@ -25,7 +25,7 @@ class QuestionFactory extends Factory
         return [
             'name' => $this->faker->text(15),
             'question' => $this->faker->text(30),
-            'category_id' => Category::factory()
+            'category_id' => $this->relation(Category::class)
         ];
     }
 }

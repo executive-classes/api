@@ -6,8 +6,8 @@ use Carbon\Carbon;
 use App\Enums\Billing\TaxTypeEnum;
 use App\Enums\System\SystemLanguageEnum;
 use App\Models\Eloquent\Billing\User\User;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Database\Factories\Billing\User\UserFactoryStates;
+use Database\Factories\Factory;
 
 class UserFactory extends Factory
 {

@@ -2,13 +2,13 @@
 
 namespace Database\Factories\Billing\Biller;
 
+use App\Enums\Billing\PaymentIntervalEnum;
+use App\Enums\Billing\PaymentMethodEnum;
 use App\Enums\Billing\TaxTypeEnum;
 use App\Models\Eloquent\Billing\Biller\Biller;
 use App\Models\Eloquent\Billing\Address\Address;
 use App\Models\Eloquent\Billing\Customer\Customer;
-use App\Models\Eloquent\Billing\PaymentInterval\PaymentInterval;
-use App\Models\Eloquent\Billing\PaymentMethod\PaymentMethod;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\Factory;
 
 class BillerFactory extends Factory
 {
@@ -29,16 +29,16 @@ class BillerFactory extends Factory
     public function definition()
     {
         return [
-            'customer_id' => Customer::factory(),
+            'customer_id' => $this->relation(Customer::class),
             'name' => $this->faker->company,
             'tax_type_id' => TaxTypeEnum::CNPJ,
             'tax_code' => $this->faker->cnpj,
-            'address_id' => Address::factory(),
+            'address_id' => $this->relation(Address::class),
             'email' => $this->faker->companyEmail,
             'phone' => $this->faker->phoneNumber,
             'phone_alt' => $this->faker->phoneNumber,
-            'payment_interval_id' => PaymentInterval::inRandomOrder()->first(),
-            'payment_method_id' => PaymentMethod::inRandomOrder()->first()
+            'payment_interval_id' => PaymentIntervalEnum::getRandomValue(),
+            'payment_method_id' => PaymentMethodEnum::getRandomValue()
         ];
     }
 }

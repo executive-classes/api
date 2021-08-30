@@ -5,7 +5,7 @@ namespace Database\Factories\Billing\Collection;
 use App\Models\Eloquent\Billing\Biller\Biller;
 use App\Models\Eloquent\Billing\Collection\Collection;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Database\Factories\Factory;
 
 class CollectionFactory extends Factory
 {
@@ -27,7 +27,7 @@ class CollectionFactory extends Factory
     {
         return [
             'expire_at' => Carbon::now()->addWeek(1)->toDateTimeString(),
-            'biller_id' => Biller::factory(),
+            'biller_id' => $this->relation(Biller::class),
             'amount' => $this->faker->randomFloat(2, 0, 10000),
             'description' => $this->faker->text(255),
             'truncatedDescription' => $this->faker->text(22),
