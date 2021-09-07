@@ -26,11 +26,10 @@ class StudentFactory extends Factory
      */
     public function definition()
     {
+        $biller = $this->relation(Biller::class);
         return [
             'biller_id' => $this->relation(Biller::class),
-            'customer_id' => function (array $attributes) {
-                return Biller::find($attributes['biller_id'])->customer_id;
-            },
+            'customer_id' => $biller->customer_id,
             'user_id' => $this->relation(User::class)
         ];
     }

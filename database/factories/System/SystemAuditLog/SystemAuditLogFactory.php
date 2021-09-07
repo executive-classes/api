@@ -2,9 +2,10 @@
 
 namespace Database\Factories\System\SystemAuditLog;
 
-use App\Enums\System\AuditLogTypeEnum;
 use Carbon\Carbon;
 use Database\Factories\Factory;
+use App\Enums\System\AuditLogTypeEnum;
+use App\Models\Eloquent\Billing\User\User;
 use App\Models\Eloquent\System\SystemAuditLog\SystemAuditLog;
 
 class SystemAuditLogFactory extends Factory

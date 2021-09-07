@@ -25,18 +25,15 @@ class CollectionFactory extends Factory
      */
     public function definition()
     {
+        $biller = $this->relation(Biller::class);
         return [
             'expire_at' => Carbon::now()->addWeek(1)->toDateTimeString(),
-            'biller_id' => $this->relation(Biller::class),
+            'biller_id' => $biller,
             'amount' => $this->faker->randomFloat(2, 0, 10000),
             'description' => $this->faker->text(255),
             'truncatedDescription' => $this->faker->text(22),
-            'payment_interval_id' => function (array $attributes) {
-                return Biller::find($attributes['biller_id'])->payment_interval_id;
-            },
-            'payment_method_id' => function (array $attributes) {
-                return Biller::find($attributes['biller_id'])->payment_method_id;
-            }
+            'payment_interval_id' => $biller->payment_interval_id,
+            'payment_method_id' => $biller->payment_method_id
         ];
     }
 }

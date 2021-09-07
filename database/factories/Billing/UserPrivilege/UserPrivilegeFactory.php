@@ -2,8 +2,9 @@
 
 namespace Database\Factories\Billing\UserPrivilege;
 
-use App\Enums\Billing\UserPrivilegeEnum;
 use Database\Factories\Factory;
+use App\Enums\Billing\UserPrivilegeEnum;
+use App\Models\Eloquent\Billing\UserPrivilege\UserPrivilege;
 
 class UserPrivilegeFactory extends Factory
 {

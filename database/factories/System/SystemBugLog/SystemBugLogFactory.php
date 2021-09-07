@@ -2,9 +2,10 @@
 
 namespace Database\Factories\System\SystemBugLog;
 
-use App\Enums\System\SystemAppEnum;
 use Carbon\Carbon;
 use Database\Factories\Factory;
+use App\Enums\System\SystemAppEnum;
+use App\Models\Eloquent\Billing\User\User;
 use App\Models\Eloquent\System\SystemBugLog\SystemBugLog;
 use Database\Factories\System\SystemBugLog\SystemBugLogFactoryStates;
 

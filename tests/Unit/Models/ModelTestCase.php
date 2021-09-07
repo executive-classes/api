@@ -328,5 +328,6 @@ abstract class ModelTestCase extends TestCase
         $modelClass = get_class($model);
         $errorMessage = "The model {$modelClass} doesn't have a factory";
         $this->assertHasMethod($modelClass, 'factory', $errorMessage);
+        $this->assertInstanceOf($modelClass, $model->factory()->make());
     }
 }
