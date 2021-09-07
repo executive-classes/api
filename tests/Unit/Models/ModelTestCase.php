@@ -114,13 +114,16 @@ abstract class ModelTestCase extends TestCase
         \Closure $queryCheck = null
     ) {
         // Test relation.
-        $this->assertInstanceOf(BelongsTo::class, $relation);
+        $relationMessage = "The relation is not a BelongsTo instance";
+        $this->assertInstanceOf(BelongsTo::class, $relation, $relationMessage);
 
         // Test foreing key.
-        $this->assertEquals($key, $relation->getForeignKeyName());
+        $keyMessage = "The foreing key $key doesn't match with the relation foreing key {$relation->getForeignKeyName()}";
+        $this->assertEquals($key, $relation->getForeignKeyName(), $keyMessage);
 
         // Test owner key.
-        $this->assertEquals($ownerKey, $relation->getOwnerKeyName());
+        $ownerKeyMessage = "The owner key $key doesn't match with the relation owner key {$relation->getForeignKeyName()}";
+        $this->assertEquals($ownerKey, $relation->getOwnerKeyName(), $ownerKeyMessage);
 
         // Test query.
         $this->queryCheck($queryCheck, $model, $relation);
@@ -144,13 +147,16 @@ abstract class ModelTestCase extends TestCase
         \Closure $queryCheck = null
     ) {
         // Test relation.
-        $this->assertInstanceOf(HasOne::class, $relation);
+        $relationMessage = "The relation is not a HasOne instance";
+        $this->assertInstanceOf(HasOne::class, $relation, $relationMessage);
 
         // Test foreing key.
-        $this->assertEquals($key, $relation->getForeignKeyName());
+        $keyMessage = "The foreing key $key doesn't match with the relation foreing key {$relation->getForeignKeyName()}";
+        $this->assertEquals($key, $relation->getForeignKeyName(), $keyMessage);
 
         // Test local key.
-        $this->assertEquals($localKey, $relation->getLocalKeyName());
+        $localKeyMessage = "The local key $key doesn't match with the relation local key {$relation->getLocalKeyName()}";
+        $this->assertEquals($localKey, $relation->getLocalKeyName(), $localKeyMessage);
 
         // Test query.
         $this->queryCheck($queryCheck, $model, $relation);
@@ -174,13 +180,16 @@ abstract class ModelTestCase extends TestCase
         \Closure $queryCheck = null
     ) {
         // Test relation.
-        $this->assertInstanceOf(HasMany::class, $relation);
+        $relationMessage = "The relation is not a HasMany instance";
+        $this->assertInstanceOf(HasMany::class, $relation, $relationMessage);
 
         // Test foreing key.
-        $this->assertEquals($key, $relation->getForeignKeyName());
+        $keyMessage = "The foreing key $key doesn't match with the relation foreing key {$relation->getForeignKeyName()}";
+        $this->assertEquals($key, $relation->getForeignKeyName(), $keyMessage);
 
         // Test local key.
-        $this->assertEquals($localKey, $relation->getLocalKeyName());
+        $localKeyMessage = "The local key $key doesn't match with the relation local key {$relation->getLocalKeyName()}";
+        $this->assertEquals($localKey, $relation->getLocalKeyName(), $localKeyMessage);
 
         // Test query.
         $this->queryCheck($queryCheck, $model, $relation);
@@ -206,16 +215,20 @@ abstract class ModelTestCase extends TestCase
         \Closure $queryCheck = null
     ) {
         // Test relation.
-        $this->assertInstanceOf(BelongsToMany::class, $relation);
+        $relationMessage = "The relation is not a BelongsToMany instance";
+        $this->assertInstanceOf(BelongsToMany::class, $relation, $relationMessage);
 
         // Test pivot table.
-        $this->assertEquals($table, $relation->getTable());
+        $tableMessage = "The table $table doesn't match with the relation table {$relation->getTable()}";
+        $this->assertEquals($table, $relation->getTable(), $tableMessage);
 
         // Test foreing key.
-        $this->assertEquals($key, $relation->getForeignPivotKeyName());
+        $keyMessage = "The foreing key $key doesn't match with the relation foreing key {$relation->getForeignPivotKeyName()}";
+        $this->assertEquals($key, $relation->getForeignPivotKeyName(), $keyMessage);
 
         // Test owner key.
-        $this->assertEquals($ownerKey, $relation->getRelatedPivotKeyName());
+        $ownerKeyMessage = "The owner key $key doesn't match with the relation owner key {$relation->getRelatedPivotKeyName()}";
+        $this->assertEquals($ownerKey, $relation->getRelatedPivotKeyName(), $ownerKeyMessage);
 
         // Test query.
         $this->queryCheck($queryCheck, $model, $relation);
@@ -243,19 +256,24 @@ abstract class ModelTestCase extends TestCase
         \Closure $queryCheck = null
     ) {
         // Test relation.
-        $this->assertInstanceOf(HasOneThrough::class, $relation);
+        $relationMessage = "The relation is not a HasOneThrough instance";
+        $this->assertInstanceOf(HasOneThrough::class, $relation, $relationMessage);
 
         // Test key.
-        $this->assertEquals($localKey, $relation->getLocalKeyName());
+        $keyMessage = "The foreing key $key doesn't match with the relation foreing key {$relation->getForeignKeyName()}";
+        $this->assertEquals($localKey, $relation->getLocalKeyName(), $keyMessage);
 
         // Test second key.
-        $this->assertEquals($secondLocalKey, $relation->getSecondLocalKeyName());
+        $secondKeyMessage = "The second foreing key $key doesn't match with the relation second foreing key {$relation->getForeignKeyName()}";
+        $this->assertEquals($secondLocalKey, $relation->getSecondLocalKeyName(), $secondKeyMessage);
 
         // Test local key.
-        $this->assertEquals($key, $relation->getFirstKeyName());
+        $localKeyMessage = "The local key $key doesn't match with the relation local key {$relation->getLocalKeyName()}";
+        $this->assertEquals($key, $relation->getFirstKeyName(), $localKeyMessage);
 
         // Test second local key.
-        $this->assertEquals($secondKey, $relation->getForeignKeyName());
+        $secondLocalKeyMessage = "The second local key $key doesn't match with the relation second local key {$relation->getLocalKeyName()}";
+        $this->assertEquals($secondKey, $relation->getForeignKeyName(), $secondLocalKeyMessage);
 
         // Test query.
         $this->queryCheck($queryCheck, $model, $relation);
@@ -297,6 +315,7 @@ abstract class ModelTestCase extends TestCase
         // Test if the mutator works
         if (($value !== null || $expected !== null) || $forceTest) {
             $model->$methodName($value);
+
             $mutatingError = "The mutator {$methodName} doesn't change the value {$value} into {$expected}";
             $this->assertEquals($expected, $model->$field, $mutatingError);
         }
@@ -313,6 +332,7 @@ abstract class ModelTestCase extends TestCase
     {
         $modelClass = get_class($model);
         $scope = 'scope' . Str::ucfirst($scope);
+
         $scopeError = "The model {$modelClass} doesn't have the scope {$scope}";
         $this->assertHasMethod(get_class($model), $scope, $scopeError);
     }
@@ -328,6 +348,8 @@ abstract class ModelTestCase extends TestCase
         $modelClass = get_class($model);
         $errorMessage = "The model {$modelClass} doesn't have a factory";
         $this->assertHasMethod($modelClass, 'factory', $errorMessage);
-        $this->assertInstanceOf($modelClass, $model->factory()->make());
+        
+        $errorMessage = "The model {$modelClass} can't be maked";
+        $this->assertInstanceOf($modelClass, $model->factory()->make(), $errorMessage);
     }
 }
