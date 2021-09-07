@@ -2,7 +2,7 @@
 
 namespace App\Enums\System;
 
-use BenSampo\Enum\Enum;
+use App\Enums\Enum;
 
 final class SystemAppEnum extends Enum
 {

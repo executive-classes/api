@@ -15,24 +15,23 @@ class CourseStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(CourseStatusEnum::NEW, 'Novo');
-        $this->create(CourseStatusEnum::IN_PROGRESS, 'Em andamento');
-        $this->create(CourseStatusEnum::FINISHED, 'Finalizado');
-        $this->create(CourseStatusEnum::APPROVED, 'Aprovado');
-        $this->create(CourseStatusEnum::DISAPPROVED, 'Desaprovado');
-        $this->create(CourseStatusEnum::ABANDONED, 'Abandonado');
+        $this->create(CourseStatusEnum::NEW);
+        $this->create(CourseStatusEnum::IN_PROGRESS);
+        $this->create(CourseStatusEnum::FINISHED);
+        $this->create(CourseStatusEnum::APPROVED);
+        $this->create(CourseStatusEnum::DISAPPROVED);
+        $this->create(CourseStatusEnum::ABANDONED);
     }
 
     /**
      * Create a Course Status entry.
      *
      * @param string $id
-     * @param string $name
      * @return void
      */
-    protected function create(string $id, string $name)
+    protected function create(string $id)
     {
-        $courseStatus = new CourseStatus(compact('id', 'name'));
+        $courseStatus = new CourseStatus(compact('id'));
         $courseStatus->save();
     }
 }

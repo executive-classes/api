@@ -19,10 +19,6 @@ class CreateMessageTypeTable extends Migration
                 ->comment('Message type id.');
 
             $table->primary('id');
-
-            // Message type data
-            $table->string('description')
-                ->comment('Message type description.');
         });
     }
 

@@ -15,22 +15,21 @@ class MessageStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(MessageStatusEnum::SENT, 'Enviada');
-        $this->create(MessageStatusEnum::CANCELED, 'Cancelada');
-        $this->create(MessageStatusEnum::SCHEDULED, 'Agendada');
-        $this->create(MessageStatusEnum::ERROR, 'Erro');
+        $this->create(MessageStatusEnum::SENT);
+        $this->create(MessageStatusEnum::CANCELED);
+        $this->create(MessageStatusEnum::SCHEDULED);
+        $this->create(MessageStatusEnum::ERROR);
     }
 
     /**
      * Create the Message Status entry;
      *
      * @param string $id
-     * @param string $description
      * @return void
      */
-    protected function create(string $id, string $description): void
+    protected function create(string $id): void
     {
-        $messageStatus = new MessageStatus(compact('id', 'description'));
+        $messageStatus = new MessageStatus(compact('id'));
         $messageStatus->save();
     }
 }

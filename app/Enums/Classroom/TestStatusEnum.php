@@ -2,7 +2,7 @@
 
 namespace App\Enums\Classroom;
 
-use BenSampo\Enum\Enum;
+use App\Enums\Enum;
 
 final class TestStatusEnum extends Enum
 {

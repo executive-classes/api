@@ -19,13 +19,6 @@ class CreateTeacherStatusTable extends Migration
                 ->comment('Teacher status id.');
 
             $table->primary('id');
-
-            // Message status data
-            $table->string('name')
-                ->comment('Teacher status name.');
-
-            $table->string('description')
-                ->comment('Teacher status description.');
         });
     }
 

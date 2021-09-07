@@ -19,13 +19,6 @@ class CreateCollectionStatusTable extends Migration
                 ->comment('Collection status id.');
 
             $table->primary('id');
-
-            // Message status data
-            $table->string('name')
-                ->comment('Collection status name.');
-
-            $table->string('description')
-                ->comment('Collection status description.');
         });
     }
 

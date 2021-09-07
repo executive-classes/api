@@ -15,22 +15,21 @@ class LessonStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(LessonStatusEnum::NEW, 'Novo');
-        $this->create(LessonStatusEnum::IN_PROGRESS, 'Em andamento');
-        $this->create(LessonStatusEnum::FINISHED, 'Finalizado');
-        $this->create(LessonStatusEnum::ABANDONED, 'Abandonado');
+        $this->create(LessonStatusEnum::NEW);
+        $this->create(LessonStatusEnum::IN_PROGRESS);
+        $this->create(LessonStatusEnum::FINISHED);
+        $this->create(LessonStatusEnum::ABANDONED);
     }
 
     /**
      * Create a Lesson Status entry.
      *
      * @param string $id
-     * @param string $name
      * @return void
      */
-    protected function create(string $id, string $name)
+    protected function create(string $id)
     {
-        $lessonStatus = new LessonStatus(compact('id', 'name'));
+        $lessonStatus = new LessonStatus(compact('id'));
         $lessonStatus->save();
     }
 }

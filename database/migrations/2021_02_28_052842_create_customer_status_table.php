@@ -19,13 +19,6 @@ class CreateCustomerStatusTable extends Migration
                 ->comment('Customer status id.');
                 
             $table->primary('id');
-
-            // Message status data
-            $table->string('name')
-                ->comment('Customer status name.');
-
-            $table->string('description')
-                ->comment('Customer status description.');
         });
     }
 

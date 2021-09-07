@@ -19,13 +19,6 @@ class CreateEmployeeStatusTable extends Migration
                 ->comment('employee status id.');
 
             $table->primary('id');
-
-            // Message status data
-            $table->string('name')
-                ->comment('employee status name.');
-
-            $table->string('description')
-                ->comment('employee status description.');
         });
     }
 

@@ -2,7 +2,7 @@
 
 namespace App\Enums\Mailing;
 
-use BenSampo\Enum\Enum;
+use App\Enums\Enum;
 
 final class MessageTypeEnum extends Enum
 {

@@ -2,10 +2,18 @@
 
 namespace App\Http\Resources\Billling\BillerStatus;
 
-use App\Http\Resources\Resource;
+use App\Enums\Billing\BillerStatusEnum;
+use App\Http\Resources\EnumResource;
 
-class BillerStatusResource extends Resource
+class BillerStatusResource extends EnumResource
 {
+    /**
+     * The Enum class.
+     * 
+     * @var \App\Enums\Enum
+     */
+    public $enum = BillerStatusEnum::class;
+
     /**
      * Transform the resource into an array.
      *

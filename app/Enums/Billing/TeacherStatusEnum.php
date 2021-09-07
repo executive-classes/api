@@ -2,7 +2,7 @@
 
 namespace App\Enums\Billing;
 
-use BenSampo\Enum\Enum;
+use App\Enums\Enum;
 
 final class TeacherStatusEnum extends Enum
 {

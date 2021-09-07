@@ -19,10 +19,6 @@ class CreateCategoryTypeTable extends Migration
                 ->comment('Category type id.');
 
             $table->primary('id');
-
-            // Data
-            $table->string('name')
-                ->comment('Category type name.');
         });
     }
 

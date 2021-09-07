@@ -17,17 +17,17 @@ class EmployeePositionSeeder extends Seeder
     public function run()
     {
         // Admin
-        $this->create(EmployeePositionEnum::ADMINISTRATOR, 'Administrador', null, [
+        $this->create(EmployeePositionEnum::ADMINISTRATOR, null, [
             UserPrivilegeEnum::ALL
         ]);
         
         // Dev
-        $this->create(EmployeePositionEnum::DEVELOPER, 'Desenvolvedor', EmployeePositionEnum::ADMINISTRATOR, [
+        $this->create(EmployeePositionEnum::DEVELOPER, EmployeePositionEnum::ADMINISTRATOR, [
             UserPrivilegeEnum::ALL
         ]);
         
         // Finan
-        $this->create(EmployeePositionEnum::FINANCIAL, 'Financeiro', EmployeePositionEnum::ADMINISTRATOR, [
+        $this->create(EmployeePositionEnum::FINANCIAL, EmployeePositionEnum::ADMINISTRATOR, [
             UserPrivilegeEnum::ADDRESS_GET,
             UserPrivilegeEnum::ADDRESS_CREATE,
             UserPrivilegeEnum::ADDRESS_UPDATE,
@@ -45,7 +45,7 @@ class EmployeePositionSeeder extends Seeder
         ]);
 
         // Tech
-        $this->create(EmployeePositionEnum::TECHNICIAN, 'Técnico', EmployeePositionEnum::ADMINISTRATOR, [
+        $this->create(EmployeePositionEnum::TECHNICIAN, EmployeePositionEnum::ADMINISTRATOR, [
             UserPrivilegeEnum::ADDRESS_GET,
             UserPrivilegeEnum::ADDRESS_UPDATE,
             UserPrivilegeEnum::CUSTOMER_GET,
@@ -67,7 +67,7 @@ class EmployeePositionSeeder extends Seeder
         ]);
 
         // Hr
-        $this->create(EmployeePositionEnum::HR, 'Recursos Humanos', EmployeePositionEnum::ADMINISTRATOR, [
+        $this->create(EmployeePositionEnum::HR, EmployeePositionEnum::ADMINISTRATOR, [
             UserPrivilegeEnum::USER_GET,
             UserPrivilegeEnum::USER_CREATE,
             UserPrivilegeEnum::USER_UPDATE,
@@ -90,12 +90,13 @@ class EmployeePositionSeeder extends Seeder
      * Create the Employee Position entry;
      *
      * @param string $id
-     * @param string $name
+     * @param string|null $parent_id
+     * @param array $privileges
      * @return void
      */
-    protected function create(string $id, string $name, string $parent_id = null, array $privileges = []): void
+    protected function create(string $id, string $parent_id = null, array $privileges = []): void
     {
-        $position = new EmployeePosition(compact('id', 'name', 'parent_id'));
+        $position = new EmployeePosition(compact('id', 'parent_id'));
         $position->save();
         $position->privileges()->toggle($privileges);
     }

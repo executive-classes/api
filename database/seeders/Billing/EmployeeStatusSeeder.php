@@ -15,22 +15,20 @@ class EmployeeStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(EmployeeStatusEnum::ACTIVE, 'Ativo', 'Indicates that a employee is active and can use the system.');
-        $this->create(EmployeeStatusEnum::SUSPENDED, 'Suspenso', 'Indicates that a employee is suspended and can not use the system.');
-        $this->create(EmployeeStatusEnum::CANCELED, 'Cancelado', 'Indicates that a employee is canceled and will no more use the system.');
+        $this->create(EmployeeStatusEnum::ACTIVE);
+        $this->create(EmployeeStatusEnum::SUSPENDED);
+        $this->create(EmployeeStatusEnum::CANCELED);
     }
 
     /**
      * Create a Employee Status entry.
      *
      * @param string $id
-     * @param string $name
-     * @param string $description
      * @return void
      */
-    protected function create(string $id, string $name, string $description)
+    protected function create(string $id)
     {
-        $employeeStatus = new EmployeeStatus(compact('id', 'name', 'description'));
+        $employeeStatus = new EmployeeStatus(compact('id'));
         $employeeStatus->save();
     }
 }

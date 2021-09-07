@@ -15,22 +15,20 @@ class TeacherStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(TeacherStatusEnum::ACTIVE, 'Ativo', 'Indicates that a teacher is active and can teach classes.');
-        $this->create(TeacherStatusEnum::SUSPENDED, 'Suspenso', 'Indicates that a teacher is suspended and can not teach classes.');
-        $this->create(TeacherStatusEnum::CANCELED, 'Cancelado', 'Indicates that a teacher is canceled and will no more teach classes.');
+        $this->create(TeacherStatusEnum::ACTIVE);
+        $this->create(TeacherStatusEnum::SUSPENDED);
+        $this->create(TeacherStatusEnum::CANCELED);
     }
 
     /**
      * Create a Teacher Status entry.
      *
      * @param string $id
-     * @param string $name
-     * @param string $description
      * @return void
      */
-    protected function create(string $id, string $name, string $description)
+    protected function create(string $id)
     {
-        $teacherStatus = new TeacherStatus(compact('id', 'name', 'description'));
+        $teacherStatus = new TeacherStatus(compact('id'));
         $teacherStatus->save();
     }
 }

@@ -15,22 +15,20 @@ class StudentStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(StudentStatusEnum::ACTIVE, 'Ativo', 'Indicates that a student is active and can attend classes.');
-        $this->create(StudentStatusEnum::SUSPENDED, 'Suspenso', 'Indicates that a student is suspended and can not attend classes.');
-        $this->create(StudentStatusEnum::CANCELED, 'Cancelado', 'Indicates that a student is canceled and will no more attend classes.');
+        $this->create(StudentStatusEnum::ACTIVE);
+        $this->create(StudentStatusEnum::SUSPENDED);
+        $this->create(StudentStatusEnum::CANCELED);
     }
 
     /**
      * Create a Student Status entry.
      *
      * @param string $id
-     * @param string $name
-     * @param string $description
      * @return void
      */
-    protected function create(string $id, string $name, string $description)
+    protected function create(string $id)
     {
-        $studentStatus = new StudentStatus(compact('id', 'name', 'description'));
+        $studentStatus = new StudentStatus(compact('id'));
         $studentStatus->save();
     }
 }

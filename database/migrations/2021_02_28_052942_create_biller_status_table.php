@@ -19,13 +19,6 @@ class CreateBillerStatusTable extends Migration
                 ->comment('Biller status id.');
 
             $table->primary('id');
-
-            // Message status data
-            $table->string('name')
-                ->comment('Biller status name.');
-                
-            $table->string('description')
-                ->comment('Biller status description.');
         });
     }
 

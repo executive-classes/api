@@ -2,10 +2,18 @@
 
 namespace App\Http\Resources\Billling\PaymentMethod;
 
-use App\Http\Resources\Resource;
+use App\Http\Resources\EnumResource;
+use App\Enums\Billing\PaymentMethodEnum;
 
-class PaymentMethodResource extends Resource
+class PaymentMethodResource extends EnumResource
 {
+    /**
+     * The Enum class.
+     * 
+     * @var \App\Enums\Enum
+     */
+    public $enum = PaymentMethodEnum::class;
+
     /**
      * Transform the resource into an array.
      *

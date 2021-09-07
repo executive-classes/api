@@ -17,13 +17,6 @@ class CreatePaymentIntervalTable extends Migration
             // PK
             $table->id()
                 ->comment('Payment Interval id.');
-
-            // Message status data
-            $table->string('name')
-                ->comment('Payment Interval name.');
-
-            $table->string('description')
-                ->comment('Payment Interval description.');
         });
     }
 

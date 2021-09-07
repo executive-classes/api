@@ -2,7 +2,7 @@
 
 namespace App\Enums\Billing;
 
-use BenSampo\Enum\Enum;
+use App\Enums\Enum;
 
 final class EmployeePositionEnum extends Enum
 {
@@ -10,5 +10,5 @@ final class EmployeePositionEnum extends Enum
     const DEVELOPER = 'developer';
     const FINANCIAL = 'financial';
     const TECHNICIAN = 'technician';
-    const HR = 'HR';
+    const HR = 'hr';
 }

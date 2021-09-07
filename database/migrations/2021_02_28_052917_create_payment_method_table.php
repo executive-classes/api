@@ -20,13 +20,7 @@ class CreatePaymentMethodTable extends Migration
 
             $table->primary('id');
 
-            // Message status data
-            $table->string('name')
-                ->comment('Payment Method name.');
-
-            $table->string('description')
-                ->comment('Payment Method description.');
-
+            // Payment Method data
             $table->string('invoice_code')
                 ->comment('Code of the payment method in the brazillian invoice.');
         });

@@ -19,10 +19,6 @@ class CreateMessageStatusTable extends Migration
                 ->comment('Message status id.');
 
             $table->primary('id');
-
-            // Message status data
-            $table->string('description')
-                ->comment('Message status description.');
         });
     }
 

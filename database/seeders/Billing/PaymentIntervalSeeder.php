@@ -15,25 +15,23 @@ class PaymentIntervalSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(PaymentIntervalEnum::MENSAL, 'Mensal', 'Payments made every 1 month ');
-        $this->create(PaymentIntervalEnum::BIMESTRAL, 'Bimestral', 'Payments made every 2 months ');
-        $this->create(PaymentIntervalEnum::TRIMESTRAL, 'Trimestral', 'Payments made every 3 months ');
-        $this->create(PaymentIntervalEnum::SEMESTRAL, 'Semestral', 'Payments made every 6 months');
-        $this->create(PaymentIntervalEnum::ANUAL, 'Anual', 'Payments made every 12 months');
-        $this->create(PaymentIntervalEnum::BIANUAL, 'Bianual', 'Payments made every 24 months');
+        $this->create(PaymentIntervalEnum::MENSAL);
+        $this->create(PaymentIntervalEnum::BIMESTRAL);
+        $this->create(PaymentIntervalEnum::TRIMESTRAL);
+        $this->create(PaymentIntervalEnum::SEMESTRAL);
+        $this->create(PaymentIntervalEnum::ANUAL);
+        $this->create(PaymentIntervalEnum::BIANUAL);
     }
 
     /**
      * Create a Payment Interval entry.
      *
      * @param string $id
-     * @param string $name
-     * @param string $description
      * @return void
      */
-    protected function create(string $id, string $name, string $description)
+    protected function create(string $id)
     {
-        $paymentInterval = new PaymentInterval(compact('id', 'name', 'description'));
+        $paymentInterval = new PaymentInterval(compact('id'));
         $paymentInterval->save();
     }
 }

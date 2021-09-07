@@ -19,10 +19,6 @@ class CreateLessonStatusTable extends Migration
                 ->comment('Lesson status id.');
 
             $table->primary('id');
-
-            // Lesson status data
-            $table->string('name')
-                ->comment('Lesson status name.');
         });
     }
 

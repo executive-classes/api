@@ -15,23 +15,21 @@ class CustomerStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(CustomerStatusEnum::ACTIVE, 'Ativo', 'Indicates that a customer is active and had to pay for its services.');
-        $this->create(CustomerStatusEnum::SUSPENDED, 'Suspenso', 'Indicates that a customer is suspended and will not generate collections.');
-        $this->create(CustomerStatusEnum::CANCELED, 'Cancelado', 'Indicates that a customer is canceled and will be no more a client.');
-        $this->create(CustomerStatusEnum::INACTIVE, 'Inativo', 'Indicates that a customer is inactive and is no more a client.');
+        $this->create(CustomerStatusEnum::ACTIVE);
+        $this->create(CustomerStatusEnum::SUSPENDED);
+        $this->create(CustomerStatusEnum::CANCELED);
+        $this->create(CustomerStatusEnum::INACTIVE);
     }
 
     /**
      * Create a Customer Status entry.
      *
      * @param string $id
-     * @param string $name
-     * @param string $description
      * @return void
      */
-    protected function create(string $id, string $name, string $description)
+    protected function create(string $id)
     {
-        $customerStatus = new CustomerStatus(compact('id', 'name', 'description'));
+        $customerStatus = new CustomerStatus(compact('id'));
         $customerStatus->save();
     }
 }

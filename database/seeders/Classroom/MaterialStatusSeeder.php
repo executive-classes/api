@@ -15,20 +15,19 @@ class MaterialStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(MaterialStatusEnum::NEW, 'Novo');
-        $this->create(MaterialStatusEnum::VIEWED, 'Visto');
+        $this->create(MaterialStatusEnum::NEW);
+        $this->create(MaterialStatusEnum::VIEWED);
     }
 
     /**
      * Create a Material Status entry.
      *
      * @param string $id
-     * @param string $name
      * @return void
      */
-    protected function create(string $id, string $name)
+    protected function create(string $id)
     {
-        $materialStatus = new MaterialStatus(compact('id', 'name'));
+        $materialStatus = new MaterialStatus(compact('id'));
         $materialStatus->save();
     }
 }

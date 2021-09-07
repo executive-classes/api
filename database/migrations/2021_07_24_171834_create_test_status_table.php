@@ -19,10 +19,6 @@ class CreateTestStatusTable extends Migration
                 ->comment('Test status id.');
 
             $table->primary('id');
-
-            // Test status data
-            $table->string('name')
-                ->comment('Test status name.');
         });
     }
 

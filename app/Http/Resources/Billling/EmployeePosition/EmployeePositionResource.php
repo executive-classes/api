@@ -2,10 +2,18 @@
 
 namespace App\Http\Resources\Billling\EmployeePosition;
 
-use App\Http\Resources\Resource;
+use App\Enums\Billing\EmployeePositionEnum;
+use App\Http\Resources\EnumResource;
 
-class EmployeePositionResource extends Resource
+class EmployeePositionResource extends EnumResource
 {
+    /**
+     * The Enum class.
+     * 
+     * @var \App\Enums\Enum
+     */
+    public $enum = EmployeePositionEnum::class;
+
     /**
      * Transform the resource into an array.
      *

@@ -19,10 +19,6 @@ class CreateMaterialStatusTable extends Migration
                 ->comment('Question status id.');
 
             $table->primary('id');
-
-            // Question status data
-            $table->string('name')
-                ->comment('Question status name.');
         });
     }
 

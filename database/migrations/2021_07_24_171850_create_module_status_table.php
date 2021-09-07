@@ -19,10 +19,6 @@ class CreateModuleStatusTable extends Migration
                 ->comment('Course status id.');
 
             $table->primary('id');
-
-            // Course status data
-            $table->string('name')
-                ->comment('Course status name.');
         });
     }
 

@@ -2,7 +2,7 @@
 
 namespace App\Enums\General;
 
-use BenSampo\Enum\Enum;
+use App\Enums\Enum;
 
 final class CategoryTypeEnum extends Enum
 {

@@ -15,20 +15,19 @@ class MessageTypeSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(MessageTypeEnum::BILLING, 'Cobrança');
-        $this->create(MessageTypeEnum::WARNING, 'Aviso');
+        $this->create(MessageTypeEnum::BILLING);
+        $this->create(MessageTypeEnum::WARNING);
     }
 
     /**
      * Create the Message Type entry;
      *
      * @param string $id
-     * @param string $description
      * @return void
      */
-    protected function create(string $id, string $description): void
+    protected function create(string $id): void
     {
-        $messageType = new MessageType(compact('id', 'description'));
+        $messageType = new MessageType(compact('id'));
         $messageType->save();
     }
 }

@@ -24,9 +24,6 @@ class CreateSystemAppTable extends Migration
             $table->string('name')
                 ->comment('The name of the application.');
 
-            $table->string('description')
-                ->comment('The description of the application.');
-
             $table->boolean('active')
                 ->comment('The status of the application.');
 

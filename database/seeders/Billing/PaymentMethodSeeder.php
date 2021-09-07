@@ -15,24 +15,23 @@ class PaymentMethodSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(PaymentMethodEnum::CREDIT_CARD, 'Cartão de Crédito', 'Payments made with Credit Card', '03');
-        $this->create(PaymentMethodEnum::BANK_SLIP, 'Boleto Bancário', 'Payments made with bank split', '15');
-        $this->create(PaymentMethodEnum::DEPOSIT, 'Depósito Bancário', 'Payments made with a bank deposit', '16');
-        $this->create(PaymentMethodEnum::PIX, 'PIX', 'Payments made with brazillian pix', '17');
-        $this->create(PaymentMethodEnum::TRANSFER, 'Transferência Bancária', 'Payments made with bank transfer', '18');
+        $this->create(PaymentMethodEnum::CREDIT_CARD, '03');
+        $this->create(PaymentMethodEnum::BANK_SLIP, '15');
+        $this->create(PaymentMethodEnum::DEPOSIT, '16');
+        $this->create(PaymentMethodEnum::PIX, '17');
+        $this->create(PaymentMethodEnum::TRANSFER, '18');
     }
 
     /**
      * Create a payment method entry.
      *
      * @param string $id
-     * @param string $name
-     * @param string $description
+     * @param string $invoice_code
      * @return void
      */
-    protected function create(string $id, string $name, string $description, string $invoice_code)
+    protected function create(string $id, string $invoice_code)
     {
-        $paymentMethod = new PaymentMethod(compact('id', 'name', 'description', 'invoice_code'));
+        $paymentMethod = new PaymentMethod(compact('id', 'invoice_code'));
         $paymentMethod->save();
     }
 }

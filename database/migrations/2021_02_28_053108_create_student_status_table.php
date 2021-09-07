@@ -19,13 +19,6 @@ class CreateStudentStatusTable extends Migration
                 ->comment('Student status id.');
 
             $table->primary('id');
-
-            // Message status data
-            $table->string('name')
-                ->comment('Student status name.');
-
-            $table->string('description')
-                ->comment('Student status description.');
         });
     }
 

@@ -2,10 +2,18 @@
 
 namespace App\Http\Resources\Billling\PaymentInterval;
 
-use App\Http\Resources\Resource;
+use App\Http\Resources\EnumResource;
+use App\Enums\Billing\PaymentIntervalEnum;
 
-class PaymentIntervalResource extends Resource
+class PaymentIntervalResource extends EnumResource
 {
+    /**
+     * The Enum class.
+     * 
+     * @var \App\Enums\Enum
+     */
+    public $enum = PaymentIntervalEnum::class;
+
     /**
      * Transform the resource into an array.
      *

@@ -15,25 +15,23 @@ class InvoiceStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(InvoiceStatusEnum::CREATED, 'Criada', 'Indicates that a invoice was created.');
-        $this->create(InvoiceStatusEnum::GENERATED, 'Gerada', 'Indicates that a invoice and its XML was created.');
-        $this->create(InvoiceStatusEnum::SENT, 'Enviada', 'Indicates that a invoice was sent to processing.');
-        $this->create(InvoiceStatusEnum::PROCESSING, 'Em processamento', 'Indicates that a invoice its during processing.');
-        $this->create(InvoiceStatusEnum::OK, 'Emitida', 'Indicates that a invoice was sent and it is ok.');
-        $this->create(InvoiceStatusEnum::ERROR, 'Erro', 'Indicates that a invoice was sent but ocorred a error.');
+        $this->create(InvoiceStatusEnum::CREATED);
+        $this->create(InvoiceStatusEnum::GENERATED);
+        $this->create(InvoiceStatusEnum::SENT);
+        $this->create(InvoiceStatusEnum::PROCESSING);
+        $this->create(InvoiceStatusEnum::OK);
+        $this->create(InvoiceStatusEnum::ERROR);
     }
 
     /**
      * Create a Invoice Status entry.
      *
      * @param string $id
-     * @param string $name
-     * @param string $description
      * @return void
      */
-    protected function create(string $id, string $name, string $description)
+    protected function create(string $id)
     {
-        $invoiceStatus = new InvoiceStatus(compact('id', 'name', 'description'));
+        $invoiceStatus = new InvoiceStatus(compact('id'));
         $invoiceStatus->save();
     }
 }

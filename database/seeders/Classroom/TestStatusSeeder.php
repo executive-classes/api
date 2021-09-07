@@ -15,24 +15,23 @@ class TestStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(TestStatusEnum::NEW, 'Nova');
-        $this->create(TestStatusEnum::READY, 'Pronta');
-        $this->create(TestStatusEnum::STARTED, 'Iniciada');
-        $this->create(TestStatusEnum::FINISHED, 'Finalizada');
-        $this->create(TestStatusEnum::GRADED, 'Pontuada');
-        $this->create(TestStatusEnum::CANCELED, 'Cancelada');
+        $this->create(TestStatusEnum::NEW);
+        $this->create(TestStatusEnum::READY);
+        $this->create(TestStatusEnum::STARTED);
+        $this->create(TestStatusEnum::FINISHED);
+        $this->create(TestStatusEnum::GRADED);
+        $this->create(TestStatusEnum::CANCELED);
     }
 
     /**
      * Create a Test Status entry.
      *
      * @param string $id
-     * @param string $name
      * @return void
      */
-    protected function create(string $id, string $name)
+    protected function create(string $id)
     {
-        $testStatus = new TestStatus(compact('id', 'name'));
+        $testStatus = new TestStatus(compact('id'));
         $testStatus->save();
     }
 }

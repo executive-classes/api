@@ -15,24 +15,23 @@ class CategoryTypeSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(CategoryTypeEnum::COURSE, 'Curso');
-        $this->create(CategoryTypeEnum::MODULE, 'Módulo');
-        $this->create(CategoryTypeEnum::LESSON, 'Aula');
-        $this->create(CategoryTypeEnum::TEST, 'Prova');
-        $this->create(CategoryTypeEnum::QUESTION, 'Questão');
-        $this->create(CategoryTypeEnum::MATERIAL, 'Material');
+        $this->create(CategoryTypeEnum::COURSE);
+        $this->create(CategoryTypeEnum::MODULE);
+        $this->create(CategoryTypeEnum::LESSON);
+        $this->create(CategoryTypeEnum::TEST);
+        $this->create(CategoryTypeEnum::QUESTION);
+        $this->create(CategoryTypeEnum::MATERIAL);
     }
 
     /**
      * Create a Category Type entry.
      *
      * @param string $id
-     * @param string $name
      * @return void
      */
-    protected function create(string $id, string $name)
+    protected function create(string $id)
     {
-        $categoryType = new CategoryType(compact('id', 'name'));
+        $categoryType = new CategoryType(compact('id'));
         $categoryType->save();
     }
 }

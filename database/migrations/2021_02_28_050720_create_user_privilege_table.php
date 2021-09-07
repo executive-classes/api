@@ -21,9 +21,6 @@ class CreateUserPrivilegeTable extends Migration
             $table->primary('id');
             
             // Privilege Data
-            $table->string('description')
-                ->comment('Privilage description.');
-
             $table->boolean('teacher_can')
                 ->default(false)
                 ->comment('Determine if the teachers has this privilege');

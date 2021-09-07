@@ -2,10 +2,18 @@
 
 namespace App\Http\Resources\Billling\Tax;
 
-use App\Http\Resources\Resource;
+use App\Enums\Billing\TaxTypeEnum;
+use App\Http\Resources\EnumResource;
 
-class TaxResource extends Resource
+class TaxResource extends EnumResource
 {
+    /**
+     * The Enum class.
+     * 
+     * @var \App\Enums\Enum
+     */
+    public $enum = TaxTypeEnum::class;
+
     /**
      * Transform the resource into an array.
      *

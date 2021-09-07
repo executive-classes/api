@@ -19,13 +19,6 @@ class CreateInvoiceStatusTable extends Migration
                 ->comment('Invoice status id.');
 
             $table->primary('id');
-
-            // Message status data
-            $table->string('name')
-                ->comment('Invoice status name.');
-
-            $table->string('description')
-                ->comment('Invoice status description.');
         });
     }
 

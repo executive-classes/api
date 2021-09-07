@@ -21,10 +21,7 @@ class CreateEmployeePositionTable extends Migration
 
             $table->primary('id');
 
-            // Message status data
-            $table->string('name')
-                ->comment('Position name.');
-
+            // Employee position data
             $table->foreignIdFor(EmployeePosition::class, 'parent_id')
                 ->nullable()
                 ->references('id')

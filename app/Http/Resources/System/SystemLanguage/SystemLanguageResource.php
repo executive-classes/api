@@ -2,27 +2,17 @@
 
 namespace App\Http\Resources\System\SystemLanguage;
 
-use App\Http\Resources\Resource;
+use App\Enums\System\SystemLanguageEnum;
+use App\Http\Resources\EnumResource;
 
-class SystemLanguageResource extends Resource
+class SystemLanguageResource extends EnumResource
 {
     /**
-     * The additional meta data that should be added to the resource response.
-     *
-     * Added during response construction by the developer.
-     *
-     * @var array
+     * The Enum class.
+     * 
+     * @var \App\Enums\Enum
      */
-    public $additional = [
-        'status' => true
-    ];
-
-    /**
-     * The "data" wrapper that should be applied.
-     *
-     * @var string
-     */
-    public static $wrap = 'data';
+    public $enum = SystemLanguageEnum::class;
 
     /**
      * Transform the resource into an array.

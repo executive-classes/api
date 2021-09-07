@@ -15,22 +15,21 @@ class QuestionStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(QuestionStatusEnum::READY, 'Pronta');
-        $this->create(QuestionStatusEnum::STARTED, 'Iniciada');
-        $this->create(QuestionStatusEnum::ANSWERED, 'Respondida');
-        $this->create(QuestionStatusEnum::GRADED, 'Pontuada');
+        $this->create(QuestionStatusEnum::READY);
+        $this->create(QuestionStatusEnum::STARTED);
+        $this->create(QuestionStatusEnum::ANSWERED);
+        $this->create(QuestionStatusEnum::GRADED);
     }
 
     /**
      * Create a Question Status entry.
      *
      * @param string $id
-     * @param string $name
      * @return void
      */
-    protected function create(string $id, string $name)
+    protected function create(string $id)
     {
-        $questionStatus = new QuestionStatus(compact('id', 'name'));
+        $questionStatus = new QuestionStatus(compact('id'));
         $questionStatus->save();
     }
 }

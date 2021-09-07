@@ -18,7 +18,6 @@ class SystemAppSeeder extends Seeder
         $this->create(
             SystemAppEnum::SITE, 
             'Site', 
-            'Executive Classes landing page.',
             true, 
             '151.106.98.14', 
             'https://executiveclasses.com.br'
@@ -27,7 +26,6 @@ class SystemAppSeeder extends Seeder
         $this->create(
             SystemAppEnum::PORTAL, 
             'Portal', 
-            'Executive Classes portal for customers, teachers and employees.',
             true, 
             '151.106.98.14', 
             'https://portal.executiveclasses.com.br'
@@ -36,7 +34,6 @@ class SystemAppSeeder extends Seeder
         $this->create(
             SystemAppEnum::API, 
             'API', 
-            'Executive Classes API.',
             true, 
             '151.106.98.14', 
             'https://api.executiveclasses.com.br'
@@ -48,11 +45,14 @@ class SystemAppSeeder extends Seeder
      *
      * @param string $id
      * @param string $name
+     * @param boolean $active
+     * @param string $ip
+     * @param string $url
      * @return void
      */
-    protected function create(string $id, string $name, string $description, bool $active, string $ip, string $url)
+    protected function create(string $id, string $name, bool $active, string $ip, string $url)
     {
-        $app = new SystemApp(compact('id', 'name', 'description', 'active', 'ip', 'url'));
+        $app = new SystemApp(compact('id', 'name', 'active', 'ip', 'url'));
         $app->save();
     }
 }

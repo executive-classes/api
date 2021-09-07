@@ -2,7 +2,7 @@
 
 namespace App\Enums\Billing;
 
-use BenSampo\Enum\Enum;
+use App\Enums\Enum;
 
 final class UserPrivilegeEnum extends Enum
 {
@@ -41,14 +41,6 @@ final class UserPrivilegeEnum extends Enum
     const CUSTOMER_CANCEL = 'customer:cancel';
 
     /**
-     * User privileges.
-     */
-    const USER_GET = 'user:get';
-    const USER_CREATE = 'user:create';
-    const USER_UPDATE = 'user:update';
-    const USER_CANCEL = 'user:cancel';
-
-    /**
      * Employees privileges.
      */
     const EMPLOYEE_GET = 'employee:get';
@@ -71,6 +63,14 @@ final class UserPrivilegeEnum extends Enum
     const STUDENT_CREATE = 'student:create';
     const STUDENT_UPDATE = 'student:update';
     const STUDENT_CANCEL = 'student:cancel';
+
+    /**
+     * User privileges.
+     */
+    const USER_GET = 'user:get';
+    const USER_CREATE = 'user:create';
+    const USER_UPDATE = 'user:update';
+    const USER_CANCEL = 'user:cancel';
 
     /**
      * Course privileges.

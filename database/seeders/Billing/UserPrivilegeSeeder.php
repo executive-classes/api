@@ -16,64 +16,77 @@ class UserPrivilegeSeeder extends Seeder
     public function run()
     {
         // Admin
-        $this->create(UserPrivilegeEnum::ALL, 'Can do all things.');
+        $this->create(UserPrivilegeEnum::ALL);
 
         // Auth
-        $this->create(UserPrivilegeEnum::CROSS_AUTH, 'Can cross-auth in others users.');
+        $this->create(UserPrivilegeEnum::CROSS_AUTH);
 
         // Billing
-        $this->create(UserPrivilegeEnum::ADDRESS_GET, 'Can get or list addresses.');
-        $this->create(UserPrivilegeEnum::ADDRESS_CREATE, 'Can create new addresses.');
-        $this->create(UserPrivilegeEnum::ADDRESS_UPDATE, 'Can update a address.');
-        $this->create(UserPrivilegeEnum::ADDRESS_DELETE, 'Can cancel a address.');
-        $this->create(UserPrivilegeEnum::BILLER_GET, 'Can get or list billers.');
-        $this->create(UserPrivilegeEnum::BILLER_CREATE, 'Can create new billers.');
-        $this->create(UserPrivilegeEnum::BILLER_UPDATE, 'Can update a biller.');
-        $this->create(UserPrivilegeEnum::BILLER_CANCEL, 'Can cancel a biller.');
-        $this->create(UserPrivilegeEnum::CUSTOMER_GET, 'Can get or list customers.');
-        $this->create(UserPrivilegeEnum::CUSTOMER_CREATE, 'Can create new customers.');
-        $this->create(UserPrivilegeEnum::CUSTOMER_UPDATE, 'Can update a customer.');
-        $this->create(UserPrivilegeEnum::CUSTOMER_CANCEL, 'Can cancel a customer.');
-        $this->create(UserPrivilegeEnum::USER_GET, 'Can get or list users.');
-        $this->create(UserPrivilegeEnum::USER_CREATE, 'Can create new users.');
-        $this->create(UserPrivilegeEnum::USER_UPDATE, 'Can update a user.');
-        $this->create(UserPrivilegeEnum::USER_CANCEL, 'Can cancel a user.');
-        $this->create(UserPrivilegeEnum::EMPLOYEE_GET, 'Can get or list employees.');
-        $this->create(UserPrivilegeEnum::EMPLOYEE_CREATE, 'Can create new employees.');
-        $this->create(UserPrivilegeEnum::EMPLOYEE_UPDATE, 'Can update a employee.');
-        $this->create(UserPrivilegeEnum::EMPLOYEE_CANCEL, 'Can cancel a employee.');
-        $this->create(UserPrivilegeEnum::TEACHER_GET, 'Can get or list teachers.');
-        $this->create(UserPrivilegeEnum::TEACHER_CREATE, 'Can create new teachers.');
-        $this->create(UserPrivilegeEnum::TEACHER_UPDATE, 'Can update a teacher.');
-        $this->create(UserPrivilegeEnum::TEACHER_CANCEL, 'Can cancel a teacher.');
-        $this->create(UserPrivilegeEnum::STUDENT_GET, 'Can get or list students.');
-        $this->create(UserPrivilegeEnum::STUDENT_CREATE, 'Can create new students.');
-        $this->create(UserPrivilegeEnum::STUDENT_UPDATE, 'Can update a student.');
-        $this->create(UserPrivilegeEnum::STUDENT_CANCEL, 'Can cancel a student.');
+        $this->create(UserPrivilegeEnum::ADDRESS_GET);
+        $this->create(UserPrivilegeEnum::ADDRESS_CREATE);
+        $this->create(UserPrivilegeEnum::ADDRESS_UPDATE);
+        $this->create(UserPrivilegeEnum::ADDRESS_DELETE);
+        $this->create(UserPrivilegeEnum::BILLER_GET);
+        $this->create(UserPrivilegeEnum::BILLER_CREATE);
+        $this->create(UserPrivilegeEnum::BILLER_UPDATE);
+        $this->create(UserPrivilegeEnum::BILLER_CANCEL);
+        $this->create(UserPrivilegeEnum::CUSTOMER_GET);
+        $this->create(UserPrivilegeEnum::CUSTOMER_CREATE);
+        $this->create(UserPrivilegeEnum::CUSTOMER_UPDATE);
+        $this->create(UserPrivilegeEnum::CUSTOMER_CANCEL);
+        $this->create(UserPrivilegeEnum::EMPLOYEE_GET);
+        $this->create(UserPrivilegeEnum::EMPLOYEE_CREATE);
+        $this->create(UserPrivilegeEnum::EMPLOYEE_UPDATE);
+        $this->create(UserPrivilegeEnum::EMPLOYEE_CANCEL);
+        $this->create(UserPrivilegeEnum::TEACHER_GET);
+        $this->create(UserPrivilegeEnum::TEACHER_CREATE);
+        $this->create(UserPrivilegeEnum::TEACHER_UPDATE);
+        $this->create(UserPrivilegeEnum::TEACHER_CANCEL);
+        $this->create(UserPrivilegeEnum::STUDENT_GET);
+        $this->create(UserPrivilegeEnum::STUDENT_CREATE);
+        $this->create(UserPrivilegeEnum::STUDENT_UPDATE);
+        $this->create(UserPrivilegeEnum::STUDENT_CANCEL);
+        $this->create(UserPrivilegeEnum::USER_GET);
+        $this->create(UserPrivilegeEnum::USER_CREATE);
+        $this->create(UserPrivilegeEnum::USER_UPDATE);
+        $this->create(UserPrivilegeEnum::USER_CANCEL);
+
+        // Course
+        $this->create(UserPrivilegeEnum::COURSE_GET, true, true);
+        $this->create(UserPrivilegeEnum::COURSE_CREATE);
+        $this->create(UserPrivilegeEnum::COURSE_UPDATE);
+        $this->create(UserPrivilegeEnum::COURSE_CANCEL);
+
+        // General
+        $this->create(UserPrivilegeEnum::CATEGORY_GET, true);
+        $this->create(UserPrivilegeEnum::CATEGORY_CREATE, true);
+        $this->create(UserPrivilegeEnum::CATEGORY_UPDATE, true);
+        $this->create(UserPrivilegeEnum::CATEGORY_DELETE);
 
         // Mailing
-        $this->create(UserPrivilegeEnum::MESSAGE_GET, 'Can get or list messages.');
-        $this->create(UserPrivilegeEnum::MESSAGE_CREATE, 'Can create new messages.');
-        $this->create(UserPrivilegeEnum::MESSAGE_CANCEL, 'Can cancel scheduled messages.');
-        $this->create(UserPrivilegeEnum::MESSAGE_TEMPLATE_GET, 'Can get or list messages templates.');
-        $this->create(UserPrivilegeEnum::MESSAGE_TEMPLATE_CREATE, 'Can create messages templates.');
-        $this->create(UserPrivilegeEnum::MESSAGE_TEMPLATE_UPDATE, 'Can update messages templates.');
-        $this->create(UserPrivilegeEnum::MESSAGE_TEMPLATE_DELETE, 'Can delete messages templates.');
+        $this->create(UserPrivilegeEnum::MESSAGE_GET);
+        $this->create(UserPrivilegeEnum::MESSAGE_CREATE);
+        $this->create(UserPrivilegeEnum::MESSAGE_CANCEL);
+        $this->create(UserPrivilegeEnum::MESSAGE_TEMPLATE_GET);
+        $this->create(UserPrivilegeEnum::MESSAGE_TEMPLATE_CREATE);
+        $this->create(UserPrivilegeEnum::MESSAGE_TEMPLATE_UPDATE);
+        $this->create(UserPrivilegeEnum::MESSAGE_TEMPLATE_DELETE);
 
         // System
-        $this->create(UserPrivilegeEnum::BUG_LOG_GET, 'Can get the bug log.');
+        $this->create(UserPrivilegeEnum::BUG_LOG_GET);
     }
 
     /**
      * Create the User Privilege entry;
      *
      * @param string $id
-     * @param string $name
+     * @param boolean $teacher_can
+     * @param boolean $student_can
      * @return void
      */
-    protected function create(string $id, string $description, bool $teacher_can = false, bool $student_can = false): void
+    protected function create(string $id, bool $teacher_can = false, bool $student_can = false): void
     {
-        $userPrivilege = new UserPrivilege(compact('id', 'description', 'teacher_can', 'student_can'));
+        $userPrivilege = new UserPrivilege(compact('id', 'teacher_can', 'student_can'));
         $userPrivilege->save();
     }
 }

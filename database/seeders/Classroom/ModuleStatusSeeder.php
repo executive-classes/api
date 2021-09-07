@@ -15,24 +15,23 @@ class ModuleStatusSeeder extends Seeder
      */
     public function run()
     {
-        $this->create(ModuleStatusEnum::NEW, 'Novo');
-        $this->create(ModuleStatusEnum::IN_PROGRESS, 'Em andamento');
-        $this->create(ModuleStatusEnum::FINISHED, 'Finalizado');
-        $this->create(ModuleStatusEnum::APPROVED, 'Aprovado');
-        $this->create(ModuleStatusEnum::DISAPPROVED, 'Desaprovado');
-        $this->create(ModuleStatusEnum::ABANDONED, 'Abandonado');
+        $this->create(ModuleStatusEnum::NEW);
+        $this->create(ModuleStatusEnum::IN_PROGRESS);
+        $this->create(ModuleStatusEnum::FINISHED);
+        $this->create(ModuleStatusEnum::APPROVED);
+        $this->create(ModuleStatusEnum::DISAPPROVED);
+        $this->create(ModuleStatusEnum::ABANDONED);
     }
 
     /**
      * Create a Module Status entry.
      *
      * @param string $id
-     * @param string $name
      * @return void
      */
-    protected function create(string $id, string $name)
+    protected function create(string $id)
     {
-        $moduleStatus = new ModuleStatus(compact('id', 'name'));
+        $moduleStatus = new ModuleStatus(compact('id'));
         $moduleStatus->save();
     }
 }

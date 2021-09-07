@@ -2,10 +2,18 @@
 
 namespace App\Http\Resources\General\CategoryType;
 
-use App\Http\Resources\Resource;
+use App\Enums\General\CategoryTypeEnum;
+use App\Http\Resources\EnumResource;
 
-class CategoryTypeResource extends Resource
+class CategoryTypeResource extends EnumResource
 {
+    /**
+     * The Enum class.
+     * 
+     * @var \App\Enums\Enum
+     */
+    public $enum = CategoryTypeEnum::class;
+
     /**
      * Transform the resource into an array.
      *
