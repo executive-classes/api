@@ -4,9 +4,12 @@ namespace Tests\Unit\Models\Classroom;
 
 use App\Models\Eloquent\Classroom\TestStatus\TestStatus;
 use Tests\Unit\Models\ModelTestCase;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class TestStatusTest extends ModelTestCase
 {
+    use HasFactoryAsserts;
+
     /**
      * @var TestStatus
      */

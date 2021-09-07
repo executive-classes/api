@@ -2,10 +2,13 @@
 
 namespace App\Models\Eloquent\System\SystemApp;
 
+use App\Traits\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class SystemApp extends Model
 {
+    use HasFactory;
+
     /**
      * The table associated with the model.
      *

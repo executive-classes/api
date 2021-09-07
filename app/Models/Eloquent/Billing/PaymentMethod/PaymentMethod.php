@@ -2,10 +2,13 @@
 
 namespace App\Models\Eloquent\Billing\PaymentMethod;
 
+use App\Traits\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PaymentMethod extends Model
 {
+    use HasFactory;
+
     /**
      * The table associated with the model.
      *

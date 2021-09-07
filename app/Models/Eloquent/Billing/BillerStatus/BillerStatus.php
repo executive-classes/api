@@ -2,10 +2,13 @@
 
 namespace App\Models\Eloquent\Billing\BillerStatus;
 
+use App\Traits\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class BillerStatus extends Model
 {
+    use HasFactory;
+
     /**
      * The table associated with the model.
      *

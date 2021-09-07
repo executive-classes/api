@@ -4,9 +4,12 @@ namespace Tests\Unit\Models\Mailing;
 
 use App\Models\Eloquent\Mailing\MessageStatus\MessageStatus;
 use Tests\Unit\Models\ModelTestCase;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class MessageStatusTest extends ModelTestCase
 {
+    use HasFactoryAsserts;
+
     /**
      * @var MessageStatus
      */

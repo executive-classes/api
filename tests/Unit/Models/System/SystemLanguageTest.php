@@ -6,9 +6,12 @@ use Illuminate\Support\Facades\App;
 use Tests\Unit\Models\ModelTestCase;
 use App\Models\Eloquent\System\SystemLanguage\SystemLanguage;
 use App\Enums\System\SystemLanguageEnum;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class SystemLanguageTest extends ModelTestCase
 {
+    use HasFactoryAsserts;
+
     /**
      * @var SystemLanguage
      */

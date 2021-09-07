@@ -2,10 +2,13 @@
 
 namespace App\Models\Eloquent\Billing\InvoiceStatus;
 
+use App\Traits\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class InvoiceStatus extends Model
 {
+    use HasFactory;
+
     /**
      * The table associated with the model.
      *

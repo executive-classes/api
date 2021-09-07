@@ -4,9 +4,12 @@ namespace Tests\Unit\Model\Classroom;
 
 use App\Models\Eloquent\Classroom\MaterialStatus\MaterialStatus;
 use Tests\Unit\Models\ModelTestCase;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class MaterialStatusTest extends ModelTestCase
 {
+    use HasFactoryAsserts;
+
     /**
      * @var MaterialStatus
      */

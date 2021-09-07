@@ -2,10 +2,13 @@
 
 namespace App\Models\Eloquent\Classroom\ModuleStatus;
 
+use App\Traits\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ModuleStatus extends Model
 {
+    use HasFactory;
+
     /**
      * The table associated with the model.
      *

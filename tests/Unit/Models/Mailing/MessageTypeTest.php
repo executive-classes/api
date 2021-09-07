@@ -4,9 +4,12 @@ namespace Tests\Unit\Models\Mailing;
 
 use App\Models\Eloquent\Mailing\MessageType\MessageType;
 use Tests\Unit\Models\ModelTestCase;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class MessageTypeTest extends ModelTestCase
 {
+    use HasFactoryAsserts;
+
     /**
      * @var MessageType
      */

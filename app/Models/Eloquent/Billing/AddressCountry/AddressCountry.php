@@ -1,10 +1,13 @@
 <?php
 namespace App\Models\Eloquent\Billing\AddressCountry;
 
+use App\Traits\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class AddressCountry extends Model
 {
+    use HasFactory;
+
     /**
      * The table associated with the model.
      *

@@ -2,11 +2,13 @@
 namespace App\Models\Eloquent\System\SystemLanguage;
 
 use App\Models\Eloquent\System\SystemLanguage\SystemLanguageFunctions;
+use App\Traits\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class SystemLanguage extends Model
 {
     use SystemLanguageFunctions;
+    use HasFactory;
 
     /**
      * The table associated with the model.

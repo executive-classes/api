@@ -1,11 +1,13 @@
 <?php
 namespace App\Models\Eloquent\Billing\TaxType;
 
+use App\Traits\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class TaxType extends Model
 {
     use TaxTypeFunctions;
+    use HasFactory;
     
     /**
      * The table associated with the model.

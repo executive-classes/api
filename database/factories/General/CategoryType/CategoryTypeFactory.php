@@ -23,8 +23,7 @@ class CategoryTypeFactory extends Factory
     public function definition()
     {
         return [
-            'id' => CategoryTypeEnum::getRandomValue(),
-            'name' => $this->faker->text(15)
+            'id' => CategoryTypeEnum::getRandomValue()
         ];
     }
 }

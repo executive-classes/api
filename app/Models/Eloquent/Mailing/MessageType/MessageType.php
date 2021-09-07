@@ -2,10 +2,13 @@
 
 namespace App\Models\Eloquent\Mailing\MessageType;
 
+use App\Traits\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class MessageType extends Model
 {
+    use HasFactory;
+
     /**
      * The table associated with the model.
      *

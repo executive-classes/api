@@ -2,10 +2,13 @@
 
 namespace App\Models\Eloquent\Mailing\MessageStatus;
 
+use App\Traits\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class MessageStatus extends Model
 {
+    use HasFactory;
+    
     /**
      * The table associated with the model.
      *

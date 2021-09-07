@@ -4,9 +4,12 @@ namespace Tests\Unit\Models\System;
 
 use App\Models\Eloquent\System\SystemApp\SystemApp;
 use Tests\Unit\Models\ModelTestCase;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class SystemAppTest extends ModelTestCase
 {
+    use HasFactoryAsserts;
+
     /**
      * @var SystemApp
      */

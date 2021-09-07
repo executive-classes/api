@@ -4,9 +4,12 @@ namespace Tests\Unit\Models\Billing;
 
 use App\Models\Eloquent\Billing\PaymentMethod\PaymentMethod;
 use Tests\Unit\Models\ModelTestCase;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class PaymentMethodTest extends ModelTestCase
 {
+    use HasFactoryAsserts;
+
     /**
      * @var PaymentMethod
      */

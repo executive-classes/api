@@ -4,9 +4,12 @@ namespace Tests\Unit\Models\Billing;
 
 use App\Models\Eloquent\Billing\TeacherStatus\TeacherStatus;
 use Tests\Unit\Models\ModelTestCase;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class TeacherStatusTest extends ModelTestCase
 {
+    use HasFactoryAsserts;
+
     /**
      * @var TeacherStatus
      */

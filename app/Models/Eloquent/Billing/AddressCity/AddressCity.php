@@ -2,10 +2,12 @@
 
 namespace App\Models\Eloquent\Billing\AddressCity;
 
+use App\Traits\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class AddressCity extends Model
 {
+    use HasFactory;
     use AddressCityRelations;
     
     /**

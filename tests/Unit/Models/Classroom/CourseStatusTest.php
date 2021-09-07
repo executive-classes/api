@@ -4,11 +4,12 @@ namespace Tests\Unit\Model\Classroom;
 
 use Tests\Unit\Models\ModelTestCase;
 use App\Models\Eloquent\Classroom\CourseStatus\CourseStatus;
-use Tests\Unit\Traits\Models\HasFilterAsserts;
 use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class CourseStatusTest extends ModelTestCase
 {
+    use HasFactoryAsserts;
+
     /**
      * @var CourseStatus
      */

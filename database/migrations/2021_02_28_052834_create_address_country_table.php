@@ -26,7 +26,7 @@ class CreateAddressCountryTable extends Migration
             // Country Data
             $table->boolean('active')
                 ->default(false)
-                ->comment('Country is active.');
+                ->comment('Country can be selected.');
 
             $table->string('name', 255)
                 ->comment('Country name.');

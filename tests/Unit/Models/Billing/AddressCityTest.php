@@ -4,9 +4,12 @@ namespace Tests\Unit\Models\Billing;
 
 use App\Models\Eloquent\Billing\AddressCity\AddressCity;
 use Tests\Unit\Models\ModelTestCase;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class AddressCityTest extends ModelTestCase
 {
+    use HasFactoryAsserts;
+    
     /**
      * @var AddressCity
      */

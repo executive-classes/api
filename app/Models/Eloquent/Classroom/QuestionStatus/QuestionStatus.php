@@ -2,10 +2,13 @@
 
 namespace App\Models\Eloquent\Classroom\QuestionStatus;
 
+use App\Traits\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class QuestionStatus extends Model
 {
+    use HasFactory;
+
     /**
      * The table associated with the model.
      *

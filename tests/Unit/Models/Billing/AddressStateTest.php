@@ -4,9 +4,12 @@ namespace Tests\Unit\Models\Billing;
 
 use App\Models\Eloquent\Billing\AddressState\AddressState;
 use Tests\Unit\Models\ModelTestCase;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class AddressStateTest extends ModelTestCase
 {
+    use HasFactoryAsserts;
+
     /**
      * @var AddressState
      */

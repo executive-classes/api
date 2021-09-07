@@ -2,10 +2,13 @@
 
 namespace App\Models\Eloquent\Classroom\TestStatus;
 
+use App\Traits\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class TestStatus extends Model
 {
+    use HasFactory;
+
     /**
      * The table associated with the model.
      *

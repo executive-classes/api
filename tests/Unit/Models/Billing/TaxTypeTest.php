@@ -6,9 +6,12 @@ use App\Models\Eloquent\Billing\TaxType\TaxType;
 use App\Enums\Billing\TaxTypeEnum;
 use Tests\Unit\Models\ModelTestCase;
 use App\Services\Billing\Tax\Contract\Tax;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class TaxTypeTest extends ModelTestCase
 {
+    use HasFactoryAsserts;
+
     /**
      * @var TaxType
      */

@@ -4,9 +4,12 @@ namespace Tests\Unit\Models\Billing;
 
 use App\Models\Eloquent\Billing\PaymentInterval\PaymentInterval;
 use Tests\Unit\Models\ModelTestCase;
+use Tests\Unit\Traits\Models\HasFactoryAsserts;
 
 class PaymentIntervalTest extends ModelTestCase
 {
+    use HasFactoryAsserts;
+
     /**
      * @var PaymentInterval
      */
