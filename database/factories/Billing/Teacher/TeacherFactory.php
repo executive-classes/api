@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Billing\Teacher;
 
+use App\Enums\Billing\TeacherStatusEnum;
 use App\Models\Eloquent\Billing\User\User;
 use App\Models\Eloquent\Billing\Teacher\Teacher;
 use Database\Factories\Billing\Teacher\TeacherFactoryStates;
@@ -26,7 +27,9 @@ class TeacherFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->relation(User::class)
+            'id' => $this->id(),
+            'user_id' => $this->relation(User::class),
+            'teacher_status_id' => TeacherStatusEnum::getRandomValue()
         ];
     }
 }

@@ -5,6 +5,7 @@ namespace Database\Factories\System\SystemBugLog;
 use Carbon\Carbon;
 use Database\Factories\Factory;
 use App\Enums\System\SystemAppEnum;
+use App\Services\System\BugLogService;
 use App\Models\Eloquent\Billing\User\User;
 use App\Models\Eloquent\System\SystemBugLog\SystemBugLog;
 use Database\Factories\System\SystemBugLog\SystemBugLogFactoryStates;
@@ -28,6 +29,7 @@ class SystemBugLogFactory extends Factory
     public function definition()
     {
         return [
+            'id' => $this->id(),
             'date' => Carbon::now()->toDateTimeString(),
             'user_id' => $this->relation(User::class),
             'agent' => $this->faker->text(10),
@@ -37,7 +39,7 @@ class SystemBugLogFactory extends Factory
             'ajax' => $this->faker->boolean(30),
             'app_id' => SystemAppEnum::getRandomValue(),
             'route' => $this->faker->text(10),
-            'error' => json_encode(new \Exception($this->faker->text(10))),
+            'error' => json_encode(BugLogService::getError(new \Exception($this->faker->text(10)))),
         ];
     }
 }

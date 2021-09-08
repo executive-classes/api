@@ -23,6 +23,7 @@ class CourseFactory extends Factory
     public function definition()
     {
         return [
+            'id' => $this->id(),
             'name' => $this->faker->text(15),
             'active' => true,
             'category_id' => $this->relation(Category::class)

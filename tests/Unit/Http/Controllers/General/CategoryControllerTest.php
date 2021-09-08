@@ -10,12 +10,12 @@ use App\Http\Resources\General\Category\CategoryCollection;
 use App\Http\Resources\General\Category\CategoryResource;
 use App\Models\Eloquent\General\Category\Category;
 use Illuminate\Http\JsonResponse;
-use Tests\Providers\General\CategoryProvider;
+use Tests\FactoryMaker;
 use Tests\Unit\Http\Controllers\ControllerTestCase;
 
 class CategoryControllerTest extends ControllerTestCase
 {
-    use CategoryProvider;
+    use FactoryMaker;
 
     /**
      * @var \App\Http\Controllers\General\CategoryController
@@ -30,12 +30,12 @@ class CategoryControllerTest extends ControllerTestCase
     public function test_index_returns_json_list()
     {
         $this->db->shouldReceive('select')
-            ->andReturn($this->categories(3));
+            ->andReturn($this->makeMany(Category::class));
 
         $collection = $this->controller->index(new CategoryFilters());
 
         $this->assertInstanceOf(CategoryCollection::class, $collection);
-        $this->assertCount(3, $collection);
+        $this->assertCount(2, $collection);
     }
 
     public function test_store_returns_json()
@@ -43,7 +43,7 @@ class CategoryControllerTest extends ControllerTestCase
         $this->db->shouldReceive('insert')->once()->andReturn(true);
         $this->db->getPdo()->shouldReceive('lastInsertId')->andReturn(333);
 
-        $category = $this->category();
+        $category = $this->makeOne(Category::class);
 
         $requestMock = $this->mockRequest(CreateCategoryRequest::class);
         $requestMock->shouldReceive('validated')->once()->andReturn($category->toArray());
@@ -56,7 +56,7 @@ class CategoryControllerTest extends ControllerTestCase
 
     public function test_show_returns_json_item()
     {
-        $category = $this->category();
+        $category = $this->makeOne(Category::class);
         $resource = $this->controller->show($category);
 
         $this->assertInstanceOf(CategoryResource::class, $resource);
@@ -65,7 +65,7 @@ class CategoryControllerTest extends ControllerTestCase
 
     public function test_update_returns_json()
     {
-        $newCategory = $this->category();
+        $newCategory = $this->makeOne(Category::class);
 
         $requestMock = $this->mockRequest(UpdateCategoryRequest::class);
         $requestMock->shouldReceive('validated')->once()->andReturn($newCategory->toArray());

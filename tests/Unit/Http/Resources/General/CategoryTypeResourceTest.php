@@ -4,16 +4,16 @@ namespace Tests\Unit\Http\Resources\General;
 
 use App\Http\Resources\General\CategoryType\CategoryTypeResource;
 use App\Models\Eloquent\General\CategoryType\CategoryType;
-use Tests\Providers\General\CategoryTypeProvider;
+use Tests\FactoryMaker;
 use Tests\Unit\Http\Resources\ResourceTestCase;
 
 class CategoryTypeResourceTest extends ResourceTestCase
 {
-    use CategoryTypeProvider;
+    use FactoryMaker;
 
     public function test_resource()
     {
-        $resource = new CategoryTypeResource($this->type());
+        $resource = new CategoryTypeResource($this->makeOne(CategoryType::class));
 
         $this->runResourceAssertions($resource);
         $this->assertInstanceOf(CategoryType::class, $resource->resource);
@@ -21,7 +21,7 @@ class CategoryTypeResourceTest extends ResourceTestCase
 
     public function test_resource_json()
     {
-        $resource = new CategoryTypeResource($this->type());
+        $resource = new CategoryTypeResource($this->makeOne(CategoryType::class));
 
         $this->runResourceJsonAssertion($resource, [
             'id',

@@ -2,9 +2,11 @@
 
 namespace Database\Factories\Billing\Customer;
 
+use App\Enums\Billing\CustomerStatusEnum;
 use App\Enums\Billing\TaxTypeEnum;
 use App\Models\Eloquent\Billing\Address\Address;
 use App\Models\Eloquent\Billing\Customer\Customer;
+use App\Models\Eloquent\Billing\CustomerStatus\CustomerStatus;
 use Database\Factories\Factory;
 
 class CustomerFactory extends Factory
@@ -26,6 +28,8 @@ class CustomerFactory extends Factory
     public function definition()
     {
         return [
+            'id' => $this->id(),
+            'customer_status_id' => CustomerStatusEnum::getRandomValue(),
             'name' => $this->faker->company,
             'tax_type_id' => TaxTypeEnum::CNPJ,
             'tax_code' => $this->faker->unique()->cnpj,

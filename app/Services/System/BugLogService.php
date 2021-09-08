@@ -38,7 +38,7 @@ class BugLogService
         }
     }
 
-    private static function getData(Request $request, array $except): array
+    public static function getData(Request $request, array $except): array
     {
         return array_filter(array_replace_recursive(
             $request->route()
@@ -50,7 +50,7 @@ class BugLogService
         }, ARRAY_FILTER_USE_KEY);
     }
 
-    private static function getError(Throwable $th): array
+    public static function getError(Throwable $th): array
     {
         return [
             'message' => $th->getMessage(),

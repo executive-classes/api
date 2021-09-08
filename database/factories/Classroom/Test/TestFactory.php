@@ -23,6 +23,7 @@ class TestFactory extends Factory
     public function definition()
     {
         return [
+            'id' => $this->id(),
             'name' => $this->faker->text(15),
             'category_id' => $this->relation(Category::class)
         ];

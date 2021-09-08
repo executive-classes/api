@@ -28,6 +28,7 @@ class SystemAccessLogFactory extends Factory
         $allowed = $this->faker->boolean();
 
         return [
+            'id' => $this->id(),
             'date' => Carbon::now()->toDateTimeString(),
             'user_id' => $this->relation(User::class),
             'agent' => $this->faker->text(10),

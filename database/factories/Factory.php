@@ -87,4 +87,14 @@ abstract class Factory extends DefaultFactory
         
         return $factory->{$this->operation}();
     }
+
+    /**
+     * Returns a unique id.
+     *
+     * @return int
+     */
+    protected function id(): int
+    {
+        return $this->faker->unique()->numberBetween();
+    }
 }

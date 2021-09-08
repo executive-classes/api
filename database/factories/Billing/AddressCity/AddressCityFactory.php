@@ -23,6 +23,7 @@ class AddressCityFactory extends Factory
     public function definition()
     {
         return [
+            'id' => $this->id(),
             'name' => $this->faker->city,
             'capital' => $this->faker->boolean(20),
             'state' => $this->relation(AddressState::class)

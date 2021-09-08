@@ -24,6 +24,7 @@ class CollectionItemFactory extends Factory
     public function definition()
     {
         return [
+            'id' => $this->id(),
             'collection_id' => $this->relation(Collection::class),
             'student_id' => $this->relation(Student::class),
             'amount' => $this->faker->randomFloat(2, 0, 10000)

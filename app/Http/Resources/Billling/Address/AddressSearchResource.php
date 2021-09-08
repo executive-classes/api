@@ -26,7 +26,12 @@ class AddressSearchResource extends Resource
             'district' => $this->bairro,
             'city' => $this->localidade,
             'state' => $this->uf,
-            'country' => new AddressCountryResource(AddressCountry::where('short_name', CountryEnum::BR)->first()),
+            'country' => new AddressCountryResource($this->getCountry()),
         ];
+    }
+
+    public function getCountry()
+    {
+        return AddressCountry::where('short_name', CountryEnum::BR)->first();
     }
 }

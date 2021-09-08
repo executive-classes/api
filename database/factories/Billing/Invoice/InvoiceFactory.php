@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Billing\Invoice;
 
+use App\Enums\Billing\InvoiceStatusEnum;
 use Database\Factories\Factory;
 use App\Models\Eloquent\Billing\Invoice\Invoice;
 use App\Models\Eloquent\Billing\Collection\Collection;
@@ -26,7 +27,9 @@ class InvoiceFactory extends Factory
     public function definition()
     {
         return [
-            'collection_id' => $this->relation(Collection::class)
+            'id' => $this->id(),
+            'collection_id' => $this->relation(Collection::class),
+            'invoice_status_id' => InvoiceStatusEnum::getRandomValue()
         ];
     }
 }

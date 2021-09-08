@@ -25,6 +25,7 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
+            'id' => $this->id(),
             'name' => $this->faker->text(15),
             'description' => $this->faker->text,
             'category_type_id' => CategoryTypeEnum::getRandomValue()

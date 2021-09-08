@@ -5,6 +5,7 @@ namespace Database\Factories\Billing\Address;
 use Database\Factories\Factory;
 use App\Enums\Billing\CountryEnum;
 use App\Models\Eloquent\Billing\Address\Address;
+use App\Models\Eloquent\Billing\AddressCountry\AddressCountry;
 
 class AddressFactory extends Factory
 {
@@ -25,6 +26,7 @@ class AddressFactory extends Factory
     public function definition()
     {
         return [
+            'id' => $this->id(),
             'zip' => $this->faker->postcode,
             'street' => $this->faker->streetName,
             'number' => $this->faker->buildingNumber,

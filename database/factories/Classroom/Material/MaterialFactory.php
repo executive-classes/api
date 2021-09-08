@@ -23,6 +23,7 @@ class MaterialFactory extends Factory
     public function definition()
     {
         return [
+            'id' => $this->id(),
             'name' => $this->faker->text(15),
             'title' => $this->faker->text(15),
             'content' => '<h3>Material test</h3>',

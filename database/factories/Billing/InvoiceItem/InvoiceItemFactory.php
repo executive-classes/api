@@ -24,6 +24,7 @@ class InvoiceItemFactory extends Factory
     public function definition()
     {
         return [
+            'id' => $this->id(),
             'invoice_id' => $this->relation(Invoice::class),
             'student_id' => $this->relation(Student::class),
             'description' => $this->faker->text,

@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Billing\Collection;
 
+use App\Enums\Billing\CollectionStatusEnum;
 use App\Models\Eloquent\Billing\Biller\Biller;
 use App\Models\Eloquent\Billing\Collection\Collection;
 use Carbon\Carbon;
@@ -27,8 +28,10 @@ class CollectionFactory extends Factory
     {
         $biller = $this->relation(Biller::class);
         return [
+            'id' => $this->id(),
             'expire_at' => Carbon::now()->addWeek(1)->toDateTimeString(),
             'biller_id' => $biller,
+            'collection_status_id' => CollectionStatusEnum::getRandomValue(),
             'amount' => $this->faker->randomFloat(2, 0, 10000),
             'description' => $this->faker->text(255),
             'truncatedDescription' => $this->faker->text(22),

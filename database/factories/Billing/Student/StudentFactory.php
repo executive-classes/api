@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Billing\Student;
 
+use App\Enums\Billing\StudentStatusEnum;
 use App\Models\Eloquent\Billing\User\User;
 use App\Models\Eloquent\Billing\Biller\Biller;
 use App\Models\Eloquent\Billing\Student\Student;
@@ -28,9 +29,11 @@ class StudentFactory extends Factory
     {
         $biller = $this->relation(Biller::class);
         return [
+            'id' => $this->id(),
             'biller_id' => $this->relation(Biller::class),
             'customer_id' => $biller->customer_id,
-            'user_id' => $this->relation(User::class)
+            'user_id' => $this->relation(User::class),
+            'student_status_id' => StudentStatusEnum::getRandomValue()
         ];
     }
 }

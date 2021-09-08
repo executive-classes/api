@@ -9,12 +9,12 @@ use App\Http\Requests\Classroom\Course\UpdateCourseRequest;
 use App\Http\Resources\Classroom\Course\CourseCollection;
 use App\Http\Resources\Classroom\Course\CourseResource;
 use App\Models\Eloquent\Classroom\Course\Course;
-use Tests\Providers\Classroom\CourseProvider;
+use Tests\FactoryMaker;
 use Tests\Unit\Http\Controllers\ControllerTestCase;
 
 class CourseControllerTest extends ControllerTestCase
 {
-    use CourseProvider;
+    use FactoryMaker;
 
     /**
      * @var \App\Http\Controllers\Classroom\CourseController
@@ -29,12 +29,12 @@ class CourseControllerTest extends ControllerTestCase
     public function test_index_returns_json_list()
     {
         $this->db->shouldReceive('select')
-            ->andReturn($this->courses(3));
+            ->andReturn($this->makeMany(Course::class));
 
         $collection = $this->controller->index(new CourseFilters());
 
         $this->assertInstanceOf(CourseCollection::class, $collection);
-        $this->assertCount(3, $collection);
+        $this->assertCount(2, $collection);
     }
 
     public function test_store_returns_json()
@@ -42,7 +42,7 @@ class CourseControllerTest extends ControllerTestCase
         $this->db->shouldReceive('insert')->once()->andReturn(true);
         $this->db->getPdo()->shouldReceive('lastInsertId')->andReturn(333);
 
-        $course = $this->course();
+        $course = $this->makeOne(Course::class);
 
         $requestMock = $this->mockRequest(CreateCourseRequest::class);
         $requestMock->shouldReceive('validated')->once()->andReturn($course->toArray());
@@ -55,7 +55,7 @@ class CourseControllerTest extends ControllerTestCase
 
     public function test_show_returns_json_item()
     {
-        $course = $this->course();
+        $course = $this->makeOne(Course::class);
         $resource = $this->controller->show($course);
 
         $this->assertInstanceOf(CourseResource::class, $resource);
@@ -64,7 +64,7 @@ class CourseControllerTest extends ControllerTestCase
 
     public function test_update_returns_json()
     {
-        $newCourse = $this->course();
+        $newCourse = $this->makeOne(Course::class);
 
         $requestMock = $this->mockRequest(UpdateCourseRequest::class);
         $requestMock->shouldReceive('validated')->once()->andReturn($newCourse->toArray());

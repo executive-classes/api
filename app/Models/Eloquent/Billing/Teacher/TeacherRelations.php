@@ -2,12 +2,12 @@
 
 namespace App\Models\Eloquent\Billing\Teacher;
 
+use App\Models\Eloquent\Billing\User\User;
 use App\Models\Eloquent\Classroom\Test\Test;
+use App\Models\Eloquent\Billing\Student\Student;
 use App\Models\Eloquent\Classroom\Lesson\Lesson;
 use App\Models\Eloquent\Classroom\Question\Question;
-use Illuminate\Foundation\Auth\User;
 use App\Models\Eloquent\Billing\TeacherStatus\TeacherStatus;
-use App\Models\Eloquent\Billing\Student\Student;
 
 trait TeacherRelations
 {

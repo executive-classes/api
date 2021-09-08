@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Mailing\Message;
 
+use App\Enums\Mailing\MessageStatusEnum;
 use Carbon\Carbon;
 use App\Models\Eloquent\Mailing\Message\Message;
 use Database\Factories\Mailing\Message\MessageFactoryStates;
@@ -27,7 +28,9 @@ class MessageFactory extends Factory
     public function definition()
     {
         return [
+            'id' => $this->id(),
             'should_proccess_at' => Carbon::now()->toDateTimeString(),
+            'message_status_id' => MessageStatusEnum::getRandomValue(),
             'reply_to' => $this->faker->email,
             'to' => $this->faker->email,
             'subject' => 'Test',

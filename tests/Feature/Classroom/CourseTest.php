@@ -2,14 +2,17 @@
 
 namespace Tests\Feature\Classroom;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\CreatesUser;
 use Tests\Feature\FeatureTestCase;
-use Tests\Providers\Classroom\CourseProvider;
+use App\Models\Eloquent\Classroom\Course\Course;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\FactoryMaker;
 
 class CourseTest extends FeatureTestCase
 {
-    use RefreshDatabase, CreatesUser, CourseProvider;
+    use RefreshDatabase;
+    use CreatesUser;
+    use FactoryMaker;
 
     /**
      * @var \App\Models\Eloquent\Billing\User\User
@@ -54,7 +57,7 @@ class CourseTest extends FeatureTestCase
 
     public function test_create_json()
     {
-        $course = $this->course(true);
+        $course = $this->createOne(Course::class);
 
         $response = $this->actingAs($this->user)
             ->postJson(route('course.store'), $course->toArray());
@@ -65,7 +68,7 @@ class CourseTest extends FeatureTestCase
 
     public function test_show_json()
     {
-        $course = $this->course(true);
+        $course = $this->createOne(Course::class);
 
         $response = $this->actingAs($this->user)
             ->getJson(route('course.show', ['course' => $course->id]));
@@ -76,8 +79,8 @@ class CourseTest extends FeatureTestCase
 
     public function test_update_json()
     {
-        $course = $this->course(true);
-        $newCourse = $this->course(true);
+        $course = $this->createOne(Course::class);
+        $newCourse = $this->createOne(Course::class);
 
         $response = $this->actingAs($this->user)
             ->putJson(
@@ -91,7 +94,7 @@ class CourseTest extends FeatureTestCase
 
     public function test_reactivate_json()
     {
-        $course = $this->course(true);
+        $course = $this->createOne(Course::class);
 
         $response = $this->actingAs($this->user)
             ->patchJson(route('course.reactivate', ['course' => $course->id]));
@@ -102,7 +105,7 @@ class CourseTest extends FeatureTestCase
 
     public function test_cancel_json()
     {
-        $course = $this->course(true);
+        $course = $this->createOne(Course::class);
 
         $response = $this->actingAs($this->user)
             ->patchJson(route('course.cancel', ['course' => $course->id]));

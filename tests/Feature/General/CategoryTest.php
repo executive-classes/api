@@ -2,14 +2,17 @@
 
 namespace Tests\Feature\General;
 
+use App\Models\Eloquent\General\Category\Category;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\CreatesUser;
+use Tests\FactoryMaker;
 use Tests\Feature\FeatureTestCase;
-use Tests\Providers\General\CategoryProvider;
 
 class CategoryTest extends FeatureTestCase
 {
-    use RefreshDatabase, CreatesUser, CategoryProvider;
+    use RefreshDatabase;
+    use CreatesUser;
+    use FactoryMaker;
 
     /**
      * @var \App\Models\Eloquent\Billing\User\User
@@ -53,7 +56,7 @@ class CategoryTest extends FeatureTestCase
 
     public function test_create_json()
     {
-        $category = $this->category(true);
+        $category = $this->createOne(Category::class);
 
         $response = $this->actingAs($this->user)
             ->postJson(route('category.store'), $category->toArray());
@@ -64,7 +67,7 @@ class CategoryTest extends FeatureTestCase
 
     public function test_show_json()
     {
-        $category = $this->category(true);
+        $category = $this->createOne(Category::class);
 
         $response = $this->actingAs($this->user)
             ->getJson(route('category.show', ['category' => $category->id]));
@@ -75,8 +78,8 @@ class CategoryTest extends FeatureTestCase
 
     public function test_update_json()
     {
-        $category = $this->category(true);
-        $newCategory = $this->category(true);
+        $category = $this->createOne(Category::class);
+        $newCategory = $this->createOne(Category::class);
 
         $response = $this->actingAs($this->user)
             ->putJson(
@@ -90,7 +93,7 @@ class CategoryTest extends FeatureTestCase
 
     public function test_delete_response()
     {
-        $category = $this->category(true);
+        $category = $this->createOne(Category::class);
 
         $response = $this->actingAs($this->user)
             ->deleteJson(route('category.delete', ['category' => $category->id]));

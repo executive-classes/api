@@ -23,6 +23,7 @@ class QuestionFactory extends Factory
     public function definition()
     {
         return [
+            'id' => $this->id(),
             'name' => $this->faker->text(15),
             'question' => $this->faker->text(30),
             'category_id' => $this->relation(Category::class)

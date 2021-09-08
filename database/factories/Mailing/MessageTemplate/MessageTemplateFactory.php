@@ -2,10 +2,10 @@
 
 namespace Database\Factories\Mailing\MessageTemplate;
 
+use App\Enums\Mailing\MessageTypeEnum;
 use App\Models\Eloquent\Mailing\MessageFooter\MessageFooter;
 use App\Models\Eloquent\Mailing\MessageHeader\MessageHeader;
 use App\Models\Eloquent\Mailing\MessageTemplate\MessageTemplate;
-use App\Models\Eloquent\Mailing\MessageType\MessageType;
 use Database\Factories\Factory;
 
 class MessageTemplateFactory extends Factory
@@ -26,7 +26,7 @@ class MessageTemplateFactory extends Factory
     {
         return [
             'id' => preg_replace('/\s|\./', '', $this->faker->text(20)),
-            'message_type_id' => MessageType::inRandomOrder()->first(),
+            'message_type_id' => MessageTypeEnum::getRandomValue(),
             'description' => $this->faker->text(),
             'subject' => $this->faker->text(50),
             'content' => '<h3>{{$testMessage}} from a Template</h3>',

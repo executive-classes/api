@@ -9,7 +9,6 @@ use App\Http\Resources\Billling\TeacherStatus\TeacherStatusResource;
 
 class TeacherResource extends Resource
 {
-
     /**
      * Transform the resource into an array.
      *
