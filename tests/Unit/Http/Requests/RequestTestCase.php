@@ -2,22 +2,13 @@
 
 namespace Tests\Unit\Http\Requests;
 
+use App\Http\Requests\Billing\Address\AddressRequest;
 use Tests\MocksDatabase;
 use Tests\TestCase;
 
 abstract class RequestTestCase extends TestCase
 {
     use MocksDatabase;
-
-    /**
-     * @var \Illuminate\Foundation\Http\FormRequest
-     */
-    protected $request;
-
-    /**
-     * @var array
-     */
-    protected $rules;
 
     /**
      * @var \Illuminate\Validation\Validator
@@ -37,39 +28,56 @@ abstract class RequestTestCase extends TestCase
 
         parent::setUp();
 
-        $this->request   = new $this->requestClass;
-        $this->rules     = $this->request->rules();
         $this->validator = $this->app['validator'];
+    }
+
+    /**
+     * Makes the request.
+     *
+     * @param array $fields
+     * @return \Illuminate\Foundation\Http\FormRequest
+     */
+    private function request(array $fields = [])
+    {
+        return (new $this->requestClass)->merge($fields);
     }
 
     /**
      * Validate a field.
      *
-     * @param string $field
-     * @param mixed $value
+     * @param string $name
+     * @param array $fields
      * @return boolean
      */
-    protected function validateField(string $field, $value)
+    protected function validateField(string $name, array $fields)
     {
-        return $this->getFieldValidator($field, $value)->passes();
+        $rules = $this->request($fields)->rules();
+        return $this->validator->make(
+            $fields, 
+            [$name => $rules[$name]]
+        )->passes();
     }
 
     /**
-     * Get a field validator
+     * Execute the prepareForValidation method.
      *
-     * @param string $field
-     * @param mixed $value
-     * @return \Illuminate\Validation\Validator
+     * @param array $fields
+     * @return \Illuminate\Foundation\Http\FormRequest
      */
-    protected function getFieldValidator($field, $value)
+    protected function executePrepareForValidation(array $fields = [])
     {
-        return $this->validator->make(
-            [$field => $value],
-            [$field => $this->rules[$field]]
-        );
+        $request = $this->request($fields);
+        $this->callMethod($request, 'prepareForValidation');
+        return $request;
     }
 
-    protected function valueToString($value)
+    /**
+     * Write the value has a string.
+     *
+     * @param mixed $value
+     * @return string|mixed
+     */
+    private function valueToString($value)
     {
         if ($value === true) {
             return 'true';
@@ -89,25 +97,31 @@ abstract class RequestTestCase extends TestCase
     /**
      * Assert that a field validation passes with a given value.
      *
-     * @param string $field
-     * @param mixed $value
+     * @param string $name
+     * @param array $fields
      * @return void
      */
-    public function assertPasses(string $field, $value)
+    public function assertPasses(string $name, array $fields)
     {
-        $this->assertTrue($this->validateField($field, $value), "The field '$field' not passes with the value '{$this->valueToString($value)}'");
+        $message = "The field '$name' not passes " . (empty($fields[$name])
+            ? "without value"
+            : "with the value '{$this->valueToString($fields[$name])}'");
+        $this->assertTrue($this->validateField($name, $fields), $message);
     }
 
     /**
      * Assert that a field validation will not passes with a given value.
      *
-     * @param string $field
-     * @param mixed $value
+     * @param string $name
+     * @param array $fields
      * @return void
      */
-    public function assertNotPasses(string $field, $value)
+    public function assertNotPasses(string $name, array $fields)
     {
-        $this->assertFalse($this->validateField($field, $value), "The field '$field' passes with the value '{$this->valueToString($value)}'");
+        $message = "The field '$name' passes " . (empty($fields[$name])
+            ? "without value"
+            : "with the value '{$this->valueToString($fields[$name])}'");
+        $this->assertFalse($this->validateField($name, $fields), $message);
     }
 
     /**

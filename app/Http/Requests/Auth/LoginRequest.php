@@ -25,7 +25,7 @@ class LoginRequest extends Request
      */
     protected function prepareForValidation()
     {
-        $this->changeLanguageFromRequest($this->get('language', null));
+        $this->changeLanguageFromRequest($this->get('system_language_id', null));
     }
 
     /**

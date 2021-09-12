@@ -33,7 +33,7 @@ class Zip implements Rule
      */
     public function passes($attribute, $value)
     {
-        if ($this->country != CountryEnum::BR) {
+        if ($this->country != CountryEnum::BR || !$this->country) {
             return true;
         }
         

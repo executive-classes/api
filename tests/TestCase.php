@@ -28,4 +28,21 @@ abstract class TestCase extends BaseTestCase
 
         $this->assertTrue(method_exists($class, $method), $message);
     }
+
+    /**
+     * Call a method of a class.
+     *
+     * @param object $obj
+     * @param string $name
+     * @param array $args
+     * @return mixed
+     * @source https://stackoverflow.com/questions/249664/best-practices-to-test-protected-methods-with-phpunit
+     */
+    public function callMethod($obj, $name, array $args = [])
+    {
+        $class = new \ReflectionClass($obj);
+        $method = $class->getMethod($name);
+        $method->setAccessible(true);
+        return $method->invokeArgs($obj, $args);
+    }
 }

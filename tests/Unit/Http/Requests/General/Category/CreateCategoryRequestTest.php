@@ -15,35 +15,50 @@ class CreateCategoryRequestTest extends RequestTestCase
 
     public function test_name_field()
     {
-        $this->assertPasses('name', 'valid name');
-        $this->assertNotPasses('name', 'ab');
-        $this->assertNotPasses('name', null);
+        $field = 'name';
+
+        $this->assertPasses($field, [$field => 'valid name']);
+
+        $this->assertNotPasses($field, [$field => 'ab']);
+        $this->assertNotPasses($field, [$field => null]);
+        $this->assertNotPasses($field, []);
     }
 
     public function test_description_field()
     {
-        $this->assertPasses('description', 'valid description');
-        $this->assertNotPasses('description', null);
+        $field = 'description';
+
+        $this->assertPasses($field, [$field => 'valid description']);
+
+        $this->assertNotPasses($field, [$field => null]);
+        $this->assertNotPasses($field, []);
     }
 
     public function test_category_type_id_field()
     {
+        $field = 'category_type_id';
+
         foreach (CategoryTypeEnum::getValues() as $value) {
-            $this->assertPasses('category_type_id', $value);
+            $this->assertPasses($field, [$field => $value]);
         }
 
-        $this->assertNotPasses('category_type_id', 'invalid type');
-        $this->assertNotPasses('category_type_id', null);
+        $this->assertNotPasses($field, [$field => 'invalid type']);
+        $this->assertNotPasses($field, [$field => null]);
+        $this->assertNotPasses($field, []);
     }
 
     public function test_parent_id_field()
     {
         $this->shouldValidateExists('category', 'id', 123);
         $this->shouldValidateExists('category', 'id', 1234, false);
+        
+        $field = 'parent_id';
 
-        $this->assertPasses('parent_id', 123);
-        $this->assertPasses('parent_id', null);
-        $this->assertNotPasses('parent_id', 1234);
-        $this->assertNotPasses('parent_id', 'invalid id');
+        $this->assertPasses($field, [$field => 123]);
+        $this->assertPasses($field, [$field => null]);
+        $this->assertPasses($field, []);
+
+        $this->assertNotPasses($field, [$field => 1234]);
+        $this->assertNotPasses($field, [$field => 'invalid id']);
     }
 }

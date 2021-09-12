@@ -24,25 +24,25 @@ class AddressRequest extends Request
             'country'    => ['sometimes', 'string', new EnumValue(CountryEnum::class)],
             'street'     => [
                 Rule::requiredIf(function () {
-                    return !in_array($this->get('country'), [CountryEnum::BR, null]);
+                    return in_array($this->get('country'), [CountryEnum::BR, null]);
                 }), 
                 'string'
             ],
             'district'   => [
                 Rule::requiredIf(function () {
-                    return !in_array($this->get('country'), [CountryEnum::BR, null]);
+                    return in_array($this->get('country'), [CountryEnum::BR, null]);
                 }), 
                 'string'
             ],
             'city'       => [
                 Rule::requiredIf(function () {
-                    return !in_array($this->get('country'), [CountryEnum::BR, null]);
+                    return in_array($this->get('country'), [CountryEnum::BR, null]);
                 }), 
                 'string'
             ],
             'state'      => [
                 Rule::requiredIf(function () {
-                    return !in_array($this->get('country'), [CountryEnum::BR, null]);
+                    return in_array($this->get('country'), [CountryEnum::BR, null]);
                 }), 
                 'string', 'max:2'
             ],
