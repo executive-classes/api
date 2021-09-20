@@ -2,13 +2,13 @@
 
 namespace App\Http\Rules;
 
-use App\Services\Billing\Phone\BrazillianPhone as PhoneBrazillianPhone;
+use App\Services\Billing\Phone\BrazilianPhone as PhoneBrazilianPhone;
 use Illuminate\Contracts\Validation\Rule;
 
 /**
  * @source https://medium.com/@mariojr.rcosta/php-dica-rápida-validando-números-de-telefone-com-regex-e-preg-match-802723dbc2e9
  */
-class BrazillianPhone implements Rule
+class BrazilianPhone implements Rule
 {
     /**
      * Determine if the validation rule passes.
@@ -23,7 +23,7 @@ class BrazillianPhone implements Rule
             return false;
         }
 
-        $phone = new PhoneBrazillianPhone();
+        $phone = new PhoneBrazilianPhone();
         return $phone->validate($value);
     }
 

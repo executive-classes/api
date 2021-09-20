@@ -22,23 +22,18 @@ class AddressRequestTest extends RequestTestCase
 
         $this->assertPasses($field, [$field => 'some-zip']);
         $this->assertPasses($field, [$field => '00000-000', 'country' => CountryEnum::BR]);
-
         $this->assertNotPasses($field, [$field => 'invalid zip', 'country' => CountryEnum::BR]);
-        $this->assertNotPasses($field, [$field => null]);
-        $this->assertNotPasses($field, []);
+        $this->assertRequiredRule($field);
+        $this->assertNotNullableRule($field);
     }
 
     public function test_number_field()
     {
         $field = 'number';
 
-        $this->assertPasses($field, [$field => '8']);
-        $this->assertPasses($field, [$field => 8]);
-        $this->assertPasses($field, [$field => 12]);
-        
-        $this->assertNotPasses($field, [$field => '12345678901']);
-        $this->assertNotPasses($field, [$field => null]);
-        $this->assertNotPasses($field, []);
+        $this->assertRequiredRule($field);
+        $this->assertMaxStringRule($field, 10);
+        $this->assertNotNullableRule($field);
     }
 
     public function test_complement_field()
@@ -46,24 +41,20 @@ class AddressRequestTest extends RequestTestCase
         $field = 'complement';
 
         $this->assertPasses($field, [$field => 'valid complement']);
-        $this->assertPasses($field, [$field => null]);
-        $this->assertPasses($field, []);
-        
-        $this->assertNotPasses($field, [$field => false]);
-        $this->assertNotPasses($field, [$field => 123]);
+        $this->assertSometimesRule($field);
+        $this->assertNullableRule($field);
+        $this->assertStringRule($field);
+        $this->assertMaxStringRule($field, 255);
     }
 
     public function test_country_field()
     {
         $field = 'country';
 
-        foreach (CountryEnum::getValues() as $value) {
-            $this->assertPasses($field, [$field => $value]);
-        }
-        $this->assertPasses($field, []);
-
-        $this->assertNotPasses($field, [$field => 'invalid country']);
-        $this->assertNotPasses($field, [$field => null]);
+        $this->assertSometimesRule($field);
+        $this->assertEnumRule($field, CountryEnum::getValues());
+        $this->assertStringRule($field);
+        $this->assertNotNullableRule($field);
     }
 
     public function test_street_field()
@@ -71,11 +62,8 @@ class AddressRequestTest extends RequestTestCase
         $field = 'street';
 
         $this->assertPasses($field, [$field => 'valid street']);
-        $this->assertPasses($field, [$field => 'valid street', 'country' => CountryEnum::BR]);
-        $this->assertPasses($field, ['country' => CountryEnum::US]);
-
-        $this->assertNotPasses($field, ['country' => CountryEnum::BR]);
-        $this->assertNotPasses($field, [$field => null, 'country' => CountryEnum::BR]);
+        $this->assertRequiredIfRule($field, ['country' => CountryEnum::US], ['country' => CountryEnum::BR]);
+        $this->assertStringRule($field);
     }
 
     public function test_district_field()
@@ -83,11 +71,8 @@ class AddressRequestTest extends RequestTestCase
         $field = 'district';
         
         $this->assertPasses($field, [$field => 'valid district']);
-        $this->assertPasses($field, [$field => 'valid district', 'country' => CountryEnum::BR]);
-        $this->assertPasses($field, ['country' => CountryEnum::US]);
-
-        $this->assertNotPasses($field, ['country' => CountryEnum::BR]);
-        $this->assertNotPasses($field, [$field => null, 'country' => CountryEnum::BR]);
+        $this->assertRequiredIfRule($field, ['country' => CountryEnum::US], ['country' => CountryEnum::BR]);
+        $this->assertStringRule($field);
     }
 
     public function test_city_field()
@@ -95,11 +80,8 @@ class AddressRequestTest extends RequestTestCase
         $field = 'city';
         
         $this->assertPasses($field, [$field => 'valid city']);
-        $this->assertPasses($field, [$field => 'valid city', 'country' => CountryEnum::BR]);
-        $this->assertPasses($field, ['country' => CountryEnum::US]);
-
-        $this->assertNotPasses($field, ['country' => CountryEnum::BR]);
-        $this->assertNotPasses($field, [$field => null, 'country' => CountryEnum::BR]);
+        $this->assertRequiredIfRule($field, ['country' => CountryEnum::US], ['country' => CountryEnum::BR]);
+        $this->assertStringRule($field);
     }
 
     public function test_state_field()
@@ -107,11 +89,8 @@ class AddressRequestTest extends RequestTestCase
         $field = 'state';
 
         $this->assertPasses($field, [$field => 'st']);
-        $this->assertPasses($field, [$field => 'st', 'country' => CountryEnum::BR]);
-        $this->assertPasses($field, ['country' => CountryEnum::US]);
-
-        $this->assertNotPasses($field, ['country' => CountryEnum::BR]);
-        $this->assertNotPasses($field, [$field => 'invalid state', 'country' => CountryEnum::BR]);
-        $this->assertNotPasses($field, [$field => null, 'country' => CountryEnum::BR]);
+        $this->assertRequiredIfRule($field, ['country' => CountryEnum::US], ['country' => CountryEnum::BR]);
+        $this->assertStringRule($field);
+        $this->assertMaxStringRule($field, 2);
     }
 }

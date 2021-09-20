@@ -11,26 +11,27 @@ class TaxCode implements Rule
     /**
      * The Tax Type
      * 
-     * @var TaxType
+     * @var string|null
      */
-    private $taxType;
+    private $taxTypeId;
 
     /**
      * The State.
      * 
-     * @var StateEnum|null
+     * @var string|null
      */
-    private $state;
+    private $uf;
 
     /**
      * Create the Tax Code rule.
      *
      * @param string|null $taxTypeId
+     * @param string|null $uf
      */
     public function __construct($taxTypeId = null, string $uf = null)
     {
-        $this->taxType = TaxType::find($taxTypeId);
-        $this->state = $uf ? StateEnum::fromValue($uf) : null;
+        $this->taxTypeId = $taxTypeId;
+        $this->uf = $uf;
     }
 
     /**
@@ -42,7 +43,10 @@ class TaxCode implements Rule
      */
     public function passes($attribute, $value)
     {
-        if (!$this->taxType) {
+        $taxType = TaxType::find($this->taxTypeId);
+        $state = $this->uf ? StateEnum::fromValue($this->uf) : null;
+
+        if (!$taxType) {
             return false;
         }
 
@@ -50,7 +54,7 @@ class TaxCode implements Rule
             return false;
         }
         
-        return $this->taxType->validate($value, $this->state);
+        return $taxType->validate($value, $state);
     }
 
     /**
@@ -60,11 +64,12 @@ class TaxCode implements Rule
      */
     public function message()
     {
-        if (!$this->taxType) {
+        if (!$this->taxTypeId) {
             return __('validation.tax_type');
         }
 
-        return __('validation.tax', ['tax' => $this->taxType->name]);
+        $taxType = TaxType::find($this->taxTypeId);
+        return __('validation.tax', ['tax' => $taxType->name]);
     }
 }
 

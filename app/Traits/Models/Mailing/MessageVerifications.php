@@ -55,6 +55,6 @@ trait MessageVerifications
     public function isReadyForSent()
     {
         return $this->message_status_id === MessageStatusEnum::SCHEDULED
-            && $this->should_proccess_at <= Carbon::now()->toDateTimeString();
+            && $this->should_process_at <= Carbon::now()->toDateTimeString();
     }
 }

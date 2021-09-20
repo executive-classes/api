@@ -40,7 +40,7 @@ class Message extends Model
      * @var array
      */
     protected $fillable = [
-        'should_proccess_at',
+        'should_process_at',
         'message_status_id',
         'reply_to',
         'to',

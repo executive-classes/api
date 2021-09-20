@@ -21,7 +21,7 @@ class UpdateUserRequest extends Request
     protected $additionalRules = [
         'tax' => 'sometimes',
         'phone' => 'sometimes',
-        'language' => 'sometimes'
+        'systemLanguage' => 'sometimes'
     ];
 
     /**

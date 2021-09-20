@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Enums\Billing\CountryEnum;
 use App\Services\Billing\Address\Contract\AddressMaker;
-use App\Services\Billing\Address\Countries\BrazillianAddress;
+use App\Services\Billing\Address\Countries\BrazilianAddress;
 use App\Services\Billing\Address\Countries\GenericAddress;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,6 +26,6 @@ class AddressServiceProvider extends ServiceProvider
             return GenericAddress::class;
         }
 
-        return BrazillianAddress::class;
+        return BrazilianAddress::class;
     }
 }

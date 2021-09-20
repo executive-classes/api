@@ -16,6 +16,10 @@ class ValidPassword implements Rule
      */
     public function passes($attribute, $value)
     {
+        if ($value === null) {
+            return false;
+        }
+
         return Password::validate($value);
     }
 

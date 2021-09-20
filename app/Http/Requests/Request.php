@@ -62,6 +62,16 @@ abstract class Request extends FormRequest
     }
 
     /**
+     * Get the additional validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function additionalRules()
+    {
+        return $this->additionalRules;
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array

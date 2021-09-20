@@ -31,7 +31,7 @@ class MessageRepository extends Repository
         return $this->model
             ->with('template')
             ->where('message_status_id', MessageStatusEnum::SCHEDULED)
-            ->where('should_proccess_at', '<', Carbon::now()->toDateTimeString())
+            ->where('should_process_at', '<', Carbon::now()->toDateTimeString())
             ->get();
     }
 
@@ -71,7 +71,7 @@ class MessageRepository extends Repository
         }
 
         $message->message_status_id = MessageStatusEnum::CANCELED;
-        $message->should_proccess_at = null;
+        $message->should_process_at = null;
         $message->save();
 
         return $message->message_status_id == MessageStatusEnum::CANCELED;

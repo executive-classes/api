@@ -40,7 +40,7 @@ trait PaymentMethodStates
     }
 
     /**
-     * Indicate that the biller is payed with brazillian pix.
+     * Indicate that the biller is payed with brazilian pix.
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */

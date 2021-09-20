@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Billling;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Billling\User\ProfileResource;
-use App\Http\Requests\Billing\Profile\UpdateProfileRequest;
+use App\Http\Requests\Billing\User\UpdateProfileRequest;
 
 class ProfileController extends Controller
 {

@@ -17,7 +17,7 @@ class CreateCategoryRequest extends Request
     {
         return [
             'name' => 'required|min:3',
-            'description' => 'required',
+            'description' => 'required|string',
             'category_type_id' => [
                 'required',
                 new EnumValue(CategoryTypeEnum::class)

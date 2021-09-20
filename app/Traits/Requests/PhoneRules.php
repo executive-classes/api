@@ -2,15 +2,15 @@
 
 namespace App\Traits\Requests;
 
-use App\Http\Rules\BrazillianPhone;
+use App\Http\Rules\BrazilianPhone;
 
 trait PhoneRules
 {
     public function getPhoneRules(string $required = 'sometimes')
     {
         return [
-            'phone' => [$required, new BrazillianPhone],
-            'phone_alt' => 'sometimes',
+            'phone' => [$required, new BrazilianPhone],
+            'phone_alt' => 'sometimes|nullable',
         ];
     }
 }

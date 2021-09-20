@@ -2,16 +2,16 @@
 
 namespace App\Traits\Resources;
 
-use App\Services\Billing\Phone\BrazillianPhone;
+use App\Services\Billing\Phone\BrazilianPhone;
 
 trait WithPhones
 {
     private function makePhone($phone)
     {
-        if (!$phone || !BrazillianPhone::validate($phone)) {
+        if (!$phone || !BrazilianPhone::validate($phone)) {
             return $phone;
         }
 
-        return BrazillianPhone::format($phone);
+        return BrazilianPhone::format($phone);
     }
 }

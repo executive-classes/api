@@ -15,38 +15,36 @@ class LoginRequestTest extends RequestTestCase
      */
     protected $requestClass = LoginRequest::class;
 
+    /**
+     * @var boolean
+     */
+    protected $changeLanguage = true;
+
     public function test_email_field()
     {
         $field = 'email';
 
-        $this->shouldValidateExists('user', 'email', 'valid@email.com');
-        $this->shouldValidateExists('user', 'email', 'invalid@email.com', false);
-
-        $this->assertPasses($field, [$field => 'valid@email.com']);
-
-        $this->assertNotPasses($field, [$field => 'invalid@email.com']);
-        $this->assertNotPasses($field, [$field => 'invalid email']);
-        $this->assertNotPasses($field, [$field => null]);
-        $this->assertNotPasses($field, []);
+        $this->assertRequiredRule($field);
+        $this->assertExistsRule($field, 'user', 'email', 'valid@email.com', 'invalid@email.com');
+        $this->assertEmailRule($field);
+        $this->assertNotNullableRule($field);
     }
 
     public function test_password_field()
     {
         $field = 'password';
-        $this->assertPasses($field, [$field => 'password']);
 
-        $this->assertNotPasses($field, [$field => null]);
-        $this->assertNotPasses($field, []);
+        $this->assertPasses($field, [$field => 'password']);
+        $this->assertRequiredRule($field);
+        $this->assertNotNullableRule($field);
     }
 
     public function test_remember_me_field()
     {
         $field = 'remember_me';
-        $this->assertPasses($field, [$field => true]);
-        $this->assertPasses($field, [$field => false]);
-        $this->assertPasses($field, []);
 
-        $this->assertNotPasses($field, [$field => 'ab']);
-        $this->assertNotPasses($field, [$field => null]);
+        $this->assertSometimesRule($field);
+        $this->assertBooleanRule($field);
+        $this->assertNotNullableRule($field);
     }
 }

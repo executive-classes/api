@@ -9,7 +9,7 @@ use App\Models\Eloquent\Billing\AddressCity\AddressCity;
 use App\Models\Eloquent\Billing\AddressState\AddressState;
 use App\Services\Billing\Address\Contract\AddressMaker;
 
-class BrazillianAddress implements AddressMaker
+class BrazilianAddress implements AddressMaker
 {
     /**
      * ViaCep Client.
@@ -19,7 +19,7 @@ class BrazillianAddress implements AddressMaker
     private $client;
 
     /**
-     * Create the Brazillian Address.
+     * Create the Brazilian Address.
      *
      * @param ViaCepClient $client
      */
@@ -29,7 +29,7 @@ class BrazillianAddress implements AddressMaker
     }
 
     /**
-     * Create a brazillian address.
+     * Create a brazilian address.
      *
      * @param array $data
      * @return Address
@@ -40,7 +40,7 @@ class BrazillianAddress implements AddressMaker
     }
 
     /**
-     * Update a brazillian address.
+     * Update a brazilian address.
      *
      * @param array $data
      * @param Address $address

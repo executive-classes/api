@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Billing\Profile;
+namespace App\Http\Requests\Billing\User;
 
 use App\Http\Rules\ValidPassword;
 use App\Http\Requests\Request;
@@ -22,7 +22,7 @@ class UpdateProfileRequest extends Request
     protected $additionalRules = [
         'tax' => 'sometimes',
         'phone' => 'sometimes',
-        'language' => 'sometimes'
+        'systemLanguage' => 'sometimes'
     ];
 
     /**
@@ -33,6 +33,7 @@ class UpdateProfileRequest extends Request
     protected function prepareForValidation()
     {
         $this->merge($this->formatTaxTypeId());
+        $this->changeLanguageFromRequest($this->get('system_language_id', null));
     }
 
     /**

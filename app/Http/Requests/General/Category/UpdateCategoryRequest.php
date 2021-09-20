@@ -17,7 +17,7 @@ class UpdateCategoryRequest extends Request
     {
         return [
             'name' => 'sometimes|min:3',
-            'description' => 'sometimes',
+            'description' => 'sometimes|string',
             'category_type_id' => [
                 'sometimes',
                 new EnumValue(CategoryTypeEnum::class)

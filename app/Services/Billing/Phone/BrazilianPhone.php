@@ -4,7 +4,7 @@ namespace App\Services\Billing\Phone;
 
 use App\Services\Billing\Phone\Contract\PhoneContract;
 
-class BrazillianPhone implements PhoneContract
+class BrazilianPhone implements PhoneContract
 {
     public static function validate($phone): bool
     {

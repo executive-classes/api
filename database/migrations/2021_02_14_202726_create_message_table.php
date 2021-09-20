@@ -31,7 +31,7 @@ class CreateMessageTable extends Migration
                 ->nullable()
                 ->comment('Sent date of the message.');
 
-            $table->timestamp('should_proccess_at')
+            $table->timestamp('should_process_at')
                 ->useCurrent()
                 ->nullable()
                 ->comment('Date and time that the message should be sent.');

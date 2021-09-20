@@ -21,7 +21,7 @@ class CreateUserRequest extends Request
     protected $additionalRules = [
         'tax' => 'required',
         'phone' => 'sometimes',
-        'language' => 'sometimes'
+        'systemLanguage' => 'sometimes'
     ];
 
     /**

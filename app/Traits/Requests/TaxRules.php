@@ -5,6 +5,7 @@ namespace App\Traits\Requests;
 use App\Http\Rules\TaxCode;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use App\Enums\Billing\StateEnum;
 use App\Enums\Billing\TaxTypeEnum;
 use BenSampo\Enum\Rules\EnumValue;
 

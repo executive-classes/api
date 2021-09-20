@@ -15,18 +15,18 @@ class CrossLoginRequestTest extends RequestTestCase
      */
     protected $requestClass = CrossLoginRequest::class;
 
+    /**
+     * @var boolean
+     */
+    protected $changeLanguage = true;
+
     public function test_user_id_field()
     {
         $field = 'user_id';
 
-        $this->shouldValidateExists('user', 'id', 123);
-        $this->shouldValidateExists('user', 'id', 1234, false);
-
-        $this->assertPasses($field, [$field => 123]);
-
-        $this->assertNotPasses($field, [$field => 1234]);
-        $this->assertNotPasses($field, [$field => 'invalid id']);
-        $this->assertNotPasses($field, [$field => null]);
-        $this->assertNotPasses($field, []);
+        $this->assertRequiredRule($field);
+        $this->assertExistsRule($field, 'user', 'id', 123, 1234);
+        $this->assertNumericRule($field);
+        $this->assertNotNullableRule($field);
     }
 }

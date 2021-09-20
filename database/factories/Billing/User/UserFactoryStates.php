@@ -52,7 +52,7 @@ trait UserFactoryStates
     }
 
     /**
-     * Indicate that the user use the system in portuguese (brazillian).
+     * Indicate that the user use the system in portuguese (brazilian).
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */

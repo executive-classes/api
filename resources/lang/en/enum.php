@@ -196,7 +196,7 @@ return [
         ],
         PaymentMethodEnum::DEPOSIT => [
             'name' => 'Deposit',
-            'description' => 'Payments made with brazillian pix'
+            'description' => 'Payments made with brazilian pix'
         ],
         PaymentMethodEnum::TRANSFER => [
             'name' => 'Transfer',

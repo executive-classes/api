@@ -22,7 +22,7 @@ class CreatePaymentMethodTable extends Migration
 
             // Payment Method data
             $table->string('invoice_code')
-                ->comment('Code of the payment method in the brazillian invoice.');
+                ->comment('Code of the payment method in the brazilian invoice.');
         });
     }
 

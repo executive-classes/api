@@ -28,7 +28,7 @@ class MessageTest extends ModelTestCase
             'table' => 'message',
             'timestamps' => false,
             'fillable' => [
-                'should_proccess_at',
+                'should_process_at',
                 'message_status_id',
                 'reply_to',
                 'to',

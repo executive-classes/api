@@ -18,10 +18,9 @@ class UpdateCategoryRequestTest extends RequestTestCase
         $field = 'name';
 
         $this->assertPasses($field, [$field => 'valid name']);
-        $this->assertPasses($field, []);
-
-        $this->assertNotPasses($field, [$field => 'ab']);
-        $this->assertNotPasses($field, [$field => null]);
+        $this->assertSometimesRule($field);
+        $this->assertMinStringRule($field, 3);
+        $this->assertNotNullableRule($field);
     }
 
     public function test_description_field()
@@ -29,35 +28,27 @@ class UpdateCategoryRequestTest extends RequestTestCase
         $field = 'description';
 
         $this->assertPasses($field, [$field => 'valid description']);
-        $this->assertPasses($field, [$field => null]);
-        $this->assertPasses($field, []);
+        $this->assertSometimesRule($field);
+        $this->assertStringRule($field);
+        $this->assertNotNullableRule($field);
     }
 
     public function test_category_type_id_field()
     {
         $field = 'category_type_id';
 
-        foreach (CategoryTypeEnum::getValues() as $value) {
-            $this->assertPasses($field, [$field => $value]);
-        }
-        $this->assertPasses($field, []);
-
-        $this->assertNotPasses($field, [$field => 'invalid type']);
-        $this->assertNotPasses($field, [$field => null]);
+        $this->assertSometimesRule($field);
+        $this->assertEnumRule($field, CategoryTypeEnum::getValues());
+        $this->assertNotNullableRule($field);
     }
 
     public function test_parent_id_field()
     {
-        $this->shouldValidateExists('category', 'id', 123);
-        $this->shouldValidateExists('category', 'id', 1234, false);
-
         $field = 'parent_id';
 
-        $this->assertPasses($field, [$field => 123]);
-        $this->assertPasses($field, [$field => null]);
-        $this->assertPasses($field, []);
-
-        $this->assertNotPasses($field, [$field => 1234]);
-        $this->assertNotPasses($field, [$field => 'invalid id']);
+        $this->assertSometimesRule($field);
+        $this->assertNullableRule($field);
+        $this->assertNumericRule($field);
+        $this->assertExistsRule($field, 'category', 'id', 123, 1234);
     }
 }

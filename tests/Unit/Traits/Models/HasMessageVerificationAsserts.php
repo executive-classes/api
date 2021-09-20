@@ -57,15 +57,15 @@ trait HasMessageVerificationAsserts
         $this->assertHasMethod(get_class($this->model), 'isReadyForSent');
 
         $this->model->message_status_id = null;
-        $this->model->should_proccess_at = null;
+        $this->model->should_process_at = null;
         $this->assertFalse($this->model->isReadyForSent());
         
         $this->model->message_status_id = MessageStatusEnum::SCHEDULED;
-        $this->model->should_proccess_at = Carbon::now()->addDay()->toDateTimeString();
+        $this->model->should_process_at = Carbon::now()->addDay()->toDateTimeString();
         $this->assertFalse($this->model->isReadyForSent());
 
         $this->model->message_status_id = MessageStatusEnum::SCHEDULED;
-        $this->model->should_proccess_at = Carbon::now()->toDateTimeString();
+        $this->model->should_process_at = Carbon::now()->toDateTimeString();
         $this->assertTrue($this->model->isReadyForSent());
     }
 }

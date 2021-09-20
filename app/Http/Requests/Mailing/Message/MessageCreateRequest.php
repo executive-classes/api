@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Mailing\Message;
 
 use App\Http\Requests\Request;
+use Illuminate\Validation\Rule;
 
 class MessageCreateRequest extends Request
 {
@@ -14,15 +15,25 @@ class MessageCreateRequest extends Request
     public function getRules(): array
     {
         return [
-            'should_proccess_at'  => 'sometimes|date',
+            'should_process_at'   => 'sometimes|date',
             'reply_to'            => 'required|string|email',
             'to'                  => 'required|string',
             'cc'                  => 'sometimes|string',
             'bcc'                 => 'sometimes|string',
-            'subject'             => 'required_if:message_template_id,null',
-            'content'             => 'required_if:message_template_id,null',
-            'message_template_id' => 'required_if:content,null|string|exists:message_template,id',
-            'params'              => 'required_if:content,null',
+            'subject'             => [
+                Rule::requiredIf(empty($this->get('message_template_id'))),
+            ],
+            'content'             => [
+                Rule::requiredIf(empty($this->get('message_template_id'))),
+            ],
+            'message_template_id' => [
+                Rule::requiredIf(empty($this->get('content'))),
+                'string',
+                'exists:message_template,id'
+            ],
+            'params'              => [
+                Rule::requiredIf(empty($this->get('content'))),
+            ],
         ];
     }
 }
