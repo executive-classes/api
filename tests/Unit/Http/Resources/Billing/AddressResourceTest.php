@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Http\Resources\Billing;
 
-use App\Http\Resources\Billling\Address\AddressCollection;
-use App\Http\Resources\Billling\Address\AddressResource;
+use App\Http\Resources\Billing\Address\AddressCollection;
+use App\Http\Resources\Billing\Address\AddressResource;
 use App\Models\Eloquent\Billing\Address\Address;
 use Tests\FactoryMaker;
 use Tests\Unit\Http\Resources\ResourceTestCase;

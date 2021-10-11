@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Http\Resources\Billing;
 
-use App\Http\Resources\Billling\PaymentInterval\PaymentIntervalCollection;
-use App\Http\Resources\Billling\PaymentInterval\PaymentIntervalResource;
+use App\Http\Resources\Billing\PaymentInterval\PaymentIntervalCollection;
+use App\Http\Resources\Billing\PaymentInterval\PaymentIntervalResource;
 use App\Models\Eloquent\Billing\PaymentInterval\PaymentInterval;
 use Tests\FactoryMaker;
 use Tests\Unit\Http\Resources\ResourceTestCase;

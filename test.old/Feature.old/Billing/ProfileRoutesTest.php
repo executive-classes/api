@@ -3,7 +3,7 @@
 namespace Tests\Feature\Billing;
 
 use App\Enums\Billing\TaxTypeEnum;
-use App\Http\Resources\Billling\ProfileResource;
+use App\Http\Resources\Billing\ProfileResource;
 use App\Models\Eloquent\Billing\User\User;
 use App\Models\Eloquent\System\SystemLanguage\SystemLanguage;
 use Illuminate\Foundation\Testing\RefreshDatabase;

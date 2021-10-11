@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Billling\ProfileController;
+use App\Http\Controllers\Billing\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/profile', [ProfileController::class, 'index'])

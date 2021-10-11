@@ -7,7 +7,7 @@ use stdClass;
 use Tests\FactoryMaker;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\Unit\Http\Resources\ResourceTestCase;
-use App\Http\Resources\Billling\Address\AddressSearchResource;
+use App\Http\Resources\Billing\Address\AddressSearchResource;
 use App\Models\Eloquent\Billing\AddressCountry\AddressCountry;
 
 class TokenResourceTest extends ResourceTestCase

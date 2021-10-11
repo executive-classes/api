@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Http\Resources\Billing;
 
-use App\Http\Resources\Billling\Student\StudentCollection;
-use App\Http\Resources\Billling\Student\StudentResource;
+use App\Http\Resources\Billing\Student\StudentCollection;
+use App\Http\Resources\Billing\Student\StudentResource;
 use App\Models\Eloquent\Billing\Student\Student;
 use Tests\FactoryMaker;
 use Tests\Unit\Http\Resources\ResourceTestCase;

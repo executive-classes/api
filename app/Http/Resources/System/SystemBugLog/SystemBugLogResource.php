@@ -3,7 +3,7 @@
 namespace App\Http\Resources\System\SystemBugLog;
 
 use App\Http\Resources\Resource;
-use App\Http\Resources\Billling\User\UserResource;
+use App\Http\Resources\Billing\User\UserResource;
 
 class SystemBugLogResource extends Resource
 {

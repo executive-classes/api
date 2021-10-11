@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Http\Resources\Billing;
 
-use App\Http\Resources\Billling\AddressCountry\AddressCountryCollection;
-use App\Http\Resources\Billling\AddressCountry\AddressCountryResource;
+use App\Http\Resources\Billing\AddressCountry\AddressCountryCollection;
+use App\Http\Resources\Billing\AddressCountry\AddressCountryResource;
 use App\Models\Eloquent\Billing\AddressCountry\AddressCountry;
 use Tests\FactoryMaker;
 use Tests\Unit\Http\Resources\ResourceTestCase;

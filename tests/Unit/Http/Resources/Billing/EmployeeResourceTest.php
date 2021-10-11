@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Http\Resources\Billing;
 
-use App\Http\Resources\Billling\Employee\EmployeeCollection;
-use App\Http\Resources\Billling\Employee\EmployeeResource;
+use App\Http\Resources\Billing\Employee\EmployeeCollection;
+use App\Http\Resources\Billing\Employee\EmployeeResource;
 use App\Models\Eloquent\Billing\Employee\Employee;
 use Tests\FactoryMaker;
 use Tests\Unit\Http\Resources\ResourceTestCase;

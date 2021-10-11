@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Http\Resources\Billing;
 
-use App\Http\Resources\Billling\EmployeePosition\EmployeePositionCollection;
-use App\Http\Resources\Billling\EmployeePosition\EmployeePositionResource;
+use App\Http\Resources\Billing\EmployeePosition\EmployeePositionCollection;
+use App\Http\Resources\Billing\EmployeePosition\EmployeePositionResource;
 use App\Models\Eloquent\Billing\EmployeePosition\EmployeePosition;
 use Tests\FactoryMaker;
 use Tests\Unit\Http\Resources\ResourceTestCase;

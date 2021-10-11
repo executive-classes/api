@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Http\Resources\Billing;
 
-use App\Http\Resources\Billling\Tax\TaxResource;
+use App\Http\Resources\Billing\Tax\TaxResource;
 use App\Models\Eloquent\Billing\TaxType\TaxType;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\FactoryMaker;

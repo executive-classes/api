@@ -1,8 +1,8 @@
 <?php
 
 use App\Enums\Billing\UserPrivilegeEnum;
-use App\Http\Controllers\Billling\CustomerController;
-use App\Http\Controllers\Billling\CustomerStatusController;
+use App\Http\Controllers\Billing\CustomerController;
+use App\Http\Controllers\Billing\CustomerStatusController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/customers', [CustomerController::class, 'index'])

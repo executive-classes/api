@@ -2,7 +2,7 @@
 
 namespace App\Traits\Resources;
 
-use App\Http\Resources\Billling\Tax\TaxResource;
+use App\Http\Resources\Billing\Tax\TaxResource;
 use App\Models\Eloquent\Billing\TaxType\TaxType;
 
 trait WithTaxes

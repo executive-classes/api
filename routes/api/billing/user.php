@@ -1,7 +1,7 @@
 <?php
 
 use App\Enums\Billing\UserPrivilegeEnum;
-use App\Http\Controllers\Billling\UserController;
+use App\Http\Controllers\Billing\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/users', [UserController::class, 'index'])

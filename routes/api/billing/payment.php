@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Billling\PaymentIntervalController;
-use App\Http\Controllers\Billling\PaymentMethodControler;
+use App\Http\Controllers\Billing\PaymentIntervalController;
+use App\Http\Controllers\Billing\PaymentMethodControler;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/payments')->group(function () {

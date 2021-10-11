@@ -1,8 +1,8 @@
 <?php
 
 use App\Enums\Billing\UserPrivilegeEnum;
-use App\Http\Controllers\Billling\TeacherController;
-use App\Http\Controllers\Billling\TeacherStatusController;
+use App\Http\Controllers\Billing\TeacherController;
+use App\Http\Controllers\Billing\TeacherStatusController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/teachers', [TeacherController::class, 'index'])

@@ -1,9 +1,9 @@
 <?php
 
 use App\Enums\Billing\UserPrivilegeEnum;
-use App\Http\Controllers\Billling\EmployeeController;
-use App\Http\Controllers\Billling\EmployeePositionController;
-use App\Http\Controllers\Billling\EmployeeStatusController;
+use App\Http\Controllers\Billing\EmployeeController;
+use App\Http\Controllers\Billing\EmployeePositionController;
+use App\Http\Controllers\Billing\EmployeeStatusController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/employees', [EmployeeController::class, 'index'])

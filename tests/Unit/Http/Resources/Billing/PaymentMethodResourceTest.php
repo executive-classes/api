@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Http\Resources\Billing;
 
-use App\Http\Resources\Billling\PaymentMethod\PaymentMethodCollection;
-use App\Http\Resources\Billling\PaymentMethod\PaymentMethodResource;
+use App\Http\Resources\Billing\PaymentMethod\PaymentMethodCollection;
+use App\Http\Resources\Billing\PaymentMethod\PaymentMethodResource;
 use App\Models\Eloquent\Billing\PaymentMethod\PaymentMethod;
 use Tests\FactoryMaker;
 use Tests\Unit\Http\Resources\ResourceTestCase;

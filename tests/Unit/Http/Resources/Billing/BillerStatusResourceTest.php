@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Http\Resources\Billing;
 
-use App\Http\Resources\Billling\BillerStatus\BillerStatusCollection;
-use App\Http\Resources\Billling\BillerStatus\BillerStatusResource;
+use App\Http\Resources\Billing\BillerStatus\BillerStatusCollection;
+use App\Http\Resources\Billing\BillerStatus\BillerStatusResource;
 use App\Models\Eloquent\Billing\BillerStatus\BillerStatus;
 use Tests\FactoryMaker;
 use Tests\Unit\Http\Resources\ResourceTestCase;

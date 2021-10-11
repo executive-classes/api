@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Billling\TaxTypeController;
+use App\Http\Controllers\Billing\TaxTypeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/taxes', [TaxTypeController::class, 'index'])

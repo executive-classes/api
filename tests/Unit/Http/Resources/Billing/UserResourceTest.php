@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Http\Resources\Billing;
 
-use App\Http\Resources\Billling\User\UserCollection;
-use App\Http\Resources\Billling\User\UserResource;
+use App\Http\Resources\Billing\User\UserCollection;
+use App\Http\Resources\Billing\User\UserResource;
 use App\Models\Eloquent\Billing\User\User;
 use Tests\FactoryMaker;
 use Tests\Unit\Http\Resources\ResourceTestCase;

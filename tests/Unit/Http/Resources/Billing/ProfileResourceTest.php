@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Http\Resources\Billing;
 
-use App\Http\Resources\Billling\User\ProfileResource;
+use App\Http\Resources\Billing\User\ProfileResource;
 use App\Models\Eloquent\Billing\User\User;
 use Tests\FactoryMaker;
 use Tests\Unit\Http\Resources\ResourceTestCase;

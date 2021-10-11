@@ -3,7 +3,7 @@
 namespace App\Http\Resources\Auth\AccessToken;
 
 use App\Http\Resources\Resource;
-use App\Http\Resources\Billling\User\UserResource;
+use App\Http\Resources\Billing\User\UserResource;
 
 class TokenResource extends Resource
 {

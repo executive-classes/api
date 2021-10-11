@@ -1,7 +1,7 @@
 <?php
 
 use App\Enums\Billing\UserPrivilegeEnum;
-use App\Http\Controllers\Billling\AddressController;
+use App\Http\Controllers\Billing\AddressController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/addresses', [AddressController::class, 'index'])

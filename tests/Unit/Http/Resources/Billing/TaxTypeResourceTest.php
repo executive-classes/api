@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Http\Resources\Billing;
 
-use App\Http\Resources\Billling\Tax\TaxTypeCollection;
-use App\Http\Resources\Billling\Tax\TaxTypeResource;
+use App\Http\Resources\Billing\Tax\TaxTypeCollection;
+use App\Http\Resources\Billing\Tax\TaxTypeResource;
 use App\Models\Eloquent\Billing\TaxType\TaxType;
 use Tests\FactoryMaker;
 use Tests\Unit\Http\Resources\ResourceTestCase;
