@@ -77,18 +77,41 @@ class ControllerTestCase extends TestCase
         return $this->makeMock($requestClass . $methods);
     }
 
+    /**
+     * Assert a Json Response
+     *
+     * @param mixed $response
+     * @param integer $code
+     * @return void
+     */
     protected function assertJsonResponse($response, int $code)
     {
         $this->assertInstanceOf(JsonResponse::class, $response);
         $this->assertEquals($code, $response->getStatusCode());
     }
 
+    /**
+     * Assert a collection Response
+     *
+     * @param mixed $response
+     * @param string $collectionClass
+     * @param integer $count
+     * @return void
+     */
     protected function assertCollectionResponse($response, string $collectionClass, int $count)
     {
         $this->assertInstanceOf($collectionClass, $response);
         $this->assertCount($count, $response);
     }
 
+    /**
+     * Assert a Resource Response
+     *
+     * @param mixed $response
+     * @param string $resourceClass
+     * @param string|null $modelClass
+     * @return void
+     */
     protected function assertResourceResponse($response, string $resourceClass, string $modelClass = null)
     {
         $this->assertInstanceOf($resourceClass, $response);

@@ -16,9 +16,6 @@
         </testsuite>
 
         <!-- Units -->
-        <testsuite name="Filters">
-            <directory suffix="Test.php">./tests/Unit/Filters</directory>
-        </testsuite>
         <testsuite name="Controllers">
             <directory suffix="Test.php">./tests/Unit/Http/Controllers</directory>
         </testsuite>
