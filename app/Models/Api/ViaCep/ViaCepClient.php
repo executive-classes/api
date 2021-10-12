@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Support\Api\ViaCep;
+namespace App\Models\Api\ViaCep;
 
 use App\Support\Api\GuzzleClient;
 use App\Support\Api\GuzzleResponse;

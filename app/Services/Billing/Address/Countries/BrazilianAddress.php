@@ -2,7 +2,7 @@
 
 namespace App\Services\Billing\Address\Countries;
 
-use App\Support\Api\ViaCep\ViaCepClient;
+use App\Models\Api\ViaCep\ViaCepClient;
 use App\Enums\Billing\CountryEnum;
 use App\Models\Eloquent\Billing\Address\Address;
 use App\Models\Eloquent\Billing\AddressCity\AddressCity;

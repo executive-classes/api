@@ -35,7 +35,7 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $user)
     {
         $user->fill($request->validated());
-        $user->save();
+        $user->update();
 
         return new UserResource($user);
     }
@@ -43,7 +43,7 @@ class UserController extends Controller
     public function cancel(User $user)
     {
         $user->active = false;
-        $user->save();
+        $user->update();
 
         return new UserResource($user);
     }

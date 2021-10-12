@@ -58,7 +58,7 @@ class MessageTemplateController extends Controller
      */
     public function create(MessageTemplateCreateRequest $request)
     {
-        $messageTemplate = $this->messageTemplateRepository->create($request->all());
+        $messageTemplate = $this->messageTemplateRepository->create($request->validated());
         return api()->created($messageTemplate);
     }
 
@@ -71,7 +71,7 @@ class MessageTemplateController extends Controller
      */
     public function update(MessageTemplateUpdateRequest $request, MessageTemplate $messageTemplate)
     {
-        $messageTemplate = $this->messageTemplateRepository->update($messageTemplate, $request->all());
+        $messageTemplate = $this->messageTemplateRepository->update($messageTemplate, $request->validated());
         return api()->ok($messageTemplate);
     }
 

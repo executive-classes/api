@@ -2,7 +2,7 @@
 
 namespace Tests\Integration\ViaCep;
 
-use App\Support\Api\ViaCep\ViaCepClient;
+use App\Models\Api\ViaCep\ViaCepClient;
 use Tests\TestCase;
 
 class CepTest extends TestCase

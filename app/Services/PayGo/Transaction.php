@@ -2,8 +2,8 @@
 
 namespace App\Services\PayGo;
 
-use App\Support\Api\GuzzleResponse;
-use App\Support\Api\PayGo\Gate2AllClient;
+use App\Models\Api\GuzzleResponse;
+use App\Models\Api\PayGo\Gate2AllClient;
 use App\Models\Eloquent\Billing\Biller\Biller;
 use App\Models\Eloquent\Billing\Address\Address;
 use App\Models\Eloquent\Billing\Collection\Collection;

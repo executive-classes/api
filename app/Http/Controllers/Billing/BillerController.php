@@ -23,7 +23,7 @@ class BillerController extends Controller
         $biller = new Biller($request->validated());
         $biller->save();
         
-        return new BillerResource($biller->refresh());
+        return new BillerResource($biller);
     }
 
     public function show(Biller $biller)
@@ -34,7 +34,7 @@ class BillerController extends Controller
     public function update(UpdateBillerRequest $request, Biller $biller)
     {
         $biller->fill($request->validated());
-        $biller->save();
+        $biller->update();
 
         return new BillerResource($biller);
     }
@@ -42,7 +42,7 @@ class BillerController extends Controller
     public function cancel(Biller $biller)
     {
         $biller->biller_status_id = BillerStatusEnum::CANCELED;
-        $biller->save();
+        $biller->update();
 
         return new BillerResource($biller);
     }

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Support\Api\PayGo;
+namespace App\Models\Api\PayGo;
 
+use Exception;
 use App\Support\Api\GuzzleClient;
 use App\Support\Api\GuzzleResponse;
 use App\Exceptions\PayGo\PayGoException;
-use Exception;
 
 /**
  * Client used for make request in the Gate2All Api.

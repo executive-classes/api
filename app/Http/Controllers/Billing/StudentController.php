@@ -23,7 +23,7 @@ class StudentController extends Controller
         $student = new Student($request->validated());
         $student->save();
         
-        return new StudentResource($student->refresh());
+        return new StudentResource($student);
     }
 
     public function show(Student $student)
@@ -34,7 +34,7 @@ class StudentController extends Controller
     public function update(UpdateStudentRequest $request, Student $student)
     {
         $student->fill($request->validated());
-        $student->save();
+        $student->update();
 
         return new StudentResource($student);
     }
@@ -43,7 +43,7 @@ class StudentController extends Controller
     {
         $student->student_status_id = StudentStatusEnum::CANCELED;
         /** @todo Cancelar usuário */
-        $student->save();
+        $student->update();
 
         return new StudentResource($student);
     }

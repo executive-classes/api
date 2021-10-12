@@ -14,6 +14,19 @@ use Laravel\Sanctum\NewAccessToken;
 class AuthenticateController extends Controller
 {
     /**
+     * @var User
+     */
+    private $user;
+
+    /**
+     * @param User $user
+     */
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
      * Log in with the given credentials.
      *
      * @param LoginRequest $request
@@ -21,7 +34,7 @@ class AuthenticateController extends Controller
      */
     public function login(LoginRequest $request)
     {
-        $user = User::firstWhere('email', $request->email);
+        $user = $this->user->firstWhere('email', $request->email);
 
         // Validate if the user is active
         if (!$user->active) {
@@ -53,7 +66,7 @@ class AuthenticateController extends Controller
      */
     public function crossLogin(CrossLoginRequest $request)
     {
-        $cross_user = User::find($request->user_id);
+        $cross_user = $this->user->find($request->user_id);
 
         // Validate if the user is active
         if (!$cross_user->active) {

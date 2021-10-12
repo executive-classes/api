@@ -24,7 +24,7 @@ class CustomerController extends Controller
         /** @todo Criar biller */
         $customer->save();
         
-        return new CustomerResource($customer->refresh());
+        return new CustomerResource($customer);
     }
 
     public function show(Customer $customer)
@@ -35,7 +35,7 @@ class CustomerController extends Controller
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
         $customer->fill($request->validated());
-        $customer->save();
+        $customer->update();
 
         return new CustomerResource($customer);
     }
@@ -43,7 +43,7 @@ class CustomerController extends Controller
     public function cancel(Customer $customer)
     {
         $customer->customer_status_id = CustomerStatusEnum::CANCELED;
-        $customer->save();
+        $customer->update();
 
         return new CustomerResource($customer);
     }

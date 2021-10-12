@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Mockery;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
@@ -44,5 +45,17 @@ abstract class TestCase extends BaseTestCase
         $method = $class->getMethod($name);
         $method->setAccessible(true);
         return $method->invokeArgs($obj, $args);
+    }
+
+    /**
+     * Creates a mock
+     *
+     * @param string $requestClass
+     * @param string $methods
+     * @return \Mockery\Mock|mixed
+     */
+    public function makeMock(string $requestClass, string $methods = '', array $args = [])
+    {
+        return Mockery::mock($requestClass . $methods, $args);
     }
 }

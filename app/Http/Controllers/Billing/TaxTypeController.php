@@ -9,6 +9,19 @@ use App\Models\Eloquent\Billing\TaxType\TaxType;
 
 class TaxTypeController extends Controller
 {
+    /**
+     * @var TaxType
+     */
+    private $taxType;
+
+    /**
+     * @param TaxType $taxType
+     */
+    public function __construct(TaxType $taxType)
+    {
+        $this->taxType = $taxType;
+    }
+
     public function index()
     {
         return new TaxTypeCollection(TaxType::all());
@@ -16,8 +29,8 @@ class TaxTypeController extends Controller
 
     public function validation(ValidateTaxTypeRequest $request)
     {
-        $validation = TaxType::find($request->tax_type_id)->validate(
-            $request->tax_code,
+        $validation = $this->taxType->find($request->tax_type_id)->validate(
+            $request->get('tax_code'),
             $request->get('uf', null)
         );
 

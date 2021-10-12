@@ -24,7 +24,7 @@ class EmployeeController extends Controller
         $employee->user_id = $request->user_id;
         $employee->save();
         
-        return new EmployeeResource($employee->refresh());
+        return new EmployeeResource($employee);
     }
 
     public function show(Employee $employee)
@@ -35,7 +35,7 @@ class EmployeeController extends Controller
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
         $employee->fill($request->validated());
-        $employee->save();
+        $employee->update();
 
         return new EmployeeResource($employee);
     }
@@ -44,7 +44,7 @@ class EmployeeController extends Controller
     {
         $employee->employee_status_id = EmployeeStatusEnum::CANCELED;
         /** @todo Cancelar usuário */
-        $employee->save();
+        $employee->update();
 
         return new EmployeeResource($employee);
     }

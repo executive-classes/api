@@ -23,7 +23,7 @@ class TeacherController extends Controller
         $teacher = new Teacher($request->validated());
         $teacher->save();
         
-        return new TeacherResource($teacher->refresh());
+        return new TeacherResource($teacher);
     }
 
     public function show(Teacher $teacher)
@@ -34,7 +34,7 @@ class TeacherController extends Controller
     public function update(UpdateTeacherRequest $request, Teacher $teacher)
     {
         $teacher->fill($request->validated());
-        $teacher->save();
+        $teacher->update();
 
         return new TeacherResource($teacher);
     }
@@ -43,7 +43,7 @@ class TeacherController extends Controller
     {
         $teacher->teacher_status_id = TeacherStatusEnum::CANCELED;
         /** @todo Cancelar usuário */
-        $teacher->save();
+        $teacher->update();
 
         return new TeacherResource($teacher);
     }

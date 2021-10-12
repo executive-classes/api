@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Billing;
 
-use App\Support\Api\ViaCep\ViaCepClient;
+use App\Models\Api\ViaCep\ViaCepClient;
 use App\Models\Eloquent\Billing\Address\AddressFilters;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Billing\Address\AddressRequest;

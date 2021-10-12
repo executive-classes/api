@@ -58,7 +58,7 @@ class MessageController extends Controller
      */
     public function create(MessageCreateRequest $request)
     {
-        $message = $this->messageRepository->create($request->all());
+        $message = $this->messageRepository->create($request->validated());
         return api()->created($message);
     }
 

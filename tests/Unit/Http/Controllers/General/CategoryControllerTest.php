@@ -27,65 +27,78 @@ class CategoryControllerTest extends ControllerTestCase
      */
     protected $controllerClass = CategoryController::class;
 
-    public function test_index_returns_json_list()
+    public function test_index()
     {
-        $this->db->shouldReceive('select')
-            ->andReturn($this->makeMany(Category::class));
-
+        // Mocks Expects
+        $this->db->shouldReceive('select')->andReturn($this->makeMany(Category::class));
+        
+        // Method execution
         $collection = $this->controller->index(new CategoryFilters());
-
-        $this->assertInstanceOf(CategoryCollection::class, $collection);
-        $this->assertCount(2, $collection);
+        
+        // Assertions
+        $this->assertCollectionResponse($collection, CategoryCollection::class, 2);
     }
 
-    public function test_store_returns_json()
+    public function test_store()
     {
+        // Data creation
+        $category = $this->makeOne(Category::class);
+        $requestMock = $this->mockRequest(CreateCategoryRequest::class);
+        
+        // Mocks Expects
         $this->db->shouldReceive('insert')->once()->andReturn(true);
         $this->db->getPdo()->shouldReceive('lastInsertId')->andReturn(333);
-
-        $category = $this->makeOne(Category::class);
-
-        $requestMock = $this->mockRequest(CreateCategoryRequest::class);
         $requestMock->shouldReceive('validated')->once()->andReturn($category->toArray());
 
+        // Method execution
         $resource = $this->controller->store($requestMock);
 
-        $this->assertInstanceOf(CategoryResource::class, $resource);
-        $this->assertEquals($resource->resource->name, $category->name);
+        // Assertions
+        $this->assertResourceResponse($resource, CategoryResource::class, Category::class);
     }
 
-    public function test_show_returns_json_item()
+    public function test_show()
     {
+        // Data creation
         $category = $this->makeOne(Category::class);
+        
+        // Method execution
         $resource = $this->controller->show($category);
-
-        $this->assertInstanceOf(CategoryResource::class, $resource);
-        $this->assertEquals($resource->resource->name, $category->name);
+        
+        // Assertions
+        $this->assertResourceResponse($resource, CategoryResource::class, Category::class);
     }
 
-    public function test_update_returns_json()
+    public function test_update()
     {
+        // Data creation
         $newCategory = $this->makeOne(Category::class);
-
         $requestMock = $this->mockRequest(UpdateCategoryRequest::class);
-        $requestMock->shouldReceive('validated')->once()->andReturn($newCategory->toArray());
-
         $categoryMock = $this->mockModel(Category::class);
+
+        // Mocks Expects
+        $requestMock->shouldReceive('validated')->once()->andReturn($newCategory->toArray());
         $categoryMock->shouldReceive('update')->andReturn(true);
 
+        // Method execution
         $resource = $this->controller->update($requestMock, $categoryMock);
 
-        $this->assertInstanceOf(CategoryResource::class, $resource);
+        // Assertions
+        $this->assertResourceResponse($resource, CategoryResource::class, Category::class);
     }
 
-    public function test_delete_returns_no_content_response()
+    public function test_delete()
     {
+        // Data creation
         $categoryMock = $this->mockModel(Category::class);
+
+        // Mocks Expects
         $categoryMock->shouldReceive('delete')->andReturn(true);
 
+        // Method execution
         $response = $this->controller->delete($categoryMock);
 
-        $this->assertInstanceOf(JsonResponse::class, $response);
-        $this->assertEquals(204, $response->getStatusCode());
+        // Assertions
+        $this->assertJsonResponse($response, 204);
     }
 }
