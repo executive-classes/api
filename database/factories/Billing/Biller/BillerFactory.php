@@ -35,14 +35,11 @@ class BillerFactory extends Factory
         return [
             'id' => $this->id(),
             'customer_id' => $this->relation(Customer::class),
-            'biller_status_id' => BillerStatusEnum::getRandomValue(),
+            'biller_status_id' => $this->faker->randomElement(BillerStatusEnum::getUpdatableValues()),
             'name' => $this->faker->company,
             'tax_type_id' => TaxTypeEnum::CNPJ,
             'tax_code' => $this->faker->cnpj,
             'address_id' => $this->relation(Address::class),
-            'email' => $this->faker->companyEmail,
-            'phone' => $this->faker->phoneNumber,
-            'phone_alt' => $this->faker->phoneNumber,
             'payment_interval_id' => PaymentIntervalEnum::getRandomValue(),
             'payment_method_id' => PaymentMethodEnum::getRandomValue()
         ];

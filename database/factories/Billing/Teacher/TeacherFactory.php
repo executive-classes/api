@@ -29,7 +29,7 @@ class TeacherFactory extends Factory
         return [
             'id' => $this->id(),
             'user_id' => $this->relation(User::class),
-            'teacher_status_id' => TeacherStatusEnum::getRandomValue()
+            'teacher_status_id' => $this->faker->randomElement(TeacherStatusEnum::getUpdatableValues())
         ];
     }
 }

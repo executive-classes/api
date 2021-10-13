@@ -25,6 +25,6 @@ trait LanguageRules
             return;
         }
 
-        SystemLanguage::findOrFail($this->language)->updateSystemLocale();
+        SystemLanguage::findOrFail($language)->updateSystemLocale();
     }
 }

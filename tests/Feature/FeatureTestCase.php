@@ -2,12 +2,17 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Testing\TestResponse;
-use InvalidArgumentException;
 use Tests\TestCase;
+use Tests\CreatesUser;
+use InvalidArgumentException;
+use Illuminate\Testing\TestResponse;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class FeatureTestCase extends TestCase
 {
+    use RefreshDatabase;
+    use CreatesUser;
+    
     /**
      * Indicates that the database should seed.
      *
@@ -15,6 +20,23 @@ class FeatureTestCase extends TestCase
      */
     protected $seed = true;
 
+    /**
+     * @var \App\Models\Eloquent\Billing\User\User
+     */
+    protected $user;
+    
+    /**
+     * Test Set Up.
+     *
+     * @return void
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = $this->getDevUser();
+    }
+    
     /**
      * Assert that the given route only can be accessed by authenticated user.
      *
@@ -39,14 +61,20 @@ class FeatureTestCase extends TestCase
      * Assert that the response will be the default.
      *
      * @param TestResponse $response
+     * @param integer $code
+     * @param boolean $status
      * @return void
      */
-    protected function assertResponseJson(TestResponse $response)
+    protected function assertResponseJson(TestResponse $response, int $code, bool $status = true)
     {
-        $response->assertJsonPath('status', true);
-        $response->assertJsonStructure([
-            'status',
-            'data'
-        ]);
+        $response->assertStatus($code);
+
+        if ($code != 204) {
+            $response->assertJsonPath('status', $status);
+            $response->assertJsonStructure([
+                'status',
+                'data'
+            ]);
+        }
     }
 }

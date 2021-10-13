@@ -2,7 +2,6 @@
 
 namespace App\Models\Eloquent\Billing\User;
 
-use Laravel\Sanctum\HasApiTokens;
 use App\Traits\Models\Billing\HasTax;
 use App\Support\QueryFilter\Filterable;
 use App\Traits\Models\Billing\HasPhone;
@@ -14,6 +13,7 @@ use App\Traits\Models\Authentication\CanAuthenticate;
 use Illuminate\Foundation\Auth\User as Authenticable;
 use App\Traits\Models\HasFactory;
 use App\Traits\Models\Authentication\CanChangeLanguage;
+use App\Traits\Models\Authentication\HasApiTokens;
 
 class User extends Authenticable
 {

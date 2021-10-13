@@ -27,13 +27,13 @@ class AddressFactory extends Factory
     {
         return [
             'id' => $this->id(),
-            'zip' => $this->faker->postcode,
-            'street' => $this->faker->streetName,
+            'zip' => config('test.viacep.cep'),
+            'street' => config('test.viacep.logradouro'),
             'number' => $this->faker->buildingNumber,
-            'district' => $this->faker->text(20),
-            'city' => $this->faker->city,
-            'state' => $this->faker->stateAbbr,
-            'country' => CountryEnum::getRandomValue(),
+            'district' => config('test.viacep.bairro'),
+            'city' => config('test.viacep.localidade'),
+            'state' => config('test.viacep.uf'),
+            'country' => CountryEnum::BR,
         ];
     }
 }

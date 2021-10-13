@@ -29,14 +29,11 @@ class CustomerFactory extends Factory
     {
         return [
             'id' => $this->id(),
-            'customer_status_id' => CustomerStatusEnum::getRandomValue(),
+            'customer_status_id' => $this->faker->randomElement(CustomerStatusEnum::getUpdatableValues()),
             'name' => $this->faker->company,
             'tax_type_id' => TaxTypeEnum::CNPJ,
             'tax_code' => $this->faker->unique()->cnpj,
             'address_id' => $this->relation(Address::class),
-            'email' => $this->faker->companyEmail,
-            'phone' => $this->faker->phoneNumber,
-            'phone_alt' => $this->faker->phoneNumber,
         ];
     }
 }

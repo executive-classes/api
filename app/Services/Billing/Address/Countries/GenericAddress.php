@@ -30,7 +30,7 @@ class GenericAddress implements AddressMaker
     public function update(array $data, Address $address): Address
     {
         $address->fill($data);
-        $address->save();
+        $address->update();
         return $address;
     }
 }

@@ -3,38 +3,12 @@
 namespace Tests\Feature\General;
 
 use App\Models\Eloquent\General\Category\Category;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\CreatesUser;
 use Tests\FactoryMaker;
 use Tests\Feature\FeatureTestCase;
 
 class CategoryTest extends FeatureTestCase
 {
-    use RefreshDatabase;
-    use CreatesUser;
     use FactoryMaker;
-
-    /**
-     * @var \App\Models\Eloquent\Billing\User\User
-     */
-    protected $user;
-
-    /**
-     * @var array
-     */
-    protected $routes;
-
-    /**
-     * Test Set Up.
-     *
-     * @return void
-     */
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        $this->user = $this->getDevUser();
-    }
 
     public function test_authentication_protection()
     {
@@ -45,60 +19,75 @@ class CategoryTest extends FeatureTestCase
         $this->assertAuthenticationRequired(route('category.delete', ['category' => 1]), 'DELETE');
     }
 
-    public function test_index_json()
+    public function test_index()
     {
+        // Route execution
         $response = $this->actingAs($this->user)
             ->getJson(route('category.index'));
 
-        $response->assertStatus(200);
-        $this->assertResponseJson($response);
+        // Assertions
+        $this->assertResponseJson($response, 200);
     }
 
-    public function test_create_json()
+    public function test_create()
     {
-        $category = $this->createOne(Category::class);
+        // Data creation
+        $category = $this->makeOne(Category::class, true);
+        $data = collect($category->toArray());
 
+        // Route execution
         $response = $this->actingAs($this->user)
             ->postJson(route('category.store'), $category->toArray());
 
-        $response->assertStatus(201);
-        $this->assertResponseJson($response);
+        // Assertions
+        $this->assertResponseJson($response, 201);
+        $this->assertDatabaseHas('category', $data->only(['name', 'description'])->toArray());
     }
 
-    public function test_show_json()
+    public function test_show()
     {
+        // Data creation
         $category = $this->createOne(Category::class);
 
+        // Route execution
         $response = $this->actingAs($this->user)
             ->getJson(route('category.show', ['category' => $category->id]));
 
-        $response->assertStatus(200);
-        $this->assertResponseJson($response);
+        // Assertions
+        $this->assertResponseJson($response, 200);
     }
 
-    public function test_update_json()
+    public function test_update()
     {
+        // Data creation
         $category = $this->createOne(Category::class);
-        $newCategory = $this->createOne(Category::class);
+        $newCategory = $this->makeOne(Category::class, true);
+        $data = collect($newCategory->toArray());
 
+        // Route execution
         $response = $this->actingAs($this->user)
             ->putJson(
                 route('category.update', ['category' => $category->id]), 
                 $newCategory->toArray()
             );
 
-        $response->assertStatus(200);
-        $this->assertResponseJson($response);
+        // Assertions
+        $this->assertResponseJson($response, 200);
+        $this->assertDatabaseHas('category', $data->only(['name', 'description'])->toArray());
     }
 
-    public function test_delete_response()
+    public function test_delete()
     {
+        // Data creation
         $category = $this->createOne(Category::class);
+        $data = collect($category->toArray());
 
+        // Route execution
         $response = $this->actingAs($this->user)
             ->deleteJson(route('category.delete', ['category' => $category->id]));
 
-        $response->assertStatus(204);
-        $this->assertDatabaseMissing('category', ['id' => $category->id]);
+        // Assertions
+        $this->assertResponseJson($response, 204);
+        $this->assertDatabaseMissing('category', $data->only(['id'])->toArray());
     }
 }

@@ -33,7 +33,7 @@ class StudentFactory extends Factory
             'biller_id' => $this->relation(Biller::class),
             'customer_id' => $biller->customer_id,
             'user_id' => $this->relation(User::class),
-            'student_status_id' => StudentStatusEnum::getRandomValue()
+            'student_status_id' => $this->faker->randomElement(StudentStatusEnum::getUpdatableValues())
         ];
     }
 }

@@ -2,11 +2,12 @@
 
 namespace App\Models\Eloquent\Billing\Customer;
 
+use App\Traits\Models\HasFactory;
+use App\Traits\Models\Billing\HasTax;
 use App\Support\QueryFilter\Filterable;
 use App\Traits\Models\Billing\HasPhone;
-use App\Traits\Models\Billing\HasTax;
-use App\Traits\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Enums\Billing\CustomerStatusEnum;
 
 class Customer extends Model
 {
@@ -46,5 +47,14 @@ class Customer extends Model
         'email',
         'phone',
         'phone_alt'
+    ];
+
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'customer_status_id' => CustomerStatusEnum::ACTIVE,
     ];
 }

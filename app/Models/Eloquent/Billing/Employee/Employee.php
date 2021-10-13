@@ -2,6 +2,7 @@
 
 namespace App\Models\Eloquent\Billing\Employee;
 
+use App\Enums\Billing\EmployeeStatusEnum;
 use App\Support\QueryFilter\Filterable;
 use App\Traits\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -35,5 +36,14 @@ class Employee extends Model
     protected $fillable = [
         'employee_status_id',
         'employee_position_id'
+    ];
+
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'employee_status_id' => EmployeeStatusEnum::ACTIVE,
     ];
 }

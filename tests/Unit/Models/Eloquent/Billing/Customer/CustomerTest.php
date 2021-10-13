@@ -2,12 +2,13 @@
 
 namespace Tests\Unit\Models\Eloquent\Billing;
 
-use App\Models\Eloquent\Billing\Customer\Customer;
-use Tests\Unit\Models\Eloquent\ModelTestCase;
+use App\Enums\Billing\CustomerStatusEnum;
 use Tests\Unit\Traits\Models\HasTaxAsserts;
+use Tests\Unit\Models\Eloquent\ModelTestCase;
 use Tests\Unit\Traits\Models\HasPhoneAsserts;
 use Tests\Unit\Traits\Models\HasFilterAsserts;
 use Tests\Unit\Traits\Models\HasFactoryAsserts;
+use App\Models\Eloquent\Billing\Customer\Customer;
 
 class CustomerTest extends ModelTestCase
 {
@@ -30,6 +31,9 @@ class CustomerTest extends ModelTestCase
     {
         $this->runModelAssertions($this->model, [
             'table' => 'customer',
+            'attributes' => [
+                'customer_status_id' => CustomerStatusEnum::ACTIVE
+            ],
             'fillable' => [
                 'customer_status_id',
                 'name',

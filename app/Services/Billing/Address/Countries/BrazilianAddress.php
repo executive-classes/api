@@ -4,6 +4,7 @@ namespace App\Services\Billing\Address\Countries;
 
 use App\Models\Api\ViaCep\ViaCepClient;
 use App\Enums\Billing\CountryEnum;
+use App\Exceptions\ViaCep\ViaCepException;
 use App\Models\Eloquent\Billing\Address\Address;
 use App\Models\Eloquent\Billing\AddressCity\AddressCity;
 use App\Models\Eloquent\Billing\AddressState\AddressState;
@@ -61,6 +62,10 @@ class BrazilianAddress implements AddressMaker
     private function make(array $data, Address $address): Address
     {
         $consultedAddress = $this->client->consult($data['zip']);
+
+        if ($consultedAddress->erro) {
+            throw new ViaCepException(__('viacep.fail.error', ['zip' => $data['zip']]));
+        }
 
         $address->zip = $data['zip'];
         $address->number = $data['number'];

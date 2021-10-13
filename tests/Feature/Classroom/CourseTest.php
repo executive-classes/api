@@ -2,39 +2,13 @@
 
 namespace Tests\Feature\Classroom;
 
-use Tests\CreatesUser;
 use Tests\Feature\FeatureTestCase;
 use App\Models\Eloquent\Classroom\Course\Course;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\FactoryMaker;
 
 class CourseTest extends FeatureTestCase
 {
-    use RefreshDatabase;
-    use CreatesUser;
     use FactoryMaker;
-
-    /**
-     * @var \App\Models\Eloquent\Billing\User\User
-     */
-    protected $user;
-
-    /**
-     * @var array
-     */
-    protected $routes;
-
-    /**
-     * Test Set Up.
-     *
-     * @return void
-     */
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        $this->user = $this->getDevUser();
-    }
 
     public function test_authentication_protection()
     {
@@ -46,71 +20,90 @@ class CourseTest extends FeatureTestCase
         $this->assertAuthenticationRequired(route('course.cancel', ['course' => 1]), 'PATCH');
     }
 
-    public function test_index_json()
+    public function test_index()
     {
+        // Route execution
         $response = $this->actingAs($this->user)
             ->getJson(route('course.index'));
-
-        $response->assertStatus(200);
-        $this->assertResponseJson($response);
+        
+        // Assertions
+        $this->assertResponseJson($response, 200);
     }
 
-    public function test_create_json()
+    public function test_create()
     {
-        $course = $this->createOne(Course::class);
+        // Data creation
+        $course = $this->makeOne(Course::class, true);
+        $data = collect($course->toArray());
 
+        // Route execution
         $response = $this->actingAs($this->user)
             ->postJson(route('course.store'), $course->toArray());
 
-        $response->assertStatus(201);
-        $this->assertResponseJson($response);
+        // Assertions
+        $this->assertResponseJson($response, 201);
+        $this->assertDatabaseHas('course', $data->only(['name', 'category_id'])->toArray());
     }
 
-    public function test_show_json()
+    public function test_show()
     {
+        // Data creation
         $course = $this->createOne(Course::class);
 
+        // Route execution
         $response = $this->actingAs($this->user)
             ->getJson(route('course.show', ['course' => $course->id]));
 
-        $response->assertStatus(200);
-        $this->assertResponseJson($response);
+        // Assertions
+        $this->assertResponseJson($response, 200);
     }
 
-    public function test_update_json()
+    public function test_update()
     {
+        // Data creation
         $course = $this->createOne(Course::class);
-        $newCourse = $this->createOne(Course::class);
+        $newCourse = $this->makeOne(Course::class, true);
+        $data = collect($newCourse->toArray());
 
+        // Route execution
         $response = $this->actingAs($this->user)
             ->putJson(
                 route('course.update', ['course' => $course->id]),
                 $newCourse->toArray()
             );
 
-        $response->assertStatus(200);
-        $this->assertResponseJson($response);
+        // Assertions
+        $this->assertResponseJson($response, 200);
+        $this->assertDatabaseHas('course', $data->only(['name', 'category_id'])->toArray());
     }
 
-    public function test_reactivate_json()
+    public function test_reactivate()
     {
+        // Data creation
         $course = $this->createOne(Course::class);
 
+        // Route execution
         $response = $this->actingAs($this->user)
             ->patchJson(route('course.reactivate', ['course' => $course->id]));
 
-        $response->assertStatus(200);
-        $this->assertResponseJson($response);
+        // Assertions
+        $this->assertResponseJson($response, 200);
     }
 
-    public function test_cancel_json()
+    public function test_cancel()
     {
+        // Data creation
         $course = $this->createOne(Course::class);
 
+        // Route execution
         $response = $this->actingAs($this->user)
             ->patchJson(route('course.cancel', ['course' => $course->id]));
 
-        $response->assertStatus(200);
-        $this->assertResponseJson($response);
+        // Assertions
+        $this->assertResponseJson($response, 200);
+        $this->assertDatabaseHas('course', [
+            'id' => $course->id, 
+            'active' => false
+        ]);
     }
 }

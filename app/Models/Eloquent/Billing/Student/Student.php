@@ -2,6 +2,7 @@
 
 namespace App\Models\Eloquent\Billing\Student;
 
+use App\Enums\Billing\StudentStatusEnum;
 use App\Support\QueryFilter\Filterable;
 use App\Traits\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -38,5 +39,14 @@ class Student extends Model
         'biller_id',
         'user_id',
         'student_status_id'
+    ];
+
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'student_status_id' => StudentStatusEnum::ACTIVE,
     ];
 }

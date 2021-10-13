@@ -2,10 +2,11 @@
 
 namespace Tests\Unit\Models\Eloquent\Billing;
 
-use App\Models\Eloquent\Billing\Student\Student;
+use App\Enums\Billing\StudentStatusEnum;
 use Tests\Unit\Models\Eloquent\ModelTestCase;
 use Tests\Unit\Traits\Models\HasFilterAsserts;
 use Tests\Unit\Traits\Models\HasFactoryAsserts;
+use App\Models\Eloquent\Billing\Student\Student;
 
 class StudentTest extends ModelTestCase
 {
@@ -26,6 +27,9 @@ class StudentTest extends ModelTestCase
     {
         $this->runModelAssertions($this->model, [
             'table' => 'student',
+            'attributes' => [
+                'student_status_id' => StudentStatusEnum::ACTIVE
+            ],
             'fillable' => [
                 'customer_id',
                 'biller_id',

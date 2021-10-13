@@ -30,7 +30,7 @@ class MessageFactory extends Factory
         return [
             'id' => $this->id(),
             'should_process_at' => Carbon::now()->toDateTimeString(),
-            'message_status_id' => MessageStatusEnum::getRandomValue(),
+            'message_status_id' => MessageStatusEnum::SCHEDULED,
             'reply_to' => $this->faker->email,
             'to' => $this->faker->email,
             'subject' => 'Test',

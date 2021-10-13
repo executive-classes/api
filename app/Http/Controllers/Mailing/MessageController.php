@@ -74,7 +74,7 @@ class MessageController extends Controller
         try {
             $this->messageRepository->cancelScheduledMessage($message);
         } catch (MessageException $e) {
-            return $this->errorResponse($e->getMessage(), $e->getCode());
+            return api()->error($e->getCode(), $e->getMessage());
         }
 
         return api()->noContent();

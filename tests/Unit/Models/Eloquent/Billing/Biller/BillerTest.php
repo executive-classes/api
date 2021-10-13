@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Models\Eloquent\Billing;
 
+use App\Enums\Billing\BillerStatusEnum;
 use App\Models\Eloquent\Billing\Biller\Biller;
 use Tests\Unit\Models\Eloquent\ModelTestCase;
 use Tests\Unit\Traits\Models\HasTaxAsserts;
@@ -30,6 +31,9 @@ class BillerTest extends ModelTestCase
     {
         $this->runModelAssertions($this->model, [
             'table' => 'biller',
+            'attributes' => [
+                'biller_status_id' => BillerStatusEnum::ACTIVE
+            ],
             'fillable' => [
                 'customer_id',
                 'biller_status_id',

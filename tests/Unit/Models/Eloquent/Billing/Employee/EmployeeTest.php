@@ -2,10 +2,11 @@
 
 namespace Tests\Unit\Models\Eloquent\Billing;
 
-use App\Models\Eloquent\Billing\Employee\Employee;
+use App\Enums\Billing\EmployeeStatusEnum;
 use Tests\Unit\Models\Eloquent\ModelTestCase;
 use Tests\Unit\Traits\Models\HasFilterAsserts;
 use Tests\Unit\Traits\Models\HasFactoryAsserts;
+use App\Models\Eloquent\Billing\Employee\Employee;
 
 class EmployeeTest extends ModelTestCase
 {
@@ -26,6 +27,9 @@ class EmployeeTest extends ModelTestCase
     {
         $this->runModelAssertions($this->model, [
             'table' => 'employee',
+            'attributes' => [
+                'employee_status_id' => EmployeeStatusEnum::ACTIVE
+            ],
             'fillable' => [
                 'employee_status_id',
                 'employee_position_id'

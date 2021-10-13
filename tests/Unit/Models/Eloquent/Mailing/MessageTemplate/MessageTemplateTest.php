@@ -27,6 +27,7 @@ class MessageTemplateTest extends ModelTestCase
             'incrementing' => false,
             'keyType' => 'string',
             'fillable' => [
+                'id',
                 'message_type_id',
                 'description',
                 'subject',

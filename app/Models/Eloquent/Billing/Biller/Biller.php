@@ -2,6 +2,7 @@
 
 namespace App\Models\Eloquent\Billing\Biller;
 
+use App\Enums\Billing\BillerStatusEnum;
 use App\Support\QueryFilter\Filterable;
 use App\Models\Eloquent\Billing\Biller\BillerRelations;
 use App\Traits\Models\Billing\HasPhone;
@@ -52,4 +53,12 @@ class Biller extends Model
         'payment_method_id'
     ];
 
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'biller_status_id' => BillerStatusEnum::ACTIVE,
+    ];
 }

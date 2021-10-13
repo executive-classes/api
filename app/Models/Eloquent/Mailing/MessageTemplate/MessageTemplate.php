@@ -44,6 +44,7 @@ class MessageTemplate extends Model
      * @var array
      */
     protected $fillable = [
+        'id',
         'message_type_id',
         'description',
         'subject',

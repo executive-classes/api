@@ -30,7 +30,7 @@ class EmployeeFactory extends Factory
         return [
             'id' => $this->id(),
             'user_id' => $this->relation(User::class),
-            'employee_status_id' => EmployeeStatusEnum::getRandomValue(),
+            'employee_status_id' => $this->faker->randomElement(EmployeeStatusEnum::getUpdatableValues()),
             'employee_position_id' => EmployeePositionEnum::getRandomValue(),
         ];
     }

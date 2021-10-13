@@ -22,7 +22,7 @@ class AddressController extends Controller
     public function store(AddressRequest $request, AddressMaker $addressMaker)
     {
         $address = $addressMaker->create($request->validated());
-        return new AddressResource($address->refresh());
+        return new AddressResource($address);
     }
 
     public function search(string $cep, ViaCepClient $client)
@@ -48,7 +48,7 @@ class AddressController extends Controller
     public function update(AddressRequest $request, Address $address, AddressMaker $addressMaker)
     {
         $address = $addressMaker->update($request->validated(), $address);
-        return new AddressResource($address->refresh());
+        return new AddressResource($address);
     }
 
     public function destroy(Address $address)
