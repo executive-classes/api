@@ -81,6 +81,14 @@ final class UserPrivilegeEnum extends Enum
     const COURSE_CANCEL = 'course:cancel';
 
     /**
+     * Module privileges.
+     */
+    const MODULE_GET = 'module:get';
+    const MODULE_CREATE = 'module:create';
+    const MODULE_UPDATE = 'module:update';
+    const MODULE_CANCEL = 'module:cancel';
+
+    /**
      * Lesson privileges.
      */
     const LESSON_GET = 'lesson:get';
