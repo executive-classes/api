@@ -97,6 +97,14 @@ final class UserPrivilegeEnum extends Enum
     const LESSON_CANCEL = 'lesson:cancel';
 
     /**
+     * Test privileges.
+     */
+    const TEST_GET = 'test:get';
+    const TEST_CREATE = 'test:create';
+    const TEST_UPDATE = 'test:update';
+    const TEST_CANCEL = 'test:cancel';
+
+    /**
      * Category privileges.
      */
     const CATEGORY_GET = 'category:get';

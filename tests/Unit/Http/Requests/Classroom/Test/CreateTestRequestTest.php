@@ -1,16 +1,16 @@
 <?php
 
-namespace Tests\Unit\Http\Requests\Classroom\Course;
+namespace Tests\Unit\Http\Requests\Classroom\Test;
 
-use App\Http\Requests\Classroom\Course\CreateCourseRequest;
+use App\Http\Requests\Classroom\Test\CreateTestRequest;
 use Tests\Unit\Http\Requests\RequestTestCase;
 
-class CreateCourseRequestTest extends RequestTestCase
+class CreateTestRequestTest extends RequestTestCase
 {
     /**
      * @var string
      */
-    protected $requestClass = CreateCourseRequest::class;
+    protected $requestClass = CreateTestRequest::class;
 
     public function test_name_field()
     {
