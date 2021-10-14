@@ -44,6 +44,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     // Classroom
     require("api/classroom/course.php");
+    require("api/classroom/lesson.php");
 
     // General
     require("api/general/category.php");
