@@ -15,8 +15,8 @@ Documentação do projeto: [Tettra - Executive Classes](https://app.tettra.co/te
 Criar as pastas do projeto e entrar nela
 
 ```bash
-mkdir -p /srv/eclasses
-cd /srv/eclasses
+mkdir -p /code/eclasses
+cd /code/eclasses
 ```
 
 Instalar o Docker na máquina e obter o projeto do Docker
@@ -28,7 +28,7 @@ git clone git@github.com:executive-classes/docker.git docker
 Rodar containers do Docker
 
 ```bash
-cd /srv/eclasses/docker
+cd /code/eclasses/docker
 docker-compose up
 ```
 
@@ -37,7 +37,7 @@ docker-compose up
 Obter projeto da API
 
 ```bash
-cd /src/eclasses/
+cd /code/eclasses/
 git clone git@github.com:executive-classes/api.git api
 ```
 
