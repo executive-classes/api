@@ -81,6 +81,14 @@ final class UserPrivilegeEnum extends Enum
     const COURSE_CANCEL = 'course:cancel';
 
     /**
+     * Material privileges.
+     */
+    const MATERIAL_GET = 'material:get';
+    const MATERIAL_CREATE = 'material:create';
+    const MATERIAL_UPDATE = 'material:update';
+    const MATERIAL_CANCEL = 'material:cancel';
+
+    /**
      * Module privileges.
      */
     const MODULE_GET = 'module:get';
