@@ -148,4 +148,5 @@ final class UserPrivilegeEnum extends Enum
      */
     const BUG_LOG_GET = 'buglog:get';
 
+    const PAGES_PEOPLE = 'pages:people';
 }

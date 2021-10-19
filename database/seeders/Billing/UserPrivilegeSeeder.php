@@ -57,6 +57,36 @@ class UserPrivilegeSeeder extends Seeder
         $this->create(UserPrivilegeEnum::COURSE_UPDATE);
         $this->create(UserPrivilegeEnum::COURSE_CANCEL);
 
+        // Course
+        $this->create(UserPrivilegeEnum::MATERIAL_GET, true, true);
+        $this->create(UserPrivilegeEnum::MATERIAL_CREATE);
+        $this->create(UserPrivilegeEnum::MATERIAL_UPDATE);
+        $this->create(UserPrivilegeEnum::MATERIAL_CANCEL);
+
+        // Course
+        $this->create(UserPrivilegeEnum::MODULE_GET, true, true);
+        $this->create(UserPrivilegeEnum::MODULE_CREATE);
+        $this->create(UserPrivilegeEnum::MODULE_UPDATE);
+        $this->create(UserPrivilegeEnum::MODULE_CANCEL);
+
+        // Course
+        $this->create(UserPrivilegeEnum::LESSON_GET, true, true);
+        $this->create(UserPrivilegeEnum::LESSON_CREATE);
+        $this->create(UserPrivilegeEnum::LESSON_UPDATE);
+        $this->create(UserPrivilegeEnum::LESSON_CANCEL);
+
+        // Course
+        $this->create(UserPrivilegeEnum::QUESTION_GET, true, true);
+        $this->create(UserPrivilegeEnum::QUESTION_CREATE);
+        $this->create(UserPrivilegeEnum::QUESTION_UPDATE);
+        $this->create(UserPrivilegeEnum::QUESTION_CANCEL);
+
+        // Course
+        $this->create(UserPrivilegeEnum::TEST_GET, true, true);
+        $this->create(UserPrivilegeEnum::TEST_CREATE);
+        $this->create(UserPrivilegeEnum::TEST_UPDATE);
+        $this->create(UserPrivilegeEnum::TEST_CANCEL);
+
         // General
         $this->create(UserPrivilegeEnum::CATEGORY_GET, true);
         $this->create(UserPrivilegeEnum::CATEGORY_CREATE, true);
@@ -74,6 +104,8 @@ class UserPrivilegeSeeder extends Seeder
 
         // System
         $this->create(UserPrivilegeEnum::BUG_LOG_GET);
+
+        $this->create(UserPrivilegeEnum::PAGES_PEOPLE);
     }
 
     /**

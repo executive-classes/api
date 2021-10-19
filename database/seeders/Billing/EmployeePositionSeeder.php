@@ -41,7 +41,8 @@ class EmployeePositionSeeder extends Seeder
             UserPrivilegeEnum::STUDENT_UPDATE,
             UserPrivilegeEnum::MESSAGE_GET,
             UserPrivilegeEnum::MESSAGE_CREATE,
-            UserPrivilegeEnum::MESSAGE_TEMPLATE_GET
+            UserPrivilegeEnum::MESSAGE_TEMPLATE_GET,
+            UserPrivilegeEnum::PAGES_PEOPLE,
         ]);
 
         // Tech
@@ -63,7 +64,8 @@ class EmployeePositionSeeder extends Seeder
             UserPrivilegeEnum::MESSAGE_GET,
             UserPrivilegeEnum::MESSAGE_CREATE,
             UserPrivilegeEnum::MESSAGE_TEMPLATE_GET,
-            UserPrivilegeEnum::BUG_LOG_GET
+            UserPrivilegeEnum::BUG_LOG_GET,
+            UserPrivilegeEnum::PAGES_PEOPLE,
         ]);
 
         // Hr
@@ -82,7 +84,8 @@ class EmployeePositionSeeder extends Seeder
             UserPrivilegeEnum::TEACHER_CANCEL,
             UserPrivilegeEnum::MESSAGE_GET,
             UserPrivilegeEnum::MESSAGE_CREATE,
-            UserPrivilegeEnum::MESSAGE_TEMPLATE_GET
+            UserPrivilegeEnum::MESSAGE_TEMPLATE_GET,
+            UserPrivilegeEnum::PAGES_PEOPLE,
         ]);
     }
 
