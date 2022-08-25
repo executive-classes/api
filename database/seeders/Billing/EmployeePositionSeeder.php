@@ -66,6 +66,7 @@ class EmployeePositionSeeder extends Seeder
             UserPrivilegeEnum::MESSAGE_TEMPLATE_GET,
             UserPrivilegeEnum::BUG_LOG_GET,
             UserPrivilegeEnum::PAGES_PEOPLE,
+            UserPrivilegeEnum::PAGES_CLASSES,
         ]);
 
         // Hr

@@ -106,6 +106,7 @@ class UserPrivilegeSeeder extends Seeder
         $this->create(UserPrivilegeEnum::BUG_LOG_GET);
 
         $this->create(UserPrivilegeEnum::PAGES_PEOPLE);
+        $this->create(UserPrivilegeEnum::PAGES_CLASSES);
     }
 
     /**
